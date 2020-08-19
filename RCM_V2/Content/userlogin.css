@@ -1,5 +1,22 @@
 ﻿
-form input, form select, form textarea {
+.row {
+    margin: 200px;
+}
+
+.card {
+    width: 400px;
+    border-radius: 5px;
+    border-color: #73c5ff;
+    font-size: 12px;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.card-header {
+    background: #73c5ff;
+    padding: 5px;
+}
+
+input[type=text], input[type=password] {
     border: 1px solid #b5b5b5;
     background: #fff;
     padding: 1px 4px;
@@ -9,10 +26,29 @@ form input, form select, form textarea {
     width: 189px;
 }
 
-form input[type=button] {
-    height: 25px;
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#e8e8e8',GradientType=0 );
-    width: 100px;
-    margin-left: auto !important;
+.txtmargin, .form-group {
+    margin: 0px;
 }
 
+label {
+    margin: 0px;
+}
+
+.imgLogo {
+    width: 120px;
+    height: 100px;
+}
+
+.divlogin {
+    padding: 10px;
+    margin-left: 77px;
+}
+
+input[type=button] {
+    height: 25px;
+    width: 100px;
+}
+
+span {
+    color: #ff0000;
+}

@@ -11,7 +11,7 @@
         {
             Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
         },
-        success: function (data) {
+        success: function (data) {           
             result = data;
         },
     });

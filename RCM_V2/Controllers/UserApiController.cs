@@ -11,8 +11,8 @@ namespace RCM_V2.Controllers
         [ActionName("UserLogin_Select")]
         public IHttpActionResult UserLogin_Select([FromBody] UserModel Umodel)
         {
-            UserBL Ubl = new UserBL();
-            return Ok(Ubl.UserLogin_Select(Umodel));
+            UserBL Ubl = new UserBL();           
+            return Ok(Ubl.User_Select(Umodel));
         }
     }
 }

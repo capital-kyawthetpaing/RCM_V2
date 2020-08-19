@@ -331,7 +331,6 @@ nav ul#userBlock li {
 }
 
 nav ul#userBlock li:first-child {
-	background:url(../images/search.png);
 	background-size: 17px;
 	background-position: 0px;
 	background-repeat: no-repeat;

@@ -1,42 +1,67 @@
-﻿
+﻿@using Models;
+@model  Models.UserModel
 @{
     ViewBag.Title = "UserLogin";
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
-<div id="CmnWrapper">
-    <div id="CmnContents">
-        <div id="ComBlock">
-            <div id="loginBox">
-                <form>
-                    <p>ログイン</p>
-                    <div>
-                        <ul>
-                            <dl><img src="~/images/logo.jpg" class="imgLogo" alt="テスト用" /></dl>
-                            <dl>
-                                <dt>ID <span>※必須</span></dt>
-                                <dd><input id="username" class="login" type="text" autocomplete="off" /></dd>
-                            </dl>
-                            <dl>
-                                <dt>パスワード <span>※必須</span></dt>
-                                <dd><input class="login" id="password" type="password" autocomplete="off" /></dd>
-                            </dl>                           
-                            <p><input type="button" id="btnlogin" value="ログイン">@*<button id="btnlogin" value="ログイン"></button>*@</p>
-                        </ul>
+<div class="loginBox">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        ログイン
                     </div>
-                    <div>
+                    <div class="card-body form-inline">
+                        <div class="col-md-8">
+                            <form id="frmLogin">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.UserID)<span>※必須</span>
+                                    <div class="txtmargin">
+                                        @Html.TextBoxFor(x => x.UserID, "", new { @autocomplete = "off", @required = true })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+
+                                    @Html.LabelFor(x => x.Password) <span>※必須</span>
+                                    <div class="txtmargin">
+                                        @Html.TextBoxFor(x => x.Password, "", new { @type = "password", @autocomplete = "off", @required = true })
+                                    </div>
+                                </div>
+
+                                <div class="divlogin">
+                                    <input type="button" id="btnlogin" value="ログイン" />
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-4">
+                            <img src="~/images/logo.jpg" class="imgLogo" alt="テスト用" />
+                        </div>
                     </div>
-                </form>
-            </div><!--loginBox-->
+                </div>
+            </div>
+            <div class="col-md-3"></div>
         </div>
     </div>
 </div>
+
+
+
 @section Scripts
-{
+    {
     <script>
         $(document).ready(function () {
-            $("#btnLogin").click(function () {
-                window.location.href = "/Home/Index";
+            $("#btnlogin").click(function () {
+                var result = CalltoApiController("/api/UserApi/UserLogin_Select", { UserID: $("#txtuserid").val(), Password: $("#txtpass").val() });
+                var data = JSON.parse(result);
+                if (data != null) {
+                    window.location.href = "/Home/Index";
+                }
             })
         })
+
     </script>
 }
