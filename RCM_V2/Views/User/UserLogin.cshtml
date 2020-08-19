@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "UserLogin";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<div id="CmnWrapper">
+    <div id="CmnContents">
+        <div id="ComBlock">
+            <div id="loginBox">
+                <form>
+                    <p>ログイン</p>
+                    <div>
+                        <ul>
+                            <dl><img src="~/images/logo.jpg" class="imgLogo" alt="テスト用" /></dl>
+                            <dl>
+                                <dt>ID <span>※必須</span></dt>
+                                <dd><input id="username" class="login" type="text" autocomplete="off" /></dd>
+                            </dl>
+                            <dl>
+                                <dt>パスワード <span>※必須</span></dt>
+                                <dd><input class="login" id="password" type="password" autocomplete="off" /></dd>
+                            </dl>                           
+                            <p><input type="button" id="btnlogin" value="ログイン">@*<button id="btnlogin" value="ログイン"></button>*@</p>
+                        </ul>
+                    </div>
+                    <div>
+                    </div>
+                </form>
+            </div><!--loginBox-->
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#btnLogin").click(function () {
+                window.location.href = "/Home/Index";
+            })
+        })
+    </script>
+}

@@ -8,10 +8,11 @@ namespace RCM_V2.Controllers
     {
         [UserAuthentication]
         [HttpPost]
-        public string UserLogin_Select([FromBody] UserModel Umodel)
+        [ActionName("UserLogin_Select")]
+        public IHttpActionResult UserLogin_Select([FromBody] UserModel Umodel)
         {
             UserBL Ubl = new UserBL();
-            return Ubl.UserLogin_Select(Umodel);
+            return Ok(Ubl.UserLogin_Select(Umodel));
         }
     }
 }

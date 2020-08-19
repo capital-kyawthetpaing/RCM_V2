@@ -24,7 +24,12 @@ namespace RCM_V2
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                       "~/Content/base.css",
+                      "~/Content/common.css",
+                      "~/Content/common1.css",
+                       "~/Content/manager-style.css"                       
+                       ));
         }
     }
 }
