@@ -1,42 +1,143 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
+<head id="Head1">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="icon" href="images/logo1.jpg">
+    <title>商品管理システム＜データベース一覧＞</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
 
+    <form id="Form1">
+        <div id="CmnWrapper">
+            <!-- HEADER -->
+            <header>
+                <!-- menu -->
+                <!-- menu -->
+                <nav>
+                    <p class="logo navSet">
+                        <img src="~/images/logo1.jpg" id="Img11" alt="テスト用" />
+                    </p>
+                    <ul id="nav">
+                        <li class="menu">
+                            <a href="#">商品管理</a>
+                            <ul id="menu01-sub" class="subMenu">
+                                <li><a href="@Url.Content("#")">商品情報一覧<br>(ページ制作)</a></li>
+                                <li><a href="@Url.Content("#")">商品情報一覧<br>(商品管理)</a></li>
+                                <li><a href="@Url.Content("#")">ステータス変更</a></li>
+                                <li><a href="@Url.Content("#")">出品一覧</a></li>
+                                <li><a href="@Url.Content("#")">出品一覧(New)</a></li>
+                                <li><a href="@Url.Content("#")">出品期日待ち一覧</a></li>
+                                <li><a href="@Url.Content("#")">在庫一覧</a></li>
+                                <li><a href="@Url.Content("#")">注文一覧</a></li>
+                                <li><a href="@Url.Content("#")">ショップ別売上一覧画面</a></li>
+                                <li><a href="@Url.Content("#")">商品別注文一覧画面</a></li>
+                                <li><a href="@Url.Content("#")">SKU別注文一覧画面</a></li>
+
+                            </ul>
+                        </li>
+                        <!-- Promotion -->
+                        <li class="menu">
+                            <a href="@Url.Content("#")">プロモーション</a>
+                            <ul id="menu06-sub" class="subMenu">
+                                <li><a href="@Url.Content("#")">商品別ポイント登録</a></li>
+                                <li><a href="@Url.Content("#")">Promotion Exhibition</a></li>
+                                <li><a href="@Url.Content("#")">Price down 設定</a></li>
+                                <li><a href="@Url.Content("#")">スーパーセール商品エクスポート</a></li>
+                                <li><a href="@Url.Content("#")">CSVアップロード一覧</a></li>
+                                <li><a href="@Url.Content("#")">スーパーセール用の商品設定</a></li>
+                                <li><a href="@Url.Content("#")">RCM.vrsログ設定画面</a></li>
+                                <li><a href="@Url.Content("#")">Luckpiece商品エクスポート</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Category -->
+                        <li class="menu">
+                            <a href="#">カテゴリ</a>
+                            <ul id="menu02-sub" class="subMenu">
+                                <li><a href="@Url.Content("#")">ショップカテゴリ一覧</a></li>
+                                <li><a href="@Url.Content("#")">楽天カテゴリ一覧</a></li>
+                                <li><a href="@Url.Content("#")">ヤフーカテゴリ一覧</a></li>
+                                <li><a href="@Url.Content("#")">ポンパレカテゴリ一覧</a></li>
+                                <li><a href="@Url.Content("#")">Wowmaカテゴリ一覧</a></li>
+                                <li><a href="@Url.Content("#")">カテゴリ対象商品確認</a></li>
+                            </ul>
+                        </li>
+                        <!-- Import -->
+                        <li class="menu">
+                            <a href="#">データベース</a>
+                            <ul class="subMenu">
+                                <li><a href="@Url.Content("#")">データベース</a></li>
+                            </ul>
+                        </li>
+                        <!-- User -->
+                        <li><a href="@Url.Content("#")">ユーザー</a></li>
+                        <!-- Shop -->
+                        <li class="menu">
+                            <a>ショップ管理</a>
+                            <ul id="menu03-sub" class="subMenu">
+                                <li><a href="@Url.Content("#")">ショップ一覧</a></li>
+                                <li><a href="@Url.Content("#")">スマート<br>テンプレート一覧</a></li>
+                                <li><a href="@Url.Content("#")">オプション<br>テンプレート編集</a></li>
+                                <li><a href="@Url.Content("#")">商品情報<br>エクスポート定義</a></li>
+                                <li><a href="@Url.Content("#")">説明文<br>エクスポート定義</a></li>
+                                <li><a href="@Url.Content("#")">コアラ商品エクスポート</a></li>
+                                <li><a href="@Url.Content("#")">商品名優先順設定</a></li>
+                                <li><a href="@Url.Content("#")">サイズマッピング</a></li>
+                                <li><a href="@Url.Content("#")">モールブランドID設定</a></li>
+                                <li><a href="@Url.Content("#")">モールブランドID設定</a></li>
+                            </ul>
+                        </li>
+                        <li class="mesnu">
+                            <a>発送日</a>
+                            <ul id="menu05-sub" class="subMenu">
+                                <li><a href="@Url.Content("#")">ブランド発送設定</a></li>
+                                <li><a href="@Url.Content("#")">発送番号登録</a></li>
+                                <li><a href="@Url.Content("#")">商品個別発送設定</a></li>
+                                <li><a href="@Url.Content("#")">配送方法一覧</a></li>
+                                <li><a href="@Url.Content("#")">配送方法セット番号一覧</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu">
+                            <a>Amazon</a>
+                            <ul id="Ul1" class="subMenu">
+                                <li><a href="@Url.Content("#")">ブランド取り寄販売設定</a></li>
+                                <li><a href="@Url.Content("#")">出品済み商品一覧</a></li>
+                                <li><a href="@Url.Content("#")">未出品商品一覧</a></li>
+                                <li><a href="@Url.Content("#")">Setting_Amazon_Items</a></li>
+                            </ul>
+                        </li>
+                        <li id="liAdmin" class="menu" style="display:none;">
+                            <a href="#">Admin</a>
+                            <ul id="menu04-sub" class="subMenu">
+                                <li><a href="@Url.Content("#")">Error Log View</a></li>
+                                <li><a href="@Url.Content("#")">DB Backup</a></li>
+                                <li><a href="@Url.Content("#")">Mall Data Download</a></li>
+                                <li><a href="@Url.Content("#")">Category_ExportForJisha</a></li>
+                                <li><a href="@Url.Content("#")">Item Shop Backup</a></li>
+                                <li><a href="@Url.Content("#")">Log Data Delete</a></li>
+                                <li><a href="@Url.Content("#")">Query_Search</a></li>
+                                <li><a href="@Url.Content("#")">Inventory_Error_Log</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul id="userBlock" class="navSet">
+                        <li><input type="text" id="txtKeySearch" /><input type="button" id="btnKeySearch" value="検 索" /></li>
+                        <li><label id="lblUser"></label></li>
+                        <li><a href="@Url.Content("#")" id="logout">ログアウト</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <!-- /HEADER -->
+
+            <p id="toTop"><a href="#CmnContents">▲TOP</a></p>
+        </div>
+    </form>
+    <div class="container-fluid body-content">
+        @RenderBody()
+    </div>
     @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>
