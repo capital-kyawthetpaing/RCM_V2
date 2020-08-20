@@ -8,8 +8,14 @@ namespace RCM_V2.Controllers
 {
     public class UserController : Controller
     {
+        
         // GET: User
         public ActionResult UserLogin()
+        {
+            return View();
+        }
+
+        public ActionResult User_View()
         {
             return View();
         }

@@ -510,11 +510,12 @@ div.searchBox dl {
 }
 div.searchBox dl dt {
 	width: 100px;
-	text-align: right;
-	margin-bottom: 1px;
+	text-align: right;   
+	margin-bottom: 7px;
+    font-weight:normal;
 }
 div.searchBox dl dd {
-	width: 130px;
+	/*width: 130px;*/ /*comment by omk*/
 	text-align: left;
 	margin-bottom: 1px;
 	height: initial;
@@ -662,4 +663,8 @@ div.CateIdSar.searchBox dl dd input {
 }
 .cmnEdit .parts dl:nth-of-type(2n) {
 	margin-right: 0px;
+}
+
+input[type="radio"] {
+    margin-bottom:7px;
 }

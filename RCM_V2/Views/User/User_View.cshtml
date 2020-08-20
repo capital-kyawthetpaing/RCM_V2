@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "User_View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render("~/Content/user.css")
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1>ユーザ一覧</h1>
+            <!-- User search -->
+            <div class="userCmnSet resetValue searchBox">
+                <h2>ユーザ検索</h2>
+                <dl>
+                    <dt>ユーザー名</dt>
+                    <dd> <input type="text" id="txtuser" /></dd>
+                    <dt>ステータス</dt>
+                    <dd>
+                        <input type="radio" id="RadioButton1" name="status" value="1" /><span> 有効</span>
+                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
+                        <input type="radio" id="RadioButton3" name="status" value="null" checked /><span> 全て</span>
+                    </dd>
+                    <dd><input type="button" id="btnSearch" value="検索"></dd>
+                </dl>
+            </div>
+
+            @*<div class="operationBtn">
+                    <p>
+                        <asp:Button ID="btnNew" runat="server" Text="ユーザーを追加する" OnClick="btnNew_Click"
+                                    BackColor="#F2F2F2" />
+                    </p>
+                </div>*@
+
+           <div class="userCmnSet resetValue editBox">
+              <table class="table table-bordered table-striped" id="tbluserlist">
+                  <thead>
+                      <tr>
+                          <th></th>
+                          <th>ユーザ名</th>
+                          <th>Login_ID</th>
+                          <th>ステータス</th>
+                          <th>登録日</th>
+                      </tr>
+                  </thead>
+                  <tbody></tbody>
+              </table>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts
+{
+<script src="~/Vendor/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="~/Vendor/DataTables/DataTables-1.10.21/js/dataTables.bootstrap.min.js"></script>
+<link href="~/Vendor/DataTables/DataTables-1.10.21/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#btnSearch").click(function () {
+                FillGrid();
+            })
+        });
+
+        function FillGrid() {
+            var obj = { UserID: "KTP"};
+
+            $("#tbluserlist").DataTable({
+                "ajax": {
+                    "url":'@Url.Action("User_Select","api/UserApi")',
+                    "type": "POST",
+                    "datatype": "json",
+                    'data': JSON.stringify(obj),                   
+                    headers:
+                    {
+                        Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+                    },
+                },
+                "columns": [
+                    { "data": "UserID" },
+                    { "data": "UserName" },
+                    { "data": "UserID" },
+                    { "data": "DeleteFlg" },
+                    { "data": "UpdatedDate" }
+                ],
+                "columnDefs": [{
+                    "targets": 0,
+                    "data": "UserID",
+                    "render": function (data, type, row) {
+                        return "";
+                    }
+                }]
+            });
+        }
+        //});
+
+
+
+            //$("#tbluserlist").DataTable({
+
+            //    "ajax": {
+            //        "type": "POST",
+            //        "url": '/api/UserApi/User_Select',
+            //        "datatype": "json",
+            //        "contentType": 'application/json; charset=utf-8',
+            //        "data": { UserID: "KTP", UserName: $("#txtuser").val(), DeleteFlg: $("input[name='status']:checked").val() },
+            //        async: false,
+            //        headers:
+            //        {
+            //            Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+            //        },
+            //        dataSrc: '',
+            //    },
+            //    "columns": [
+            //        { "data":"UserID"},
+            //        { "data": "UserName"},
+            //        { "data": "UserID"},
+            //        { "data": "DeleteFlg"},
+            //        { "data": "UpdatedDate"} 
+            //    ]
+            //});
+        //}
+    </script>
+}

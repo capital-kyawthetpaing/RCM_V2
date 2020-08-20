@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="images/logo1.jpg">
     <title>商品管理システム＜データベース一覧＞</title>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/css")
+
 </head>
 <body>
-
     <form id="Form1">
         <div id="CmnWrapper">
             <!-- HEADER -->
@@ -122,8 +124,8 @@
                             </ul>
                         </li>
                     </ul>
-                    <ul id="userBlock" class="navSet">                       
-                        <li><label id="lblUser"></label></li>
+                    <ul id="userBlock" class="navSet">
+                        <li><span id="lblUser">Kyaw Thet Paing</span></li>
                         <li><a href="@Url.Content("#")" id="logout">ログアウト</a></li>
                     </ul>
                 </nav>
@@ -134,7 +136,7 @@
     <div class="container-fluid body-content">
         @RenderBody()
     </div>
-    @Scripts.Render("~/bundles/jquery")
+    
     @RenderSection("scripts", required: false)
 </body>
 </html>
