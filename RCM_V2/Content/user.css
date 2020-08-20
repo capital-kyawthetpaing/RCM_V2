@@ -15,15 +15,23 @@ div.userCmnSet.searchBox input[type="radio"] {
 div.userCmnSet.searchBox dd:last-of-type {
 	width: 200px;
 }
-
-div .userCmnSet.searchBox dd input[type='button']
-{
+input[type='button'] {
     width: 150px;
     height: 25px;
-    margin-left:30px;
+}
+div .userCmnSet.searchBox dd input[type='button'] {
+    /*width: 150px;
+    height: 25px;*/
+    margin-left: 30px;
 }
 
 th{
     text-align:center;
 }
+
+/*.row{
+    width:100%;
+}*/
+
+
 

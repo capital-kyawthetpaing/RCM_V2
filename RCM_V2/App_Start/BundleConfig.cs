@@ -21,22 +21,24 @@ namespace RCM_V2
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/Common.js"
-                      //"~/Vendor/DataTables/DataTables-1.10.21/js/juery.dataTables.min.js",
-                      //"~/Vendor/DataTables/DataTables-1.10.21/js/dataTables.bootstrap.min.js"
+                        "~/Scripts/bootstrap.js",
+                       "~/Vendor/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js",
+                       "~/Vendor/DataTables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js",
+                      "~/Scripts/moment.js",
+                      "~/Scripts/bootstrap-datetimepicker.min.js",                       
+                      "~/Scripts/Common.js" 
+                      
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/fontawesome/css/font-awesome.min.css",
+                        "~/Content/bootstrap.css",
+                      "~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css",
+                      "~/Content/bootstrap-datetimepicker.min.css",                 
                       "~/Content/site.css",
                        "~/Content/base.css",
                       "~/Content/common.css",
                       "~/Content/common1.css",
-                       "~/Content/manager-style.css"
-                       //"~/Vendor/DataTables/DataTables-1.10.21/css/juery.dataTables.min.css",
-                       //"~/Vendor/DataTables/DataTables-1.10.21/js/dataTables.bootstrap.min.css"                    
+                       "~/Content/manager-style.css"                       
                        ));
         }
     }
