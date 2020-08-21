@@ -26,8 +26,8 @@ namespace RCM_V2
                        "~/Vendor/DataTables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js",
                       "~/Scripts/moment.js",
                       "~/Scripts/bootstrap-datetimepicker.min.js",                       
-                      "~/Scripts/Common.js" 
-                      
+                      "~/Scripts/Common.js",
+                      "~/Scripts/SweetAlert2.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

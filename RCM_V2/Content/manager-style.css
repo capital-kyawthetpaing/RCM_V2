@@ -34,6 +34,7 @@ div.iconSet h1 {
 	text-align: left;
 	margin-bottom: 10px;
 	font-size: 18px;
+	font-weight:bold; /*ktp to bold title*/
 }
 
 /*--- entry ------------*/
@@ -239,7 +240,7 @@ div.setDetailBox div input,div.setListBox div.btn input {
 --------------------------------------------------------------------------------------*/
 div.operationBtn {
 	margin-bottom: 10px;
-    width: 1000px;
+   /* width: 1000px; ktp*/
     margin: 0px auto;
     position: relative;
     height: 30px;
@@ -503,7 +504,8 @@ div.setDetailBox.confSet table td dt {
 --------------------------------------------------------------------------------------*/
 
 div.searchBox dl {
-	width: 980px;
+	/*width: 980px; ktp make with 90%*/
+	padding-left:20px; /*ktp*/
 	margin: 0px auto;
 	text-align: left;
 	display: block;

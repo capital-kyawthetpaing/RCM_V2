@@ -17,3 +17,66 @@
     });
     return result;
 }
+
+function ShowMessage(msgid, functionname) {
+    var Mmodel = {
+        MessageID: msgid,
+    };
+    var data = CalltoApiController($("#MessageURL").val(), Mmodel)
+
+    var msgdata = JSON.parse(data);
+
+    Swal.fire({
+        icon: msgdata[0].MessageIcon,
+        title: msgdata[0].MessageID,
+        text: msgdata[0].MessageText,
+    }).then(function () {
+        if (functionname) {
+            var fn = window[functionname];
+            fn('NG');
+        }
+    })
+}
+
+function RequiredCheck(ctrl) {
+    $(ctrl).attr("data-Required", "1");
+}
+
+function KeyDown(e, ctrl, functionname) {
+    if (e.which == 13) {
+        e.preventDefault();
+        var result = ErrChk(ctrl);
+        if (result == "0") {
+            moveNext(ctrl);
+            if (functionname) {
+                var fn = window[functionname];
+                fn('OK');
+            }
+        }
+        else {
+            ShowMessage(result, functionname);
+        }
+    }
+}
+
+
+function ErrChk(ctrl) {
+    var req = $(ctrl).attr("data-Required");
+    if (req == "1") {
+        if (!$(ctrl).val()) {
+            return "E102";
+        }
+    }
+}
+
+function moveNext(ctrl) {
+    do {
+        ctrl = $('[tabIndex=' + (+$(ctrl).attr("tabIndex") + 1) + ']');
+        if (!$(ctrl).length) {
+            ctrl = $('[tabIndex=1]');
+            break;
+        }
+    } while ($(ctrl).is('[disabled=disabled]'));
+    $(ctrl).select();
+    $(ctrl).focus();
+}

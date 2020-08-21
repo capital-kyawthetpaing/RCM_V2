@@ -22,8 +22,10 @@
                         <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
                         <input type="radio" id="RadioButton3" name="status" value="null" checked /><span> 全て</span>
                     </dd>
-                    <dd><input type="button" id="btnSearch" value="検索"></dd>
                 </dl>
+                <p>
+                    <input type="button" id="btnSearch" value="検索">
+                </p>
             </div>
 
             <div class="operationBtn">
@@ -55,7 +57,6 @@
         $(document).ready(function () {
             BindMall();
             Search();
-
             $("#btnSearch").click(function () {
                 Search();
             })
