@@ -74,7 +74,13 @@
                             </ul>
                         </li>
                         <!-- User -->
-                        <li><a href="@Url.Content("#")">ユーザー</a></li>
+                        <li class="menu">
+                            <a>ユーザー</a>
+                            <ul class="subMenu">
+                                <li><a href="@Url.Action("UserList","User")">ユーザー一覧</a></li>
+                                <li><a href="@Url.Action("UserEntry","User")">ユーザー登録</a></li>
+                            </ul>
+                        </li>
                         <!-- Shop -->
                         <li class="menu">
                             <a>ショップ管理</a>

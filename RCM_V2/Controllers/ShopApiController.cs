@@ -4,19 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Mall_BL;
+using Shop_BL;
 using Models;
 
 namespace RCM_V2.Controllers
 {
-    public class MallApiController : ApiController
+    public class ShopApiController : ApiController
     {
         [UserAuthentication]
         [HttpPost]
-        public IHttpActionResult Mall_Select([FromBody] MallModel mallModel)
+        public IHttpActionResult Shop_Select([FromBody] ShopModel shopModel)
         {
-            MallBL mallBL = new MallBL();
-            return Ok(mallBL.Mall_Select(mallModel));
+            ShopBL shopBL = new ShopBL();
+            return Ok(shopBL.Shop_Select(shopModel));
         }
     }
 }
