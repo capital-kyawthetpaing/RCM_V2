@@ -151,6 +151,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
+    <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Controllers\UserAuthentication.cs" />
@@ -692,6 +693,10 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shop_BL\Shop_BL.csproj">
+      <Project>{3e334c68-5f46-4282-b129-f9508addda27}</Project>
+      <Name>Shop_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\User_BL\User_BL.csproj">
       <Project>{f55598ed-576a-4b32-bdba-5d6780eb0063}</Project>

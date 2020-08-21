@@ -10,7 +10,7 @@ namespace Mall_BL
         {
             BaseDL bdl = new BaseDL();
             mallModel.Sqlprms = new SqlParameter[0];
-            return bdl.SelectJson("User_Select", mallModel.Sqlprms);
+            return bdl.SelectJson("Mall_Select", mallModel.Sqlprms);
         }
     }
 }
