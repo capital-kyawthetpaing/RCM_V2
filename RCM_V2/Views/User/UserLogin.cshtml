@@ -31,7 +31,7 @@
                                 </div>
 
                                 <div class="divlogin">
-                                    <input type="button" id="btnlogin" value="ログイン" />
+                                    <input type="button" id="btnlogin" tabindex="3" value="ログイン" />
                                 </div>
                             </form>
                         </div>
@@ -60,16 +60,26 @@
         });
 
         function Login() {
-            var result = CalltoApiController("/api/UserApi/User_Select", { UserID: $("#UserID").val(), Password: $("#Password").val() });
-            var data = JSON.parse(result);
-            if (data.length > 0) {
-                window.location.href = '@Url.Action("Dashboard","Home")';
+            var res = ErrorCheckOnClick('Login1');
+            if (res == "0") {
+                var result = CalltoApiController("/api/UserApi/User_Select", { UserID: $("#UserID").val(), Password: $("#Password").val() });
+                var userdata = JSON.parse(result);
+                if (userdata.length > 0) {
+
+                    var userinfo = userdata[0].ID + '_' + userdata[0].UserName;
+                        $.post('@Url.Action("CreateSession", "Home")',
+                            { key: "UserInfo", value: userinfo }, function (data) {
+                                location.href = '@Url.Action("Dashboard", "Home")';
+                            });
                 }
                 else {
-                    alert("Login Failed. Invalid UserName and Password.")
-                    $('#UserID').val("");
-                    $('#Password').val("");
+                    $("UserID").focus();
+                    ShowMessage("E001");
                 }
+            }
+            else
+                ShowMessage(res);
         }
     </script>
 }
+
