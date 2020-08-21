@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -151,7 +151,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
-    <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
@@ -180,6 +179,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />
     <Content Include="images\list.png" />
     <Content Include="images\logo.jpg" />
@@ -290,7 +290,6 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
-    <Content Include="Scripts\SweetAlert2.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -677,7 +676,7 @@
     <Content Include="Vendor\DataTables\Buttons-1.6.2\css\mixins.scss" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
-    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\User\UserRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -692,10 +691,6 @@
     <ProjectReference Include="..\Mall_BL\Mall_BL.csproj">
       <Project>{ac938e87-bacb-4eef-9d15-bdd2376e9d71}</Project>
       <Name>Mall_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Message_BL\Message_BL.csproj">
-      <Project>{dec1bc1b-4ea1-4534-a353-fd7cdeb94141}</Project>
-      <Name>Message_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
