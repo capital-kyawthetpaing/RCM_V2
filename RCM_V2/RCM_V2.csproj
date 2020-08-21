@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -675,6 +675,7 @@
     <Content Include="Vendor\DataTables\Buttons-1.6.2\css\mixins.scss" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
