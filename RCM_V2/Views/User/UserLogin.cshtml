@@ -52,17 +52,16 @@
     <script>
         $(document).ready(function () {
             $("#btnlogin").click(function () {
-                var result = CalltoApiController("/api/UserApi/User_Select", { UserID: $("#UserID").val(), Password: $("#Password").val() });                
-               
-                if (result.length > 0) {
-                     @*window.location.href = "@Url.Action("Index", "Home", new {Model:result })";*@
-                                                
-                }
-                else {
-                    $("#UserID").val('');
-                    $("#Password").val('')
-                    alert("Invalid Login attempt!");
-                }
+                var result = CalltoApiController("/api/UserApi/User_Select", { UserID: $("#UserID").val(), Password: $("#Password").val() });              
+                var data = JSON.parse(result);               
+                if (data.length > 0) {
+                    window.location.href = '@Url.Action("Index","Home")';
+                    }
+                    else {
+                        alert("Login Failed. Invalid UserName and Password.")
+                        $('#UserID').val("");
+                        $('#Password').val("");
+                    }
             })
         });
     </script>

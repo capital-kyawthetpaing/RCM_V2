@@ -15,9 +15,10 @@ namespace RCM_V2.Controllers
             return View();
         }
 
-        public ActionResult User_View()
+        public ActionResult UserList()
         {
             return View();
         }
+        
     }
 }

@@ -1,8 +1,10 @@
 ﻿
 @{
-    ViewBag.Title = "User_View";
+    ViewBag.Title = "UserList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+
 @Styles.Render("~/Content/user.css")
 
 <div id="CmnContents">
@@ -20,9 +22,11 @@
                         <input type="radio" id="RadioButton1" name="status" value="1" /><span> 有効</span>
                         <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
                         <input type="radio" id="RadioButton3" name="status" value="null" checked /><span> 全て</span>
-                    </dd>
-                    <dd><input type="button" id="btnSearch" value="検索"></dd>
+                    </dd>                   
                 </dl>
+                <p>
+                    <input type="button" id="btnSearch" value="検索">
+                </p>
             </div>
 
             <div class="operationBtn">
@@ -44,7 +48,7 @@
                     </thead>
                     <tbody></tbody>
                 </table>
-            </div>           
+            </div>
         </div>
 
     </div>
@@ -54,16 +58,19 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+            //call user list
+            BindTable();
+
+            //call user list by search type
             $("#btnSearch").click(function () {
-                var obj = {UserName: $("#txtuser").val(), DeleteFlag: $("input[name='status']:checked").val()};
-                var response = CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj);               
-                BindTable(response);
+                BindTable();
             })
         });
 
-        function BindTable(response) {   
+        function BindTable(response) {
+            var obj = { UserName: $("#txtuser").val(), DeleteFlag: $("input[name='status']:checked").val() };
             table = $('#tbluserlist').DataTable({
-                data: JSON.parse(response),
+                data: JSON.parse(CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj)),
                 "dom":"<'row'<'col-sm-12'tr>>" +
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
                 destroy: true,
@@ -73,11 +80,11 @@
                     { "data": "UserName"},
                     { "data": "UserID"},
                     { "data": "Status"},
-                    { "data": "UpdatedDate"}                     
+                    { "data": "UpdatedDate"}
                 ],
                 "columnDefs": [{
                     "targets": 0,
-                    "data": "UserID", 
+                    "data": "UserID",
                     "render": function (data) {
                         return '<a href="#" class="btn btn-sm" style="border-color:black;">編集</a>';
                     }
@@ -88,3 +95,4 @@
 
     </script>
 }
+
