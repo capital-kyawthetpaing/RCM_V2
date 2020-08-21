@@ -150,6 +150,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MallApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Controllers\UserAuthentication.cs" />
@@ -684,6 +685,10 @@
     <Content Include="Scripts\jquery-3.5.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Mall_BL\Mall_BL.csproj">
+      <Project>{ac938e87-bacb-4eef-9d15-bdd2376e9d71}</Project>
+      <Name>Mall_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
