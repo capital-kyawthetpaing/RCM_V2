@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using User_BL;
 using Models;
-using Newtonsoft.Json;
 
 namespace RCM_V2.Controllers
 {
@@ -23,13 +22,13 @@ namespace RCM_V2.Controllers
             return View();
         }
         
-        public ActionResult UserEntry(string id)
+        public ActionResult UserEntry(string id,string mode)
         {
             UserBL bl = new UserBL();
             UserModel obj = new UserModel();
             obj.UserID = id;
             string userData = bl.User_Select(obj);
-            //UserModel um = JsonConvert.DeserializeObject<>();
+           
             return View();
         }
 

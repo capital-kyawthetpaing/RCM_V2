@@ -1,4 +1,6 @@
-﻿
+﻿@using Models;
+@model Models.UserModel
+
 @{
     ViewBag.Title = "UserList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -95,8 +97,9 @@
         }
 
         //call user Edit 
-        function UserEdit(data) {            
-            window.location.href = '@Url.Action("UserRole","User")?id=' + data;           
+        function UserEdit(data) {
+            
+            window.location.href = '@Url.Action("UserEntry", "User")?id=' + data+"&mode=Edit";           
         }
     </script>
 }
