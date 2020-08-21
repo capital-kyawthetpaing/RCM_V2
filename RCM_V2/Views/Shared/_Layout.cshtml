@@ -79,7 +79,7 @@
                         <li class="menu">
                             <a>ショップ管理</a>
                             <ul id="menu03-sub" class="subMenu">
-                                <li><a href="@Url.Content("#")">ショップ一覧</a></li>
+                                <li><a href="@Url.Action("ShopList","Shop")">ショップ一覧</a></li>
                                 <li><a href="@Url.Content("#")">スマート<br>テンプレート一覧</a></li>
                                 <li><a href="@Url.Content("#")">オプション<br>テンプレート編集</a></li>
                                 <li><a href="@Url.Content("#")">商品情報<br>エクスポート定義</a></li>
@@ -132,11 +132,11 @@
             </header>
             <!-- /HEADER -->
         </div>
+
+        <div class="container-fluid body-content">
+            @RenderBody()
+        </div>
     </form>
-    <div class="container-fluid body-content">
-        @RenderBody()
-    </div>
-    
     @RenderSection("scripts", required: false)
 </body>
 </html>
