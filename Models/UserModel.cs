@@ -10,7 +10,6 @@ namespace Models
         public string UserName { get; set; }
         [Display(Name = "パスワード")]
         public string Password { get; set; }
-        public string DeleteFlg { get; set; }
     }
 
    
