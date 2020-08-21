@@ -31,5 +31,12 @@ namespace RCM_V2.Controllers
 
             return View();
         }
+
+        public ActionResult CreateSession(string key, string value)
+        {
+            Session[key] = value;
+
+            return this.Json(new { success = true });
+        }
     }
 }

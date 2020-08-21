@@ -67,6 +67,8 @@ function ErrChk(ctrl) {
             return "E102";
         }
     }
+
+    return "0";
 }
 
 function moveNext(ctrl) {
@@ -79,4 +81,17 @@ function moveNext(ctrl) {
     } while ($(ctrl).is('[disabled=disabled]'));
     $(ctrl).select();
     $(ctrl).focus();
+}
+
+function ErrorCheckOnClick(e1) {
+    var r1 = "0";
+    $('#'+e1+' *').filter(':input').each(function () {
+        var result = ErrChk(this);
+        if (result != "0") {
+            $(this).focus();
+            r1 = result;
+            return result;
+        }
+    });
+    return r1;
 }
