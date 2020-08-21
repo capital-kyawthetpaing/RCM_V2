@@ -22,7 +22,7 @@
 }
 .resetValue:first-of-type {
 	background: #ddd;
-	padding: 10px 0px;
+	padding-bottom:10px;
 	margin-bottom: 30px;
 }
 /*-- CmnContents --------------------------------------------*/
