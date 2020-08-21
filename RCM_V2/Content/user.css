@@ -3,10 +3,6 @@
 /*--------------------------------------------------------------------------------------
   [3]User
 --------------------------------------------------------------------------------------*/
-/*div.setDetailBox table.userCmnSet.editTable {
-	width: 98%;
-	margin: 0px auto;
-}*/
 
 div.userCmnSet.searchBox input[type="radio"] {
 	width: 16px;
@@ -20,18 +16,37 @@ input[type='button'] {
     height: 25px;
 }
 div .userCmnSet.searchBox dd input[type='button'] {
-    /*width: 150px;
-    height: 25px;*/
     margin-left: 30px;
 }
-
-th{
+.table thead th {
+    padding: 3px;
+    text-align: center;
+    vertical-align: middle;
+}    
+.table tbody td {
+    padding: 0px;
+    vertical-align: middle;
+}
+.dt-center
+{
     text-align:center;
 }
+.editBtn {
+    /*height: 25px;*/
+    border-radius: 2px;
+    background: linear-gradient(to bottom, #f2f2f2 0%,#e8e8e8 100%);
+    border: 1px solid #808080;
+    /*width: 100px;*/
+    height: 30px;
+    padding: 5px;
+    margin-left: 5px;
+    /*background: linear-gradient(to bottom, #f2f2f2 0%,#e8e8e8 100%);*/
+}
 
-/*.row{
-    width:100%;
-}*/
+a:hover
+{
+    opacity:0;
+}
 
 
 

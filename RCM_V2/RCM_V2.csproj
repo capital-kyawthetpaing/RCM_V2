@@ -179,6 +179,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />
     <Content Include="images\list.png" />
     <Content Include="images\logo.jpg" />
@@ -675,6 +676,7 @@
     <Content Include="Vendor\DataTables\Buttons-1.6.2\css\mixins.scss" />
     <Content Include="Views\Shop\ShopList.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
+    <Content Include="Views\User\UserRole.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

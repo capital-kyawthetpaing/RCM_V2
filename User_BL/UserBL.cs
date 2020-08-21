@@ -17,5 +17,9 @@ namespace User_BL
             Umodel.Sqlprms[3] = new SqlParameter("@DeleteFlg", SqlDbType.VarChar) { Value = Umodel.DeleteFlg };
             return bdl.SelectJson("User_Select", Umodel.Sqlprms);
         }
+
+        
+
+       
     }
 }

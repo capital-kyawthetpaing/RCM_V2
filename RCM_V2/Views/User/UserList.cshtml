@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 @Styles.Render("~/Content/user.css")
 
 <div id="CmnContents">
@@ -31,7 +30,7 @@
 
             <div class="operationBtn">
                 <p>
-                    <input type="button" value="ユーザーを追加する" />
+                    <input type="button" value="ユーザーを追加する"/>
                 </p>
             </div>
 
@@ -71,28 +70,34 @@
             var obj = { UserName: $("#txtuser").val(), DeleteFlag: $("input[name='status']:checked").val() };
             table = $('#tbluserlist').DataTable({
                 data: JSON.parse(CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj)),
-                "dom":"<'row'<'col-sm-12'tr>>" +
-                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
-                destroy: true,
+                "bFilter": false,
+                "bLengthChange": false,
+                "bInfo": false,
+                "bSort": false,
+                destroy: true,               
                 "dataSrc": " ",
                 "columns": [
                     { "data": "UserID" },
                     { "data": "UserName"},
                     { "data": "UserID"},
-                    { "data": "Status"},
-                    { "data": "UpdatedDate"}
+                    { "data": "Status",className:"dt-center"},
+                    { "data": "UpdatedDate",className:"dt-center"}
                 ],
                 "columnDefs": [{
                     "targets": 0,
                     "data": "UserID",
-                    "render": function (data) {
-                        return '<a href="#" class="btn btn-sm" style="border-color:black;">編集</a>';
+                    "render": function (data) { 
+                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\''+data+'\')" value="編集">';
                     }
                 }
                 ]
             });
         }
 
+        //call user Edit 
+        function UserEdit(data) {            
+            window.location.href = '@Url.Action("UserRole","User")?id=' + data;           
+        }
     </script>
 }
 
