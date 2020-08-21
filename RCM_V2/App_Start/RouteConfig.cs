@@ -16,7 +16,7 @@ namespace RCM_V2
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "User", action = "User_View", id = UrlParameter.Optional }
+                defaults: new { controller = "User", action = "UserLogin", id = UrlParameter.Optional }
             );
         }
     }

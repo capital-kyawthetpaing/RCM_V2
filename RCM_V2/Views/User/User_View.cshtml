@@ -55,7 +55,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btnSearch").click(function () {
-                var obj = { UserID: "null", UserName: $("#txtuser").val(), DeleteFlag: $("input[name='status']:checked").val()};
+                var obj = {UserName: $("#txtuser").val(), DeleteFlag: $("input[name='status']:checked").val()};
                 var response = CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj);               
                 BindTable(response);
             })
@@ -64,13 +64,15 @@
         function BindTable(response) {   
             table = $('#tbluserlist').DataTable({
                 data: JSON.parse(response),
+                "dom":"<'row'<'col-sm-12'tr>>" +
+                    "<'row'<'col-sm-5'i><'col-sm-7'p>>",
                 destroy: true,
                 "dataSrc": " ",
                 "columns": [
                     { "data": "UserID" },
                     { "data": "UserName"},
                     { "data": "UserID"},
-                    { "data": "DeleteFlag"},
+                    { "data": "Status"},
                     { "data": "UpdatedDate"}                     
                 ],
                 "columnDefs": [{
@@ -79,24 +81,7 @@
                     "render": function (data) {
                         return '<a href="#" class="btn btn-sm" style="border-color:black;">編集</a>';
                     }
-                },
-                    {
-                        "targets": 3,
-                        "data": "DeleteFlag",
-                        "render": function (data) {
-                            if (data == 0)
-                                return '無効';
-                            else
-                                return '有効';
-                        }
-                    },
-                    {
-                        "targets": 4,
-                        "data": "UpdatedDate",
-                        "render": function (data) {
-                            return moment(data).format('YYYY/MM/DD');
-                        }
-                    }
+                }
                 ]
             });
         }

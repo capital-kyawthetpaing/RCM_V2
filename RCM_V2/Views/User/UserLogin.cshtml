@@ -52,10 +52,16 @@
     <script>
         $(document).ready(function () {
             $("#btnlogin").click(function () {
-                var result = CalltoApiController("/api/UserApi/UserLogin_Select", { UserID: $("#txtuserid").val(), Password: $("#txtpass").val() });
-                var data = JSON.parse(result);
-                if (data != null) {
-                    window.location.href = "/Home/Index";
+                var result = CalltoApiController("/api/UserApi/User_Select", { UserID: $("#UserID").val(), Password: $("#Password").val() });                
+               
+                if (result.length > 0) {
+                     @*window.location.href = "@Url.Action("Index", "Home", new {Model:result })";*@
+                                                
+                }
+                else {
+                    $("#UserID").val('');
+                    $("#Password").val('')
+                    alert("Invalid Login attempt!");
                 }
             })
         });
