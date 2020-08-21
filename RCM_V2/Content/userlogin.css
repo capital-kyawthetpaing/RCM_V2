@@ -5,15 +5,20 @@
 
 .card {
     width: 400px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
     border-color: #73c5ff;
     font-size: 12px;
     font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 }
 
 .card-header {
+    font-weight: bold;
     background: #73c5ff;
     padding: 10px;
+}
+
+.card-body {    
+    padding: 13px;
 }
 
 input[type=text], input[type=password] {
@@ -27,7 +32,7 @@ input[type=text], input[type=password] {
 }
 
 .txtmargin, .form-group {
-    margin: 0px;
+    margin: 2px;
 }
 
 label {
@@ -36,15 +41,16 @@ label {
 
 .imgLogo {
     width: 120px;
-    height: 100px;
+    height: 115px;
 }
 
-.divlogin {
-    padding: 10px;
+.divlogin {    
+    padding: 15px;
     margin-left: 77px;
 }
 
 input[type=button] {
+    margin-top:5px;
     height: 25px;
     width: 100px;
 }

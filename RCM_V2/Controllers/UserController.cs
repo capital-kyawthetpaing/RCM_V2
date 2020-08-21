@@ -23,14 +23,16 @@ namespace RCM_V2.Controllers
             return View();
         }
         
-        public ActionResult UserRole(string id)
+        public ActionResult UserEntry(string id)
         {
             UserBL bl = new UserBL();
             UserModel obj = new UserModel();
             obj.UserID = id;
             string userData = bl.User_Select(obj);
-           
+            //UserModel um = JsonConvert.DeserializeObject<>();
             return View();
         }
+
+
     }
 }

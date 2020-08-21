@@ -3,6 +3,7 @@ using Models;
 using System.Data;
 using System.Data.SqlClient;
 
+
 namespace User_BL
 {
     public class UserBL
@@ -17,9 +18,5 @@ namespace User_BL
             Umodel.Sqlprms[3] = new SqlParameter("@DeleteFlg", SqlDbType.VarChar) { Value = Umodel.DeleteFlg };
             return bdl.SelectJson("User_Select", Umodel.Sqlprms);
         }
-
-        
-
-       
     }
 }
