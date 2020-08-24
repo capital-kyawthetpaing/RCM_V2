@@ -34,6 +34,7 @@ namespace User_BL
                 Umodel.UserID = dr["UserID"].ToString();
                 Umodel.UserName = dr["UserName"].ToString();
                 Umodel.Password = dr["Password"].ToString();
+                Umodel.DeleteFlg = dr["Status"].ToString();
             }            
             return Umodel;
         }

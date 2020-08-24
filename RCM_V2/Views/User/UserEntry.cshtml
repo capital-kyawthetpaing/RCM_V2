@@ -16,16 +16,9 @@
         <div id="reg_Confirm" class="setDetailBox confSet iconSet iconCheck" hidden>
             <h1>ユーザ登録 確認画面</h1>
         </div>
-        <div id="regi" class="setDetailBox iconSet iconEdit" hidden>
-            @if(Model.UserID==null)
-            {
+        <div id="regi" class="setDetailBox iconSet iconEdit hidden">
             <h1 id="head"></h1>
-            }
-            else
-            {
-            <h1 id="head"></h1>
-            }
-        </div>
+        </div>        
         <div class="setDetailBox confSet iconSet iconCheck">
             <table class="userCmnSet editTable">
                 <tbody>
@@ -40,7 +33,7 @@
                         <th>ID&nbsp;<span>※必須</span></th>
                         <td>
                             <div style="float: left" id="divID">
-                                @Html.TextBoxFor(x => x.UserID, new {@autocomplete = "off" })
+                                @Html.TextBoxFor(x => x.UserID, new { @autocomplete = "off" })
                             </div>
                             <label id="lblID" Visible="false"></label>
                         </td>
@@ -49,7 +42,7 @@
                         <th>パスワード&nbsp;<span>※必須</span></th>
                         <td>
                             <div style="float: left" id="divPass">
-                                @Html.TextBoxFor(x => x.UserID, new { @type = "password",@autocomplete = "off" })
+                                @Html.TextBoxFor(x => x.UserID, new { @type = "password", @autocomplete = "off" })
                             </div>
                             <label id="lblPassword" Visible="False"></label>
                         </td>
@@ -132,6 +125,34 @@
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+        
+       //show the header text based on mode
+        if ('@Model.UserID' == null)
+        {
+            $("#head").text('ユーザ登録');
+            $("#regi").removeClass('hidden');
+        }
+        else
+        {
+            $("#head").text('ユーザ編集');
+            $("#regi").removeClass('hidden');
+            }
+
+        //check radio based on Deleteflag
+            if ('@Model.DeleteFlg' == "") {
+                $("#rdostatus").attr('checked', true);               
+            }
+            else {
+                $("#rdostatus1").attr('checked', true);
+            }
+        });
+    </script>
+    }
 
 
 
