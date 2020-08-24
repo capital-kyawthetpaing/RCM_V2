@@ -59,7 +59,6 @@ function KeyDown(e, ctrl, functionname) {
     }
 }
 
-
 function ErrChk(ctrl) {
     var req = $(ctrl).attr("data-Required");
     if (req == "1") {

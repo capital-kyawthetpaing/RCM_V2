@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using User_BL;
 using Models;
+using Newtonsoft.Json;
 
 namespace RCM_V2.Controllers
 {
@@ -27,9 +28,12 @@ namespace RCM_V2.Controllers
             UserBL bl = new UserBL();
             UserModel obj = new UserModel();
             obj.UserID = id;
-            string userData = bl.User_Select(obj);
-           
-            return View();
+            obj.Mode = mode;
+            if (mode == "Edit")
+                obj = bl.UserModel_Select(obj);
+            else if (mode == "Insert")
+                obj = new UserModel();
+            return View(obj);
         }
 
 

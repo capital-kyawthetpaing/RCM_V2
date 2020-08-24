@@ -1,8 +1,137 @@
-﻿
+﻿@using Models;
+@model Models.UserModel
 @{
     ViewBag.Title = "UserEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UserEntry</h2>
+@Styles.Render("~/Content/user.css")
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <!-- User search -->
+        <div id="edi" class="setDetailBox confSet iconSet iconCheck" hidden>
+            <h1>ユーザ編集確認画面</h1>
+        </div>
+        <div id="reg_Confirm" class="setDetailBox confSet iconSet iconCheck" hidden>
+            <h1>ユーザ登録 確認画面</h1>
+        </div>
+        <div id="regi" class="setDetailBox iconSet iconEdit" hidden>
+            @if(Model.UserID==null)
+            {
+            <h1 id="head"></h1>
+            }
+            else
+            {
+            <h1 id="head"></h1>
+            }
+        </div>
+        <div class="setDetailBox confSet iconSet iconCheck">
+            <table class="userCmnSet editTable">
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <th>ユーザ名&nbsp;<span>※必須</span></th>
+                        <td>
+                            @Html.TextBoxFor(x => x.UserName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>ID&nbsp;<span>※必須</span></th>
+                        <td>
+                            <div style="float: left" id="divID">
+                                @Html.TextBoxFor(x => x.UserID, new {@autocomplete = "off" })
+                            </div>
+                            <label id="lblID" Visible="false"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>パスワード&nbsp;<span>※必須</span></th>
+                        <td>
+                            <div style="float: left" id="divPass">
+                                @Html.TextBoxFor(x => x.UserID, new { @type = "password",@autocomplete = "off" })
+                            </div>
+                            <label id="lblPassword" Visible="False"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>ユーザステータス</th>
+                        <td>
+                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><span>有効</span>
+                            <input type="radio" id="rdostatus1" value="2" name="rbdStatus" /><span>無効</span>
+                            <label id="lblStatus" Visible="false"></label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-left: 7px">
+            <table class="userCmnSet editTable">
+                <tr>
+                    <th style="width: 160px; text-align: left; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: 5px solid #73c5ff; padding: 5px 5px 5px 10px">権限&nbsp;<span>※必須</span></th>
+                    <td>
+                        @*<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:GridView ID="gvUserRole" runat="server" ShowHeader="false"
+                                              AutoGenerateColumns="false" GridLines="None"
+                                              OnRowDataBound="gvUserRole_RowDataBound" OnSelectedIndexChanged="gvUserRole_SelectedIndexChanged">
+                                    <Columns>
+                                        <asp:TemplateField Visible="false">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="lblMenuHeader" runat="server" Text="Menu"></asp:Label>
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblMenu" Text='<%# Eval("Menu_ID")%>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="lblMenuID" runat="server" Text="Menu ID"></asp:Label>
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblMenuID" Text='<%# Eval("ID")%>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField Visible="false">
+                                            <HeaderTemplate>
+                                                <asp:Label ID="lblMenu" runat="server" Text="Master ID"></asp:Label>
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" ID="lblMasterID" Text='<%# Eval("Parent_ID")%>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                        <asp:TemplateField>
+                                            <HeaderTemplate>
+                                                <asp:CheckBox ID="chkAllRead" runat="server" AutoPostBack="True" OnCheckedChanged="chkReadSelectAll_CheckedChanged" Visible="false" />
+                                            </HeaderTemplate>
+                                            <ItemTemplate>
+                                                <asp:Label runat="server" Text="" ID="lblPadding" Visible="false"></asp:Label>
+                                                <asp:CheckBox ID="ckbRead" runat="server" AutoPostBack="True" OnCheckedChanged="ckbRead_CheckedChanged" />
+                                                <asp:Label runat="server" ID="lblDescription" Text='<%# Eval("Description")%>'></asp:Label>
+                                                <asp:Label runat="server" ID="lbl_Descrip"></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                    </Columns>
+                                </asp:GridView>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>*@
+                    </td>
+                </tr>
+            </table>
+            <!-- /User search -->
+            <div class="btn">
+                <div class="userRole">
+                    <asp:Button ID="Button1" runat="server" Text="戻る" OnClick="btnCancleRole_Click" Width="100px" Height="25px" Style="margin-bottom: 30px;" />
+                    <asp:Button ID="btnPrevious" runat="server" Text="戻る" OnClick="btnPreviousRole_Click" Visible="false" Width="100px" />
+                    <input type="submit" id="btnpopup" onclick="this.form.target = ''" runat="server" style="width: 100px" value="確認画面へ" visible="false" />
+                    <asp:Button ID="btnAdd" runat="server" Text="確認画面へ" OnClick="btnAddRole_Click" Visible="true" Width="100px" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
