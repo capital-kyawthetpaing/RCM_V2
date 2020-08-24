@@ -9,6 +9,12 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Styles.Render("~/Content/css")
 
+    @{ 
+        string obj = Session["UserInfo"].ToString();
+        string ID = obj.Split('_')[0];
+        string Name = obj.Split('_')[1];
+    }
+
 </head>
 <body>
     <form id="Form1">
@@ -131,7 +137,7 @@
                         </li>
                     </ul>
                     <ul id="userBlock" class="navSet">
-                        <li><span id="lblUser">Kyaw Thet Paing</span></li>
+                        <li><span id="lblUser">@Name</span></li>
                         <li><a href="@Url.Content("#")" id="logout">ログアウト</a></li>
                     </ul>
                 </nav>

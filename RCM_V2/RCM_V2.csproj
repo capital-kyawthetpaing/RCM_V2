@@ -186,6 +186,7 @@
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo1.jpg" />
     <Content Include="images\search.png" />
+    <Content Include="images\user.png" />
     <Content Include="images\user2.png" />
     <Content Include="Scripts\bootstrap-datetimepicker.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />

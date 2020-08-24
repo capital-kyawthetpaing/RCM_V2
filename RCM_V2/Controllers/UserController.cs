@@ -31,8 +31,6 @@ namespace RCM_V2.Controllers
             obj.Mode = mode;
             if (mode == "Edit")
                 obj = bl.UserModel_Select(obj);
-            else if (mode == "New")
-                obj = new UserModel();
             return View(obj);
         }
 

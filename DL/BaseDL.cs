@@ -31,7 +31,6 @@ namespace DL
                     para = ChangeToDBNull(para);
                     adapt.SelectCommand.Parameters.AddRange(para);
                 }
-
                 adapt.Fill(dt);
                 newCon.Close();
             }

@@ -19,32 +19,25 @@
         <div id="regi" class="setDetailBox iconSet iconEdit hidden">
             <h1 id="head"></h1>
         </div>        
-        <div class="setDetailBox confSet iconSet iconCheck">
+        <div class="setDetailBox confSet iconSet iconCheck" id="divEdit">
             <table class="userCmnSet editTable">
-                <tbody>
-                    <tr></tr>
+                <tbody>                   
                     <tr>
                         <th>ユーザ名&nbsp;<span>※必須</span></th>
                         <td>
-                            @Html.TextBoxFor(x => x.UserName)
+                            @Html.TextBoxFor(x => x.UserName,new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                     <tr>
                         <th>ID&nbsp;<span>※必須</span></th>
                         <td>
-                            <div style="float: left" id="divID">
-                                @Html.TextBoxFor(x => x.UserID, new { @autocomplete = "off" })
-                            </div>
-                            <label id="lblID" Visible="false"></label>
+                            @Html.TextBoxFor(x => x.UserID, new { @autocomplete = "off", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })                           
                         </td>
                     </tr>
                     <tr>
                         <th>パスワード&nbsp;<span>※必須</span></th>
                         <td>
-                            <div style="float: left" id="divPass">
-                                @Html.TextBoxFor(x => x.UserID, new { @type = "password", @autocomplete = "off" })
-                            </div>
-                            <label id="lblPassword" Visible="False"></label>
+                            @Html.TextBoxFor(x => x.Password, new { @type = "password", @autocomplete = "off", @tabIndex = 3, onkeydown = "KeyDown(event,this)" })                           
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +45,6 @@
                         <td>
                             <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><span>有効</span>
                             <input type="radio" id="rdostatus1" value="2" name="rbdStatus" /><span>無効</span>
-                            <label id="lblStatus" Visible="false"></label>
                         </td>
                     </tr>
                 </tbody>
@@ -115,11 +107,9 @@
             <!-- /User search -->
             <div class="btn">
                 <div class="userRole">
-                    <asp:Button ID="Button1" runat="server" Text="戻る" OnClick="btnCancleRole_Click" Width="100px" Height="25px" Style="margin-bottom: 30px;" />
-                    <asp:Button ID="btnPrevious" runat="server" Text="戻る" OnClick="btnPreviousRole_Click" Visible="false" Width="100px" />
-                    <input type="submit" id="btnpopup" onclick="this.form.target = ''" runat="server" style="width: 100px" value="確認画面へ" visible="false" />
-                    <asp:Button ID="btnAdd" runat="server" Text="確認画面へ" OnClick="btnAddRole_Click" Visible="true" Width="100px" />
-
+                    <input type="button" id="btnClose" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
+                    <input type="button" id="btnPrevious" value="戻る" Style="width:100px;" />
+                    <input type="button" id="btnAdd" value="確認画面へ" Style="width:100px;" onclick="AddUser()"/>
                 </div>
             </div>
         </div>
@@ -130,18 +120,26 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
-        
+
+            $('#UserName').focus();
+
+            RequiredCheck($("#UserName"));
+            RequiredCheck($("#UserID"));
+            RequiredCheck($("#Password"));
+            
+
        //show the header text based on mode
-        if ('@Model.UserID' == null)
+        if ('@Model.UserID' == "")
         {
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('hidden');
         }
         else
         {
+            $("#UserID").prop('readonly', true);
             $("#head").text('ユーザ編集');
             $("#regi").removeClass('hidden');
-            }
+        }
 
         //check radio based on Deleteflag
             if ('@Model.DeleteFlg' == "") {
@@ -151,6 +149,25 @@
                 $("#rdostatus1").attr('checked', true);
             }
         });
+
+        //save user data
+        function AddUser() {
+            alert($("#lblUser").text());
+            var res = ErrorCheckOnClick('divEdit');
+            if (res == "0") {
+                var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), DeleteFlg: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
+               
+                if (result=="true") {
+                    window.location.href = '@Url.Action("UserList","User")';                   
+                }
+                else {
+                     $("#UserName").focus();
+                    ShowMessage("E001");
+                }
+            }
+            else
+                ShowMessage(res);
+        }
     </script>
     }
 

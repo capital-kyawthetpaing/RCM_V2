@@ -14,8 +14,21 @@ namespace RCM_V2.Controllers
         [ActionName("User_Select")]
         public IHttpActionResult User_Select([FromBody]UserModel Umodel)
         {
-            UserBL Ubl = new UserBL();            
+            UserBL Ubl = new UserBL();
+            if (Umodel.DeleteFlg == "null")
+            {
+                Umodel.DeleteFlg = null;
+            }
             return Ok(Ubl.User_Select(Umodel));
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("User_Save")]
+        public IHttpActionResult User_Save([FromBody]UserModel Umodel)
+        {
+            UserBL Ubl = new UserBL();
+            return Ok(Ubl.User_Save(Umodel));
         }
 
     }

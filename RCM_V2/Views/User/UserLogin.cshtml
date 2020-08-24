@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<div class="loginBox">
+<div class="loginBox" id="Login1">
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-6 offset-md-3">
@@ -66,14 +66,14 @@
                 var userdata = JSON.parse(result);
                 if (userdata.length > 0) {
 
-                    var userinfo = userdata[0].ID + '_' + userdata[0].UserName;
+                    var userinfo = userdata[0].UserID + '_' + userdata[0].UserName;
                         $.post('@Url.Action("CreateSession", "Home")',
                             { key: "UserInfo", value: userinfo }, function (data) {
                                 location.href = '@Url.Action("Dashboard", "Home")';
                             });
                 }
                 else {
-                    $("UserID").focus();
+                    $("#UserID").focus();
                     ShowMessage("E001");
                 }
             }
