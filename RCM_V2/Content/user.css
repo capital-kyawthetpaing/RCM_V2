@@ -27,10 +27,7 @@ div .userCmnSet.searchBox dd input[type='button'] {
     padding: 0px;
     vertical-align: middle;
 }
-.dt-center
-{
-    text-align:center;
-}
+
 
 input[type=text], input[type=password] {
     float: left;
