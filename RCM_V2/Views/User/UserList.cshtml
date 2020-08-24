@@ -32,7 +32,7 @@
 
             <div class="operationBtn">
                 <p>
-                    <input type="button" value="ユーザーを追加する"/>
+                    <input type="button" value="ユーザーを追加する" onclick="UserEdit('','New')"/>
                 </p>
             </div>
 
@@ -89,7 +89,7 @@
                     "targets": 0,
                     "data": "UserID",
                     "render": function (data) { 
-                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\''+data+'\')" value="編集">';
+                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\''+data+'\',\'Edit\')" value="編集">';
                     }
                 }
                 ]
@@ -97,9 +97,8 @@
         }
 
         //call user Edit 
-        function UserEdit(data) {
-            
-            window.location.href = '@Url.Action("UserEntry", "User")?id=' + data+"&mode=Edit";           
+        function UserEdit(data, mode) {
+            window.location.href = '@Url.Action("UserEntry", "User")?id=' + data + "&mode=" + mode;           
         }
     </script>
 }
