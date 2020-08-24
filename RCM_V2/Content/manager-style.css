@@ -48,6 +48,7 @@ div.setListBox #entry p input {
 
 /*--- Table list ------------*/
 table.listTable {
+	width:100%;
     border: 1px solid #b5b5b5;
     margin: 8px auto 10px auto;
 }
@@ -64,11 +65,12 @@ table.listTable th {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f2f2', endColorstr='#e8e8e8',GradientType=0 );
 	height:	30px;
 	white-space: pre;
+	text-align:center;
 }
 
-table.listTable tr:nth-of-type(2n) {
-	background: #f9f9f9;
-}
+	table.listTable tr:nth-of-type(2n) {
+		background: #EEEEEE;
+	}
 
 table.listTable td span {
     display: block;
