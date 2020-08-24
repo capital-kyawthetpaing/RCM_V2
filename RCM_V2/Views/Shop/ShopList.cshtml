@@ -18,9 +18,9 @@
                     <dd><select id="ddlMall"></select></dd>
                     <dt>ステータス</dt>
                     <dd>
-                        <input type="radio" id="RadioButton1" name="status" value="1" /><span> 有効</span>
-                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
-                        <input type="radio" id="RadioButton3" name="status" value="null" checked /><span> 全て</span>
+                        <input type="radio" id="RadioButton1" name="status" value="0" checked/><span> 有効</span>
+                        <input type="radio" id="RadioButton2" name="status" Value="1" /><span> 無効</span>
+                        <input type="radio" id="RadioButton3" name="status" value=""/><span> 全て</span>
                     </dd>
                 </dl>
                 <p>
@@ -65,7 +65,7 @@
         function Search() {
             var obj = {
                     ShopName: $("#ShopName").val(),
-                    DeleteFlag: $("input[name='status']:checked").val()
+                    DeleteFlg: $("input[name='status']:checked").val()
                 };
                 var response = CalltoApiController('@Url.Action("Shop_Select", "api/ShopApi")', obj);
                 BindTable(response);
@@ -93,18 +93,17 @@
                 "dataSrc": " ",
                 "searching":false,
                 "columns": [
-                    { "data": "", "width": "30%", "className":"aligncenter" },
+                    { "data": "", "width": "30%", "className":"dt-center" },
                     { "data": "ShopName","width":"40%"},
                     { "data": "MallName","width":"20%"},
-                    { "data": "Status","width":"20%"},
+                    { "data": "Status", "width": "20%", "className":"dt-center"},
                 ],
                 "columnDefs": [
                     {
                     "targets": 0,
                     "data": "",
                     "render": function (data) {
-                        //return '< href="#">編集</a><a href="#">デフォルト値設定</a><a href="#">固定値設定</a>';
-                        return '<input type="button" style="width:120px" value="編集"><input type="button" style="width:120px"  value="デフォルト値設定"><input type="button" style="width:120px"  value="固定値設定">'
+                        return '<input type="button" style="width:70px;margin-right:5px" value="編集"><input type="button" style="margin-right:5px" value="デフォルト値設定"><input type="button" value="固定値設定">'
                         }
                     },
                 ]

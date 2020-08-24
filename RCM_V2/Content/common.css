@@ -1,8 +1,9 @@
 ﻿@charset "utf-8";
-.aligncenter{
-	text-align:center;
-}
 /*-- styleSet --------------------------------------------*/
+
+.dt-center {
+	text-align: center;
+}
 .inlineSet {
 	letter-spacing: -.40em;
 }
@@ -320,13 +321,14 @@ nav ul#nav * {
 }
 /*-- ユーザ ---------------------------------*/
 nav ul#userBlock {
-    width: 270px;
-	position: relative;
+    width: auto;
+	float:right;
+	padding-right:20px;
 	line-height: 1;
 	text-align: left;
-	position: absolute;
 	right: 0px;
 	display: table-cell;
+	vertical-align:middle;
 }
 nav ul#userBlock li {
     display: table-cell;

@@ -37,7 +37,7 @@
             </div>
 
             <div class="userCmnSet resetValue editBox">
-                <table class="table table-bordered table-striped" id="tbluserlist" style="width:100%">
+                <table class="listTable" id="tbluserlist">
                     <thead>
                         <tr>
                             <th></th>
@@ -79,7 +79,7 @@
                 destroy: true,               
                 "dataSrc": " ",
                 "columns": [
-                    { "data": "UserID" },
+                    { "data": "UserID", "className":"dt-center" },
                     { "data": "UserName"},
                     { "data": "UserID"},
                     { "data": "Status",className:"dt-center"},
