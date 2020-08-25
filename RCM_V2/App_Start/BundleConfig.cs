@@ -27,7 +27,8 @@ namespace RCM_V2
                       "~/Scripts/moment.js",
                       "~/Scripts/bootstrap-datetimepicker.min.js",                       
                       "~/Scripts/Common.js",
-                      "~/Scripts/SweetAlert2.js"
+                      "~/Scripts/SweetAlert2.js",
+                      "~/Scripts/cleave.min.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(

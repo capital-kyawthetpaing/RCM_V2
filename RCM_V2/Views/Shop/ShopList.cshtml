@@ -30,7 +30,7 @@
 
             <div class="operationBtn">
                 <p>
-                    <input type="button" value="ショップを追加する" />
+                    <input type="button" value="ショップを追加する" onclick="ShopEdit('', 'New')"/>
                 </p>
             </div>
 
@@ -93,7 +93,7 @@
                 "dataSrc": " ",
                 "searching":false,
                 "columns": [
-                    { "data": "", "width": "30%", "className":"dt-center" },
+                    { "data": "ShopID", "width": "30%", "className":"dt-center" },
                     { "data": "ShopName","width":"40%"},
                     { "data": "MallName","width":"20%"},
                     { "data": "Status", "width": "20%", "className":"dt-center"},
@@ -101,13 +101,17 @@
                 "columnDefs": [
                     {
                     "targets": 0,
-                    "data": "",
+                    "data": "ShopID",
                     "render": function (data) {
-                        return '<input type="button" style="width:70px;margin-right:5px" value="編集"><input type="button" style="margin-right:5px" value="デフォルト値設定"><input type="button" value="固定値設定">'
+                        return '<input type="button"  onclick="ShopEdit(\'' + data +'\',\'Edit\')" style="width:70px;margin-right:5px" value="編集"><input type="button" style="margin-right:5px" value="デフォルト値設定"><input type="button" value="固定値設定">'
                         }
                     },
                 ]
             });
+        }
+
+        function ShopEdit(data, mode) {
+           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;  
         }
 
     </script>

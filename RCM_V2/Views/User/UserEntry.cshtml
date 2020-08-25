@@ -19,7 +19,7 @@
         <div id="regi" class="setDetailBox iconSet iconEdit hidden">
             <h1 id="head"></h1>
         </div>        
-        <div class="setDetailBox confSet iconSet iconCheck" id="divEdit">
+        <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
             <table class="userCmnSet editTable">
                 <tbody>                   
                     <tr>
@@ -152,8 +152,7 @@
 
         //save user data
         function AddUser() {
-            alert($("#lblUser").text());
-            var res = ErrorCheckOnClick('divEdit');
+            var res = ErrorCheckOnClick('divUser');
             if (res == "0") {
                 var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), DeleteFlg: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
                
