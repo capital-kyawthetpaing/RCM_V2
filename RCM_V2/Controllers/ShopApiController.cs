@@ -13,10 +13,21 @@ namespace RCM_V2.Controllers
     {
         [UserAuthentication]
         [HttpPost]
+        [ActionName("Shop_Select")]
         public IHttpActionResult Shop_Select([FromBody] ShopModel shopModel)
         {
             ShopBL shopBL = new ShopBL();
             return Ok(shopBL.Shop_Select(shopModel));
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("Shop_Save")]
+        public IHttpActionResult Shop_Save([FromBody] ShopModel shopModel)
+        {
+            return Ok();
+            ShopBL shopBL = new ShopBL();
+            return Ok(shopBL.Shop_Save(shopModel));
         }
     }
 }

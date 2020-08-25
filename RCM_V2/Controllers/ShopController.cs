@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Shop_BL;
+using Models;
+using Newtonsoft.Json;
 
 namespace RCM_V2.Controllers
 {
@@ -14,14 +17,16 @@ namespace RCM_V2.Controllers
             return View();
         }
 
-        public ActionResult Shop_ItemNamePriority()
+        public ActionResult ShopEntry(string id, string mode)
         {
-            return View();
-        }
-
-        public ActionResult Shop_TemplateList()
-        {
-            return View();
+            ShopBL bl = new ShopBL();
+            ShopModel obj = new ShopModel();
+            obj.ShopID = id;
+            obj.Mode = mode;
+            if (mode == "Edit")
+                obj = bl.ShopModel_Select(obj);           
+            return View(obj);
+            
         }
     }
 }

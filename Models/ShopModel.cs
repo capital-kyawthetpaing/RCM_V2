@@ -3,6 +3,8 @@
     public class ShopModel:BaseModel
     {
         public string ShopID { get; set; }
+        public string ShopIDPrefix { get; set; }
+        public string ShopSiteID { get; set; }
         public string ShopName { get; set; }
         public string MallID { get; set; }
         public string FtpHost { get; set; }

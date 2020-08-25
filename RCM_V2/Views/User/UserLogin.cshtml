@@ -19,14 +19,14 @@
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.UserID)<span>※必須</span>
                                     <div class="txtmargin">
-                                        @Html.TextBoxFor(x => x.UserID, "", new { @autocomplete = "off", @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.UserID, "", new { @autocomplete = "off",@tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     @Html.LabelFor(x => x.Password) <span>※必須</span>
                                     <div class="txtmargin">
-                                        @Html.TextBoxFor(x => x.Password, "", new { @type = "password", @autocomplete = "off", @required = true, @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.Password, "", new { @type = "password", @autocomplete = "off", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                                     </div>
                                 </div>
 
@@ -64,8 +64,7 @@
             if (res == "0") {
                 var result = CalltoApiController("/api/UserApi/User_Select", { UserID: $("#UserID").val(), Password: $("#Password").val() });
                 var userdata = JSON.parse(result);
-                if (userdata.length > 0) {
-
+                if (userdata.length > 0) {                    
                     var userinfo = userdata[0].UserID + '_' + userdata[0].UserName;
                         $.post('@Url.Action("CreateSession", "Home")',
                             { key: "UserInfo", value: userinfo }, function (data) {

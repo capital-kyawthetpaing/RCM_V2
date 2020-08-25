@@ -103,8 +103,9 @@ namespace DL
 
                 return "true";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                string msg = ex.Message;
                 return "false";
             }
         }

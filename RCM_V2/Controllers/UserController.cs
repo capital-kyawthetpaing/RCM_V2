@@ -33,7 +33,5 @@ namespace RCM_V2.Controllers
                 obj = bl.UserModel_Select(obj);
             return View(obj);
         }
-
-
     }
 }

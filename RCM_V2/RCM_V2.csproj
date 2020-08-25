@@ -175,6 +175,7 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\manager-style.css" />
+    <Content Include="Content\shop.css" />
     <Content Include="Content\user.css" />
     <Content Include="Content\userlogin.css" />
     <Content Include="favicon.ico" />
@@ -193,6 +194,8 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\cleave.js" />
+    <Content Include="Scripts\cleave.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -680,6 +683,7 @@
     <Content Include="Views\User\UserList.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\User\UserEntry.cshtml" />
+    <Content Include="Views\Shop\ShopEntry.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriority.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateList.cshtml" />
   </ItemGroup>
@@ -688,7 +692,9 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.5.1.min.map" />
   </ItemGroup>
