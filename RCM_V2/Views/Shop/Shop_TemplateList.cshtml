@@ -13,14 +13,14 @@
                 <h2>スマートテンプレート検索</h2>
                 <dl>
                     <dt>テンプレートID</dt>
-                    <dd> <input type="text" id="txtTemplateID" /></dd>
+                    <dd> <input type="text" id="TemplateID" maxlength="50" /></dd>
                     <dt>テンプレート名</dt>
-                    <dd> <input type="text" id="txtTemplateName" /></dd>
+                    <dd> <input type="text" id="TemplateName" maxlength="50" /></dd>
                     <dt>ステータス</dt>
                     <dd>
-                        <input type="radio" id="RadioButton1" name="status" value="1" /><span> 有効</span>
-                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
-                        <input type="radio" id="RadioButton3" name="status" value="null" checked /><span> 全て</span>
+                        <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
+                        <input type="radio" id="RadioButton2" name="status" value="0" /><span> 無効</span>
+                        <input type="radio" id="RadioButton3" name="status" value="" /><span> 全て</span>
                     </dd>
                 </dl>
                 <p>
@@ -35,7 +35,7 @@
             </div>
 
             <div class="resetValue editBox">
-                <table class="listTable" id="tbluserlist">
+                <table class="listTable" id="tblshopTemplatelist">
                     <thead>
                         <tr>
                             <th>操作</th>
@@ -65,37 +65,22 @@
             var obj = {
                     TemplateID: $("#TemplateID").val(),
                     TemplateName: $("#TemplateName").val(),
-                    TemplateName: $("input[name='status']:checked").val()
+                    Status: $("input[name='status']:checked").val()
                 };
-                var response = CalltoApiController('@Url.Action("Shop_Select", "api/ShopApi")', obj);
+                var response = CalltoApiController('@Url.Action("ShopTemplate_Select", "api/ShopApi")', obj);
                 BindTable(response);
         }
 
-        function BindMall() {
-            var obj = {
-                MallID: "",
-            };
-            var response = CalltoApiController('@Url.Action("Mall_Select", "api/MallApi")', obj);
-            var items = JSON.parse(response);
-
-            $("#ddlMall").empty();
-
-            $.each(items, function (i, item) {
-                $("#ddlMall").append(
-                    $('<option></option>').val(item.MallID).html(item.MallName));
-            });
-        }
-
         function BindTable(response) {
-            table = $('#ShopList').DataTable({
+            table = $('#tblshopTemplatelist').DataTable({
                 data: JSON.parse(response),
                 destroy: true,
                 "dataSrc": " ",
                 "searching":false,
                 "columns": [
-                    { "data": "", "width": "30%", "className":"dt-center" },
-                    { "data": "ShopName","width":"40%"},
-                    { "data": "MallName","width":"20%"},
+                    { "data": "", "width": "10%", "className":"dt-center" },
+                    { "data": "TemplateID","width":"30%"},
+                    { "data": "TemplateName","width":"40%"},
                     { "data": "Status", "width": "20%", "className":"dt-center"},
                 ],
                 "columnDefs": [
@@ -103,7 +88,7 @@
                     "targets": 0,
                     "data": "",
                     "render": function (data) {
-                        return '<input type="button" style="width:70px;margin-right:5px" value="編集"><input type="button" style="margin-right:5px" value="デフォルト値設定"><input type="button" value="固定値設定">'
+                        return '<input type="button" style="width:70px;margin-right:5px" value="編集">'
                         }
                     },
                 ]

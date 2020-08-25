@@ -46,6 +46,11 @@ namespace DL
                     p.Value = DBNull.Value;
                     p.SqlValue = DBNull.Value;
                 }
+                else
+                {
+                    p.Value = p.Value.ToString().Trim();
+                    p.SqlValue = p.Value.ToString().Trim();
+                }
             }
 
             return para;
