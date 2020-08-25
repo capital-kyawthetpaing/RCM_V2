@@ -1,0 +1,865 @@
+﻿
+@{
+    ViewBag.Title = "Shop_ItemNamePriority";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox iconSet iconEdit">
+            <h1>商品名優先順設定</h1>
+            <div class="itemCmnSet editPage" style="display:inline-block;width:1100px;">
+                <div style="width:1000px;display:inline-block;">
+                    <table id="MainContent_dlItemNameSetting" cellspacing="0" cellpadding="4" style="color:#333333;border-collapse:collapse;">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_0" class="shopN">スマートテンプレート#1</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_0">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_0" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl00$txtShopName" type="text" value="ラケットプラザ楽天" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_0" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_0" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl00$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_0" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_0" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl00$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_0" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMR商品名]],[[PMプレゼント]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_1" class="shopN">スマートテンプレート#2</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_1">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_1" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl01$txtShopName" type="text" value="ラケットプラザヤフー" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_1" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_1" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl01$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_1" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_1" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl01$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_1" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMY商品名]],[[PMプレゼント]],[[発売日]],[[競技分類1]],[[検索ワード1]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_2" class="shopN">スマートテンプレート#3</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_2">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_2" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl02$txtShopName" type="text" value="ラケットプラザポンパレ" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_2" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_2" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl02$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_2" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_2" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl02$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_2" title="Template Description" style="width:600px;">[[ブランド]],[[競技]],[[分類]],[[PMポイント]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMR商品名]],[[PMプレゼント]],[[発売日]],[[競技分類1]],[[競技分類2]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_3" class="shopN">スマートテンプレート#4</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_3">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_3" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl03$txtShopName" type="text" value="Amazon" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_3" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_3" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl03$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_3" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_3" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl03$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_3" title="Template Description" style="width:600px;"></textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_4" class="shopN">スマートテンプレート#5</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_4">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_4" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl04$txtShopName" type="text" value="ラックピース楽天" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_4" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_4" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl04$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_4" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_4" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl04$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_4" title="Template Description" style="width:600px;">[[ブランド]],[[競技]],[[分類]],[[PMポイント]],][[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMR商品名]],[[PMプレゼント]],[[発売日]],[[競技分類1]],[[競技分類2]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_5" class="shopN">スマートテンプレート#6</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_5">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_5" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl05$txtShopName" type="text" value="ラックピースヤフー" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_5" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_5" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl05$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_5" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_5" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl05$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_5" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[PMクーポン]],[[PMプレゼント]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMY商品名]],[[PMプレゼント]],[[発売日]],[[競技分類1]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_6" class="shopN">スマートテンプレート#7</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_6">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_6" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl06$txtShopName" type="text" value="スポーツプラザ楽天" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_6" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_6" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl06$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_6" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_6" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl06$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_6" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[PMクーポン]],[[PMプレゼント]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMR商品名]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_7" class="shopN">スマートテンプレート#8</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_7">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_7" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl07$txtShopName" type="text" value="スポーツプラザヤフー" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_7" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_7" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl07$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_7" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_7" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl07$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_7" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[PMクーポン]],[[PMプレゼント]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMY商品名]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_8" class="shopN">スマートテンプレート#9</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_8">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_8" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl08$txtShopName" type="text" value="ベースボールプラザ楽天" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_8" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_8" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl08$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_8" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_8" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl08$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_8" title="Template Description" style="width:600px;">[[ブランド]],[[競技]],[[分類]],[[PMポイント]],[[PMクーポン]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMR商品名]],[[PMプレゼント]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_9" class="shopN">スマートテンプレート#10</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_9">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_9" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl09$txtShopName" type="text" value="ベースボールプラザヤフー" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_9" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_9" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl09$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_9" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_9" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl09$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_9" title="Template Description" style="width:600px;">[[ブランド]],[[競技]],[[分類]],[[PMポイント]],[[PMクーポン]],[[PMプレゼント]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMY商品名]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_10" class="shopN">スマートテンプレート#11</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_10">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_10" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl10$txtShopName" type="text" value="卓球本舗ヤフー" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_10" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_10" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl10$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_10" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_10" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl10$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_10" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[PMクーポン]],[[PMプレゼント]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[PMY商品名]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_11" class="shopN">スマートテンプレート#12</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_11">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_11" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl11$txtShopName" type="text" value="卓球本舗楽天 &quot;To Delete this shop&quot;" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_11" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_11" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl11$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_11" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_11" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl11$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_11" title="Template Description" style="width:600px;"></textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_12" class="shopN">スマートテンプレート#13</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_12">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_12" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl12$txtShopName" type="text" value="新自社" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_12" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_12" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl12$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_12" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_12" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl12$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_12" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[PMクーポン]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2 style="padding-left: 0px;">
+                                        <span id="MainContent_dlItemNameSetting_lbltemplateNo_13" class="shopN">スマートテンプレート#14</span>
+                                    </h2>
+                                    <div id="MainContent_dlItemNameSetting_UPanel_13">
+
+                                    </div><table style="text-wrap: avoid;">
+                                        <tbody>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblShop_13" class="label">ショップ</span>
+                                                </th>
+                                                <td>
+
+                                                    <input name="ctl00$MainContent$dlItemNameSetting$ctl13$txtShopName" type="text" value="WowmaRacket" readonly="readonly" id="MainContent_dlItemNameSetting_txtShopName_13" title="Shop">
+
+                                                </td>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lblPriority_13" class="label">優先順</span>
+                                                </th>
+                                                <td>
+                                                    <select name="ctl00$MainContent$dlItemNameSetting$ctl13$ddlPriority" id="MainContent_dlItemNameSetting_ddlPriority_13" onchange="return NewTab(this,event);" style="height:25px;text-align: center;">
+                                                        <option value="---Select---">---Select---</option>
+                                                        <option value="1">[[商品名]]</option>
+                                                        <option value="2">[[ブランド]]</option>
+                                                        <option value="3">[[分類]]</option>
+                                                        <option value="4">[[競技]]</option>
+                                                        <option value="5">[[PMR商品名]]</option>
+                                                        <option value="7">[[PMポイント]]</option>
+                                                        <option value="8">[[PMクーポン]]</option>
+                                                        <option value="9">[[PMプレゼント]]</option>
+                                                        <option value="13">[[競技分類1]]</option>
+                                                        <option value="14">[[競技分類2]]</option>
+                                                        <option value="15">[[競技分類3]]</option>
+                                                        <option value="16">[[競技分類4]]</option>
+                                                        <option value="17">[[検索ワード1]]</option>
+                                                        <option value="18">[[検索ワード2]]</option>
+                                                        <option value="19">[[検索ワード3]]</option>
+                                                        <option value="20">[[検索ワード4]]</option>
+                                                        <option value="22">[[PMY商品名]]</option>
+                                                        <option value="25">[[発売日]]</option>
+
+                                                    </select>
+                                                </td>
+
+
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <span id="MainContent_dlItemNameSetting_lbltemplate_13" class="label">テンプレート</span>
+                                                </th>
+                                                <td>
+                                                    <textarea name="ctl00$MainContent$dlItemNameSetting$ctl13$txtItemNameSetting" rows="2" cols="20" id="MainContent_dlItemNameSetting_txtItemNameSetting_13" title="Template Description" style="width:600px;">[[ブランド]],[[分類]],[[競技]],[[PMポイント]],[[PMクーポン]],[[PMプレゼント]],[[競技分類1]],[[競技分類2]],[[競技分類3]],[[競技分類4]],[[検索ワード1]],[[検索ワード2]],[[検索ワード3]],[[検索ワード4]],[[発売日]]</textarea>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="btn">
+                <input type="submit" name="ctl00$MainContent$btnSave_Update" value="設定" onclick="Confirm();" id="MainContent_btnSave_Update" style="width:200px;">
+            </div>
+        </div>
+    </div>
+</div>
+

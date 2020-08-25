@@ -13,5 +13,15 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
+
+        public ActionResult Shop_ItemNamePriority()
+        {
+            return View();
+        }
+
+        public ActionResult Shop_TemplateList()
+        {
+            return View();
+        }
     }
 }

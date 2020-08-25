@@ -10,9 +10,16 @@
     @Styles.Render("~/Content/css")
 
     @{ 
+        if (System.Diagnostics.Debugger.IsAttached)
+        {
+
+            Session["UserInfo"] = "admin" + '_' + "Admin";
+        }
+
         string obj = Session["UserInfo"].ToString();
         string ID = obj.Split('_')[0];
         string Name = obj.Split('_')[1];
+
     }
 
 </head>
