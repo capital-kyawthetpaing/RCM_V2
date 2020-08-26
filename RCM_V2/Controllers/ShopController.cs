@@ -34,9 +34,9 @@ namespace RCM_V2.Controllers
             return View();
         }
 
-        public ActionResult Shop_TemplateEntry()
+        public ActionResult Shop_TemplateEntry(ShopTemplateModel shopTemplateModel)
         {
-            return View();
+            return View(shopTemplateModel);
         }
 
         public ActionResult Shop_ItemNamePriority()

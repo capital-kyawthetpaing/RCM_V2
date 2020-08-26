@@ -1,5 +1,17 @@
 ﻿@charset "utf-8";
 /*-- styleSet --------------------------------------------*/
+.pad5 {
+	padding: 5px !important;
+}
+
+.padleft30{
+	padding-left:30px;
+}
+
+h2 img{
+	width:32px;
+	height:32px;
+}
 
 .dt-center {
 	text-align: center;
