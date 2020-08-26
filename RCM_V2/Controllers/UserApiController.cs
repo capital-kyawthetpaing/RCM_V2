@@ -31,5 +31,15 @@ namespace RCM_V2.Controllers
             return Ok(Ubl.User_Save(Umodel));
         }
 
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("User_ExistCheck")]
+        public IHttpActionResult User_ExistCheck([FromBody] UserModel Umodel)
+        {
+            UserBL Ubl = new UserBL();
+            Umodel.UserID = Umodel.Val1;
+            return Ok(Ubl.User_Select(Umodel));
+        }
+
     }
 }
