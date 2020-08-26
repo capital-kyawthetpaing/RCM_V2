@@ -18,33 +18,33 @@
         </div>
         <div id="regi" class="setDetailBox iconSet iconEdit d-none">
             <h1 id="head"></h1>
-        </div>        
+        </div>
         <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
             <table class="userCmnSet editTable">
-                <tbody>                   
+                <tbody>
                     <tr>
                         <th>ユーザ名&nbsp;<span>※必須</span></th>
                         <td>
-                            @Html.TextBoxFor(x => x.UserName,new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                            @Html.TextBoxFor(x => x.UserName, new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                     <tr>
                         <th>ID&nbsp;<span>※必須</span></th>
                         <td>
-                            @Html.TextBoxFor(x => x.UserID, new { @autocomplete = "off", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })                           
+                            @Html.TextBoxFor(x => x.UserID, new { @autocomplete = "off", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                     <tr>
                         <th>パスワード&nbsp;<span>※必須</span></th>
                         <td>
-                            @Html.TextBoxFor(x => x.Password, new { @type = "password", @autocomplete = "off", @tabIndex = 3, onkeydown = "KeyDown(event,this)" })                           
+                            @Html.TextBoxFor(x => x.Password, new { @type = "password", @autocomplete = "off", @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                     <tr>
                         <th>ユーザステータス</th>
                         <td>
-                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><span>有効</span>
-                            <input type="radio" id="rdostatus1" value="2" name="rbdStatus" /><span>無効</span>
+                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" checked /><span>無効</span>
+                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" /><span>有効</span>
                         </td>
                     </tr>
                 </tbody>
@@ -107,10 +107,10 @@
             <!-- /User search -->
             <div class="btn">
                 <div class="userRole">
-                    <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;"/>
-                    <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;"/>
-                    <input type="button" id="btnSave" value="確認画面へ" style="width: 100px"/>
-                    <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;"/>
+                    <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
+                    <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
+                    <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
+                    <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@
             RequiredCheck($("#Password"));
 
        //show the header text based on mode
-        if ('@Model.UserID' == "")
+        if ('@Model.Mode' == "New")
         {
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
@@ -139,10 +139,10 @@
             $("#UserID").prop('readonly', true);
             $("#head").text('ユーザ編集');
             $("#regi").removeClass('d-none');
-        }
-
-        //check radio based on Deleteflag
-            if ('@Model.DeleteFlg' == "") {
+            }
+           
+            //check radio based on Deleteflag
+            if ('@Model.DeleteFlg' == "有効") {
                 $("#rdostatus").attr('checked', true);               
             }
             else {
@@ -152,11 +152,15 @@
           //to input for save confirm
           $("#btnSave").click(function()
           {
-              if ('@Model.UserID' != "")
-                  $("#btnConfirm_Save").val("反映");
-              else
+              if ('@Model.Mode' == "New") {
                   $("#btnConfirm_Save").val("登録");
-
+                  $("#reg_Confirm").removeClass('d-none');                 
+              }
+              else {
+                  $("#btnConfirm_Save").val("反映"); 
+                  $("#edi").removeClass('d-none');
+              }
+              $("#regi").addClass('d-none');
               $("#btnPrevious").removeClass('d-none');
               $("#btnSave").addClass('d-none');
               $("#btnConfirm_Save").removeClass('d-none');
@@ -167,6 +171,7 @@
 
          $("#btnPrevious").click(function()
          {
+          $("#regi").removeClass('d-none');
           $("#btnSave").removeClass('d-none');
           $("#btnback").removeClass('d-none');
           $("#btnPrevious").addClass('d-none');

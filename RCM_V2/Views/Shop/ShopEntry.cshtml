@@ -120,19 +120,19 @@
             Comma("FreeShippingAmount");
 
             //show title based on mode(Edit/New)
-            if ('@Model.ShopID' != "") {
-                $("#ShopSiteID").prop('disabled',true);
-                $("#MallID").prop('disabled',true);
-                $("#head").text("ショップ編集");
-                $("#edit_Confirm").removeClass('d-none');               
-                $("#btnConfirm_Save").val("反映");
-                $("#edit").addClass('d-none');
-            }
-            else {
+            if ('@Model.Mode' == "New") {
                 $("#head").text("ショップ一登録");
                 $("#register_Confirm").removeClass("d-none");
                 $("#edit_Confirm").addClass('d-none');
                 $("#btnConfirm_Save").val("登録");
+                $("#edit").addClass('d-none');
+            }
+            else {
+                $("#ShopSiteID").prop('disabled', true);
+                $("#MallID").prop('disabled', true);
+                $("#head").text("ショップ編集");
+                $("#edit_Confirm").removeClass('d-none');
+                $("#btnConfirm_Save").val("反映");
                 $("#edit").addClass('d-none');
             }
 
@@ -149,10 +149,10 @@
             //to input for save confirm
           $("#btnSave").click(function()
           {
-               if ('@Model.ShopID' != "")
-                  $("#btnConfirm_Save").text("反映");
-              else
+              if ('@Model.Mode' == "New")
                   $("#btnConfirm_Save").text("登録");
+              else
+                  $("#btnConfirm_Save").text("反映");
                 $("#btnPrevious").removeClass('d-none');
                 $("#btnSave").addClass('d-none');
                 $("#btnConfirm_Save").removeClass('d-none');
