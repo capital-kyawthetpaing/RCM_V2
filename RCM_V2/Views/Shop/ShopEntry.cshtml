@@ -82,8 +82,8 @@
                 <tr>
                     <th>ユーザステータス</th>
                     <td>
-                        @Html.RadioButtonFor(x => x.DeleteFlg, "0", new { @tabIndex = 11, @id = "rdostatus1" }) <span>無効</span>
-                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus", @checked = "true" }) <span>有効</span>
+                        @Html.RadioButtonFor(x => x.DeleteFlg, "0", new { @tabIndex = 11, @id = "rdostatus1", @checked = "true" }) <span>無効</span>
+                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus"}) <span>有効</span>
                     </td>
                 </tr>
             </table>
@@ -121,28 +121,23 @@
 
             //show title based on mode(Edit/New)
             if ('@Model.Mode' == "New") {
-                $("#head").text("ショップ一登録");
-                $("#register_Confirm").removeClass("d-none");
-                $("#edit_Confirm").addClass('d-none');
-                $("#btnConfirm_Save").val("登録");
-                $("#edit").addClass('d-none');
+                $("#head").text("ショップ一登録");                           
             }
             else {
                 $("#ShopSiteID").prop('disabled', true);
                 $("#MallID").prop('disabled', true);
                 $("#head").text("ショップ編集");
-                $("#edit_Confirm").removeClass('d-none');
-                $("#btnConfirm_Save").val("反映");
-                $("#edit").addClass('d-none');
+                
+                 //check status based on DeleteFlag
+                if ('@Model.DeleteFlg' == "有効") {
+                    $("#rdostatus").prop("checked", true);
+                }
+                else {
+                    $("#rdostatus1").prop("checked", true);
+                }
             }
 
-            //check status based on DeleteFlag
-            if ('@Model.DeleteFlg' == "有効") {
-                $("#rdostatus").prop("checked", true);
-            }
-            else {
-                $("#rdostatus1").prop("checked", true);
-            }
+           
             //bind mall id and name
             BindMall();
 
@@ -156,7 +151,8 @@
               else {
                   $("#edit_Confirm").removeClass('d-none');
                   $("#btnConfirm_Save").text("反映");
-              } 
+              }
+                $("#edit").addClass('d-none');
                 $("#btnPrevious").removeClass('d-none');
                 $("#btnSave").addClass('d-none');
                 $("#btnConfirm_Save").removeClass('d-none');
@@ -166,6 +162,9 @@
 
          $("#btnPrevious").click(function()
          {
+          $("#edit").removeClass('d-none');
+          $("#register_Confirm").addClass('d-none');
+          $("#edit_Confirm").addClass('d-none');
           $("#btnSave").removeClass('d-none');
           $("#btnback").removeClass('d-none');
           $("#btnPrevious").addClass('d-none');

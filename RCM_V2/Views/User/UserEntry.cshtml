@@ -57,50 +57,50 @@
                     <th style="width: 160px; text-align: left; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: 5px solid #73c5ff; padding: 5px 5px 5px 10px">権限&nbsp;<span>※必須</span></th>
                     <td>
                         @*<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                            <ContentTemplate>
-                                <asp:GridView ID="gvUserRole" runat="server" ShowHeader="false"
-                                              AutoGenerateColumns="false" GridLines="None"
-                                              OnRowDataBound="gvUserRole_RowDataBound" OnSelectedIndexChanged="gvUserRole_SelectedIndexChanged">
-                                    <Columns>
-                                        <asp:TemplateField Visible="false">
-                                            <HeaderTemplate>
-                                                <asp:Label ID="lblMenuHeader" runat="server" Text="Menu"></asp:Label>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" ID="lblMenu" Text='<%# Eval("Menu_ID")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField Visible="false">
-                                            <HeaderTemplate>
-                                                <asp:Label ID="lblMenuID" runat="server" Text="Menu ID"></asp:Label>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" ID="lblMenuID" Text='<%# Eval("ID")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField Visible="false">
-                                            <HeaderTemplate>
-                                                <asp:Label ID="lblMenu" runat="server" Text="Master ID"></asp:Label>
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" ID="lblMasterID" Text='<%# Eval("Parent_ID")%>'></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                        <asp:TemplateField>
-                                            <HeaderTemplate>
-                                                <asp:CheckBox ID="chkAllRead" runat="server" AutoPostBack="True" OnCheckedChanged="chkReadSelectAll_CheckedChanged" Visible="false" />
-                                            </HeaderTemplate>
-                                            <ItemTemplate>
-                                                <asp:Label runat="server" Text="" ID="lblPadding" Visible="false"></asp:Label>
-                                                <asp:CheckBox ID="ckbRead" runat="server" AutoPostBack="True" OnCheckedChanged="ckbRead_CheckedChanged" />
-                                                <asp:Label runat="server" ID="lblDescription" Text='<%# Eval("Description")%>'></asp:Label>
-                                                <asp:Label runat="server" ID="lbl_Descrip"></asp:Label>
-                                            </ItemTemplate>
-                                        </asp:TemplateField>
-                                    </Columns>
-                                </asp:GridView>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>*@
+                                <ContentTemplate>
+                                    <asp:GridView ID="gvUserRole" runat="server" ShowHeader="false"
+                                                  AutoGenerateColumns="false" GridLines="None"
+                                                  OnRowDataBound="gvUserRole_RowDataBound" OnSelectedIndexChanged="gvUserRole_SelectedIndexChanged">
+                                        <Columns>
+                                            <asp:TemplateField Visible="false">
+                                                <HeaderTemplate>
+                                                    <asp:Label ID="lblMenuHeader" runat="server" Text="Menu"></asp:Label>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label runat="server" ID="lblMenu" Text='<%# Eval("Menu_ID")%>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField Visible="false">
+                                                <HeaderTemplate>
+                                                    <asp:Label ID="lblMenuID" runat="server" Text="Menu ID"></asp:Label>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label runat="server" ID="lblMenuID" Text='<%# Eval("ID")%>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField Visible="false">
+                                                <HeaderTemplate>
+                                                    <asp:Label ID="lblMenu" runat="server" Text="Master ID"></asp:Label>
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label runat="server" ID="lblMasterID" Text='<%# Eval("Parent_ID")%>'></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:TemplateField>
+                                                <HeaderTemplate>
+                                                    <asp:CheckBox ID="chkAllRead" runat="server" AutoPostBack="True" OnCheckedChanged="chkReadSelectAll_CheckedChanged" Visible="false" />
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <asp:Label runat="server" Text="" ID="lblPadding" Visible="false"></asp:Label>
+                                                    <asp:CheckBox ID="ckbRead" runat="server" AutoPostBack="True" OnCheckedChanged="ckbRead_CheckedChanged" />
+                                                    <asp:Label runat="server" ID="lblDescription" Text='<%# Eval("Description")%>'></asp:Label>
+                                                    <asp:Label runat="server" ID="lbl_Descrip"></asp:Label>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                    </asp:GridView>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>*@
                     </td>
                 </tr>
             </table>
@@ -128,6 +128,7 @@
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
 
+
        //show the header text based on mode
         if ('@Model.Mode' == "New")
         {
@@ -139,25 +140,25 @@
             $("#UserID").prop('readonly', true);
             $("#head").text('ユーザ編集');
             $("#regi").removeClass('d-none');
-            }
-           
             //check radio based on Deleteflag
             if ('@Model.DeleteFlg' == "有効") {
-                $("#rdostatus").attr('checked', true);               
+                $("#rdostatus").attr('checked', true);
             }
             else {
                 $("#rdostatus1").attr('checked', true);
             }
+        }
+
 
           //to input for save confirm
           $("#btnSave").click(function()
           {
               if ('@Model.Mode' == "New") {
                   $("#btnConfirm_Save").val("登録");
-                  $("#reg_Confirm").removeClass('d-none');                 
+                  $("#reg_Confirm").removeClass('d-none');
               }
               else {
-                  $("#btnConfirm_Save").val("反映"); 
+                  $("#btnConfirm_Save").val("反映");
                   $("#edi").removeClass('d-none');
               }
               $("#regi").addClass('d-none');
@@ -166,17 +167,19 @@
               $("#btnConfirm_Save").removeClass('d-none');
               $("#btnback").addClass('d-none');
               $('.userCmnSet :input').attr('disabled', true);
-              
+
          });
 
          $("#btnPrevious").click(function()
          {
-          $("#regi").removeClass('d-none');
-          $("#btnSave").removeClass('d-none');
-          $("#btnback").removeClass('d-none');
-          $("#btnPrevious").addClass('d-none');
-          $("#btnConfirm_Save").addClass('d-none');
-          $('.userCmnSet :input').removeAttr('disabled', true);
+            $("#edi").addClass('d-none');
+            $("#reg_Confirm").addClass('d-none');
+            $("#regi").removeClass('d-none');
+            $("#btnSave").removeClass('d-none');
+            $("#btnback").removeClass('d-none');
+            $("#btnPrevious").addClass('d-none');
+            $("#btnConfirm_Save").addClass('d-none');
+            $('.userCmnSet :input').removeAttr('disabled', true);
          });
 
         // go to shop List
@@ -192,10 +195,10 @@
             var res = ErrorCheckOnClick('divUser');
             if (res == "0") {
                 var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), DeleteFlg: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
-               
+
                 if (result=="true") {
                     ShowMessage("I101");
-                    //window.location.href = '@Url.Action("UserList","User")';                   
+                    //window.location.href = '@Url.Action("UserList","User")';
                 }
                 else {
                      $("#UserName").focus();
@@ -206,7 +209,7 @@
                 ShowMessage(res);
         }
     </script>
-    }
+}
 
 
 
