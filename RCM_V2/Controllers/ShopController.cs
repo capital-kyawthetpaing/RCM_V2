@@ -28,5 +28,20 @@ namespace RCM_V2.Controllers
             return View(obj);
             
         }
+
+        public ActionResult Shop_TemplateList()
+        {
+            return View();
+        }
+
+        public ActionResult Shop_TemplateEntry(ShopTemplateModel shopTemplateModel)
+        {
+            return View(shopTemplateModel);
+        }
+
+        public ActionResult Shop_ItemNamePriority()
+        {
+            return View();
+        }
     }
 }

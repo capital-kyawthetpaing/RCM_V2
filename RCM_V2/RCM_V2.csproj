@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -174,8 +174,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
+    <Content Include="Content\item.css" />
     <Content Include="Content\manager-style.css" />
     <Content Include="Content\shop.css" />
+    <Content Include="Content\smartTemplateEntry.css" />
     <Content Include="Content\user.css" />
     <Content Include="Content\userlogin.css" />
     <Content Include="favicon.ico" />
@@ -186,6 +188,7 @@
     <Content Include="images\list.png" />
     <Content Include="images\logo.jpg" />
     <Content Include="images\logo1.jpg" />
+    <Content Include="images\rakutenmall.png" />
     <Content Include="images\search.png" />
     <Content Include="images\user.png" />
     <Content Include="images\user2.png" />
@@ -684,6 +687,9 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\User\UserEntry.cshtml" />
     <Content Include="Views\Shop\ShopEntry.cshtml" />
+    <Content Include="Views\Shop\Shop_ItemNamePriority.cshtml" />
+    <Content Include="Views\Shop\Shop_TemplateList.cshtml" />
+    <Content Include="Views\Shop\Shop_TemplateEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -708,6 +714,10 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
+      <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>
+      <Name>ShopTemplate_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Shop_BL\Shop_BL.csproj">
       <Project>{3e334c68-5f46-4282-b129-f9508addda27}</Project>
