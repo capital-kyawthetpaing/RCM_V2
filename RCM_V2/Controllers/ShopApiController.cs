@@ -26,8 +26,10 @@ namespace RCM_V2.Controllers
         [ActionName("Shop_Save")]
         public IHttpActionResult Shop_Save([FromBody] ShopModel shopModel)
         {
-            return Ok();
+            string[] arr = shopModel.MallID.Split('/');
             ShopBL shopBL = new ShopBL();
+            shopModel.MallID = arr[0];
+            shopModel.ShopID = arr[1] + shopModel.ShopSiteID;
             return Ok(shopBL.Shop_Save(shopModel));
         }
 

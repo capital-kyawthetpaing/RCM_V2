@@ -1,8 +1,10 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using User_BL;
 using Models;
 using System.Data;
-using Newtonsoft.Json;
+
+//using Newtonsoft.Json;
 
 namespace RCM_V2.Controllers
 {
@@ -15,10 +17,9 @@ namespace RCM_V2.Controllers
         public IHttpActionResult User_Select([FromBody]UserModel Umodel)
         {
             UserBL Ubl = new UserBL();
-            if (Umodel.DeleteFlg == "null")
-            {
-                Umodel.DeleteFlg = null;
-            }
+            //if (Umodel.DeleteFlg == "null")
+            //    Umodel.DeleteFlg = null;            
+            
             return Ok(Ubl.User_Select(Umodel));
         }
 

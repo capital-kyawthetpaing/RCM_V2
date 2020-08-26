@@ -13,14 +13,14 @@
                 <h2>ショップ検索</h2>
                 <dl>
                     <dt>ショップ名</dt>
-                    <dd> <input type="text" id="ShopName" /></dd>
-                    <dt>出店モール</dt>
+                    <dd><input type="text" id="ShopName" /></dd>
+                    <dt>出店モール</dt>                    
                     <dd><select id="ddlMall"></select></dd>
                     <dt>ステータス</dt>
                     <dd>
-                        <input type="radio" id="RadioButton1" name="status" value="0" checked/><span> 有効</span>
-                        <input type="radio" id="RadioButton2" name="status" Value="1" /><span> 無効</span>
-                        <input type="radio" id="RadioButton3" name="status" value=""/><span> 全て</span>
+                        <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
+                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
+                        <input type="radio" id="RadioButton3" name="status" value="" /><span> 全て</span>
                     </dd>
                 </dl>
                 <p>
@@ -78,12 +78,12 @@
             var response = CalltoApiController('@Url.Action("Mall_Select", "api/MallApi")', obj);
             var items = JSON.parse(response);
 
-            $("#ddlMall").empty();
-
+            $("#ddlMall").empty();            
             $.each(items, function (i, item) {
                 $("#ddlMall").append(
                     $('<option></option>').val(item.MallID).html(item.MallName));
             });
+            $("#ddlMall").val('');
         }
 
         function BindTable(response) {
