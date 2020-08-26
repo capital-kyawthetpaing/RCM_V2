@@ -82,8 +82,8 @@
                 <tr>
                     <th>ユーザステータス</th>
                     <td>
-                        @Html.RadioButtonFor(x => x.DeleteFlg, "0", new { @tabIndex = 11, @id = "rdostatus1", @checked = "true" }) <span>無効</span>
-                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus"}) <span>有効</span>
+                        @Html.RadioButtonFor(x => x.Status, "0", new { @tabIndex = 11, @id = "rdostatus1", @checked = "true" }) <span>無効</span>
+                        @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 10, @id = "rdostatus"}) <span>有効</span>
                     </td>
                 </tr>
             </table>
@@ -141,7 +141,7 @@
                 $("#head").text("ショップ編集");
                 
                  //check status based on DeleteFlag
-                if ('@Model.DeleteFlg' == "有効") {
+                if ('@Model.Status' == "有効") {
                     $("#rdostatus").prop("checked", true);
                 }
                 else {
@@ -222,7 +222,7 @@
 
         //save shop data
         function ConfirmSave() {
-                var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode',ShopIDPrefix:'@Model.ShopIDPrefix', ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),DeleteFlg:$("input[name='DeleteFlg']:checked").val()});
+                var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode',ShopIDPrefix:'@Model.ShopIDPrefix', ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),Status:$("input[name='Status']:checked").val()});
 
                 if (result=="true") {
                     ShowMessage("I101","SaveOK");

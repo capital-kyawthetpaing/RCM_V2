@@ -65,7 +65,7 @@
         function Search() {
             var obj = {
                     ShopName: $("#ShopName").val(),
-                    DeleteFlg: $("input[name='status']:checked").val()
+                    Status: $("input[name='status']:checked").val()
                 };
                 var response = CalltoApiController('@Url.Action("Shop_Select", "api/ShopApi")', obj);
                 BindTable(response);

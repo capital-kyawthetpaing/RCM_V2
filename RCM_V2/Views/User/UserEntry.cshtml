@@ -130,8 +130,7 @@
             RequiredCheck($("#UserName"));
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
-            //alert($("#UserID").val());
-            @*AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "/api/UserApi")', $("#UserID").val(),'','');*@
+            AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID").val(),'','');
 
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
@@ -146,7 +145,7 @@
             $("#regi").removeClass('d-none');
 
             //check radio based on Deleteflag
-            if ('@Model.DeleteFlg' == "有効") {
+            if ('@Model.Status' == "有効") {
                 $("#rdostatus").attr('checked', true);
             }
             else {
@@ -203,7 +202,7 @@
 
         //save user data
         function ConfirmSave() {
-             var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), DeleteFlg: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
+             var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), Status: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
                 if (result=="true") {
                     ShowMessage("I101","SaveOK");
                 }

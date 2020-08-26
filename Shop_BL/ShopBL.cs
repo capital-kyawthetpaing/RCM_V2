@@ -15,7 +15,7 @@ namespace Shop_BL
             shopModel.Sqlprms[0] = new SqlParameter("@ShopID", SqlDbType.VarChar) { Value = shopModel.ShopID };
             shopModel.Sqlprms[1] = new SqlParameter("@ShopName", SqlDbType.VarChar) { Value = shopModel.ShopName };
             shopModel.Sqlprms[2] = new SqlParameter("@MAllID", SqlDbType.VarChar) { Value = shopModel.MallID };
-            shopModel.Sqlprms[3] = new SqlParameter("@DeleteFlg", SqlDbType.VarChar) { Value = shopModel.DeleteFlg };
+            shopModel.Sqlprms[3] = new SqlParameter("@Status", SqlDbType.VarChar) { Value = shopModel.Status };
             return bdl.SelectJson("Shop_Select", shopModel.Sqlprms);
         }
 
@@ -26,7 +26,7 @@ namespace Shop_BL
             shopModel.Sqlprms[0] = new SqlParameter("@ShopID", SqlDbType.VarChar) { Value = shopModel.ShopID };
             shopModel.Sqlprms[1] = new SqlParameter("@ShopName", SqlDbType.VarChar) { Value = shopModel.ShopName };
             shopModel.Sqlprms[2] = new SqlParameter("@MAllID", SqlDbType.VarChar) { Value = shopModel.MallID };
-            shopModel.Sqlprms[3] = new SqlParameter("@DeleteFlg", SqlDbType.VarChar) { Value = shopModel.DeleteFlg };
+            shopModel.Sqlprms[3] = new SqlParameter("@Status", SqlDbType.VarChar) { Value = shopModel.Status };
             DataTable dt = bdl.SelectDatatable("Shop_Select", shopModel.Sqlprms);
             foreach(DataRow dr in dt.Rows)
             {
@@ -41,7 +41,7 @@ namespace Shop_BL
                 shopModel.ItemURL = dr["ItemURL"].ToString();
                 shopModel.ImageURL = dr["ImageURL"].ToString();               
                 shopModel.FreeShippingAmount = dr["FreeShippingAmount"]!=null?Convert.ToInt32(dr["FreeShippingAmount"]).ToString(): dr["FreeShippingAmount"].ToString();
-                shopModel.DeleteFlg = dr["DeleteFlg"].ToString();
+                shopModel.Status = dr["Status"].ToString();
             }
             return shopModel;
         }
@@ -60,7 +60,7 @@ namespace Shop_BL
             shopModel.Sqlprms[7] = new SqlParameter("@ItemURL", SqlDbType.VarChar) { Value = shopModel.ItemURL };
             shopModel.Sqlprms[8] = new SqlParameter("@ImageURL", SqlDbType.VarChar) { Value = shopModel.ImageURL };
             shopModel.Sqlprms[9] = new SqlParameter("@FreeShipAmt", SqlDbType.VarChar) { Value = shopModel.FreeShippingAmount };
-            shopModel.Sqlprms[10] = new SqlParameter("@DeleteFlg", SqlDbType.VarChar) { Value = shopModel.DeleteFlg };
+            shopModel.Sqlprms[10] = new SqlParameter("@Status", SqlDbType.VarChar) { Value = shopModel.Status };
             shopModel.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = shopModel.Mode };
             return bdl.InsertUpdateDeleteData("Shop_CUD", shopModel.Sqlprms);
         }
