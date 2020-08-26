@@ -2,18 +2,18 @@
 @model Models.ShopModel
 @{
     ViewBag.Title = "ShopEntry";
-    Layout = "~/Views/Shared/_Layout.cshtml";   
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @Styles.Render("~/Content/shop.css")
 
 <div id="CmnContents">
     <div id="ComBlock">
-        <div id="edit_Confirm" class="setDetailBox iconSet iconCheck" hidden>
+        <div id="edit_Confirm" class="setDetailBox iconSet iconCheck d-none">
             <h1>ショップ編集 確認</h1>
         </div>
 
-        <div id="register_Confirm" class="setDetailBox iconSet iconCheck" hidden>
+        <div id="register_Confirm" class="setDetailBox iconSet iconCheck d-none">
             <h1>ショップ登録 確認</h1>
         </div>
 
@@ -22,7 +22,7 @@
         </div>
 
         <div class="setDetailBox iconSet iconEdit" id="divShop">
-            <table class="shopCmnSet editTable">               
+            <table class="shopCmnSet editTable">
                 <tr>
                     <th>ショップ名&nbsp;<span>※必須</span></th>
                     <td>
@@ -34,37 +34,37 @@
                 <tr>
                     <th>出店モール&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.DropDownListFor(x => x.MallID, new SelectList(Enumerable.Empty<SelectListItem>()),new { @tabIndex = 2, onkeydown = "KeyDown(event,this)", @style = "width:100px;height:30px;" })
+                        @Html.DropDownListFor(x => x.MallID, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 2, onkeydown = "KeyDown(event,this)", @style = "width:100px;height:30px;" })
                     </td>
                 </tr>
                 <tr>
                     <th>ショップID&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x=>x.ShopSiteID, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)"})                        
+                        @Html.TextBoxFor(x => x.ShopSiteID, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>FTPホスト&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x=>x.FtpHost, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)"})
+                        @Html.TextBoxFor(x => x.FtpHost, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>FTP アカウント&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x=>x.FtpUserName, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)"})
+                        @Html.TextBoxFor(x => x.FtpUserName, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>パスワード&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x=>x.FtpPassword, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)"})
+                        @Html.TextBoxFor(x => x.FtpPassword, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>商品ページURL&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x=>x.ItemURL, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.ItemURL, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
@@ -76,13 +76,13 @@
                 <tr>
                     <th>送料無料条件 &nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.FreeShippingAmount,new { @tabIndex = 9, onkeydown = "KeyDown(event,this)",onkeypress= "return isNumberKey(event)" }) <span>円以上(税抜)</span>
+                        @Html.TextBoxFor(x => x.FreeShippingAmount, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)", onkeypress = "return isNumberKey(event)", onkeyup = "Comma(this.id);",@style="text-align:right;" }) <span>円以上(税抜)</span>
                     </td>
                 </tr>
                 <tr>
                     <th>ユーザステータス</th>
                     <td>
-                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus", @checked = "true" }) <span>有効</span>                        
+                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus", @checked = "true" }) <span>有効</span>
                         @Html.RadioButtonFor(x => x.DeleteFlg, "0", new { @tabIndex = 11, @id = "rdostatus1" }) <span>無効</span>
                     </td>
                 </tr>
@@ -90,9 +90,9 @@
             <div class="btn">
                 <div class="userRole">
                     <input type="button" id="btnback" value="戻る" />
-                    <input type="button" id="btnPrevious" value="戻る" hidden />
-                    <input type="button" id="btnSave" value="確認画面へ" onclick="AddShop()" />
-                    <input type="button" id="btnConfirm_Save" value="確認画面へ" hidden/>
+                    <input type="button" id="btnPrevious" value="戻る" class="d-none" />
+                    <input type="button" id="btnSave" value="確認画面へ" />
+                    <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
                 </div>
             </div>
         </div>
@@ -103,6 +103,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+
             $('#ShopName').focus();
 
             RequiredCheck($("#ShopName"));
@@ -115,21 +116,24 @@
             RequiredCheck($("#ImageURL"));
             RequiredCheck($("#FreeShippingAmount"));
 
+            //FreeShippingAmount
+            Comma("FreeShippingAmount");
+
             //show title based on mode(Edit/New)
             if ('@Model.ShopID' != "") {
+                $("#ShopSiteID").prop('disabled',true);
+                $("#MallID").prop('disabled',true);
                 $("#head").text("ショップ編集");
-                $("#edit_Confirm").removeClass('hide');
+                $("#edit_Confirm").removeClass('d-none');               
                 $("#btnConfirm_Save").val("反映");
-                $("#edit").addClass('hide');
-                //chage currency format
-                $("#FreeShippingAmount").val(parseInt('@Model.FreeShippingAmount').toLocaleString());
+                $("#edit").addClass('d-none');
             }
             else {
                 $("#head").text("ショップ一登録");
-                $("#register_Confirm").removeClass("hide");
-                $("#edit_Confirm").addClass('hide');
+                $("#register_Confirm").removeClass("d-none");
+                $("#edit_Confirm").addClass('d-none');
                 $("#btnConfirm_Save").val("登録");
-                $("#edit").addClass('hide');
+                $("#edit").addClass('d-none');
             }
 
             //check status based on DeleteFlag
@@ -139,8 +143,38 @@
             else {
                 $("#rdostatus1").prop("checked", true);
             }
-
+            //bind mall id and name
             BindMall();
+
+            //to input for save confirm
+          $("#btnSave").click(function()
+          {
+               if ('@Model.ShopID' != "")
+                  $("#btnConfirm_Save").text("反映");
+              else
+                  $("#btnConfirm_Save").text("登録");
+                $("#btnPrevious").removeClass('d-none');
+                $("#btnSave").addClass('d-none');
+                $("#btnConfirm_Save").removeClass('d-none');
+                $("#btnback").addClass('d-none');
+                $('.shopCmnSet :input').attr('disabled', true);
+         });
+
+         $("#btnPrevious").click(function()
+         {
+          $("#btnSave").removeClass('d-none');
+          $("#btnback").removeClass('d-none');
+          $("#btnPrevious").addClass('d-none');
+          $("#btnConfirm_Save").addClass('d-none');
+          $('.shopCmnSet :input').removeAttr('disabled', true);
+         });
+
+        // go to shop List
+         $("#btnback").click(function()
+         {
+            window.location.href='@Url.Action("ShopList","Shop")';
+         });
+
         })
 
          function BindMall() {
@@ -153,20 +187,24 @@
              $("#MallID").empty();
 
             $.each(items, function (i, item) {
+                
+                var mallID=item.MallID+"/"+item.ShopIDPrefix;
                 $("#MallID").append(
-                    $('<option></option>').val(item.MallID).html(item.MallName));
+                    $('<option></option>').val(mallID).html(item.MallName));
              });
-             $("#MallID").val('@Model.MallID');
+             $("#MallID").val('@Model.MallID'+'/@Model.ShopIDPrefix');
         }
 
           //save shop data
-        function AddShop() {
+        function ConfirmSave() {
+        
         var res = ErrorCheckOnClick('divShop');
             if (res == "0") {
-                var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode',ShopIDPrefix:$("#ShopIDPrefix").val(), ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),DeleteFlg:$("input[name='DeleteFlg']:checked").val()});
-               
+                var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode',ShopIDPrefix:'@Model.ShopIDPrefix', ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),DeleteFlg:$("input[name='DeleteFlg']:checked").val()});
+
                 if (result=="true") {
-                    window.location.href = '@Url.Action("UserList","User")';                   
+                    ShowMessage("I101");
+                    //window.location.href = '@Url.Action("ShopList","Shop")';
                 }
                 else {
                      $("#UserName").focus();
