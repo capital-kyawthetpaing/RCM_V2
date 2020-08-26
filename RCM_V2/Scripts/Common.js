@@ -34,7 +34,7 @@ function ShowMessage(msgid, functionname) {
     }).then(function () {
         if (functionname) {
             var fn = window[functionname];
-            fn('NG');
+            fn();
         }
     })
 }
@@ -43,15 +43,25 @@ function RequiredCheck(ctrl) {
     $(ctrl).attr("data-Required", "1");
 }
 
-function AlreadyExistsCheck(ctrl, apiURL, val1, val2, val3) {
+function AlreadyExistsCheck(ctrl, apiURL, val1, val2, val3) {    
     $(ctrl).attr("data-AlreadyExistsCheck", "1");
-    $(ctrl).attr("data-AlreadyExistsApiUrl", apiURL);   
+    $(ctrl).attr("data-AlreadyExistsApiUrl", apiURL);
     $(ctrl).attr("data-AlreadyExistsValue1", val1);
-    if(val2.val())
+    if (val2)
         $(ctrl).attr("data-AlreadyExistsValue2", val2);
-    if (val3.val())
+    if (val3)
         $(ctrl).attr("data-AlreadyExistsValue3", val3);
 }
+
+//function AlreadyExistsCheck(ctrl, apiURL, val1, val2, val3) {
+//    $(ctrl).attr("data-AlreadyExistsCheck", "1");
+//    $(ctrl).attr("data-AlreadyExistsApiUrl", apiURL);   
+//    $(ctrl).attr("data-AlreadyExistsValue1", val1);
+//    if(val2.val())
+//        $(ctrl).attr("data-AlreadyExistsValue2", val2);
+//    if (val3.val())
+//        $(ctrl).attr("data-AlreadyExistsValue3", val3);
+//}
 
 function KeyDown(e, ctrl, functionname) {
     if (e.which == 13) {
@@ -79,19 +89,18 @@ function ErrChk(ctrl) {
     }
 
     var aec = $(ctrl).attr("data-AlreadyExistsCheck");
-    if (aec == "1") {
+    if (aec == "1") {        
         var ApiURL = $(ctrl).attr("data-AlreadyExistsApiUrl");
         var val1 = $(ctrl).attr("data-AlreadyExistsValue1");
         var val2 = $(ctrl).attr("data-AlreadyExistsValue2");
-        var val3 = $(ctrl).attr("data-AlreadyExistsValue2");
-
+        var val3 = $(ctrl).attr("data-AlreadyExistsValue2");        
         var model = {
             Val1: $(val1).val(),
             Val2: $(val2).val(),
             Val3: $(val3).val()
         };
-        var response = CalltoApiController(ApiURL, model);
-        var data = JSON.parse(response);
+        //var response = CalltoApiController(ApiURL, model);
+        //var data = JSON.parse(response);
 
     }
 
@@ -131,7 +140,7 @@ function isNumberKey(evt) {
     return true;
 }
 
-function Comma(ctrl_id) { //function to add commas to textboxes
+function SetThousandSeparator(ctrl_id) { //function to add commas to textboxes
 var obj=$("#"+ctrl_id);
 var cleave = new Cleave(obj, {
     numeral: true,

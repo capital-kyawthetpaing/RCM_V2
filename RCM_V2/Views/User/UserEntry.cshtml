@@ -122,24 +122,29 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $('#UserName').focus();
+        $('#UserName').focus();
 
+        if ('@Model.Mode' == "New")
+        {     
+            //check required field
             RequiredCheck($("#UserName"));
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
+            //alert($("#UserID").val());
+            @*AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "/api/UserApi")', $("#UserID").val(),'','');*@
 
-
-       //show the header text based on mode
-        if ('@Model.Mode' == "New")
-        {
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
         }
-        else
-        {
+        else if('@Model.Mode'=="Edit")
+        {            
+            RequiredCheck($("#UserName"));           
+            RequiredCheck($("#Password"));
+
             $("#UserID").prop('readonly', true);
             $("#head").text('ユーザ編集');
             $("#regi").removeClass('d-none');
+
             //check radio based on Deleteflag
             if ('@Model.DeleteFlg' == "有効") {
                 $("#rdostatus").attr('checked', true);
@@ -149,25 +154,31 @@
             }
         }
 
-
           //to input for save confirm
           $("#btnSave").click(function()
           {
-              if ('@Model.Mode' == "New") {
-                  $("#btnConfirm_Save").val("登録");
-                  $("#reg_Confirm").removeClass('d-none');
+              AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "/api/UserApi")', $("#UserID").val(),'','');
+              var res = ErrorCheckOnClick('divUser');
+              if (res == "0") {
+                  if ('@Model.Mode' == "New") {
+
+                      $("#btnConfirm_Save").val("登録");
+                      $("#reg_Confirm").removeClass('d-none');
+                  }
+                  else {
+                      $("#btnConfirm_Save").val("反映");
+                      $("#edi").removeClass('d-none');
+                  }
+                  $("#regi").addClass('d-none');
+                  $("#btnPrevious").removeClass('d-none');
+                  $("#btnSave").addClass('d-none');
+                  $("#btnConfirm_Save").removeClass('d-none');
+                  $("#btnback").addClass('d-none');
+                  $('.userCmnSet :input').attr('disabled', true);
               }
               else {
-                  $("#btnConfirm_Save").val("反映");
-                  $("#edi").removeClass('d-none');
+                  ShowMessage(res);                  
               }
-              $("#regi").addClass('d-none');
-              $("#btnPrevious").removeClass('d-none');
-              $("#btnSave").addClass('d-none');
-              $("#btnConfirm_Save").removeClass('d-none');
-              $("#btnback").addClass('d-none');
-              $('.userCmnSet :input').attr('disabled', true);
-
          });
 
          $("#btnPrevious").click(function()
@@ -192,22 +203,21 @@
 
         //save user data
         function ConfirmSave() {
-            var res = ErrorCheckOnClick('divUser');
-            if (res == "0") {
-                var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), DeleteFlg: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
-
+             var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), DeleteFlg: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
                 if (result=="true") {
-                    ShowMessage("I101");
-                    //window.location.href = '@Url.Action("UserList","User")';
+                    ShowMessage("I101","SaveOK");
                 }
                 else {
                      $("#UserName").focus();
                     ShowMessage("E001");
                 }
-            }
-            else
-                ShowMessage(res);
         }
+
+        function SaveOK() {
+            window.location.href = '@Url.Action("UserList","User")';
+        }
+
+
     </script>
 }
 

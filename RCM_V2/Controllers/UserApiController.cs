@@ -17,9 +17,6 @@ namespace RCM_V2.Controllers
         public IHttpActionResult User_Select([FromBody]UserModel Umodel)
         {
             UserBL Ubl = new UserBL();
-            //if (Umodel.DeleteFlg == "null")
-            //    Umodel.DeleteFlg = null;            
-            
             return Ok(Ubl.User_Select(Umodel));
         }
 
@@ -39,7 +36,7 @@ namespace RCM_V2.Controllers
         {
             UserBL Ubl = new UserBL();
             Umodel.UserID = Umodel.Val1;
-            return Ok(Ubl.User_Select(Umodel));
+            return Ok(Ubl.User_ExistsCheck(Umodel));
         }
 
     }

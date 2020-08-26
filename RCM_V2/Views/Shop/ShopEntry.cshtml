@@ -76,7 +76,7 @@
                 <tr>
                     <th>送料無料条件 &nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.FreeShippingAmount, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)", onkeypress = "return isNumberKey(event)", onkeyup = "Comma(this.id);",@style="text-align:right;" }) <span>円以上(税抜)</span>
+                        @Html.TextBoxFor(x => x.FreeShippingAmount, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)", onkeypress = "return isNumberKey(event)", onkeyup = "SetThousandSeparator(this.id);", @style="text-align:right;" }) <span>円以上(税抜)</span>
                     </td>
                 </tr>
                 <tr>
@@ -106,24 +106,36 @@
 
             $('#ShopName').focus();
 
-            RequiredCheck($("#ShopName"));
-            RequiredCheck($("#MallID"));
-            RequiredCheck($("#ShopSiteID"));
-            RequiredCheck($("#FtpHost"));
-            RequiredCheck($("#FtpUserName"));
-            RequiredCheck($("#FtpPassword"));
-            RequiredCheck($("#ItemURL"));
-            RequiredCheck($("#ImageURL"));
-            RequiredCheck($("#FreeShippingAmount"));
-
             //FreeShippingAmount
-            Comma("FreeShippingAmount");
+            SetThousandSeparator("FreeShippingAmount");
 
-            //show title based on mode(Edit/New)
+            
             if ('@Model.Mode' == "New") {
+
+                //check required field
+                RequiredCheck($("#ShopName"));
+                RequiredCheck($("#MallID"));
+                RequiredCheck($("#ShopSiteID"));
+                RequiredCheck($("#FtpHost"));
+                RequiredCheck($("#FtpUserName"));
+                RequiredCheck($("#FtpPassword"));
+                RequiredCheck($("#ItemURL"));
+                RequiredCheck($("#ImageURL"));
+                RequiredCheck($("#FreeShippingAmount"));
+
                 $("#head").text("ショップ一登録");                           
             }
-            else {
+            else if('@Model.Mode'=="Edit")
+            {
+                //check required field
+                RequiredCheck($("#ShopName"));
+                RequiredCheck($("#FtpHost"));
+                RequiredCheck($("#FtpUserName"));
+                RequiredCheck($("#FtpPassword"));
+                RequiredCheck($("#ItemURL"));
+                RequiredCheck($("#ImageURL"));
+                RequiredCheck($("#FreeShippingAmount"));
+
                 $("#ShopSiteID").prop('disabled', true);
                 $("#MallID").prop('disabled', true);
                 $("#head").text("ショップ編集");
@@ -136,7 +148,6 @@
                     $("#rdostatus1").prop("checked", true);
                 }
             }
-
            
             //bind mall id and name
             BindMall();
@@ -144,32 +155,39 @@
             //to input for save confirm
           $("#btnSave").click(function()
           {
-              if ('@Model.Mode' == "New") {
-                  $("#register_Confirm").removeClass('d-none');
-                  $("#btnConfirm_Save").text("登録");
+              var res = ErrorCheckOnClick('divShop');
+              if (res == "0") {
+                  if ('@Model.Mode' == "New") {
+                      $("#register_Confirm").removeClass('d-none');
+                      $("#btnConfirm_Save").val("登録");
+                  }
+                  else {
+                      $("#edit_Confirm").removeClass('d-none');
+                      $("#btnConfirm_Save").val("反映");
+                  }
+                  $("#edit").addClass('d-none');
+                  $("#btnPrevious").removeClass('d-none');
+                  $("#btnSave").addClass('d-none');
+                  $("#btnConfirm_Save").removeClass('d-none');
+                  $("#btnback").addClass('d-none');
+                  $('.shopCmnSet :input').attr('disabled', true);
               }
-              else {
-                  $("#edit_Confirm").removeClass('d-none');
-                  $("#btnConfirm_Save").text("反映");
-              }
-                $("#edit").addClass('d-none');
-                $("#btnPrevious").removeClass('d-none');
-                $("#btnSave").addClass('d-none');
-                $("#btnConfirm_Save").removeClass('d-none');
-                $("#btnback").addClass('d-none');
-                $('.shopCmnSet :input').attr('disabled', true);
+              else
+                  ShowMessage(res);
          });
 
          $("#btnPrevious").click(function()
          {
-          $("#edit").removeClass('d-none');
-          $("#register_Confirm").addClass('d-none');
-          $("#edit_Confirm").addClass('d-none');
-          $("#btnSave").removeClass('d-none');
-          $("#btnback").removeClass('d-none');
-          $("#btnPrevious").addClass('d-none');
-          $("#btnConfirm_Save").addClass('d-none');
-          $('.shopCmnSet :input').removeAttr('disabled', true);
+            $("#edit").removeClass('d-none');
+            $("#register_Confirm").addClass('d-none');
+            $("#edit_Confirm").addClass('d-none');
+            $("#btnSave").removeClass('d-none');
+            $("#btnback").removeClass('d-none');
+            $("#btnPrevious").addClass('d-none');
+            $("#btnConfirm_Save").addClass('d-none');
+            $('.shopCmnSet :input').removeAttr('disabled', true);
+            $("#ShopSiteID").prop('disabled', true);
+            $("#MallID").prop('disabled', true);
          });
 
         // go to shop List
@@ -202,24 +220,21 @@
                 $("#MallID").val('@Model.MallID'+'/@Model.ShopIDPrefix');
         }
 
-          //save shop data
+        //save shop data
         function ConfirmSave() {
-        
-        var res = ErrorCheckOnClick('divShop');
-            if (res == "0") {
                 var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode',ShopIDPrefix:'@Model.ShopIDPrefix', ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),DeleteFlg:$("input[name='DeleteFlg']:checked").val()});
 
                 if (result=="true") {
-                    ShowMessage("I101");
-                    //window.location.href = '@Url.Action("ShopList","Shop")';
+                    ShowMessage("I101","SaveOK");
                 }
                 else {
                      $("#UserName").focus();
                     ShowMessage("E001");
-                }
-            }
-            else
-                ShowMessage(res);
+                }            
+        }
+
+        function SaveOK() {
+            window.location.href = '@Url.Action("ShopList","Shop")';
         }
     </script>
 }
