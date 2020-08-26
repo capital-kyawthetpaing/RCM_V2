@@ -82,8 +82,8 @@
                 <tr>
                     <th>ユーザステータス</th>
                     <td>
-                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus", @checked = "true" }) <span>有効</span>
                         @Html.RadioButtonFor(x => x.DeleteFlg, "0", new { @tabIndex = 11, @id = "rdostatus1" }) <span>無効</span>
+                        @Html.RadioButtonFor(x => x.DeleteFlg, "1", new { @tabIndex = 10, @id = "rdostatus", @checked = "true" }) <span>有効</span>
                     </td>
                 </tr>
             </table>
@@ -149,10 +149,14 @@
             //to input for save confirm
           $("#btnSave").click(function()
           {
-              if ('@Model.Mode' == "New")
+              if ('@Model.Mode' == "New") {
+                  $("#register_Confirm").removeClass('d-none');
                   $("#btnConfirm_Save").text("登録");
-              else
+              }
+              else {
+                  $("#edit_Confirm").removeClass('d-none');
                   $("#btnConfirm_Save").text("反映");
+              } 
                 $("#btnPrevious").removeClass('d-none');
                 $("#btnSave").addClass('d-none');
                 $("#btnConfirm_Save").removeClass('d-none');
@@ -192,7 +196,11 @@
                 $("#MallID").append(
                     $('<option></option>').val(mallID).html(item.MallName));
              });
-             $("#MallID").val('@Model.MallID'+'/@Model.ShopIDPrefix');
+
+             if('@Model.Mode'=="New")
+                $('#MallID option:first-child').attr("selected", "selected");
+             else
+                $("#MallID").val('@Model.MallID'+'/@Model.ShopIDPrefix');
         }
 
           //save shop data
