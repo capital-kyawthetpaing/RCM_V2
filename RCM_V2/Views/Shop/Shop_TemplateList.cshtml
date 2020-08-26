@@ -30,7 +30,7 @@
 
             <div class="operationBtn">
                 <p>
-                    <input type="button" value="スマートテンプレートを追加する" style="width:100%" />
+                    <input type="button" value="スマートテンプレートを追加する" style="width:100%" onclick="ShopTemplateEdit('','New')" />
                 </p>
             </div>
 
@@ -78,7 +78,7 @@
                 "dataSrc": " ",
                 "searching":false,
                 "columns": [
-                    { "data": "", "width": "10%", "className":"dt-center" },
+                    { "data": "TemplateID", "width": "10%", "className":"dt-center" },
                     { "data": "TemplateID","width":"30%"},
                     { "data": "TemplateName","width":"40%"},
                     { "data": "Status", "width": "20%", "className":"dt-center"},
@@ -88,11 +88,15 @@
                     "targets": 0,
                     "data": "",
                     "render": function (data) {
-                        return '<input type="button" style="width:70px;margin-right:5px" value="編集">'
+                        return '<input type="button" style="width:70px;margin-right:5px" value="編集" onclick ="ShopTemplateEdit(\'' + data + '\',\'Edit\')">';
                         }
                     },
                 ]
             });
+        }
+
+        function ShopTemplateEdit(data,mode) {
+            window.location.href = '@Url.Action("Shop_TemplateEntry", "Shop")?id=' + data + "&mode=" + mode; 
         }
 
     </script>
