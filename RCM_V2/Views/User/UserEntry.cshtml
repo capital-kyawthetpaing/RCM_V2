@@ -130,7 +130,9 @@
             RequiredCheck($("#UserName"));
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
-            AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID").val(),'','');
+
+           //check user exists or not 
+            AlreadyExistsCheck('@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID"),'','');
 
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
@@ -156,7 +158,6 @@
           //to input for save confirm
           $("#btnSave").click(function()
           {
-              AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "/api/UserApi")', $("#UserID").val(),'','');
               var res = ErrorCheckOnClick('divUser');
               if (res == "0") {
                   if ('@Model.Mode' == "New") {
@@ -189,7 +190,10 @@
             $("#btnback").removeClass('d-none');
             $("#btnPrevious").addClass('d-none');
             $("#btnConfirm_Save").addClass('d-none');
-            $('.userCmnSet :input').removeAttr('disabled', true);
+             $('.userCmnSet :input').removeAttr('disabled', true);
+             if ('@Model.Mode' == "Edit") {
+                 $("#UserID").prop('disabled', true);                 
+             }
          });
 
         // go to shop List
@@ -202,6 +206,7 @@
 
         //save user data
         function ConfirmSave() {
+
              var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), Status: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
                 if (result=="true") {
                     ShowMessage("I101","SaveOK");

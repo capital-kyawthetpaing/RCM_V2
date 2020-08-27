@@ -64,5 +64,13 @@ namespace Shop_BL
             shopModel.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = shopModel.Mode };
             return bdl.InsertUpdateDeleteData("Shop_CUD", shopModel.Sqlprms);
         }
+
+        public string Shop_ExistCheck(ShopModel shopModel)
+        {
+            BaseDL bdl = new BaseDL();
+            shopModel.Sqlprms = new SqlParameter[1];
+            shopModel.Sqlprms[0] = new SqlParameter("@ShopID", SqlDbType.VarChar) {Value=shopModel.ShopID };
+            return bdl.SelectJson("Shop_ExistsCheck", shopModel.Sqlprms);
+        }
     }
 }

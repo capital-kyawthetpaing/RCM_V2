@@ -12,6 +12,7 @@ namespace RCM_V2.Controllers
 {
     public class ShopApiController : ApiController
     {
+        #region Shop 
         [UserAuthentication]
         [HttpPost]
         [ActionName("Shop_Select")]
@@ -35,11 +36,28 @@ namespace RCM_V2.Controllers
 
         [UserAuthentication]
         [HttpPost]
+        [ActionName("Shop_ExistCheck")]
+        public IHttpActionResult Shop_ExistCheck([FromBody] ShopModel shopModel)
+        {
+            ShopBL shopBL = new ShopBL();
+            string[] arr = shopModel.Val2.Split('/');
+            shopModel.ShopID = shopModel.Val2.Split('/')[1]+ shopModel.Val1;
+            return Ok(shopBL.Shop_ExistCheck(shopModel));
+        }
+        #endregion
+
+        #region Shop Template
+
+        [UserAuthentication]
+        [HttpPost]
         [ActionName("ShopTemplate_Select")]
         public IHttpActionResult ShopTemplate_Select([FromBody] ShopTemplateModel shopTemplateModel)
         {
             ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
             return Ok(shopTemplateBL.ShopTemplate_Select(shopTemplateModel));
         }
+
+        #endregion
+
     }
 }

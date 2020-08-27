@@ -45,14 +45,14 @@ function RequiredCheck(ctrl) {
 }
 
 
-function AlreadyExistsCheck(ctrl, apiURL, val1, val2, val3) {
-    $(ctrl).attr("data-AlreadyExistsCheck", "1");
-    $(ctrl).attr("data-AlreadyExistsApiUrl", apiURL);   
-    $(ctrl).attr("data-AlreadyExistsValue1", val1);
-    if(val2)
-        $(ctrl).attr("data-AlreadyExistsValue2", val2);
-    if (val3)
-        $(ctrl).attr("data-AlreadyExistsValue3", val3);
+function AlreadyExistsCheck(apiURL, ctrl1, ctrl2, ctrl3) {    
+    $(ctrl1).attr("data-AlreadyExistsCheck", "1");
+    $(ctrl1).attr("data-AlreadyExistsApiUrl", apiURL);   
+    $(ctrl1).attr("data-AlreadyExistsValue1", ctrl1.attr("id"));
+    if (ctrl2!="")
+        $(ctrl1).attr("data-AlreadyExistsValue2", ctrl2.attr("id"));
+    if (ctrl3!="")
+        $(ctrl1).attr("data-AlreadyExistsValue3", ctrl3.attr("id"));
 }
 
 function KeyDown(e, ctrl, functionname) {
@@ -85,54 +85,35 @@ function ErrChk(ctrl) {
         var ApiURL = $(ctrl).attr("data-AlreadyExistsApiUrl");
         var val1 = $(ctrl).attr("data-AlreadyExistsValue1");
         var val2 = $(ctrl).attr("data-AlreadyExistsValue2");
-        var val3 = $(ctrl).attr("data-AlreadyExistsValue2");
+        var val3 = $(ctrl).attr("data-AlreadyExistsValue3");
+        val1 = $("#" + val1).val();
         if (val2 == undefined)
             val2 = "";
+        else
+            val2 = $("#" + val2).val();
+
         if (val3 == undefined)
             val3 = "";
-        alert(val1 + "" + val2 + "" + val3);
+        else
+            val3 = $("#" + val3).val();
+       
         var model = {
             Val1: val1,
             Val2: val2,
             Val3: val3
-        };
+        };        
         var response = CalltoApiController(ApiURL, model);
         var data = JSON.parse(response);
+        if (data[0].MessageID == 'E101')
+            return "0";
+        else
+            return data[0].MessageID;
+        
     }
 
     return "0";
 }
 
-//function ErrChk(ctrl) {
-//    var req = $(ctrl).attr("data-Required");
-//    if (req == "1") {
-//        if (!$(ctrl).val()) {
-//            return "E102";
-//        }
-//    }
-
-//    var aec = $(ctrl).attr("data-AlreadyExistsCheck");
-//    if (aec == "1") {        
-//        var ApiURL = $(ctrl).attr("data-AlreadyExistsApiUrl");
-//        var val1 = $(ctrl).attr("data-AlreadyExistsValue1");
-//        var val2 = $(ctrl).attr("data-AlreadyExistsValue2");
-//        var val3 = $(ctrl).attr("data-AlreadyExistsValue2");
-//        if (val2 == "undefined")
-//            val2 = "";
-//        if (val3 == "undefined")
-//            val3 = "";
-//        alert(val1 + "" + val2 + "" + val3);
-//        var model = {
-//            Val1: $(val1).val(),
-//            Val2: $(val2).val(),
-//            Val3: $(val3).val()
-//        };
-//        //var response = CalltoApiController(ApiURL, model);
-//        //var data = JSON.parse(response);
-//    }
-
-//    return "0";
-//}
 
 function moveNext(ctrl) {
     do {

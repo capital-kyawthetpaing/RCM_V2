@@ -48,12 +48,12 @@ namespace User_BL
             Umodel.Sqlprms[6] = new SqlParameter("@UpdatedBy", SqlDbType.VarChar) { Value = Umodel.UpdatedBy };
             return bdl.InsertUpdateDeleteData("User_CUD", Umodel.Sqlprms);
         }
-        public DataTable User_ExistsCheck(UserModel Umodel)
+        public string User_ExistsCheck(UserModel Umodel)
         {
             BaseDL bdl = new BaseDL();
             Umodel.Sqlprms = new SqlParameter[1];
             Umodel.Sqlprms[0] = new SqlParameter("@UserID", SqlDbType.VarChar) { Value=Umodel.UserID};
-            return bdl.SelectDatatable("User_ExistsCheck", Umodel.Sqlprms);
+            return bdl.SelectJson("User_ExistsCheck", Umodel.Sqlprms);
         }
     
     }

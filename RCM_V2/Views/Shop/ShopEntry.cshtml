@@ -123,6 +123,9 @@
                 RequiredCheck($("#ImageURL"));
                 RequiredCheck($("#FreeShippingAmount"));
 
+                //check shop exists or not 
+                AlreadyExistsCheck('@Url.Action("Shop_ExistCheck", "api/ShopApi")', $("#ShopSiteID"), $("#MallID") ,'');
+
                 $("#head").text("ショップ一登録");                           
             }
             else if('@Model.Mode'=="Edit")
@@ -185,9 +188,11 @@
             $("#btnback").removeClass('d-none');
             $("#btnPrevious").addClass('d-none');
             $("#btnConfirm_Save").addClass('d-none');
-            $('.shopCmnSet :input').removeAttr('disabled', true);
-            $("#ShopSiteID").prop('disabled', true);
-            $("#MallID").prop('disabled', true);
+             $('.shopCmnSet :input').removeAttr('disabled', true);
+             if ('@Model.Mode' == "Edit") {
+                 $("#ShopSiteID").prop('disabled', true);
+                 $("#MallID").prop('disabled', true);
+             }
          });
 
         // go to shop List
@@ -222,7 +227,7 @@
 
         //save shop data
         function ConfirmSave() {
-                var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode',ShopIDPrefix:'@Model.ShopIDPrefix', ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),Status:$("input[name='Status']:checked").val()});
+                var result = CalltoApiController("/api/ShopApi/Shop_Save", {Mode:'@Model.Mode', ShopSiteID: $("#ShopSiteID").val(), ShopName: $("#ShopName").val(),MallID:$("#MallID").val(),FtpHost:$("#FtpHost").val(),FtpUserName:$("#FtpUserName").val(),FtpPassword:$("#FtpPassword").val(),ItemURL:$("#ItemURL").val(),ImageURL:$("#ImageURL").val(),FreeShippingAmount:$("#FreeShippingAmount").val(),Status:$("input[name='Status']:checked").val()});
 
                 if (result=="true") {
                     ShowMessage("I101","SaveOK");
