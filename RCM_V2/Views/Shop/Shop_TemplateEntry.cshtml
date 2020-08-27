@@ -17,8 +17,9 @@
                             <tr>
                                 <th>ステータス</th>
                                 <td>
-                                    <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
-                                    <input type="radio" id="RadioButton2" name="status" value="0" /><span> 無効</span>
+                                    <input type="radio" id="RadioButton2" name="status" value="0" checked/><span> 無効</span>
+                                    <input type="radio" id="RadioButton1" name="status" value="1"  /><span> 有効</span>
+
                                 </td>
                             </tr>
                             <tr>
@@ -183,7 +184,7 @@
                         <div class="userRole">
                             <input type="button" id="btnback" value="戻る" />
                             <input type="button" id="btnPrevious" value="戻る" class="d-none" />
-                            <input type="button" id="btnSave" value="確認画面へ" />
+                            <input type="button" id="btnSave" value="確認画面へ" tabIndex =16 />
                             <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
                         </div>
                     </div>
@@ -234,6 +235,7 @@
                   else
                       $("#btnConfirm_Save").val("反映");
 
+                  $("#btnConfirm_Save").focus();
                   $("#btnPrevious").removeClass('d-none');
                   $("#btnSave").addClass('d-none');
                   $("#btnConfirm_Save").removeClass('d-none');
