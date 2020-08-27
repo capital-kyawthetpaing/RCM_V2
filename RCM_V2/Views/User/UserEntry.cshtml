@@ -52,7 +52,7 @@
                         <td>
                             <div>
                                 <table cellspacing="0" id="tblUserEntry" style="border-collapse:collapse;">
-                                    <tbody>                                       
+                                    <tbody>
                                     </tbody>
                                 </table>
                             </div>
@@ -60,6 +60,14 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <div class="btn">
+            <div class="userRole">
+                <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
+                <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
+                <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
+                <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
+            </div>
         </div>
     </div>
 </div>
@@ -72,21 +80,21 @@
             $('#UserName').focus();
 
         if ('@Model.Mode' == "New")
-        {     
+        {
             //check required field
             RequiredCheck($("#UserName"));
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
 
-           //check user exists or not 
+           //check user exists or not
             AlreadyExistsCheck('@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID"),'','');
 
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
         }
         else if('@Model.Mode'=="Edit")
-        {            
-            RequiredCheck($("#UserName"));           
+        {
+            RequiredCheck($("#UserName"));
             RequiredCheck($("#Password"));
 
             $("#UserID").prop('readonly', true);
@@ -124,7 +132,7 @@
                   $('.userCmnSet :input').attr('disabled', true);
               }
               else {
-                  ShowMessage(res);                  
+                  ShowMessage(res);
               }
          });
 
@@ -139,7 +147,7 @@
             $("#btnConfirm_Save").addClass('d-none');
              $('.userCmnSet :input').removeAttr('disabled', true);
              if ('@Model.Mode' == "Edit") {
-                 $("#UserID").prop('disabled', true);                 
+                 $("#UserID").prop('disabled', true);
              }
          });
 
@@ -153,15 +161,29 @@
 
         //save user data
         function ConfirmSave() {
+            var userModel = {
+                UserID: $("#UserID").val(),
+                UserName: $("#UserName").val(),
+                Password: $("#Password").val(),
+                Status: $("input[name='rbdStatus']:checked").val(),
+                Mode: '@Model.Mode',
+                CreatedBy: $("#lblUser").text(),
+                UpdatedBy: $("#lblUser").text(),
+                UserView: []
+            };
 
-             var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), Status: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
-                if (result=="true") {
-                    ShowMessage("I101","SaveOK");
-                }
-                else {
-                     $("#UserName").focus();
-                    ShowMessage("E001");
-                }
+            $.each($("#tblUserEntry input[type=checkbox]:checked"), function () {
+                userModel.UserView.push($(this).id);
+            });
+
+            var result = CalltoApiController("/api/UserApi/User_Save",userModel);
+            if (result=="true") {
+                ShowMessage("I101","SaveOK");
+            }
+            else {
+                 $("#UserName").focus();
+                ShowMessage("E001");
+            }
         }
 
         function SaveOK() {
@@ -174,7 +196,7 @@
             };
             var response = CalltoApiController('@Url.Action("View_Select", "api/UserApi")', obj);
             var items = JSON.parse(response);
-            var ViewGroupID = '0'; 
+            var ViewGroupID = '0';
             var row = '';
             $.each(items, function (i, item) {
                 //if different group, add group title
@@ -183,10 +205,10 @@
                     $("#tblUserEntry tbody").append(row);
                 }
                 row = '<tr><td><input id="' + item.ViewID + '" name="'+item.ViewGroupID+'" class="userRoleChild" type="checkbox"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
-                
+
                 $("#tblUserEntry tbody").append(row);
                 ViewGroupID = item.ViewGroupID;
-            });                
+            });
         }
     </script>
 }
