@@ -71,20 +71,22 @@
 
             $('#UserName').focus();
 
-            if ('@Model.Mode' == "New")
-            {
-                //check required field
-                RequiredCheck($("#UserName"));
-                RequiredCheck($("#UserID"));
-                RequiredCheck($("#Password"));
-                AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID").val(),'','');
-
-                $("#head").text('ユーザ登録');
-                $("#regi").removeClass('d-none');
-            }
-            else if('@Model.Mode'=="Edit")
-        {
+        if ('@Model.Mode' == "New")
+        {     
+            //check required field
             RequiredCheck($("#UserName"));
+            RequiredCheck($("#UserID"));
+            RequiredCheck($("#Password"));
+
+           //check user exists or not 
+            AlreadyExistsCheck('@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID"),'','');
+
+            $("#head").text('ユーザ登録');
+            $("#regi").removeClass('d-none');
+        }
+        else if('@Model.Mode'=="Edit")
+        {            
+            RequiredCheck($("#UserName"));           
             RequiredCheck($("#Password"));
 
             $("#UserID").prop('readonly', true);
@@ -100,42 +102,46 @@
             }
         }
 
-            //to input for save confirm
-            $("#btnSave").click(function(){
-                AlreadyExistsCheck($("#UserID"), '@Url.Action("User_ExistCheck", "/api/UserApi")', $("#UserID").val(),'','');
-                var res = ErrorCheckOnClick('divUser');
-                if (res == "0") {
-                    if ('@Model.Mode' == "New") {
-                
-                        $("#btnConfirm_Save").val("登録");
-                        $("#reg_Confirm").removeClass('d-none');
-                    }
-                    else {
-                        $("#btnConfirm_Save").val("反映");
-                        $("#edi").removeClass('d-none');
-                    }
-                    $("#regi").addClass('d-none');
-                    $("#btnPrevious").removeClass('d-none');
-                    $("#btnSave").addClass('d-none');
-                    $("#btnConfirm_Save").removeClass('d-none');
-                    $("#btnback").addClass('d-none');
-                    $('.userCmnSet :input').attr('disabled', true);
-                }
-                else {
-                    ShowMessage(res);
-                }
-            });
+          //to input for save confirm
+          $("#btnSave").click(function()
+          {
+              var res = ErrorCheckOnClick('divUser');
+              if (res == "0") {
+                  if ('@Model.Mode' == "New") {
 
-            $("#btnPrevious").click(function(){
-                $("#edi").addClass('d-none');
-                $("#reg_Confirm").addClass('d-none');
-                $("#regi").removeClass('d-none');
-                $("#btnSave").removeClass('d-none');
-                $("#btnback").removeClass('d-none');
-                $("#btnPrevious").addClass('d-none');
-                $("#btnConfirm_Save").addClass('d-none');
-                $('.userCmnSet :input').removeAttr('disabled', true);
-            });
+                      $("#btnConfirm_Save").val("登録");
+                      $("#reg_Confirm").removeClass('d-none');
+                  }
+                  else {
+                      $("#btnConfirm_Save").val("反映");
+                      $("#edi").removeClass('d-none');
+                  }
+                  $("#regi").addClass('d-none');
+                  $("#btnPrevious").removeClass('d-none');
+                  $("#btnSave").addClass('d-none');
+                  $("#btnConfirm_Save").removeClass('d-none');
+                  $("#btnback").addClass('d-none');
+                  $('.userCmnSet :input').attr('disabled', true);
+              }
+              else {
+                  ShowMessage(res);                  
+              }
+         });
+
+         $("#btnPrevious").click(function()
+         {
+            $("#edi").addClass('d-none');
+            $("#reg_Confirm").addClass('d-none');
+            $("#regi").removeClass('d-none');
+            $("#btnSave").removeClass('d-none');
+            $("#btnback").removeClass('d-none');
+            $("#btnPrevious").addClass('d-none');
+            $("#btnConfirm_Save").addClass('d-none');
+             $('.userCmnSet :input').removeAttr('disabled', true);
+             if ('@Model.Mode' == "Edit") {
+                 $("#UserID").prop('disabled', true);                 
+             }
+         });
 
             // go to user List
             $("#btnback").click(function(){
@@ -147,6 +153,7 @@
 
         //save user data
         function ConfirmSave() {
+
              var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), Status: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
                 if (result=="true") {
                     ShowMessage("I101","SaveOK");

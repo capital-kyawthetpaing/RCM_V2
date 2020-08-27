@@ -21,18 +21,25 @@ namespace DL
             {
                 TableName = "data"
             };
-            var newCon = new SqlConnection(conStr);
-            using (var adapt = new SqlDataAdapter(sSQL, newCon))
+            try
             {
-                newCon.Open();
-                adapt.SelectCommand.CommandType = CommandType.StoredProcedure;
-                if (para != null)
+                var newCon = new SqlConnection(conStr);
+                using (var adapt = new SqlDataAdapter(sSQL, newCon))
                 {
-                    para = ChangeToDBNull(para);
-                    adapt.SelectCommand.Parameters.AddRange(para);
+                    newCon.Open();
+                    adapt.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    if (para != null)
+                    {
+                        para = ChangeToDBNull(para);
+                        adapt.SelectCommand.Parameters.AddRange(para);
+                    }
+                    adapt.Fill(dt);
+                    newCon.Close();
                 }
-                adapt.Fill(dt);
-                newCon.Close();
+            }
+            catch(Exception ex)
+            {
+                string msg = ex.Message;
             }
             return DataTableToJSONWithJSONNet(dt);
         }
