@@ -68,7 +68,7 @@
             })
         });
 
-        function BindTable(response) {
+        function BindTable() {
             var obj = { UserName: $("#txtuser").val(), Status: $("input[name='status']:checked").val() };
             table = $('#tbluserlist').DataTable({
                 data: JSON.parse(CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj)),

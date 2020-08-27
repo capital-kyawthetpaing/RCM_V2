@@ -31,9 +31,30 @@ div .userCmnSet.searchBox dd input[type='button'] {
 
 input[type=text], input[type=password] {
     float: left;
-    width: 500px;
+    width:55%;
+    /*width: 500px; ktp*/
     height: 25px
 }
 
+.userRole {
+    width: auto !important;
+    height: auto !important;
+    display: inherit !important;
+}
+
+.userRoleChild {
+    width: auto !important;
+    height: auto !important;
+    display: inherit !important;
+    margin-left:30px !important;
+}
+
+.userRoleHeader {
+    border-bottom: 1px dashed #333 !important;
+}
+
+#tblUserEntry tr td{
+    border:none;
+}
 
 
