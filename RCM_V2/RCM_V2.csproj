@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -732,6 +732,10 @@
     <ProjectReference Include="..\User_BL\User_BL.csproj">
       <Project>{f55598ed-576a-4b32-bdba-5d6780eb0063}</Project>
       <Name>User_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\View_BL\View_BL.csproj">
+      <Project>{2b49d62c-b424-4e7c-b47d-caf20b770cd2}</Project>
+      <Name>View_BL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@Styles.Render("~/Content/user.css")
+@Styles.Render(Url.Content("~/Content/user.css"))
 
 <div id="CmnContents">
     <div id="ComBlock">
@@ -43,75 +43,30 @@
                     <tr>
                         <th>ユーザステータス</th>
                         <td>
-                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" checked /><span>無効</span>
-                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" /><span>有効</span>
+                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><label for="rdostatus">有効</label>
+                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" /><label for="rdostatus1">無効</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <div>
+                                <table cellspacing="0" id="tblUserEntry" style="border-collapse:collapse;">
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-
-        <div style="margin-left: 7px">
-            <table class="userCmnSet editTable">
-                <tr>
-                    <th style="width: 160px; text-align: left; border-right: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: 5px solid #73c5ff; padding: 5px 5px 5px 10px">権限&nbsp;<span>※必須</span></th>
-                    <td>
-                        @*<asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                                <ContentTemplate>
-                                    <asp:GridView ID="gvUserRole" runat="server" ShowHeader="false"
-                                                  AutoGenerateColumns="false" GridLines="None"
-                                                  OnRowDataBound="gvUserRole_RowDataBound" OnSelectedIndexChanged="gvUserRole_SelectedIndexChanged">
-                                        <Columns>
-                                            <asp:TemplateField Visible="false">
-                                                <HeaderTemplate>
-                                                    <asp:Label ID="lblMenuHeader" runat="server" Text="Menu"></asp:Label>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label runat="server" ID="lblMenu" Text='<%# Eval("Menu_ID")%>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField Visible="false">
-                                                <HeaderTemplate>
-                                                    <asp:Label ID="lblMenuID" runat="server" Text="Menu ID"></asp:Label>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label runat="server" ID="lblMenuID" Text='<%# Eval("ID")%>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField Visible="false">
-                                                <HeaderTemplate>
-                                                    <asp:Label ID="lblMenu" runat="server" Text="Master ID"></asp:Label>
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label runat="server" ID="lblMasterID" Text='<%# Eval("Parent_ID")%>'></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                            <asp:TemplateField>
-                                                <HeaderTemplate>
-                                                    <asp:CheckBox ID="chkAllRead" runat="server" AutoPostBack="True" OnCheckedChanged="chkReadSelectAll_CheckedChanged" Visible="false" />
-                                                </HeaderTemplate>
-                                                <ItemTemplate>
-                                                    <asp:Label runat="server" Text="" ID="lblPadding" Visible="false"></asp:Label>
-                                                    <asp:CheckBox ID="ckbRead" runat="server" AutoPostBack="True" OnCheckedChanged="ckbRead_CheckedChanged" />
-                                                    <asp:Label runat="server" ID="lblDescription" Text='<%# Eval("Description")%>'></asp:Label>
-                                                    <asp:Label runat="server" ID="lbl_Descrip"></asp:Label>
-                                                </ItemTemplate>
-                                            </asp:TemplateField>
-                                        </Columns>
-                                    </asp:GridView>
-                                </ContentTemplate>
-                            </asp:UpdatePanel>*@
-                    </td>
-                </tr>
-            </table>
-            <!-- /User search -->
-            <div class="btn">
-                <div class="userRole">
-                    <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
-                    <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
-                    <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
-                    <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
-                </div>
+        <div class="btn">
+            <div class="userRole">
+                <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
+                <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
+                <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
+                <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
             </div>
         </div>
     </div>
@@ -122,24 +77,24 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-        $('#UserName').focus();
+            $('#UserName').focus();
 
         if ('@Model.Mode' == "New")
-        {     
+        {
             //check required field
             RequiredCheck($("#UserName"));
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
 
-           //check user exists or not 
+           //check user exists or not
             AlreadyExistsCheck('@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID"),'','');
 
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
         }
         else if('@Model.Mode'=="Edit")
-        {            
-            RequiredCheck($("#UserName"));           
+        {
+            RequiredCheck($("#UserName"));
             RequiredCheck($("#Password"));
 
             $("#UserID").prop('readonly', true);
@@ -177,7 +132,7 @@
                   $('.userCmnSet :input').attr('disabled', true);
               }
               else {
-                  ShowMessage(res);                  
+                  ShowMessage(res);
               }
          });
 
@@ -192,36 +147,69 @@
             $("#btnConfirm_Save").addClass('d-none');
              $('.userCmnSet :input').removeAttr('disabled', true);
              if ('@Model.Mode' == "Edit") {
-                 $("#UserID").prop('disabled', true);                 
+                 $("#UserID").prop('disabled', true);
              }
          });
 
-        // go to shop List
-         $("#btnback").click(function()
-         {
-            window.location.href='@Url.Action("UserList","User")';
-         });
+            // go to user List
+            $("#btnback").click(function(){
+               window.location.href='@Url.Action("UserList","User")';
+            });
 
+            BindView();
         });
 
         //save user data
         function ConfirmSave() {
+            var userModel = {
+                UserID: $("#UserID").val(),
+                UserName: $("#UserName").val(),
+                Password: $("#Password").val(),
+                Status: $("input[name='rbdStatus']:checked").val(),
+                Mode: '@Model.Mode',
+                CreatedBy: $("#lblUser").text(),
+                UpdatedBy: $("#lblUser").text(),
+                UserView: []
+            };
 
-             var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), Status: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
-                if (result=="true") {
-                    ShowMessage("I101","SaveOK");
-                }
-                else {
-                     $("#UserName").focus();
-                    ShowMessage("E001");
-                }
+            $.each($("#tblUserEntry input[type=checkbox]:checked"), function () {
+                userModel.UserView.push($(this).id);
+            });
+
+            var result = CalltoApiController("/api/UserApi/User_Save",userModel);
+            if (result=="true") {
+                ShowMessage("I101","SaveOK");
+            }
+            else {
+                 $("#UserName").focus();
+                ShowMessage("E001");
+            }
         }
 
         function SaveOK() {
             window.location.href = '@Url.Action("UserList","User")';
         }
 
+        function BindView() {
+            var obj = {
+                ViewID: "",
+            };
+            var response = CalltoApiController('@Url.Action("View_Select", "api/UserApi")', obj);
+            var items = JSON.parse(response);
+            var ViewGroupID = '0';
+            var row = '';
+            $.each(items, function (i, item) {
+                //if different group, add group title
+                if (item.ViewGroupID != ViewGroupID) {
+                    row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';
+                    $("#tblUserEntry tbody").append(row);
+                }
+                row = '<tr><td><input id="' + item.ViewID + '" name="'+item.ViewGroupID+'" class="userRoleChild" type="checkbox"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
 
+                $("#tblUserEntry tbody").append(row);
+                ViewGroupID = item.ViewGroupID;
+            });
+        }
     </script>
 }
 

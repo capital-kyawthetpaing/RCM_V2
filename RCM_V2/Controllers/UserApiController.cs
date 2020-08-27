@@ -3,8 +3,7 @@ using System.Web.Http;
 using User_BL;
 using Models;
 using System.Data;
-
-//using Newtonsoft.Json;
+using View_BL;
 
 namespace RCM_V2.Controllers
 {
@@ -39,5 +38,13 @@ namespace RCM_V2.Controllers
             return Ok(Ubl.User_ExistsCheck(Umodel));
         }
 
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("View_Select")]
+        public IHttpActionResult View_Select([FromBody] ViewModel viewModel)
+        {
+            ViewBL viewBL = new ViewBL();
+            return Ok(viewBL.View_Select(viewModel));
+        }
     }
 }
