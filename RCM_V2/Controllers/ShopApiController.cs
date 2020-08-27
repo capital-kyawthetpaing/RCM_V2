@@ -57,6 +57,24 @@ namespace RCM_V2.Controllers
             return Ok(shopTemplateBL.ShopTemplate_Select(shopTemplateModel));
         }
 
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopTemplate_Save")]
+        public IHttpActionResult ShopTemplate_Save([FromBody] ShopTemplateModel shopTemplateModel)
+        {
+            ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
+            return Ok(shopTemplateBL.ShopTemplate_Save(shopTemplateModel));
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopTemplate_ExistCheck")]
+        public IHttpActionResult ShopTemplate_ExistCheck([FromBody] ShopTemplateModel shopTemplateModel)
+        {
+            ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
+            shopTemplateModel.TemplateID = shopTemplateModel.Val1;
+            return Ok(shopTemplateBL.ShopTemplate_ExistCheck(shopTemplateModel));
+        }
         #endregion
 
     }
