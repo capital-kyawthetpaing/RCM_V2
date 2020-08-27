@@ -1,5 +1,4 @@
-﻿@using Models;
-@model Models.UserModel
+﻿@model Models.UserModel
 @{
     ViewBag.Title = "UserEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -77,7 +76,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $('#UserName').focus();
+            $('#UserName').select();
 
         if ('@Model.Mode' == "New")
         {
@@ -121,7 +120,7 @@
                       $("#reg_Confirm").removeClass('d-none');
                   }
                   else {
-                      $("#btnConfirm_Save").val("反映");
+                      $("#btnConfirm_Save").val("確認");
                       $("#edi").removeClass('d-none');
                   }
                   $("#regi").addClass('d-none');
@@ -173,7 +172,8 @@
             };
 
             $.each($("#tblUserEntry input[type=checkbox]:checked"), function () {
-                userModel.UserView.push($(this).id);
+                if($(this).attr("name") != '')
+                    userModel.UserView.push($(this).attr("id"));
             });
 
             var result = CalltoApiController("/api/UserApi/User_Save",userModel);
