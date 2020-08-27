@@ -440,6 +440,14 @@ nav ul#userBlock li:last-of-type {
 	margin-top: 20px;
 }
 
+.btn.userRole input[type=button] {
+    display: inline-block!important;
+    width: 100px;
+}
+
+
+
+
 
 
 

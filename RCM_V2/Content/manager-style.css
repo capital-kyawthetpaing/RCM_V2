@@ -169,9 +169,9 @@ div.btnuser {
 	vertical-align:middle;
 }
 
-div.userRole {
+/*div.userRole {
 	padding-bottom: 20px;
-}
+}*/
 
 
 /*--------------------------------------------------------------------------------------
@@ -227,11 +227,8 @@ div.setListBox div.btn {
 	padding: 7px 0px;
 	z-index: 9999;
 }
-div.setDetailBox div input, div.setListBox div.btn input {
-	display: block;
-	margin: 0px auto;
-	width: 300px;
-}
+
+
 div.setDetailBox div input,div.setListBox div.btn input {
 	height: 25px;
 	width: 150px;
