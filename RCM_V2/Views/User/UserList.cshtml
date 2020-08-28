@@ -98,7 +98,7 @@
 
         //call user Edit 
         function UserEdit(data, mode) {
-            window.location.href = '@Url.Action("UserEntry", "User")?id=' + data + "&mode=" + mode;           
+            $.post('@Url.Action("UserEntry", "User")', { UserID: data, Mode: mode });
         }
     </script>
 }
