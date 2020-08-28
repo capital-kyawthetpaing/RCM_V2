@@ -8,10 +8,12 @@ using Models;
 using Newtonsoft.Json;
 using ShopTemplate_BL;
 
+
 namespace RCM_V2.Controllers
 {
     public class ShopController : Controller
     {
+        #region Shop
         // GET: Shop
         public ActionResult ShopList()
         {
@@ -33,6 +35,10 @@ namespace RCM_V2.Controllers
             return View(shopModel);
         }
 
+        #endregion
+
+        #region ShopTemplate
+
         public ActionResult Shop_TemplateList()
         {
             return View();
@@ -53,11 +59,18 @@ namespace RCM_V2.Controllers
             return View(shopTemplateModel);
         }
 
+        #endregion
+
+        #region Option
+        public ActionResult OptionTemplateList()
+        {
+            return View();
+        }
+        #endregion
+
         public ActionResult Shop_ItemNamePriority()
         {
             return View();
         }
-
-
     }
 }

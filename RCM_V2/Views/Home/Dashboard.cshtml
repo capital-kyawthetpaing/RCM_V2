@@ -8,6 +8,43 @@
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconUser">
             <h1>お知らせ</h1>
+
+            <div class="userCmnSet resetValue editBox">
+                <table class="listTable" id="NoticeList">
+                    <thead>
+                        <tr>
+                            <th>日時</th>
+                            <th>Notice Type</th>
+                            <th>Notice Text</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {           
+          var response = CalltoApiController('@Url.Action("Shop_Select", "api/ShopApi")', obj);
+          BindTable(response);
+        });
+
+        function BindTable(response) {
+            table = $('#NoticeList').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "columns": [
+                    { "data": "EffectiveDate" },
+                    { "data": "NoticeType"},
+                    { "data": "NoticeText"}
+                ]
+            });
+        }
+    </script>
+}

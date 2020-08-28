@@ -7,6 +7,8 @@ using System.Web.Http;
 using Shop_BL;
 using Models;
 using ShopTemplate_BL;
+using OptionTemplate_BL;
+
 
 namespace RCM_V2.Controllers
 {
@@ -74,6 +76,17 @@ namespace RCM_V2.Controllers
             ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
             shopTemplateModel.TemplateID = shopTemplateModel.Val1;
             return Ok(shopTemplateBL.ShopTemplate_ExistCheck(shopTemplateModel));
+        }
+        #endregion
+
+        #region Option Template
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("OptionTemplate_Select")]
+        public IHttpActionResult OptionTemplate_Select(OptionTemplateModel optionTemplateModel)
+        {
+            OptionTemplateBL bl = new OptionTemplateBL();
+            return Ok(bl.OptionTemplate_Select(optionTemplateModel));
         }
         #endregion
 

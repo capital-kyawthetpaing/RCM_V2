@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\DashboardApiController.cs" />
     <Compile Include="Controllers\ExportFieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
@@ -699,6 +700,7 @@
     <Content Include="Views\Shop\Shop_TemplateEntry.cshtml" />
     <Content Include="Views\ExportField\ExportFieldEntry.cshtml" />
     <Content Include="Views\ExportField\ExportFieldList.cshtml" />
+    <Content Include="Views\Shop\OptionTemplateList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -723,6 +725,10 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OptionTemplate_BL\OptionTemplate_BL.csproj">
+      <Project>{ed425a7d-6c21-4dc1-ae1b-3b4fde4a9bec}</Project>
+      <Name>OptionTemplate_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
       <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>
