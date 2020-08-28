@@ -22,16 +22,7 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
-        //public ActionResult UserEntry(string id,string mode)
-        //{
-        //    UserBL bl = new UserBL();
-        //    UserModel obj = new UserModel();
-        //    obj.UserID = id;
-        //    obj.Mode = mode;
-        //    if (mode == "Edit")
-        //        obj = bl.UserModel_Select(obj);
-        //    return View(obj);
-        //}
+        
         public ActionResult UserEntry(UserModel userModel)
         {
             if (userModel.Mode == null)
