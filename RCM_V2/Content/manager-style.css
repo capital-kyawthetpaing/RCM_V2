@@ -130,7 +130,7 @@ div.btn.pageNav  {
 	bottom: 0px;
 	background: rgba(61,58,53,1);
 	left: 0px;
-	padding: 10px 0px 5px 0px;*/
+	padding: 10px 0px 5px 0px;
 }
 div.btn.pageNav nav#ListPaging {
     width: 800px;
@@ -510,7 +510,8 @@ div.searchBox dl {
 	display: block;
 }
 div.searchBox dl dt {
-	width: 100px;
+	/*width: 100px; ktp*/
+	width:auto;
 	text-align: right;   
 	margin-bottom: 7px;
     font-weight:normal;

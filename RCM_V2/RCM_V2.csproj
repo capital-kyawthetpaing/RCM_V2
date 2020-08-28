@@ -149,6 +149,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ExportFieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
@@ -696,6 +697,8 @@
     <Content Include="Views\Shop\Shop_ItemNamePriority.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateList.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateEntry.cshtml" />
+    <Content Include="Views\ExportField\ExportFieldEntry.cshtml" />
+    <Content Include="Views\ExportField\ExportFieldList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
