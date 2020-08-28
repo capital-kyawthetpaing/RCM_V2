@@ -71,6 +71,7 @@
     </div>
 </div>
 
+
 @section Scripts
 {
     <script type="text/javascript">
@@ -192,23 +193,73 @@
 
         function BindView() {
             var obj = {
+                UserID:'@Model.UserID',
                 ViewID: "",
             };
             var response = CalltoApiController('@Url.Action("View_Select", "api/UserApi")', obj);
             var items = JSON.parse(response);
             var ViewGroupID = '0';
             var row = '';
+            
             $.each(items, function (i, item) {
-                //if different group, add group title
-                if (item.ViewGroupID != ViewGroupID) {
-                    row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';
-                    $("#tblUserEntry tbody").append(row);
+               
+                if ('@Model.Mode' == "New") {
+
+                    //if different group, add group title
+                    if (item.ViewGroupID != ViewGroupID) {
+                        row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';
+                        $("#tblUserEntry tbody").append(row);
+                    }
+                    row = '<tr><td><input id="' + item.ViewID + '" name="' + item.ViewGroupID + '" class="userRoleChild" type="checkbox"  onChange="CheckView(this);"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
                 }
-                row = '<tr><td><input id="' + item.ViewID + '" name="'+item.ViewGroupID+'" class="userRoleChild" type="checkbox"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
+                else {
+                    
+                    //if different group, add group title
+                    if (item.ViewGroupID != ViewGroupID) {
+                        const groupCount = items.filter((obj) => obj.ViewGroupID === item.ViewGroupID).length;
+                        const statusCount = items.filter((obj) => obj.CheckStatus == "1" && obj.ViewGroupID === item.ViewGroupID).length;
+                        var gcheck = "";
+                        // group checkbod check or not
+                        if (groupCount == statusCount)
+                            gcheck = "checked";
+
+                        //if (groupCount)
+                        row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox" ' + gcheck +' onChange="CheckView(this);"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';                       
+                        $("#tblUserEntry tbody").append(row);
+                    }
+
+                    //check child status checked or not
+                    var childcheck = "";
+                    if (item.CheckStatus == "1") {
+                        childcheck = "checked";
+                    }
+                    row = '<tr><td><input id="' + item.ViewID + '" name="' + item.ViewGroupID + '" class="userRoleChild" type="checkbox" ' + childcheck +' onChange="CheckView(this);"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
+                    
+                }
 
                 $("#tblUserEntry tbody").append(row);
                 ViewGroupID = item.ViewGroupID;
             });
+        }
+
+        function CheckView(ele) {
+            var clsName = $(ele).attr('class');           
+           
+            //check or not child based on parent checkbox
+            if (clsName == "userRole") {
+                var id = $(ele).attr('id');
+                $('input[name="' + id + '"]').prop('checked', ele.checked);
+            }
+            //check or not parent based on child
+            else {
+                var name = $(ele).attr('name');
+                var chkCount = $("input[name='" + name + "']:checked").length;
+                var total = $("input[name='" + name + "']").length;               
+                if (chkCount == total)
+                    $("#" + name).prop('checked', true);
+                else
+                    $("#" + name).prop('checked', false);
+            }
         }
     </script>
 }

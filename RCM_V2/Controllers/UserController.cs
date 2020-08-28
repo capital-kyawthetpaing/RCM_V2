@@ -22,20 +22,29 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
-        
-        public ActionResult UserEntry(UserModel userModel)
+        public ActionResult UserEntry(string id,string mode)
         {
-            if(userModel.Mode == null)
-            {
-                userModel = new UserModel();
-                userModel.Mode = "New";
-            }
-
             UserBL bl = new UserBL();
-            
-            if(userModel.Mode.Equals("Edit"))
-                userModel = bl.UserModel_Select(userModel);
-            return View(userModel);
+            UserModel obj = new UserModel();
+            obj.UserID = id;
+            obj.Mode = mode;
+            if (mode == "Edit")
+                obj = bl.UserModel_Select(obj);
+            return View(obj);
         }
+        //public ActionResult UserEntry(UserModel userModel)
+        //{
+        //    if(userModel.Mode == null)
+        //    {
+        //        userModel = new UserModel();
+        //        userModel.Mode = "New";
+        //    }
+
+        //    UserBL bl = new UserBL();
+
+        //    if(userModel.Mode.Equals("Edit"))
+        //        userModel = bl.UserModel_Select(userModel);
+        //    return View(userModel);
+        //}
     }
 }
