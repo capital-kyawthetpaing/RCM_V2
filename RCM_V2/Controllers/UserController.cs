@@ -32,19 +32,19 @@ namespace RCM_V2.Controllers
         //        obj = bl.UserModel_Select(obj);
         //    return View(obj);
         //}
-        //public ActionResult UserEntry(UserModel userModel)
-        //{
-        //    if (userModel.Mode == null)
-        //    {
-        //        userModel = new UserModel();
-        //        userModel.Mode = "New";
-        //    }
+        public ActionResult UserEntry(UserModel userModel)
+        {
+            if (userModel.Mode == null)
+            {
+                userModel = new UserModel();
+                userModel.Mode = "New";
+            }
 
-        //    UserBL bl = new UserBL();
+            UserBL bl = new UserBL();
 
-        //    if (userModel.Mode.Equals("Edit"))
-        //        userModel = bl.UserModel_Select(userModel);
-        //    return View(userModel);
-        //}
+            if (userModel.Mode.Equals("Edit"))
+                userModel = bl.UserModel_Select(userModel);
+            return View(userModel);
+        }
     }
 }

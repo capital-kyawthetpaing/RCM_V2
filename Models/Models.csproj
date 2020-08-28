@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
+    <Compile Include="ExportFieldsModel.cs" />
     <Compile Include="MallModel.cs" />
     <Compile Include="MessageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
