@@ -7,29 +7,34 @@
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconUser">
-            <h1>お知らせ</h1>
+            <div id="PopContents" class="OptionBlock2 pop2_Option inlineSet">
+                <div class="iconList h2">
+                    <h1>オプションリスト</h1>
+                </div>
+                <div class="userCmnSet resetValue editBox">
+                    <table class="listTable" id="NoticeList">
+                        <thead>
+                            <tr>
+                                <th>日時</th>
+                                <th>Notice Type</th>
+                                <th>Notice Text</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div><!-- /#PopContents -->
 
-            <div class="userCmnSet resetValue editBox">
-                <table class="listTable" id="NoticeList">
-                    <thead>
-                        <tr>
-                            <th>日時</th>
-                            <th>Notice Type</th>
-                            <th>Notice Text</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
+        </div><!-- /.setListBox iconSet iconEdit -->
+    </div><!-- /#ComBlock -->
+</div><!-- /#CmnContents -->
 
 @section Scripts
 {
     <script type="text/javascript">
-        $(document).ready(function () {           
-          var response = CalltoApiController('@Url.Action("Shop_Select", "api/ShopApi")', obj);
+        $(document).ready(function () {
+
+          var response = CalltoApiController('@Url.Action("Notice_Select", "api/DashboardApi")');
           BindTable(response);
         });
 
@@ -39,8 +44,10 @@
                 destroy: true,
                 "dataSrc": " ",
                 "searching": false,
+                "paging": false,
+                "info": false,
                 "columns": [
-                    { "data": "EffectiveDate" },
+                    { "data": "EffectiveDate", className:"dt-center" },
                     { "data": "NoticeType"},
                     { "data": "NoticeText"}
                 ]

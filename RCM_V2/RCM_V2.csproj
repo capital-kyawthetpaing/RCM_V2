@@ -726,6 +726,10 @@
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Notice_BL\Notice_BL.csproj">
+      <Project>{37af95eb-73b2-4345-bb74-df10d898ee41}</Project>
+      <Name>Notice_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OptionTemplate_BL\OptionTemplate_BL.csproj">
       <Project>{ed425a7d-6c21-4dc1-ae1b-3b4fde4a9bec}</Project>
       <Name>OptionTemplate_BL</Name>
