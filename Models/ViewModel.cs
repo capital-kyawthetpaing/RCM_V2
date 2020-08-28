@@ -2,6 +2,7 @@
 {
     public class ViewModel : BaseModel
     {
+        public string UserID { get; set; }
         public string ViewID { get; set; }
         public string ViewName { get; set; }
         public string ViewGroupID { get; set; }

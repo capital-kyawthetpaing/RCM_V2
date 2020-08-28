@@ -2,6 +2,8 @@
 using Models;
 using System.Data;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
+
 namespace User_BL
 {
     public class UserBL
@@ -36,7 +38,8 @@ namespace User_BL
         }
         public string User_Save(UserModel Umodel)
         {
-            BaseDL bdl = new BaseDL();          
+            BaseDL bdl = new BaseDL();
+            Umodel.ViewJson = JsonConvert.SerializeObject(Umodel.UserView);
             Umodel.Sqlprms = new SqlParameter[8];
             Umodel.Sqlprms[0] = new SqlParameter("@UserID", SqlDbType.VarChar) { Value = Umodel.UserID };
             Umodel.Sqlprms[1] = new SqlParameter("@Password", SqlDbType.VarChar) { Value = Umodel.Password };

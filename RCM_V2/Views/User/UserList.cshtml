@@ -76,25 +76,25 @@
                 "bLengthChange": false,
                 "bInfo": false,
                 "bSort": false,
-                destroy: true,               
+                destroy: true,
                 "dataSrc": " ",
                 "columns": [
-                    { "data": "UserID", "className":"dt-center" },
-                    { "data": "UserName"},
-                    { "data": "UserID"},
-                    { "data": "Status",className:"dt-center"},
-                    { "data": "UpdatedDate",className:"dt-center"}
+                    { "data": "UserID", "className": "dt-center" },
+                    { "data": "UserName" },
+                    { "data": "UserID" },
+                    { "data": "Status", className: "dt-center" },
+                    { "data": "UpdatedDate", className: "dt-center" }
                 ],
                 "columnDefs": [{
                     "targets": 0,
                     "data": "UserID",
-                    "render": function (data) { 
-                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\''+data+'\',\'Edit\')" value="編集">';
+                    "render": function (data) {
+                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\'' + data + '\',\'Edit\')" value="編集">';
                     }
                 }
                 ]
             });
-        }
+        }        
 
         //call user Edit 
         function UserEdit(data, mode) {

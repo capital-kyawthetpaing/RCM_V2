@@ -26,7 +26,7 @@ namespace RCM_V2.Controllers
         public IHttpActionResult User_Save([FromBody]UserModel Umodel)
         {
             UserBL Ubl = new UserBL();
-            Umodel.ViewJson = JsonConvert.SerializeObject(Umodel.UserView);
+           // Umodel.ViewJson = JsonConvert.SerializeObject(Umodel.UserView);
             return Ok(Ubl.User_Save(Umodel));
         }
 
