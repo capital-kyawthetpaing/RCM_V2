@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox iconSet iconEdit">
@@ -33,7 +34,7 @@
                     </table>
                 </div>
             </div><!-- /#PopContents -->
-          
+
         </div><!-- /.setListBox iconSet iconEdit -->
     </div><!-- /#ComBlock -->
 </div><!-- /#CmnContents -->
@@ -45,7 +46,9 @@
            var obj = {AutoID: ""};
 
            var response = CalltoApiController('@Url.Action("OptionTemplate_Select", "api/ShopApi")', obj);
-           BindTable(response);
+            BindTable(response);
+
+            $('#OptionTemplateList th').removeClass('td-topalign');
         });
 
         function BindTable(response) {
@@ -57,11 +60,11 @@
                 "columns": [
                     { "data": "AutoID"},
                     { "data": "GroupName" },
-                    { "data": "", className:"td-top" },
-                    { "data": "", className: "td-top"},
-                    { "data": "", className: "td-top"},
-                    { "data": "", className: "td-top" },
-                    { "data": "", className: "td-top"}
+                    { "data": "","className": "td-topalign"},
+                    { "data": "", "className": "td-topalign"},
+                    { "data": "", "className": "td-topalign"},
+                    { "data": "", "className": "td-topalign"},
+                    { "data": "", "className": "td-topalign"}
                 ],
                 "columnDefs": [
                     {
@@ -75,7 +78,7 @@
                         "targets": 2,
                         "data": "",
                         "render": function (data, type, row) {
-                            if (row.Option1 != null && row.Value1 != null)
+                            if (!(row.Option1 == null || row.Option1 == "") && !(row.Value1 == null | row.Value1 == ""))
                                 return '<span style="font-weight:bold;color:#007bff">' + row.Option1 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"> <span>' + row.Value1 + '</span>';
                             else
                                 return '';
@@ -85,7 +88,7 @@
                         "targets": 3,
                         "data": "",
                         "render": function (data, type, row) {
-                            if (row.Option2 != null && row.Value2 != null)
+                            if (!(row.Option2 == null || row.Option2 == "") && !(row.Value2 == null | row.Value2 == ""))
                                 return '<span style="font-weight:bold;color:#007bff">' + row.Option2 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value2 + '</span>';
                             else
                                 return '';
@@ -94,8 +97,8 @@
                     {
                         "targets": 4,
                         "data": "",
-                        "render": function (data, type, row) {
-                            if (row.Option3 != null && row.Value3 != null)
+                        "render": function (data, type, row) {                            
+                            if (!(row.Option3 == null || row.Option3 == "") && !(row.Value3 == null | row.Value3 == ""))
                                 return '<span style="font-weight:bold;color:#007bff">' + row.Option3 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value3 + '</span>';
                             else
                                 return '';
@@ -105,7 +108,7 @@
                         "targets": 5,
                         "data": "",
                         "render": function (data, type, row) {
-                            if (row.Option4 != null && row.Value4 != null)
+                            if (!(row.Option4 == null || row.Option4 == "") && !(row.Value4 == null | row.Value4 == ""))
                                 return '<span style="font-weight:bold;color:#007bff">' + row.Option4 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value4 + '</span>';
                             else
                                 return '';
@@ -115,7 +118,7 @@
                         "targets": 6,
                         "data": "",
                         "render": function (data, type, row) {
-                            if (row.Option5 != null && row.Value5 != null)
+                            if (!(row.Option5 == null || row.Option5 == "") && !(row.Value5 == null | row.Value5 == ""))
                                 return '<span style="font-weight:bold;color:#007bff">' + row.Option5 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span">' + row.Value5 + '</span>';
                             else
                                 return '';
@@ -126,8 +129,8 @@
         }
 
        function ShopEdit(data, mode) {
-           window.location.href = '@Url.Action("OptionTemplateEntry", "Shop")?AutoID=' + data + "&Mode=" + mode;  
+           window.location.href = '@Url.Action("OptionTemplateEntry", "Shop")?AutoID=' + data + "&Mode=" + mode;
         }
     </script>
-    
+
 }
