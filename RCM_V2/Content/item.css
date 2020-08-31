@@ -645,7 +645,10 @@ div#scrollArea dl.itemOption dd {
     div#scrollArea dl.itemOption dd p:nth-of-type(2n) input {
         width: 352px;
     }
-
+    .optionBtn input[type=button] {
+        display: inline-block;
+        width: 100px;
+    }
 /* campaign ------------------------------------  */
 div#scrollArea dl.itemCampaign dt {
     padding: 6px 5px 5px 5px;
