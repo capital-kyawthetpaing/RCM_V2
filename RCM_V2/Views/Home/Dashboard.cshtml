@@ -4,12 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="CmnContents">
-    <div id="ComBlock">
-        <div class="setListBox inlineSet iconSet iconUser">
-            <div id="PopContents" class="OptionBlock2 pop2_Option inlineSet">
-                <div class="iconList h2">
-                    <h1>オプションリスト</h1>
+<div id="CmnWrapper">
+
+    <div id="CmnContents">
+        <div id="ComBlock">
+            <div class="setListBox inlineSet iconSet iconUser">
+                <div>
+                    <h1>お知らせ</h1>
                 </div>
                 <div class="userCmnSet resetValue editBox">
                     <table class="listTable" id="NoticeList">
@@ -23,11 +24,10 @@
                         <tbody></tbody>
                     </table>
                 </div>
-            </div><!-- /#PopContents -->
-
-        </div><!-- /.setListBox iconSet iconEdit -->
-    </div><!-- /#ComBlock -->
-</div><!-- /#CmnContents -->
+            </div><!--setListBox-->
+        </div><!--ComBlock-->
+    </div><!--CmnContents-->
+</div>
 
 @section Scripts
 {
