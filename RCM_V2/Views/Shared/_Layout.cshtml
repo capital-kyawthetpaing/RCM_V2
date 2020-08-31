@@ -9,7 +9,7 @@
     @Scripts.Render(Url.Content("~/bundles/bootstrap"))
     @Styles.Render(Url.Content("~/Content/css"))
 
-    @{ 
+    @{
         if (System.Diagnostics.Debugger.IsAttached)
         {
             Session["UserInfo"] = "admin" + '_' + "Admin";

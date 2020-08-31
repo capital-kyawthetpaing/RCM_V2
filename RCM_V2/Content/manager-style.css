@@ -183,7 +183,7 @@ div.setDetailBox table.editTable {
 }
 
 div.setDetailBox table.editTable th {
-	width: 160px;
+	width: 180px;
 	text-align: left;
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
@@ -209,6 +209,12 @@ div.setDetailBox table.editTable td dd label {
 div.setDetailBox input[type="text"] {
 	width: 55%;
 }
+
+div.setDetailBox textarea{
+	width: 55%;
+	height:60px;
+}
+
 
 div.setDetailBox table.editTable th span {
 	color: #ff0000;
