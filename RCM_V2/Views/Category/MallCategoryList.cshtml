@@ -16,7 +16,7 @@
             <h1 id="Label4" class="d-none">WowmaディレクトリID一覧</h1>
 
             <!-- CategoryID search -->
-            <div class="CateIdSar resetValue searchBox">
+            <div class="resetValue searchBox">
                 <h2 id="lblRk" class="d-none">楽天ディレクトリID検索</h2>
                 <h2 id="lblYh" class="d-none">ヤフーディレクトリID検索</h2>
                 <h2 id="lblPom" class="d-none">ポンパレモールディレクトリID検索</h2>
@@ -25,11 +25,11 @@
                 <dl>
                     <dt>カテゴリ名 </dt>
                     <dd>
-                        <input type="text" id="txtcname" placeholder="例）テニス シューズ プリンス">
+                        <input type="text" id="txtcname" placeholder="例）テニス シューズ プリンス" tabindex="1">
                     </dd>
                 </dl>
                 <p>
-                    <input type="button" id="btnsearch" value="検索" style="width:130px" />
+                    <input type="button" id="btnsearch" value="検索" style="width:130px" tabindex="2"/>
                 </p>
             </div>
             <!-- /CategoryID search -->
@@ -41,8 +41,8 @@
                     <input type="button" id="btnImport" value="インポートする" />
                 </p>
             </div>
-            <div class="mallCate resetValue editBox">
-                <table class="listTable" id="tblMallCategoryList">
+            <div class="resetValue editBox">
+                <table class="listTable" id="tblMallCategoryList" style="width:100%">
                     <thead>
                         <tr>
                             <th>ディレクトリID</th>
@@ -60,7 +60,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#txtcname").focus();
+            $("#txtcname").select();
 
             //show label for Rakuten if Mall id=1
             if ('@Model.MallID' == "1") {
