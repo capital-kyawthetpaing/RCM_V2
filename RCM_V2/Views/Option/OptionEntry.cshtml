@@ -1,0 +1,154 @@
+﻿@using Models;
+@model Models.OptionModel
+@{
+    ViewBag.Title = "OptionEntry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/item.css"))
+
+<div id="CmnContents">
+    <div id="ComBlock">
+            <div id="edit_Confirm" class="setDetailBox iconSet iconCheck d-none">
+                <h1>オプション登録・編集</h1>
+            </div>
+
+            <div id="register_Confirm" class="setDetailBox iconSet iconCheck d-none">
+                <h1>オプションテンプレート確認</h1>
+            </div>
+            <div class="iconSet iconEdit">
+                <div id="PopContents" class="OptionBlock2 pop2_Option inlineSet">
+                        <div id="divOpt" runat="server" class="OptionBlock">
+                            <h2>オプション登録</h2>
+                            <dl>
+                                <dt>グループ名</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.GroupName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>項目名</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Option1, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+
+                                <dt>選択肢</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Value1, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>項目名</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Option2, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+
+                                <dt>選択肢</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Value2, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>項目名</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Option3, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+
+                                <dt>選択肢</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Value3, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>項目名</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Option4, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+
+                                <dt>選択肢</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Value4, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                            </dl>
+                            <dl>
+                                <dt>項目名</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Option5, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                                <dt>選択肢</dt>
+                                <dd>
+                                    @Html.TextBoxFor(x => x.Value5, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>               
+                <div class="btn">
+                    <div class="optionBtn">
+                        <input type="button" id="btnPrevious" value="戻る" class="d-none" />
+                        <input type="button" id="btnSave" value="確認画面へ" />
+                        <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#GroupName').focus();
+            RequiredCheck($('#GroupName'));
+
+             //to input for save confirm
+          $("#btnSave").click(function()
+          {
+              var res = ErrorCheckOnClick('divOpt');
+              if (res == "0") {
+                  $("#register_Confirm").removeClass('d-none');
+                  $("#btnPrevious").removeClass('d-none');
+                  $("#btnConfirm_Save").val("登録");
+                  $("#btnSave").addClass('d-none');
+                  $("#btnConfirm_Save").removeClass('d-none');
+                  $('.OptionBlock :input').attr('disabled', true);
+              }
+              else
+                  ShowMessage(res);
+         });
+
+         $("#btnPrevious").click(function()
+         {
+            $("#edit").removeClass('d-none');
+            $("#register_Confirm").addClass('d-none');
+            $("#btnSave").removeClass('d-none');
+            $("#btnPrevious").addClass('d-none');
+            $("#btnConfirm_Save").addClass('d-none');
+            $('.OptionBlock :input').removeAttr('disabled', true);             
+         });
+        
+        });
+
+        //save option data
+        function ConfirmSave() {
+            var result = CalltoApiController("/api/OptionApi/Option_Save", {
+                GroupName: $("#GroupName").val(),
+                Option1: $("#Option1").val(),
+                Value1: $("#Value1").val(),
+                Option2: $("#Option2").val(),
+                Value2: $("#Value2").val(),
+                Option3: $("#Option3").val(),
+                Value3: $("#Value3").val(),
+                Option4: $("#Option4").val(),
+                Value4: $("#Value4").val(),
+                Option5: $("#Option5").val(),
+                Value5: $("#Value5").val(),
+            });
+
+                if (result=="true") {
+                    ShowMessage("I101","SaveOK");
+                }
+                else {
+                     $("#UserName").focus();
+                    ShowMessage("E001");
+                }            
+        }
+    </script>
+}
