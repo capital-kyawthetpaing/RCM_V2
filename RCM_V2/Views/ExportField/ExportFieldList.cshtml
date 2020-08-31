@@ -15,7 +15,12 @@
                     <dd><input type="text" id="ExportName" /></dd>
                     <dt>ダウンロード項目</dt>
                     <dd><input type="text" id="ExportValue" /></dd>
-                    <dt>ステータス</dt>
+                    <dt>タイプ</dt>
+                    <dd>
+                        <input type="radio" id="rdoItem" name="type" value="01" checked /><span> 商品情報</span>
+                        <input type="radio" id="rdoDescription" name="type" Value="02" /><span> 説明文</span>
+                    </dd>
+                    <dt class="padleft30">ステータス</dt>
                     <dd>
                         <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
                         <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
@@ -35,12 +40,13 @@
             </div>
 
             <div class="resetValue editBox">
-                <table class="listTable" id="ShopList">
+                <table class="listTable" id="ExportList">
                     <thead>
                         <tr>
                             <th></th>
                             <th>定義名</th>
                             <th>ダウンロード項目</th>
+                            <th>タイプ</th>
                             <th>ステータス</th>
                         </tr>
                     </thead>
@@ -62,53 +68,41 @@
 
         function Search() {
             var obj = {
-                    ShopName: $("#ShopName").val(),
+                    ExportName: $("#ExportName").val(),
+                    ExportValue: $("#ExportValue").val(),
+                    ExportType: $("input[name='type']:checked").val(),
                     Status: $("input[name='status']:checked").val()
                 };
-                var response = CalltoApiController('@Url.Action("Shop_Select", "api/ShopApi")', obj);
+                var response = CalltoApiController('@Url.Action("ExportField_Select", "api/ShopApi")', obj);
                 BindTable(response);
         }
 
-        function BindMall() {
-            var obj = {
-                MallID: "",
-            };
-            var response = CalltoApiController('@Url.Action("Mall_Select", "api/MallApi")', obj);
-            var items = JSON.parse(response);
-
-            $("#ddlMall").empty();
-            $.each(items, function (i, item) {
-                $("#ddlMall").append(
-                    $('<option></option>').val(item.MallID).html(item.MallName));
-            });
-            $("#ddlMall").val('');
-        }
-
         function BindTable(response) {
-            table = $('#ShopList').DataTable({
+            table = $('#ExportList').DataTable({
                 data: JSON.parse(response),
                 destroy: true,
                 "dataSrc": " ",
                 "searching":false,
                 "columns": [
-                    { "data": "ShopID", "width": "30%", "className":"dt-center" },
-                    { "data": "ShopName","width":"40%"},
-                    { "data": "MallName","width":"20%"},
-                    { "data": "Status", "width": "20%", "className":"dt-center"},
+                    { "data": "AutoID", "className":"dt-center" },
+                    { "data": "ExportName"},
+                    { "data": "ExportValue" },
+                    { "data": "Type", "className": "dt-center" },
+                    { "data": "Status", "className":"dt-center"},
                 ],
                 "columnDefs": [
                     {
                     "targets": 0,
-                    "data": "ShopID",
+                    "data": "AutoID",
                     "render": function (data) {
-                        return '<input type="button"  onclick="ShopEdit(\'' + data +'\',\'Edit\')" style="width:70px;margin-right:5px" value="編集"><input type="button" style="margin-right:5px" value="デフォルト値設定"><input type="button" value="固定値設定">'
+                        return '<input type="button"  onclick="ExportFieldEdit(\'' + data +'\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">'
                         }
                     },
                 ]
             });
         }
 
-        function ShopEdit(data, mode) {
+        function ExportFieldEdit(data, mode) {
            window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
         }
 

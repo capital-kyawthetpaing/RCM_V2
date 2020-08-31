@@ -67,7 +67,7 @@
                     TemplateName: $("#TemplateName").val(),
                     Status: $("input[name='status']:checked").val()
                 };
-                var response = CalltoApiController('@Url.Action("ShopTemplate_Select", "api/ShopApi")', obj);
+                var response = CalltoApiController('@Url.Action("ShopTemplate_List", "api/ShopApi")', obj);
                 BindTable(response);
         }
 
