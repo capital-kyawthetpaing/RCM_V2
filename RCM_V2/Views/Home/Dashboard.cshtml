@@ -4,10 +4,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="CmnContents">
-    <div id="ComBlock">
-        <div class="setListBox inlineSet iconSet iconUser">
-            <h1>お知らせ</h1>
-        </div>
-    </div>
+<div id="CmnWrapper">
+
+    <div id="CmnContents">
+        <div id="ComBlock">
+            <div class="setListBox inlineSet iconSet iconUser">
+                <div>
+                    <h1>お知らせ</h1>
+                </div>
+                <div class="userCmnSet resetValue editBox">
+                    <table class="listTable" id="NoticeList">
+                        <thead>
+                            <tr>
+                                <th>日時</th>
+                                <th>Notice Type</th>
+                                <th>Notice Text</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div><!--setListBox-->
+        </div><!--ComBlock-->
+    </div><!--CmnContents-->
 </div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+          var response = CalltoApiController('@Url.Action("Notice_Select", "api/DashboardApi")');
+          BindTable(response);
+        });
+
+        function BindTable(response) {
+            table = $('#NoticeList').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "paging": false,
+                "info": false,
+                "columns": [
+                    { "data": "EffectiveDate", className:"dt-center" },
+                    { "data": "NoticeType"},
+                    { "data": "NoticeText"}
+                ]
+            });
+        }
+    </script>
+}

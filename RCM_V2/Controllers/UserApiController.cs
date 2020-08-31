@@ -4,6 +4,7 @@ using User_BL;
 using Models;
 using System.Data;
 using View_BL;
+using Newtonsoft.Json;
 
 namespace RCM_V2.Controllers
 {
@@ -25,6 +26,7 @@ namespace RCM_V2.Controllers
         public IHttpActionResult User_Save([FromBody]UserModel Umodel)
         {
             UserBL Ubl = new UserBL();
+           // Umodel.ViewJson = JsonConvert.SerializeObject(Umodel.UserView);
             return Ok(Ubl.User_Save(Umodel));
         }
 

@@ -1,5 +1,4 @@
-﻿@using Models;
-@model Models.UserModel
+﻿@model Models.UserModel
 @{
     ViewBag.Title = "UserEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -52,7 +51,7 @@
                         <td>
                             <div>
                                 <table cellspacing="0" id="tblUserEntry" style="border-collapse:collapse;">
-                                    <tbody>                                       
+                                    <tbody>
                                     </tbody>
                                 </table>
                             </div>
@@ -61,32 +60,41 @@
                 </tbody>
             </table>
         </div>
+        <div class="btn">
+            <div class="userRole">
+                <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
+                <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
+                <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
+                <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
+            </div>
+        </div>
     </div>
 </div>
+
 
 @section Scripts
 {
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $('#UserName').focus();
+            $('#UserName').select();
 
         if ('@Model.Mode' == "New")
-        {     
+        {
             //check required field
             RequiredCheck($("#UserName"));
             RequiredCheck($("#UserID"));
             RequiredCheck($("#Password"));
 
-           //check user exists or not 
+           //check user exists or not
             AlreadyExistsCheck('@Url.Action("User_ExistCheck", "api/UserApi")', $("#UserID"),'','');
 
             $("#head").text('ユーザ登録');
             $("#regi").removeClass('d-none');
         }
         else if('@Model.Mode'=="Edit")
-        {            
-            RequiredCheck($("#UserName"));           
+        {
+            RequiredCheck($("#UserName"));
             RequiredCheck($("#Password"));
 
             $("#UserID").prop('readonly', true);
@@ -113,7 +121,7 @@
                       $("#reg_Confirm").removeClass('d-none');
                   }
                   else {
-                      $("#btnConfirm_Save").val("反映");
+                      $("#btnConfirm_Save").val("確認");
                       $("#edi").removeClass('d-none');
                   }
                   $("#regi").addClass('d-none');
@@ -122,9 +130,10 @@
                   $("#btnConfirm_Save").removeClass('d-none');
                   $("#btnback").addClass('d-none');
                   $('.userCmnSet :input').attr('disabled', true);
+                  $("#btnConfirm_Save").focus();
               }
               else {
-                  ShowMessage(res);                  
+                  ShowMessage(res);
               }
          });
 
@@ -139,7 +148,7 @@
             $("#btnConfirm_Save").addClass('d-none');
              $('.userCmnSet :input').removeAttr('disabled', true);
              if ('@Model.Mode' == "Edit") {
-                 $("#UserID").prop('disabled', true);                 
+                 $("#UserID").prop('disabled', true);
              }
          });
 
@@ -153,15 +162,30 @@
 
         //save user data
         function ConfirmSave() {
+            var userModel = {
+                UserID: $("#UserID").val(),
+                UserName: $("#UserName").val(),
+                Password: $("#Password").val(),
+                Status: $("input[name='rbdStatus']:checked").val(),
+                Mode: '@Model.Mode',
+                CreatedBy: $("#lblUser").text(),
+                UpdatedBy: $("#lblUser").text(),
+                UserView: []
+            };
 
-             var result = CalltoApiController("/api/UserApi/User_Save", { UserID: $("#UserID").val(), UserName: $("#UserName").val(), Password: $("#Password").val(), Status: $("input[name='rbdStatus']:checked").val(), Mode: '@Model.Mode', CreatedBy: $("#lblUser").text(), UpdatedBy: $("#lblUser").text() });
-                if (result=="true") {
-                    ShowMessage("I101","SaveOK");
-                }
-                else {
-                     $("#UserName").focus();
-                    ShowMessage("E001");
-                }
+            $.each($("#tblUserEntry input[type=checkbox]:checked"), function () {
+                if($(this).attr("name") != '')
+                    userModel.UserView.push($(this).attr("id"));
+            });
+
+            var result = CalltoApiController("/api/UserApi/User_Save",userModel);
+            if (result=="true") {
+                ShowMessage("I101","SaveOK");
+            }
+            else {
+                 $("#UserName").focus();
+                ShowMessage("E001");
+            }
         }
 
         function SaveOK() {
@@ -170,23 +194,73 @@
 
         function BindView() {
             var obj = {
+                UserID:'@Model.UserID',
                 ViewID: "",
             };
             var response = CalltoApiController('@Url.Action("View_Select", "api/UserApi")', obj);
             var items = JSON.parse(response);
-            var ViewGroupID = '0'; 
+            var ViewGroupID = '0';
             var row = '';
+            
             $.each(items, function (i, item) {
-                //if different group, add group title
-                if (item.ViewGroupID != ViewGroupID) {
-                    row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';
-                    $("#tblUserEntry tbody").append(row);
+               
+                if ('@Model.Mode' == "New") {
+
+                    //if different group, add group title
+                    if (item.ViewGroupID != ViewGroupID) {
+                        row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';
+                        $("#tblUserEntry tbody").append(row);
+                    }
+                    row = '<tr><td><input id="' + item.ViewID + '" name="' + item.ViewGroupID + '" class="userRoleChild" type="checkbox"  onChange="CheckView(this);"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
                 }
-                row = '<tr><td><input id="' + item.ViewID + '" name="'+item.ViewGroupID+'" class="userRoleChild" type="checkbox"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
-                
+                else {
+                    
+                    //if different group, add group title
+                    if (item.ViewGroupID != ViewGroupID) {
+                        const groupCount = items.filter((obj) => obj.ViewGroupID === item.ViewGroupID).length;
+                        const statusCount = items.filter((obj) => obj.CheckStatus == "1" && obj.ViewGroupID === item.ViewGroupID).length;
+                        var gcheck = "";
+                        // group checkbod check or not
+                        if (groupCount == statusCount)
+                            gcheck = "checked";
+
+                        //if (groupCount)
+                        row = '<tr><td class="userRoleHeader"><input id="' + item.ViewGroupID + '" class="userRole" type="checkbox" ' + gcheck +' onChange="CheckView(this);"><label for="' + item.ViewGroupID + '">' + item.ViewGroupName + '</label></td></tr>';                       
+                        $("#tblUserEntry tbody").append(row);
+                    }
+
+                    //check child status checked or not
+                    var childcheck = "";
+                    if (item.CheckStatus == "1") {
+                        childcheck = "checked";
+                    }
+                    row = '<tr><td><input id="' + item.ViewID + '" name="' + item.ViewGroupID + '" class="userRoleChild" type="checkbox" ' + childcheck +' onChange="CheckView(this);"/><label for="' + item.ViewID + '">' + item.ViewName + '</label></td></tr>';
+                    
+                }
+
                 $("#tblUserEntry tbody").append(row);
                 ViewGroupID = item.ViewGroupID;
-            });                
+            });
+        }
+
+        function CheckView(ele) {
+            var clsName = $(ele).attr('class');           
+           
+            //check or not child based on parent checkbox
+            if (clsName == "userRole") {
+                var id = $(ele).attr('id');
+                $('input[name="' + id + '"]').prop('checked', ele.checked);
+            }
+            //check or not parent based on child
+            else {
+                var name = $(ele).attr('name');
+                var chkCount = $("input[name='" + name + "']:checked").length;
+                var total = $("input[name='" + name + "']").length;               
+                if (chkCount == total)
+                    $("#" + name).prop('checked', true);
+                else
+                    $("#" + name).prop('checked', false);
+            }
         }
     </script>
 }

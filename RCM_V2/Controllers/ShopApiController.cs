@@ -7,6 +7,9 @@ using System.Web.Http;
 using Shop_BL;
 using Models;
 using ShopTemplate_BL;
+using OptionTemplate_BL;
+using ExportField_BL;
+
 
 namespace RCM_V2.Controllers
 {
@@ -57,7 +60,56 @@ namespace RCM_V2.Controllers
             return Ok(shopTemplateBL.ShopTemplate_Select(shopTemplateModel));
         }
 
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopTemplate_List")]
+        public IHttpActionResult ShopTemplate_List([FromBody] ShopTemplateModel shopTemplateModel)
+        {
+            ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
+            return Ok(shopTemplateBL.ShopTemplate_List(shopTemplateModel));
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopTemplate_Save")]
+        public IHttpActionResult ShopTemplate_Save([FromBody] ShopTemplateModel shopTemplateModel)
+        {
+            ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
+            return Ok(shopTemplateBL.ShopTemplate_Save(shopTemplateModel));
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopTemplate_ExistCheck")]
+        public IHttpActionResult ShopTemplate_ExistCheck([FromBody] ShopTemplateModel shopTemplateModel)
+        {
+            ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
+            shopTemplateModel.TemplateID = shopTemplateModel.Val1;
+            return Ok(shopTemplateBL.ShopTemplate_ExistCheck(shopTemplateModel));
+        }
         #endregion
 
+        #region Option Template
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("OptionTemplate_Select")]
+        public IHttpActionResult OptionTemplate_Select(OptionTemplateModel optionTemplateModel)
+        {
+            OptionTemplateBL bl = new OptionTemplateBL();
+            return Ok(bl.OptionTemplate_Select(optionTemplateModel));
+        }
+        #endregion
+
+        #region ExportField
+
+        [UserAuthentication]
+        [HttpPost]
+        public IHttpActionResult ExportField_Select([FromBody] ExportFieldsModel exportFieldsModel)
+        {
+            ExportFieldBL exportFieldBL = new ExportFieldBL();
+            return Ok(exportFieldBL.ExportField_Select(exportFieldsModel));
+        }
+
+        #endregion
     }
 }

@@ -1,5 +1,10 @@
 ﻿@charset "utf-8";
 /*-- styleSet --------------------------------------------*/
+.btn{
+	height:50px;
+	border-radius:0;
+}
+
 .pad5 {
 	padding: 5px !important;
 }
@@ -434,6 +439,19 @@ nav ul#userBlock li:last-of-type {
 	margin-left:128px;
 	margin-top: 20px;
 }
+
+.btn.userRole input[type=button] {
+    display: inline-block!important;
+    width: 100px;
+}
+
+/*top align table cell*/
+.td-top {
+    vertical-align: top;
+}
+
+
+
 
 
 

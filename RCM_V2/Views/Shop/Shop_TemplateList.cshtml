@@ -67,7 +67,7 @@
                     TemplateName: $("#TemplateName").val(),
                     Status: $("input[name='status']:checked").val()
                 };
-                var response = CalltoApiController('@Url.Action("ShopTemplate_Select", "api/ShopApi")', obj);
+                var response = CalltoApiController('@Url.Action("ShopTemplate_List", "api/ShopApi")', obj);
                 BindTable(response);
         }
 
@@ -96,7 +96,7 @@
         }
 
         function ShopTemplateEdit(data,mode) {
-            window.location.href = '@Url.Action("Shop_TemplateEntry", "Shop")?id=' + data + "&mode=" + mode; 
+            window.location.href = '@Url.Action("Shop_TemplateEntry", "Shop")?TemplateID=' + data + "&Mode=" + mode; 
         }
 
     </script>

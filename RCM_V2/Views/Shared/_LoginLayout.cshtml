@@ -3,10 +3,10 @@
     Layout = null;
 }
 <!DOCTYPE html>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
-@Styles.Render("~/Content/css")
-@Styles.Render("~/Content/userlogin.css")
+@Scripts.Render(Url.Content("~/bundles/jquery"))
+@Scripts.Render(Url.Content("~/bundles/bootstrap"))
+@Styles.Render(Url.Content("~/Content/css"))
+@Styles.Render(Url.Content("~/Content/userlogin.css"))
 @RenderSection("scripts", required: false)
 <html>
 <head>

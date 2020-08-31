@@ -101,7 +101,8 @@ function ErrChk(ctrl) {
             Val1: val1,
             Val2: val2,
             Val3: val3
-        };        
+        }; 
+        
         var response = CalltoApiController(ApiURL, model);
         var data = JSON.parse(response);
         if (data[0].MessageID == 'E101')
