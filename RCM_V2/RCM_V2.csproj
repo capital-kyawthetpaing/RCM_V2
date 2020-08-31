@@ -17,12 +17,11 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -156,6 +155,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
+    <Compile Include="Controllers\OptionApiController.cs" />
+    <Compile Include="Controllers\OptionController.cs" />
     <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
@@ -704,7 +705,6 @@
     <Content Include="Views\ExportField\ExportFieldEntry.cshtml" />
     <Content Include="Views\ExportField\ExportFieldList.cshtml" />
     <Content Include="Views\Shop\OptionTemplateList.cshtml" />
-    <Content Include="Views\Category\MallCategoryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -745,6 +745,10 @@
     <ProjectReference Include="..\OptionTemplate_BL\OptionTemplate_BL.csproj">
       <Project>{ed425a7d-6c21-4dc1-ae1b-3b4fde4a9bec}</Project>
       <Name>OptionTemplate_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Option_BL\Option_BL.csproj">
+      <Project>{65B8D6B3-17E8-4B94-8CA0-595328AFCB9E}</Project>
+      <Name>Option_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
       <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>

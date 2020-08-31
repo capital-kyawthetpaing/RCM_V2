@@ -22,6 +22,13 @@
             <table class="userCmnSet editTable">
                 <tbody>
                     <tr>
+                        <th>ユーザステータス</th>
+                        <td>
+                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><label for="rdostatus">有効</label>
+                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" /><label for="rdostatus1">無効</label>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>ユーザ名&nbsp;<span>※必須</span></th>
                         <td>
                             @Html.TextBoxFor(x => x.UserName, new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
@@ -37,13 +44,6 @@
                         <th>パスワード&nbsp;<span>※必須</span></th>
                         <td>
                             @Html.TextBoxFor(x => x.Password, new { @type = "password", @autocomplete = "off", @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>ユーザステータス</th>
-                        <td>
-                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><label for="rdostatus">有効</label>
-                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" /><label for="rdostatus1">無効</label>
                         </td>
                     </tr>
                     <tr>

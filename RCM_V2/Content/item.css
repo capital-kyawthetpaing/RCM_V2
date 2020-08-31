@@ -640,7 +640,10 @@ div#scrollArea dl.itemOption dd {
     div#scrollArea dl.itemOption dd p:nth-of-type(2n) input {
         width: 352px;
     }
-
+    .optionBtn input[type=button] {
+        display: inline-block;
+        width: 100px;
+    }
 /* campaign ------------------------------------  */
 div#scrollArea dl.itemCampaign dt {
     padding: 6px 5px 5px 5px;
@@ -1785,7 +1788,7 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
 --------------------------------------------------------------------------------------*/
 .exportBox.entryBox {
     letter-spacing: 0.1em;
-    width: 950px;
+    /*width: 40%;ktp*/
     margin: 0px auto;
     text-align: left;
 }
@@ -1794,7 +1797,7 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
         width: 120px;
     }
 
-    .exportBox.entryBox tr:nth-of-type(2) th {
+    .exportBox.entryBox tr:nth-of-type(3) th {
         vertical-align: top;
     }
 
@@ -1815,7 +1818,8 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
 
     /*追加 15.03.24*/
     .exportBox.entryBox table {
-        width: 98%;
+        /*width: 98%;ktp*/
+        width: 75%;
         margin: 0px auto;
     }
 

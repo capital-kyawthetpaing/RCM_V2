@@ -27,8 +27,10 @@ namespace RCM_V2.Controllers
         {
             if (userModel.Mode == null)
             {
-                userModel = new UserModel();
-                userModel.Mode = "New";
+                userModel = new UserModel
+                {
+                    Mode = "New"
+                };
             }
 
             UserBL bl = new UserBL();

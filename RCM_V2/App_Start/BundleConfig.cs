@@ -39,7 +39,7 @@ namespace RCM_V2
                        "~/Content/base.css",
                       "~/Content/common.css",
                       "~/Content/common1.css",
-                       "~/Content/manager-style.css"                       
+                       "~/Content/manager-style.css"
                        ));
         }
     }
