@@ -49,6 +49,7 @@
     <Compile Include="ExportFieldsModel.cs" />
     <Compile Include="MallModel.cs" />
     <Compile Include="MessageModel.cs" />
+    <Compile Include="OptionModel.cs" />
     <Compile Include="OptionTemplateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopModel.cs" />
