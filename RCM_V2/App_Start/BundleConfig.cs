@@ -28,7 +28,8 @@ namespace RCM_V2
                       "~/Scripts/bootstrap-datetimepicker.min.js",                       
                       "~/Scripts/Common.js",
                       "~/Scripts/SweetAlert2.js",
-                      "~/Scripts/cleave.min.js"
+                      "~/Scripts/cleave.min.js",
+                      "~/Scripts/iziModal.min.js"
                       ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
@@ -39,7 +40,8 @@ namespace RCM_V2
                        "~/Content/base.css",
                       "~/Content/common.css",
                       "~/Content/common1.css",
-                       "~/Content/manager-style.css"
+                       "~/Content/manager-style.css",
+                       "~/Content/iziModal.min.css"
                        ));
         }
     }
