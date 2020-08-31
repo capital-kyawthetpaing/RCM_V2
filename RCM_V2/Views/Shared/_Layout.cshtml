@@ -3,16 +3,15 @@
 <head id="Head1">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logo1.jpg">
+    <link rel="icon" href=@Url.Content("~/images/logo.jpg") />
     <title>商品管理システム＜データベース一覧＞</title>
-    @Scripts.Render(Url.Content("~/bundles/jquery"))
-    @Scripts.Render(Url.Content("~/bundles/bootstrap"))
-    @Styles.Render(Url.Content("~/Content/css"))
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
 
     @{ 
         if (System.Diagnostics.Debugger.IsAttached)
         {
-
             Session["UserInfo"] = "admin" + '_' + "Admin";
         }
 
@@ -100,9 +99,8 @@
                             <ul id="menu03-sub" class="subMenu">
                                 <li><a href="@Url.Action("ShopList","Shop")">ショップ一覧</a></li>
                                 <li><a href="@Url.Action("Shop_TemplateList","Shop")">スマート<br>テンプレート一覧</a></li>
-                                <li><a href="@Url.Action("OptionTemplateList","Shop")">オプション<br>テンプレート編集</a></li>
-                                <li><a href="@Url.Content("#")">商品情報<br>エクスポート定義</a></li>
-                                <li><a href="@Url.Content("#")">説明文<br>エクスポート定義</a></li>
+                                <li><a href="@Url.Content("#")">オプション<br>テンプレート編集</a></li>
+                                <li><a href="@Url.Action("ExportFieldList","ExportField")">エクスポート定義</a></li>
                                 <li><a href="@Url.Content("#")">コアラ商品エクスポート</a></li>
                                 <li><a href="@Url.Content("#")">商品名優先順設定</a></li>
                                 <li><a href="@Url.Content("#")">サイズマッピング</a></li>

@@ -17,21 +17,20 @@
                             <tr>
                                 <th>ステータス</th>
                                 <td>
-                                    <input type="radio" id="RadioButton2" name="status" value="0" checked/><span> 無効</span>
-                                    <input type="radio" id="RadioButton1" name="status" value="1"  /><span> 有効</span>
-
+                                    <input type="radio" id="RadioButton1" onkeydown = "KeyDown(event,this)" tabindex="1" name="status" value="1" checked /><span> 有効</span>
+                                    <input type="radio" id="RadioButton2" onkeydown = "KeyDown(event,this)" tabindex="1" name="status" value="0" /><span> 無効</span>
                                 </td>
                             </tr>
                             <tr>
                                 <th>テンプレートID</th>
                                 <td valign="top">
-                                    @Html.TextBoxFor(m => m.TemplateID, new { @maxlength = 50,@tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                                    @Html.TextBoxFor(m => m.TemplateID, new { @maxlength = 50,@tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                                 </td>
                             </tr>
                             <tr>
                                 <th>テンプレート名</th>
                                 <td>
-                                    @Html.TextBoxFor(m => m.TemplateName, new { @maxlength = 50 , @tabIndex = 2})
+                                    @Html.TextBoxFor(m => m.TemplateName, new { @maxlength = 50 , @tabIndex = 3})
                                 </td>
                             </tr>
                             <tr>
@@ -42,7 +41,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.R_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 3})
+                                    @Html.TextAreaFor(m => m.R_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 4})
                                 </td>
                             </tr>
                             <tr>
@@ -53,7 +52,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.R_sportsplaza, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 4})
+                                    @Html.TextAreaFor(m => m.R_sportsplaza, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 5})
                                 </td>
                             </tr>
                             <tr>
@@ -64,7 +63,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.R_luckpiece, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 5 })
+                                    @Html.TextAreaFor(m => m.R_luckpiece, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 6 })
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +74,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.R_honpo, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 6})
+                                    @Html.TextAreaFor(m => m.R_honpo, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 7})
                                 </td>
                             </tr>
                             <tr>
@@ -86,7 +85,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.Y_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 7})
+                                    @Html.TextAreaFor(m => m.Y_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 8})
                                 </td>
                             </tr>
                             <tr>
@@ -97,7 +96,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.Y_sportsplaza, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex =8 })
+                                    @Html.TextAreaFor(m => m.Y_sportsplaza, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex =9 })
                                 </td>
                             </tr>
                             <tr>
@@ -108,7 +107,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.Y_luckpiece, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex =9})
+                                    @Html.TextAreaFor(m => m.Y_luckpiece, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex =10})
                                 </td>
                             </tr>
                             <tr>
@@ -119,7 +118,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.Y_honpo, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 10 })
+                                    @Html.TextAreaFor(m => m.Y_honpo, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 11 })
                                 </td>
                             </tr>
                             <tr>
@@ -130,7 +129,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.Y_bb_plaza, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 11 })
+                                    @Html.TextAreaFor(m => m.Y_bb_plaza, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 12 })
                                 </td>
                             </tr>
                             <tr>
@@ -141,7 +140,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.P_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 12 })
+                                    @Html.TextAreaFor(m => m.P_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 13 })
                                 </td>
                             </tr>
                             <tr>
@@ -152,7 +151,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.A_rasta, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 13 })
+                                    @Html.TextAreaFor(m => m.A_rasta, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 14 })
                                 </td>
                             </tr>
                             <tr>
@@ -163,7 +162,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.W_wowma, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 14 })
+                                    @Html.TextAreaFor(m => m.W_wowma, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 15 })
                                 </td>
                             </tr>
                             <tr>
@@ -174,7 +173,7 @@
                             <tr>
                                 <th class="padleft30">テンプレート</th>
                                 <td valign="middle">
-                                    @Html.TextAreaFor(m => m.J_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex =15 })
+                                    @Html.TextAreaFor(m => m.J_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex =16 })
                                 </td>
                             </tr>
                         </tbody>
@@ -198,7 +197,7 @@
 {
     <script type="text/javascript">
       $(document).ready(function () {
-          $("#TemplateID").focus();
+          $("#RadioButton1").focus();
 
           if ('@Model.Mode' == "New") {
               //change title text

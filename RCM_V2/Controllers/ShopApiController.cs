@@ -8,6 +8,7 @@ using Shop_BL;
 using Models;
 using ShopTemplate_BL;
 using OptionTemplate_BL;
+using ExportField_BL;
 
 
 namespace RCM_V2.Controllers
@@ -61,6 +62,15 @@ namespace RCM_V2.Controllers
 
         [UserAuthentication]
         [HttpPost]
+        [ActionName("ShopTemplate_List")]
+        public IHttpActionResult ShopTemplate_List([FromBody] ShopTemplateModel shopTemplateModel)
+        {
+            ShopTemplateBL shopTemplateBL = new ShopTemplateBL();
+            return Ok(shopTemplateBL.ShopTemplate_List(shopTemplateModel));
+        }
+
+        [UserAuthentication]
+        [HttpPost]
         [ActionName("ShopTemplate_Save")]
         public IHttpActionResult ShopTemplate_Save([FromBody] ShopTemplateModel shopTemplateModel)
         {
@@ -90,5 +100,16 @@ namespace RCM_V2.Controllers
         }
         #endregion
 
+        #region ExportField
+
+        [UserAuthentication]
+        [HttpPost]
+        public IHttpActionResult ExportField_Select([FromBody] ExportFieldsModel exportFieldsModel)
+        {
+            ExportFieldBL exportFieldBL = new ExportFieldBL();
+            return Ok(exportFieldBL.ExportField_Select(exportFieldsModel));
+        }
+
+        #endregion
     }
 }
