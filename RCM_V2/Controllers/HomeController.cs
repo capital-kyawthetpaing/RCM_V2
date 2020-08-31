@@ -34,9 +34,15 @@ namespace RCM_V2.Controllers
 
         public ActionResult CreateSession(string key, string value)
         {
-            Session[key] = value;
-
+            Session[key] = value;            
             return this.Json(new { success = true });
         }
+
+        public ActionResult RemoveSession()
+        {
+            Session.Abandon();
+            return RedirectToAction("UserLogin", "User");
+        }
+
     }
 }
