@@ -39,10 +39,10 @@
                             <div class="operationBtn">
                                 <p>
                                     <input type="button" value="項目を選択する" onclick="UserEdit('','New')" />
-                                    <input type="button" value="" onclick="UserEdit('','New')" />
+                                    <input type="button" value="優先順設定" onclick="UserEdit('','New')" />
                                 </p>
                             </div>
-                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off",@disabled="disabled", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                 </tbody>
