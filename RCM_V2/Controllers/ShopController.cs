@@ -8,49 +8,69 @@ using Models;
 using Newtonsoft.Json;
 using ShopTemplate_BL;
 
+
 namespace RCM_V2.Controllers
 {
     public class ShopController : Controller
     {
+        #region Shop
         // GET: Shop
         public ActionResult ShopList()
         {
             return View();
         }
 
-        public ActionResult ShopEntry(string id, string mode)
+        public ActionResult ShopEntry(ShopModel shopModel)
         {
+            if (shopModel.Mode == null)
+            {
+                shopModel = new ShopModel();
+                shopModel.Mode = "New";
+            }
+
             ShopBL bl = new ShopBL();
-            ShopModel obj = new ShopModel();
-            obj.ShopID = id;
-            obj.Mode = mode;
-            if (mode == "Edit")
-                obj = bl.ShopModel_Select(obj);           
-            return View(obj);
-            
+
+            if (shopModel.Mode.Equals("Edit"))
+                shopModel = bl.ShopModel_Select(shopModel);
+            return View(shopModel);
         }
+
+        #endregion
+
+        #region ShopTemplate
 
         public ActionResult Shop_TemplateList()
         {
             return View();
         }
 
-        public ActionResult Shop_TemplateEntry(string id,string mode)
+        public ActionResult Shop_TemplateEntry(ShopTemplateModel shopTemplateModel)
         {
+            if (shopTemplateModel.Mode == null)
+            {
+                shopTemplateModel = new ShopTemplateModel();
+                shopTemplateModel.Mode = "New";
+            }
+
             ShopTemplateBL bl = new ShopTemplateBL();
-            ShopTemplateModel obj = new ShopTemplateModel();
-            obj.TemplateID = id;
-            obj.Mode = mode;
-            if (mode == "Edit")
-                obj = bl.ShopTemplateModel_Select(obj);
-            return View(obj);
+
+            if (shopTemplateModel.Mode.Equals("Edit"))
+                shopTemplateModel = bl.ShopTemplateModel_Select(shopTemplateModel);
+            return View(shopTemplateModel);
         }
+
+        #endregion
+
+        #region Option
+        public ActionResult OptionTemplateList()
+        {
+            return View();
+        }
+        #endregion
 
         public ActionResult Shop_ItemNamePriority()
         {
             return View();
         }
-
-
     }
 }
