@@ -24,9 +24,16 @@
         <div class="setDetailBox iconSet iconEdit" id="divShop">
             <table class="shopCmnSet editTable">
                 <tr>
+                    <th>ユーザステータス</th>
+                    <td>
+                        @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "rdostatus", @checked = "true", onkeydown = "KeyDown(event,this)" }) <label>有効</label>
+                        @Html.RadioButtonFor(x => x.Status, "0", new { @tabIndex = 1, @id = "rdostatus1"}) <label>無効</label>
+                    </td>
+                </tr>
+                <tr>
                     <th>ショップ名&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.ShopName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.ShopName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                         @Html.HiddenFor(x => x.ShopID)
                         @Html.HiddenFor(x => x.ShopIDPrefix)
                     </td>
@@ -34,64 +41,58 @@
                 <tr>
                     <th>出店モール&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.DropDownListFor(x => x.MallID, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 2, onkeydown = "KeyDown(event,this)", @style = "width:100px;height:30px;" })
+                        @Html.DropDownListFor(x => x.MallID, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 3, onkeydown = "KeyDown(event,this)", @style = "width:100px;height:30px;" })
                     </td>
                 </tr>
                 <tr>
                     <th>ショップID&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.ShopSiteID, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.ShopSiteID, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>FTPホスト&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.FtpHost, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.FtpHost, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>FTP アカウント&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.FtpUserName, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.FtpUserName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>パスワード&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.FtpPassword, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.FtpPassword, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>商品ページURL&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.ItemURL, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.ItemURL, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>画像URL&nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.ImageURL, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.ImageURL, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th>送料無料条件 &nbsp;<span>※必須</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.FreeShippingAmount, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)", onkeypress = "return isNumberKey(event)", onkeyup = "SetThousandSeparator(this.id);", @style="text-align:right;" }) <span>円以上(税抜)</span>
+                        @Html.TextBoxFor(x => x.FreeShippingAmount, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)", onkeypress = "return isNumberKey(event)", onkeyup = "SetThousandSeparator(this.id);", @style = "text-align:right;" }) <span>円以上(税抜)</span>
                     </td>
                 </tr>
-                <tr>
-                    <th>ユーザステータス</th>
-                    <td>
-                        @Html.RadioButtonFor(x => x.Status, "0", new { @tabIndex = 11, @id = "rdostatus1", @checked = "true" }) <span>無効</span>
-                        @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 12, @id = "rdostatus"}) <span>有効</span>
-                    </td>
-                </tr>
+
             </table>
             <div class="btn">
                 <div class="userRole">
                     <input type="button" id="btnback" value="戻る" />
                     <input type="button" id="btnPrevious" value="戻る" class="d-none" />
-                    <input type="button" id="btnSave" value="確認画面へ" tabindex="13"/>
+                    <input type="button" id="btnSave" value="確認画面へ" tabindex="11"/>
                     <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
                 </div>
             </div>
@@ -104,7 +105,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            $('#ShopName').focus();
+            $('#rdostatus').select();
 
             //FreeShippingAmount
             SetThousandSeparator("FreeShippingAmount");
