@@ -23,10 +23,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
             BindColumn();
-        });  
+        });
 
         function BindColumn() {
-
+            var obj = {
+                TableColumnName:'',
+            };
+            var response = CalltoApiController('@Url.Action("ExportColumn_Select", "api/SearchApi")', obj);
         }
     </script>
 }
