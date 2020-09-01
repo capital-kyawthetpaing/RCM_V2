@@ -42,7 +42,7 @@
                 </p>
             </div>
             <div class="resetValue editBox">
-                <table class="listTable" id="tblMallCategoryList" style="width:100%">
+                <table class="listTable" id="tblMallCategoryList" style="table-layout:fixed;width:100%">
                     <thead>
                         <tr>
                             <th>ディレクトリID</th>
@@ -63,17 +63,17 @@
             $("#txtcname").select();
 
             //show label for Rakuten if Mall id=1
-            if ('@Model.MallID' == "1") {
+            if ('@Model.MallID' == "01") {
                 $("#Label1").removeClass('d-none');
                 $("#lblRk").removeClass('d-none');
             }
             //show label for Yahoo if Mall id=2
-            else if ('@Model.MallID' == "2") {
+            else if ('@Model.MallID' == "02") {
                 $("#Label2").removeClass('d-none');
                 $("#lblYh").removeClass('d-none');
             }
             //show label for Pompa if Mall id=3
-            else if ('@Model.MallID' == "3") {
+            else if ('@Model.MallID' == "03") {
                 $("#Label3").removeClass('d-none');
                 $("#lblPom").removeClass('d-none');
             }
