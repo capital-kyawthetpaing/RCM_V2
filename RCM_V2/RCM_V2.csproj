@@ -718,8 +718,6 @@
     <Content Include="Views\Category\MallCategoryList.cshtml" />
     <Content Include="Views\Option\OptionEntry.cshtml" />
     <Content Include="Views\Search\ExportColumnList.cshtml" />
-    <Content Include="Views\Category\MainView.cshtml" />
-    <Content Include="Views\Category\ChildView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
