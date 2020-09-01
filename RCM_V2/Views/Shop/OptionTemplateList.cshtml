@@ -17,7 +17,7 @@
             </div>
 
             <div class="userCmnSet resetValue editBox">
-                <table class="listTable table-responsive" id="OptionTemplateList" style="width:100%;">
+                <table class="listTable" id="OptionTemplateList">
                     <thead>
                         <tr>
                             <th></th>
@@ -55,73 +55,73 @@
                 "dataSrc": " ",
                 "searching": false,
                 "columns": [
-                    { "data": "AutoID"},
-                    { "data": "GroupName" },
-                    { "data": "","className": "td-topalign"},
-                    { "data": "", "className": "td-topalign"},
-                    { "data": "", "className": "td-topalign"},
-                    { "data": "", "className": "td-topalign"},
-                    { "data": "", "className": "td-topalign"}
+                    { "data": "AutoID","width":"10%"},
+                    { "data": "GroupName","width":"15%" },
+                    { "data": "", "className": "td-topalign", "width": "15%"},
+                    { "data": "", "className": "td-topalign", "width": "15%"},
+                    { "data": "", "className": "td-topalign", "width": "15%"},
+                    { "data": "", "className": "td-topalign", "width": "15%"},
+                    { "data": "", "className": "td-topalign", "width": "15%"}
                 ],
-                "columnDefs": [
-                    {
-                        "targets": 0,
-                        "data": "AutoID",
-                        "render": function (data, type, row) {                           
-                            return '<input type="button"  onclick="OptionTemplateEdit(\'' + data + '\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">';
-                        }
-                    },
-                    {
-                        "targets": 2,
-                        "data": "",
-                        "render": function (data, type, row) {
-                            if (!(row.Option1 == null || row.Option1 == "") && !(row.Value1 == null | row.Value1 == ""))
-                                return '<span style="font-weight:bold;color:#007bff">' + row.Option1 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"> <span>' + row.Value1 + '</span>';
-                            else
-                                return '';
-                        }
-                    },
-                    {
-                        "targets": 3,
-                        "data": "",
-                        "render": function (data, type, row) {
-                            if (!(row.Option2 == null || row.Option2 == "") && !(row.Value2 == null | row.Value2 == ""))
-                                return '<span style="font-weight:bold;color:#007bff">' + row.Option2 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value2 + '</span>';
-                            else
-                                return '';
-                        }
-                    },
-                    {
-                        "targets": 4,
-                        "data": "",
-                        "render": function (data, type, row) {
-                            if (!(row.Option3 == null || row.Option3 == "") && !(row.Value3 == null | row.Value3 == ""))
-                                return '<span style="font-weight:bold;color:#007bff">' + row.Option3 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value3 + '</span>';
-                            else
-                                return '';
-                        }
-                    },
-                    {
-                        "targets": 5,
-                        "data": "",
-                        "render": function (data, type, row) {
-                            if (!(row.Option4 == null || row.Option4 == "") && !(row.Value4 == null | row.Value4 == ""))
-                                return '<span style="font-weight:bold;color:#007bff">' + row.Option4 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value4 + '</span>';
-                            else
-                                return '';
-                        }
-                    },
-                    {
-                        "targets": 6,
-                        "data": "",
-                        "render": function (data, type, row) {
-                            if (!(row.Option5 == null || row.Option5 == "") && !(row.Value5 == null | row.Value5 == ""))
-                                return '<span style="font-weight:bold;color:#007bff">' + row.Option5 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span">' + row.Value5 + '</span>';
-                            else
-                                return '';
-                        }
-                    }
-                ]
+                //"columnDefs": [
+                //    {
+                //        "targets": 0,
+                //        "data": "AutoID",
+                //        "render": function (data, type, row) {                           
+                //            return '<input type="button"  onclick="OptionTemplateEdit(\'' + data + '\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">';
+                //        }
+                //    },
+                //    {
+                //        "targets": 2,
+                //        "data": "",
+                //        "render": function (data, type, row) {
+                //            if (!(row.Option1 == null || row.Option1 == "") && !(row.Value1 == null | row.Value1 == ""))
+                //                return '<span style="font-weight:bold;color:#007bff">' + row.Option1 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"> <span>' + row.Value1 + '</span>';
+                //            else
+                //                return '';
+                //        }
+                //    },
+                //    {
+                //        "targets": 3,
+                //        "data": "",
+                //        "render": function (data, type, row) {
+                //            if (!(row.Option2 == null || row.Option2 == "") && !(row.Value2 == null | row.Value2 == ""))
+                //                return '<span style="font-weight:bold;color:#007bff">' + row.Option2 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value2 + '</span>';
+                //            else
+                //                return '';
+                //        }
+                //    },
+                //    {
+                //        "targets": 4,
+                //        "data": "",
+                //        "render": function (data, type, row) {
+                //            if (!(row.Option3 == null || row.Option3 == "") && !(row.Value3 == null | row.Value3 == ""))
+                //                return '<span style="font-weight:bold;color:#007bff">' + row.Option3 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value3 + '</span>';
+                //            else
+                //                return '';
+                //        }
+                //    },
+                //    {
+                //        "targets": 5,
+                //        "data": "",
+                //        "render": function (data, type, row) {
+                //            if (!(row.Option4 == null || row.Option4 == "") && !(row.Value4 == null | row.Value4 == ""))
+                //                return '<span style="font-weight:bold;color:#007bff">' + row.Option4 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span>' + row.Value4 + '</span>';
+                //            else
+                //                return '';
+                //        }
+                //    },
+                //    {
+                //        "targets": 6,
+                //        "data": "",
+                //        "render": function (data, type, row) {
+                //            if (!(row.Option5 == null || row.Option5 == "") && !(row.Value5 == null | row.Value5 == ""))
+                //                return '<span style="font-weight:bold;color:#007bff">' + row.Option5 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span">' + row.Value5 + '</span>';
+                //            else
+                //                return '';
+                //        }
+                //    }
+                //]
             });
         }
 
