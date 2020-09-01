@@ -17,5 +17,16 @@ namespace RCM_V2.Controllers
 
             return View(obj);
         }
+
+
+        public ActionResult MainView()
+        {
+            return View();
+        }
+
+        public ActionResult ChildView()
+        {
+            return View();
+        }
     }
 }
