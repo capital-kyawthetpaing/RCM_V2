@@ -9,16 +9,15 @@
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconEdit">
             <h1>オプションリスト</h1>
-            @*<div class="iconList h2">
-            <h1>オプションリスト</h1>
-        </div>*@
+            
             <div class="operationBtn">
                 <p>
                     <input type="button" value="オプションテンプレートを追加する" onclick="OptionTemplateEdit('','New')" />
                 </p>
             </div>
-            <div class="resetValue editBox">
-                <table class="listTable" id="OptionTemplateList" style="width:100%;">
+
+            <div class="userCmnSet resetValue editBox">
+                <table class="listTable table-responsive" id="OptionTemplateList" style="width:100%;">
                     <thead>
                         <tr>
                             <th></th>
@@ -33,9 +32,9 @@
                     <tbody></tbody>
                 </table>
             </div>
-        </div><!-- /.setListBox iconSet iconEdit -->
-    </div><!-- /#ComBlock -->
-</div><!-- /#CmnContents -->
+        </div>
+    </div>
+</div>
 
 @section Scripts
 {
@@ -68,7 +67,7 @@
                     {
                         "targets": 0,
                         "data": "AutoID",
-                        "render": function (data, type, row) {
+                        "render": function (data, type, row) {                           
                             return '<input type="button"  onclick="OptionTemplateEdit(\'' + data + '\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">';
                         }
                     },
