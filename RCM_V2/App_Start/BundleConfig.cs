@@ -28,21 +28,19 @@ namespace RCM_V2
                       "~/Scripts/bootstrap-datetimepicker.min.js",                       
                       "~/Scripts/Common.js",
                       "~/Scripts/SweetAlert2.js",
-                      "~/Scripts/cleave.min.js",
-                      "~/Scripts/iziModal.min.js"
+                      "~/Scripts/cleave.min.js"
                       ));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                        "~/Content/bootstrap.css",
-                      "~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css",
-                      "~/Content/bootstrap-datetimepicker.min.css",                 
-                      //"~/Content/site.css",
-                       "~/Content/base.css",
-                      "~/Content/common.css",
-                      "~/Content/common1.css",
-                       "~/Content/manager-style.css",
-                       "~/Content/iziModal.min.css"
-                       ));
+            //bundles.Add(new StyleBundle("~/Content/css").Include(
+            //            "~/Content/bootstrap.css",
+            //          "~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css",
+            //          "~/Content/bootstrap-datetimepicker.min.css",                 
+            //          //"~/Content/site.css",
+            //           "~/Content/base.css",
+            //          "~/Content/common.css",
+            //          "~/Content/common1.css",
+            //           "~/Content/manager-style.css"
+            //           ));
         }
     }
 }

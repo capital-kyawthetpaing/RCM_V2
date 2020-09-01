@@ -161,6 +161,7 @@
     <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
@@ -716,6 +717,7 @@
     <Content Include="Views\Shop\OptionTemplateList.cshtml" />
     <Content Include="Views\Category\MallCategoryList.cshtml" />
     <Content Include="Views\Option\OptionEntry.cshtml" />
+    <Content Include="Views\Search\ExportColumnList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
