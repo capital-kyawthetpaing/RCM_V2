@@ -1,4 +1,5 @@
-﻿<div id="exportcolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
+﻿
+<div id="exportcolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
     <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
         <table class="userCmnSet editTable">
             <tbody>
@@ -7,29 +8,111 @@
                     <td>
                         <div>
                             <table cellspacing="0" id="tblColumnList" style="border-collapse:collapse;table-layout:fixed;width:100%">
-                                <tbody>
-                                </tbody>
+                                <thead>
+                                </thead>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </td>
                 </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="button" id="btnAddColumn" value="Add Column" Style="width:100px;" onclick="AddColumnName();"/>
+                        <input type="button" id="btnClose" value="Close" style="width: 100px" onclick="Close()" />
+                    </td>
+                </tr>
             </tbody>
         </table>
+
+        <input type="text" class="d-none" id="txtTableColName" />
+        <input type="text" class="d-none" id="txtFormColName" />
     </div>
 </div>
 
-@section Scripts
-{
-    <script type="text/javascript">
-        $(document).ready(function () {
-            BindColumn();
+<script src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
+<link href="@Url.Content("~/Content/user.css")" rel="stylesheet" />
+<script type="text/javascript">
+
+    $(document).ready(function () {      
+     
+        //BindColumn();
+    });
+
+    @*function BindColumn() {
+        var obj = {
+            TableColumnName: '',
+        };
+        var response = CalltoApiController('@Url.Action("ExportColumn_Select", "api/SearchApi")', obj);
+        var items = JSON.parse(response);
+        var ColumnGroupID = '0';
+        var row = '';
+       
+        $.each(items, function (i, item) {
+            //if different group, add group title
+            if (item.ColumnGroupID != ColumnGroupID) {
+                row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
+                $("#tblColumnList tbody").append(row);
+            }
+
+            row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';
+            $("#tblColumnList tbody").append(row);
+            ColumnGroupID = item.ColumnGroupID;
+        });
+    }
+
+    function CheckView(ele) {
+        var clsName = $(ele).attr('class');
+
+        //check or not child based on parent checkbox
+        if (clsName == "userRole") {
+            var id = $(ele).attr('id');
+            $('input[name="' + id + '"]').prop('checked', ele.checked);
+        }
+        //check or not parent based on child
+        else {
+            var name = $(ele).attr('name');
+            var chkCount = $("input[name='" + name + "']:checked").length;
+            var total = $("input[name='" + name + "']").length;
+            if (chkCount == total)
+                $("#" + name).prop('checked', true);
+            else
+                $("#" + name).prop('checked', false);
+        }
+    }*@
+
+    function AddColumnName() {
+
+        $("#txtTableColName").val('');
+        $("#txtFormColName").val('');
+        $("#ExportValue").val('')
+
+        var txtTbl = $("#txtTableColName").val();
+        var txtForm = $("#txtFormColName").val();
+
+        $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
+
+            if ($(this).attr("name") != undefined) {                
+                if (txtTbl != "") {
+                    txtForm += "," + $(this).attr("id");
+                    txtTbl += "," + $(this).val();
+                }
+                else {
+                    txtForm= $(this).attr("id");
+                    txtTbl= $(this).val();
+                } 
+            }
         });
 
-        function BindColumn() {
-            var obj = {
-                TableColumnName:'',
-            };
-            var response = CalltoApiController('@Url.Action("ExportColumn_Select", "api/SearchApi")', obj);
-        }
-    </script>
-}
+        $("#txtTableColName").val(txtTbl);
+        $("#txtFormColName").val(txtForm);
+        $("#ExportValue").val(txtTbl); // add main page's textarea
+
+        $('#exportcolumnlistModal').iziModal('close');
+       
+    }
+
+    function Close() {
+        $('#exportcolumnlistModal').iziModal('close');
+    }
+</script>

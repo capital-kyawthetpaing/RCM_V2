@@ -191,7 +191,7 @@ div.setDetailBox table.editTable th {
 	padding: 5px 5px 5px 10px;
 }
 div.setDetailBox table.editTable td {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;  
 	padding: 5px;
 }
 div.setDetailBox table.editTable td dt {

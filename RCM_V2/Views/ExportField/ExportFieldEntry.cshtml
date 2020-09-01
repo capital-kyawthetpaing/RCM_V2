@@ -39,9 +39,10 @@
                             <div class="operationBtn">
                                 <p>
                                     <input type="button" value="項目を選択する" onclick="ExportColumnClick()" />
-                                    <input type="button" value="優先順設定" onclick="UserEdit('','New')" />
+                                    <input type="button" value="優先順設定" onclick="OrderColumnClick()" />
                                 </p>
                             </div>
+                            <br />
                             @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
@@ -61,19 +62,68 @@
 
 @Html.Partial("~/Views/Search/ExportColumnList.cshtml")
 
+
+
 @section Scripts
 {
     <script type="text/javascript">
+
         $(document).ready(function () {
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
-                width: "90%",
+                width: "90%"
             });
         });
 
         function ExportColumnClick() {
-            $('#exportcolumnlistModal').iziModal('open');
+            $("#tblColumnList tbody").html('');
+            BindColumn();
+
+           $('#exportcolumnlistModal').iziModal('open');
         }
+
+
+    function BindColumn() {
+        var obj = {
+            TableColumnName: '',
+        };
+        var response = CalltoApiController('@Url.Action("ExportColumn_Select", "api/SearchApi")', obj);
+        var items = JSON.parse(response);
+        var ColumnGroupID = '0';
+        var row = '';
+
+        $.each(items, function (i, item) {
+            //if different group, add group title
+            if (item.ColumnGroupID != ColumnGroupID) {
+                row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
+                $("#tblColumnList tbody").append(row);
+            }
+
+            row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';
+            $("#tblColumnList tbody").append(row);
+            ColumnGroupID = item.ColumnGroupID;
+        });
+    }
+
+    function CheckView(ele) {
+        var clsName = $(ele).attr('class');
+
+        //check or not child based on parent checkbox
+        if (clsName == "userRole") {
+            var id = $(ele).attr('id');
+            $('input[name="' + id + '"]').prop('checked', ele.checked);
+        }
+        //check or not parent based on child
+        else {
+            var name = $(ele).attr('name');
+            var chkCount = $("input[name='" + name + "']:checked").length;
+            var total = $("input[name='" + name + "']").length;
+            if (chkCount == total)
+                $("#" + name).prop('checked', true);
+            else
+                $("#" + name).prop('checked', false);
+        }
+    }
     </script>
 }
 
