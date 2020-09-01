@@ -1,5 +1,4 @@
-﻿
-<div id="exportcolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
+﻿<div id="exportcolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
     <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
         <table class="userCmnSet editTable">
             <tbody>
@@ -24,6 +23,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
             BindColumn();
-        });  
+        });
+
+        function BindColumn() {
+            var obj = {
+                TableColumnName:'',
+            };
+            var response = CalltoApiController('@Url.Action("ExportColumn_Select", "api/SearchApi")', obj);
+        }
     </script>
 }
