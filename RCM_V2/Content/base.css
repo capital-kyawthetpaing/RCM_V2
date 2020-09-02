@@ -57,6 +57,12 @@ form input:focus[type="password"]{
 	background: #ddf4ff;
 	color: #3d3a35;
 }
+
+form textarea:focus {
+    background: #ddf4ff;
+    color: #3d3a35;
+}
+
 input[type=radio]:checked + label {
 	font-weight: bold;
 }

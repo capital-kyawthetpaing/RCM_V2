@@ -1,0 +1,109 @@
+﻿@using Models;
+@model Models.MallCategoryModel
+@{
+    ViewBag.Title = "MallCategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render(Url.Content("~/Content/mall_category.css"))
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1 id="Label1" class="d-none">楽天ディレクトリID一覧</h1>
+            <h1 id="Label2" class="d-none">ヤフーディレクトリID一覧</h1>
+            <h1 id="Label3" class="d-none">ポンパレモールディレクトリID一覧</h1>
+            <h1 id="Label4" class="d-none">WowmaディレクトリID一覧</h1>
+
+            <!-- CategoryID search -->
+            <div class="resetValue searchBox">
+                <h2 id="lblRk" class="d-none">楽天ディレクトリID検索</h2>
+                <h2 id="lblYh" class="d-none">ヤフーディレクトリID検索</h2>
+                <h2 id="lblPom" class="d-none">ポンパレモールディレクトリID検索</h2>
+                <h2 id="lblWow" class="d-none">WowmaディレクトリID検索</h2>
+
+                <dl>
+                    <dt>カテゴリ名 </dt>
+                    <dd>
+                        <input type="text" id="txtcname" placeholder="例）テニス シューズ プリンス" tabindex="1">
+                    </dd>
+                </dl>
+                <p>
+                    <input type="button" id="btnsearch" value="検索" style="width:130px" tabindex="2"/>
+                </p>
+            </div>
+            <!-- /CategoryID search -->
+            <!-- Import&Export -->
+
+            <div class="mallCate resetValue entryBox">
+                <input type="file" id="upl1" />
+                <p>
+                    <input type="button" id="btnImport" value="インポートする" />
+                </p>
+            </div>
+            <div class="resetValue editBox">
+                <table class="listTable" id="tblMallCategoryList" style="table-layout:fixed;width:100%">
+                    <thead>
+                        <tr>
+                            <th>ディレクトリID</th>
+                            <th>カテゴリ名</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#txtcname").select();
+
+            //show label for Rakuten if Mall id=1
+            if ('@Model.MallID' == "01") {
+                $("#Label1").removeClass('d-none');
+                $("#lblRk").removeClass('d-none');
+            }
+            //show label for Yahoo if Mall id=2
+            else if ('@Model.MallID' == "02") {
+                $("#Label2").removeClass('d-none');
+                $("#lblYh").removeClass('d-none');
+            }
+            //show label for Pompa if Mall id=3
+            else if ('@Model.MallID' == "03") {
+                $("#Label3").removeClass('d-none');
+                $("#lblPom").removeClass('d-none');
+            }
+            //show label for Wowma if Mall id=4
+            else {
+                $("#Label4").removeClass('d-none');
+                $("#lblWow").removeClass('d-none');
+            }
+
+            var obj = {
+                    MallID:'@Model.MallID',
+                    CategoryPath: $("#txtcname").val()
+                };
+                var response = CalltoApiController('@Url.Action("MallCategory_Select", "api/CategoryApi")', obj);
+                BindTable(response);
+        });
+
+        function BindTable(response) {
+            table = $('#tblMallCategoryList').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "lengthChange": false,
+                "pageLength":50,
+                "columns": [
+                    { "data": "CategoryID"},
+                    { "data": "CategoryPath"}
+                ]
+            });
+        }
+    </script>
+    }

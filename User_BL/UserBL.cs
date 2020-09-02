@@ -2,6 +2,8 @@
 using Models;
 using System.Data;
 using System.Data.SqlClient;
+using Newtonsoft.Json;
+
 namespace User_BL
 {
     public class UserBL
@@ -36,15 +38,17 @@ namespace User_BL
         }
         public string User_Save(UserModel Umodel)
         {
-            BaseDL bdl = new BaseDL();          
-            Umodel.Sqlprms = new SqlParameter[7];
+            BaseDL bdl = new BaseDL();
+            Umodel.ViewJson = JsonConvert.SerializeObject(Umodel.UserView);
+            Umodel.Sqlprms = new SqlParameter[8];
             Umodel.Sqlprms[0] = new SqlParameter("@UserID", SqlDbType.VarChar) { Value = Umodel.UserID };
             Umodel.Sqlprms[1] = new SqlParameter("@Password", SqlDbType.VarChar) { Value = Umodel.Password };
             Umodel.Sqlprms[2] = new SqlParameter("@UserName", SqlDbType.VarChar) { Value = Umodel.UserName };
             Umodel.Sqlprms[3] = new SqlParameter("@Status", SqlDbType.VarChar) { Value = Umodel.Status };
             Umodel.Sqlprms[4] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = Umodel.Mode };
-            Umodel.Sqlprms[5] = new SqlParameter("@CreatedBy", SqlDbType.VarChar) { Value = Umodel.CreatedBy };
-            Umodel.Sqlprms[6] = new SqlParameter("@UpdatedBy", SqlDbType.VarChar) { Value = Umodel.UpdatedBy };
+            Umodel.Sqlprms[5] = new SqlParameter("ViewJson", SqlDbType.VarChar) { Value = Umodel.ViewJson };
+            Umodel.Sqlprms[6] = new SqlParameter("@CreatedBy", SqlDbType.VarChar) { Value = Umodel.CreatedBy };
+            Umodel.Sqlprms[7] = new SqlParameter("@UpdatedBy", SqlDbType.VarChar) { Value = Umodel.UpdatedBy };
             return bdl.InsertUpdateDeleteData("User_CUD", Umodel.Sqlprms);
         }
         public string User_ExistsCheck(UserModel Umodel)

@@ -3,23 +3,27 @@
 <head id="Head1">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/logo1.jpg">
+    <link rel="icon" href=@Url.Content("~/images/logo.jpg") />
     <title>商品管理システム＜データベース一覧＞</title>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Styles.Render("~/Content/css")
 
-    @{ 
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css")" />
+    @*<link rel="stylesheet" href="@Url.Content("~/Content/bootstrap-datetimepicker.min.css")" />*@
+    <link rel="stylesheet" href="@Url.Content("~/Content/base.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/common.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/common1.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/manager-style.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/iziModal.min.css")" />
+
+    @{
         if (System.Diagnostics.Debugger.IsAttached)
         {
-
             Session["UserInfo"] = "admin" + '_' + "Admin";
         }
 
         string obj = Session["UserInfo"].ToString();
         string ID = obj.Split('_')[0];
         string Name = obj.Split('_')[1];
-
     }
 
 </head>
@@ -71,11 +75,11 @@
                         <li class="menu">
                             <a href="#">カテゴリ</a>
                             <ul id="menu02-sub" class="subMenu">
-                                <li><a href="@Url.Content("#")">ショップカテゴリ一覧</a></li>
-                                <li><a href="@Url.Content("#")">楽天カテゴリ一覧</a></li>
-                                <li><a href="@Url.Content("#")">ヤフーカテゴリ一覧</a></li>
-                                <li><a href="@Url.Content("#")">ポンパレカテゴリ一覧</a></li>
-                                <li><a href="@Url.Content("#")">Wowmaカテゴリ一覧</a></li>
+                                <li><a href="@Url.Action("#")">ショップカテゴリ一覧</a></li>
+                                <li><a href="@Url.Action("MallCategoryList","Category",new { id="01"})">楽天カテゴリ一覧</a></li>
+                                <li><a href="@Url.Action("MallCategoryList","Category",new { id="02"})">ヤフーカテゴリ一覧</a></li>
+                                <li><a href="@Url.Action("MallCategoryList","Category",new { id="03"})">ポンパレカテゴリ一覧</a></li>
+                                <li><a href="@Url.Action("MallCategoryList","Category",new { id="04"})">Wowmaカテゴリ一覧</a></li>
                                 <li><a href="@Url.Content("#")">カテゴリ対象商品確認</a></li>
                             </ul>
                         </li>
@@ -100,9 +104,8 @@
                             <ul id="menu03-sub" class="subMenu">
                                 <li><a href="@Url.Action("ShopList","Shop")">ショップ一覧</a></li>
                                 <li><a href="@Url.Action("Shop_TemplateList","Shop")">スマート<br>テンプレート一覧</a></li>
-                                <li><a href="@Url.Content("#")">オプション<br>テンプレート編集</a></li>
-                                <li><a href="@Url.Content("#")">商品情報<br>エクスポート定義</a></li>
-                                <li><a href="@Url.Content("#")">説明文<br>エクスポート定義</a></li>
+                                <li><a href="@Url.Action("OptionTemplateList","Shop")">オプション<br>テンプレート編集</a></li>
+                                <li><a href="@Url.Action("ExportFieldList","ExportField")">エクスポート定義</a></li>
                                 <li><a href="@Url.Content("#")">コアラ商品エクスポート</a></li>
                                 <li><a href="@Url.Content("#")">商品名優先順設定</a></li>
                                 <li><a href="@Url.Content("#")">サイズマッピング</a></li>
@@ -145,7 +148,7 @@
                     </ul>
                     <ul id="userBlock" class="navSet">
                         <li><span id="lblUser">@Name</span></li>
-                        <li><a href="@Url.Content("#")" id="logout">ログアウト</a></li>
+                        <li><a href="@Url.Action("RemoveSession","Home")" id="logout">ログアウト</a></li>
                     </ul>
                 </nav>
             </header>
@@ -157,6 +160,19 @@
             @RenderBody()
         </div>
     </form>
+
+    <script src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script src="@Url.Content("~/Vendor/DataTables/DataTables-1.10.21/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/Vendor/DataTables/DataTables-1.10.21/js/dataTables.bootstrap4.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/moment.js")"></script>
+    @*<script src="@Url.Content("~/Scripts/bootstrap-datetimepicker.min.j")"></script>*@
+    <script src="@Url.Content("~/Scripts/Common.js")"></script>
+    <script src="@Url.Content("~/Scripts/SweetAlert2.js")"></script>
+    <script src="@Url.Content("~/Scripts/cleave.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/iziModal.min.js")"></script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
+

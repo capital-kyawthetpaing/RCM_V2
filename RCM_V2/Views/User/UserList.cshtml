@@ -17,16 +17,16 @@
                 <h2>ユーザ検索</h2>
                 <dl>
                     <dt>ユーザー名</dt>
-                    <dd> <input type="text" id="txtuser" /></dd>
+                    <dd> <input type="text" id="txtuser" tabindex="1"/></dd>
                     <dt>ステータス</dt>
                     <dd>
-                        <input type="radio" id="RadioButton1" name="status" value="1" checked/><span> 有効</span>
-                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
-                        <input type="radio" id="RadioButton3" name="status" value=""  /><span> 全て</span>
+                        <input type="radio" id="RadioButton1" name="status" value="1" tabindex="2" checked/><label> 有効</label>
+                        <input type="radio" id="RadioButton2" name="status" Value="0" tabindex="2" /><label> 無効</label>
+                        <input type="radio" id="RadioButton3" name="status" value="" tabindex="2" /><label> 全て</label>
                     </dd>                   
                 </dl>
                 <p>
-                    <input type="button" id="btnSearch" value="検索">
+                    <input type="button" id="btnSearch" value="検索" tabindex="3">
                 </p>
             </div>
 
@@ -37,10 +37,10 @@
             </div>
 
             <div class="userCmnSet resetValue editBox">
-                <table class="listTable" id="tbluserlist" style="width:100%;">
+                <table class="listTable" id="tbluserlist" style="table-layout:fixed;width:100%;">
                     <thead>
                         <tr>
-                            <th></th>
+                            <th>操作</th>
                             <th>ユーザ名</th>
                             <th>Login_ID</th>
                             <th>ステータス</th>
@@ -59,6 +59,9 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $("#txtuser").select();
+
             //call user list
             BindTable();
 
@@ -76,29 +79,29 @@
                 "bLengthChange": false,
                 "bInfo": false,
                 "bSort": false,
-                destroy: true,               
+                destroy: true,
                 "dataSrc": " ",
                 "columns": [
-                    { "data": "UserID", "className":"dt-center" },
-                    { "data": "UserName"},
-                    { "data": "UserID"},
-                    { "data": "Status",className:"dt-center"},
-                    { "data": "UpdatedDate",className:"dt-center"}
+                    { "data": "UserID", "className": "dt-center" },
+                    { "data": "UserName" },
+                    { "data": "UserID" },
+                    { "data": "Status", className: "dt-center" },
+                    { "data": "UpdatedDate", className: "dt-center" }
                 ],
                 "columnDefs": [{
                     "targets": 0,
                     "data": "UserID",
-                    "render": function (data) { 
-                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\''+data+'\',\'Edit\')" value="編集">';
+                    "render": function (data) {
+                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\'' + data + '\',\'Edit\')" value="編集">';
                     }
                 }
                 ]
             });
-        }
+        }        
 
         //call user Edit 
         function UserEdit(data, mode) {
-            window.location.href = '@Url.Action("UserEntry", "User")?id=' + data + "&mode=" + mode;           
+            window.location.href = '@Url.Action("UserEntry", "User")?UserID=' + data + "&Mode=" + mode;           
         }
     </script>
 }

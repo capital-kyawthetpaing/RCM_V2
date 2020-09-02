@@ -13,18 +13,18 @@
                 <h2>スマートテンプレート検索</h2>
                 <dl>
                     <dt>テンプレートID</dt>
-                    <dd> <input type="text" id="TemplateID" maxlength="50" /></dd>
+                    <dd><input type="text" id="TemplateID" maxlength="50" tabindex="1" /></dd>
                     <dt>テンプレート名</dt>
-                    <dd> <input type="text" id="TemplateName" maxlength="50" /></dd>
+                    <dd> <input type="text" id="TemplateName" maxlength="50" tabindex="2"/></dd>
                     <dt>ステータス</dt>
                     <dd>
-                        <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
-                        <input type="radio" id="RadioButton2" name="status" value="0" /><span> 無効</span>
-                        <input type="radio" id="RadioButton3" name="status" value="" /><span> 全て</span>
+                        <input type="radio" id="RadioButton1" name="status" value="1" tabindex="3" checked /><label> 有効</label>
+                        <input type="radio" id="RadioButton2" name="status" value="0" tabindex="3"/><label> 無効</label>
+                        <input type="radio" id="RadioButton3" name="status" value="" tabindex="3"/><label> 全て</label>
                     </dd>
                 </dl>
                 <p>
-                    <input type="button" id="btnSearch" value="検索">
+                    <input type="button" id="btnSearch" value="検索" tabindex="4">
                 </p>
             </div>
 
@@ -35,7 +35,7 @@
             </div>
 
             <div class="resetValue editBox">
-                <table class="listTable" id="tblshopTemplatelist">
+                <table class="listTable" id="tblshopTemplatelist" style="table-layout:fixed;width:100%;">
                     <thead>
                         <tr>
                             <th>操作</th>
@@ -55,6 +55,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#TemplateID").select();
             Search();
             $("#btnSearch").click(function () {
                 Search();
@@ -67,7 +68,7 @@
                     TemplateName: $("#TemplateName").val(),
                     Status: $("input[name='status']:checked").val()
                 };
-                var response = CalltoApiController('@Url.Action("ShopTemplate_Select", "api/ShopApi")', obj);
+                var response = CalltoApiController('@Url.Action("ShopTemplate_List", "api/ShopApi")', obj);
                 BindTable(response);
         }
 
@@ -96,7 +97,7 @@
         }
 
         function ShopTemplateEdit(data,mode) {
-            window.location.href = '@Url.Action("Shop_TemplateEntry", "Shop")?id=' + data + "&mode=" + mode; 
+            window.location.href = '@Url.Action("Shop_TemplateEntry", "Shop")?TemplateID=' + data + "&Mode=" + mode; 
         }
 
     </script>

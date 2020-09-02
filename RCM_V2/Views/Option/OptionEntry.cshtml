@@ -1,0 +1,191 @@
+﻿@using Models;
+@model Models.OptionModel
+@{
+    ViewBag.Title = "OptionEntry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/option.css"))
+<div id="CmnContents">
+    <div id="ComBlock">
+
+        <div id="edit_Confirm" class="setDetailBox iconSet iconCheck d-none">
+            <h1>オプション登録</h1>
+        </div>
+
+        <div id="register_Confirm" class="setDetailBox iconSet iconCheck d-none">
+            <h1>オプション登録</h1>
+        </div>
+
+        <div id="edit" class="setDetailBox iconSet iconEdit">
+            <h1 id="head"></h1>
+        </div>
+
+        <div class="setDetailBox iconSet iconEdit" id="divOpt">
+            <table class="optionCmnSet editTable">
+                <tr>
+                    <th>グループ名</th>
+                    <td>
+                        @Html.HiddenFor(x => x.AutoID)
+                        @Html.TextBoxFor(x => x.GroupName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>項目名1</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.Option1, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>選択肢1</th>
+                    <td>
+                        @Html.TextAreaFor(x => x.Value1, new { @class = "evenval",@tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>項目名2</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.Option2, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>選択肢2</th>
+                    <td>
+                        @Html.TextAreaFor(x => x.Value2, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>項目名3</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.Option3, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>選択肢3</th>
+                    <td>
+                        @Html.TextAreaFor(x => x.Value3, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>項目名4</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.Option4, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>選択肢4</th>
+                    <td>
+                        @Html.TextAreaFor(x => x.Value4, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>項目名5</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.Option5, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>選択肢5</th>
+                    <td>
+                        @Html.TextAreaFor(x => x.Value5, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+            </table>
+            <div class="btn">
+                <div class="userRole">
+                    <input type="button" id="btnback" value="戻る" />
+                    <input type="button" id="btnPrevious" value="戻る" class="d-none" />
+                    <input type="button" id="btnSave" value="確認画面へ" />
+                    <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#GroupName').focus();
+            RequiredCheck($('#GroupName'));
+            if ('@Model.Mode' == "New") {
+                $("#head").text("ショップ一登録");
+            }
+            else if ('@Model.Mode' == "Edit") {
+                $("#head").text("ショップ編集");
+            }
+             //to input for save confirm
+          $("#btnSave").click(function()
+          {
+              var res = ErrorCheckOnClick('divOpt');
+              if (res == "0") {
+                   if ('@Model.Mode' == "New") {
+                      $("#register_Confirm").removeClass('d-none');
+                      $("#btnConfirm_Save").val("登録");
+                  }
+                  else {
+                      $("#edit_Confirm").removeClass('d-none');
+                      $("#btnConfirm_Save").val("反映");
+                  }
+                  $("#edit").addClass('d-none');
+                  $("#btnback").addClass('d-none');
+                  $("#btnPrevious").removeClass('d-none');
+                  $("#btnConfirm_Save").val("登録");
+                  $("#btnSave").addClass('d-none');
+                  $("#btnConfirm_Save").removeClass('d-none');
+                  $('.OptionBlock :input').attr('disabled', true);
+              }
+              else
+                  ShowMessage(res);
+         });
+
+         $("#btnPrevious").click(function()
+         {
+            $("#edit").removeClass('d-none');
+            $("#register_Confirm").addClass('d-none');
+            $("#edit_Confirm").addClass('d-none');
+            $("#btnback").removeClass('d-none');
+            $("#btnSave").removeClass('d-none');
+            $("#btnPrevious").addClass('d-none');
+            $("#btnConfirm_Save").addClass('d-none');
+            $('.OptionBlock :input').removeAttr('disabled', true);
+            });
+
+            // go to option List
+         $("#btnback").click(function()
+         {
+            window.location.href='@Url.Action("OptionTemplateList","Shop")';
+         });
+
+        });
+
+        //save option data
+        function ConfirmSave() {
+            var result = CalltoApiController("/api/OptionApi/Option_Save", {
+                AutoID: $('#AutoID').val(),
+                GroupName: $("#GroupName").val(),
+                Option1: $("#Option1").val(),
+                Value1: $("#Value1").val(),
+                Option2: $("#Option2").val(),
+                Value2: $("#Value2").val(),
+                Option3: $("#Option3").val(),
+                Value3: $("#Value3").val(),
+                Option4: $("#Option4").val(),
+                Value4: $("#Value4").val(),
+                Option5: $("#Option5").val(),
+                Value5: $("#Value5").val(),
+                Mode:'@Model.Mode'
+            });
+
+                if (result=="true") {
+                    ShowMessage("I101","SaveOK");
+                }
+                else {
+                     $("#UserName").focus();
+                    ShowMessage("E001");
+                }
+        }
+        function SaveOK() {
+            window.location.href = '@Url.Action("OptionTemplateList", "Shop")';
+        }
+    </script>
+}

@@ -11,6 +11,7 @@ namespace Models
         [Display(Name = "パスワード")]
         public string Password { get; set; }         
         public List<string> UserView { get; set; }
+        public string ViewJson { get; set; }
     }
 
    

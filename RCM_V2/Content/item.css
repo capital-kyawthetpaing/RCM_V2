@@ -103,11 +103,6 @@ div.itemMasterEdit h1 {
         margin-bottom: 1px;
     }
 
-
-
-
-
-
     /*　Block1 ------------------------------------------------------------------------------------------------------------ */
     .itemCmnSet.editPage #block1 {
         position: fixed;
@@ -645,7 +640,10 @@ div#scrollArea dl.itemOption dd {
     div#scrollArea dl.itemOption dd p:nth-of-type(2n) input {
         width: 352px;
     }
-
+    .optionBtn input[type=button] {
+        display: inline-block;
+        width: 100px;
+    }
 /* campaign ------------------------------------  */
 div#scrollArea dl.itemCampaign dt {
     padding: 6px 5px 5px 5px;
@@ -1679,25 +1677,15 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
 }
 
 .smartTmp.entryBox {
-    letter-spacing: 0.1em;
-    /*width: 950px; ktp*/
+    letter-spacing: 0.1em;    
     width:95%;
     margin: 0px auto;
     text-align: left;
 }
 
-    .smartTmp.entryBox div {
-        margin-bottom: 20px;
-    }
-
-    .smartTmp.entryBox th {
-        width: 150px;
-    }
-
-
-/*    .smartTmp.entryBox tr:last-of-type th {
-        vertical-align: top;
-    } ktp 2020-08-25 smart template design adjust*/
+.smartTmp.entryBox th {
+    width: 150px;
+}
 
     .smartTmp.entryBox textarea {
         width: 600px;
@@ -1707,6 +1695,7 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
     .smartTmp.entryBox.confBox tr:last-of-type th {
         vertical-align: middle;
     }
+
 /*追加 15.03.24*/
 #CmnContents .smartTmp.entryBox .resetValue h2 {
     padding-left: 0px;
@@ -1799,7 +1788,7 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
 --------------------------------------------------------------------------------------*/
 .exportBox.entryBox {
     letter-spacing: 0.1em;
-    width: 950px;
+    /*width: 40%;ktp*/
     margin: 0px auto;
     text-align: left;
 }
@@ -1808,7 +1797,7 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
         width: 120px;
     }
 
-    .exportBox.entryBox tr:nth-of-type(2) th {
+    .exportBox.entryBox tr:nth-of-type(3) th {
         vertical-align: top;
     }
 
@@ -1829,7 +1818,8 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
 
     /*追加 15.03.24*/
     .exportBox.entryBox table {
-        width: 98%;
+        /*width: 98%;ktp*/
+        width: 75%;
         margin: 0px auto;
     }
 
@@ -2199,22 +2189,6 @@ div.itemCmnSet.editBox table.quickEdit td:nth-of-type(14) p {
         /*table-layout: fixed;*/
         padding-top: 10px;
     }
-/*.gdvInnerSetting td:nth-of-type(1)
-    {
-        width: 20px;
-    }
-    .gdvInnerSetting td:nth-of-type(2)
-    {
-        width: 150px;
-    }
-    .gdvInnerSetting td:nth-of-type(3)
-    {
-        width: 300px;
-    }
-    .gdvInnerSetting td:nth-of-type(4)
-    {
-        width: 300px;
-    }*/
 
 /*-------for Item_View2.aspx----------*/
 .View {
@@ -2354,5 +2328,9 @@ div.divToggleButton input[type=checkbox]:checked + label::before {
     color: #303030;
     font-weight: bold;
     opacity: 0.6;
+}
+
+textarea {
+    width: 600px;
 }
 /************************************************************************/

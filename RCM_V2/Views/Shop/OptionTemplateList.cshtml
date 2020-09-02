@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "OptionTemplateList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconEdit">
+            <h1>オプションリスト</h1>
+            
+            <div class="operationBtn">
+                <p>
+                    <input type="button" value="オプションテンプレートを追加する" onclick="OptionTemplateEdit('','New')" />
+                </p>
+            </div>
+
+            <div class="userCmnSet resetValue editBox">
+                <table class="listTable" style="table-layout:fixed;width:100%" id="OptionTemplateList">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>グループ名</th>
+                            <th>項目名 1 /選択肢 1</th>
+                            <th>項目名 2/選択肢 2</th>
+                            <th>項目名 3/選択肢 3</th>
+                            <th>項目名 4/選択肢 4</th>
+                            <th>項目名 5/選択肢 5</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+           var obj = {AutoID: ""};
+
+           var response = CalltoApiController('@Url.Action("OptionTemplate_Select", "api/ShopApi")', obj);
+            BindTable(response);
+
+            $('#OptionTemplateList th').removeClass('td-topalign');
+        });
+
+        function BindTable(response) {
+            table = $('#OptionTemplateList').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "columns": [
+                    { "data": "AutoID","width":"8%"},
+                    { "data": "GroupName","width":"10%" },
+                    { "data": "", "className": "td-topalign", "width": "20%"},
+                    { "data": "", "className": "td-topalign", "width": "20%"},
+                    { "data": "", "className": "td-topalign", "width": "17%"},
+                    { "data": "", "className": "td-topalign", "width": "16%"},
+                    { "data": "", "className": "td-topalign", "width": "16%"}
+                ]
+
+                ,
+                "columnDefs": [
+                    {
+                        "targets": 0,
+                        "data": "AutoID",
+                        "render": function (data, type, row) {
+                            return '<input type="button"  onclick="OptionTemplateEdit(\'' + data + '\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">';
+                        }
+                    },
+                    {
+                        "targets": 2,
+                        "data": "",
+                        "render": function (data, type, row) {
+                            if (!(row.Option1 == null || row.Option1 == "") && !(row.Value1 == null | row.Value1 == ""))
+                                return '<span style="font-weight:bold;color:#007bff">' + row.Option1 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"> <span style="word-wrap: break-word">' + row.Value1 + '</span>';
+                            else
+                                return '';
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "data": "",
+                        "render": function (data, type, row) {
+                            if (!(row.Option2 == null || row.Option2 == "") && !(row.Value2 == null | row.Value2 == ""))
+                                return '<span style="font-weight:bold;color:#007bff">' + row.Option2 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span style="word-wrap: break-word">' + row.Value2 + '</span>';
+                            else
+                                return '';
+                        }
+                    },
+                    {
+                        "targets": 4,
+                        "data": "",
+                        "render": function (data, type, row) {
+                            if (!(row.Option3 == null || row.Option3 == "") && !(row.Value3 == null | row.Value3 == ""))
+                                return '<span style="font-weight:bold;color:#007bff">' + row.Option3 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span style="word-wrap: break-word">' + row.Value3 + '</span>';
+                            else
+                                return '';
+                        }
+                    },
+                    {
+                        "targets": 5,
+                        "data": "",
+                        "render": function (data, type, row) {
+                            if (!(row.Option4 == null || row.Option4 == "") && !(row.Value4 == null | row.Value4 == ""))
+                                return '<span style="font-weight:bold;color:#007bff">' + row.Option4 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span style="word-wrap: break-word">' + row.Value4 + '</span>';
+                            else
+                                return '';
+                        }
+                    },
+                    {
+                        "targets": 6,
+                        "data": "",
+                        "render": function (data, type, row) {
+                            if (!(row.Option5 == null || row.Option5 == "") && !(row.Value5 == null | row.Value5 == ""))
+                                return '<span style="font-weight:bold;color:#007bff">' + row.Option5 + '</span> <hr style="border-bottom:solid;margin: 3px 0px;"><span style="word-wrap: break-word">' + row.Value5 + '</span>';
+                            else
+                                return '';
+                        }
+                    }
+                ]
+            });
+        }
+
+        function OptionTemplateEdit(data, mode) {
+           window.location.href = '@Url.Action("OptionEntry", "Option")?AutoID=' + data + "&Mode=" + mode;
+        }
+    </script>
+
+}

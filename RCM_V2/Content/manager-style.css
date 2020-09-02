@@ -48,7 +48,7 @@ div.setListBox #entry p input {
 
 /*--- Table list ------------*/
 table.listTable {
-	width:100%;
+	width:100%!important;
     border: 1px solid #b5b5b5;
     margin: 8px auto 10px auto;
 }
@@ -130,7 +130,7 @@ div.btn.pageNav  {
 	bottom: 0px;
 	background: rgba(61,58,53,1);
 	left: 0px;
-	padding: 10px 0px 5px 0px;*/
+	padding: 10px 0px 5px 0px;
 }
 div.btn.pageNav nav#ListPaging {
     width: 800px;
@@ -169,9 +169,9 @@ div.btnuser {
 	vertical-align:middle;
 }
 
-div.userRole {
+/*div.userRole {
 	padding-bottom: 20px;
-}
+}*/
 
 
 /*--------------------------------------------------------------------------------------
@@ -183,7 +183,7 @@ div.setDetailBox table.editTable {
 }
 
 div.setDetailBox table.editTable th {
-	width: 160px;
+	width: 180px;
 	text-align: left;
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
@@ -191,7 +191,7 @@ div.setDetailBox table.editTable th {
 	padding: 5px 5px 5px 10px;
 }
 div.setDetailBox table.editTable td {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;  
 	padding: 5px;
 }
 div.setDetailBox table.editTable td dt {
@@ -210,6 +210,12 @@ div.setDetailBox input[type="text"] {
 	width: 55%;
 }
 
+div.setDetailBox textarea{
+	width: 55%;
+	height:60px;
+}
+
+
 div.setDetailBox table.editTable th span {
 	color: #ff0000;
 	font-size: 10px;
@@ -227,11 +233,8 @@ div.setListBox div.btn {
 	padding: 7px 0px;
 	z-index: 9999;
 }
-div.setDetailBox div input, div.setListBox div.btn input {
-	display: block;
-	margin: 0px auto;
-	width: 300px;
-}
+
+
 div.setDetailBox div input,div.setListBox div.btn input {
 	height: 25px;
 	width: 150px;
@@ -513,7 +516,8 @@ div.searchBox dl {
 	display: block;
 }
 div.searchBox dl dt {
-	width: 100px;
+	/*width: 100px; ktp*/
+	width:auto;
 	text-align: right;   
 	margin-bottom: 7px;
     font-weight:normal;
@@ -672,3 +676,4 @@ div.CateIdSar.searchBox dl dd input {
 input[type="radio"] {
     margin-bottom:7px;
 }
+

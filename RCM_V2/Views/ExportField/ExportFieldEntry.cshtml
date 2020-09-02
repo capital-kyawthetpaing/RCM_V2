@@ -1,0 +1,93 @@
+﻿@model Models.ExportFieldsModel
+@{
+    ViewBag.Title = "ExportFieldEntry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div id="edi" class="setDetailBox confSet iconSet iconCheck d-none">
+            <h1>ユーザ編集確認画面</h1>
+        </div>
+        <div id="reg_Confirm" class="setDetailBox confSet iconSet iconCheck d-none">
+            <h1>ユーザ登録 確認画面</h1>
+        </div>
+        <div id="regi" class="setDetailBox iconSet iconEdit d-none">
+            <h1 id="head"></h1>
+        </div>
+        <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
+            <table class="userCmnSet editTable">
+                <tbody>
+                    <tr>
+                        <th>ステータス</th>
+                        <td>
+                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><label for="rdostatus">有効</label>
+                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" /><label for="rdostatus1">無効</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            定義名&nbsp;<span>※必須</span>
+                        </th>
+                        <td>
+                            @Html.TextBoxFor(x => x.ExportName, new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>ダウンロード項目&nbsp;<span>※必須</span></th>
+                        <td>
+                            <div class="operationBtn">
+                                <p>
+                                    <input type="button" value="項目を選択する" onclick="ExportColumnClick()" />
+                                    <input type="button" id="btnExportOrder" value="優先順設定" onclick="OrderColumnClick()" disabled/>
+                                </p>
+                            </div>
+                            <br />
+                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn">
+            <div class="userRole">
+                <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
+                <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
+                <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
+                <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Search/ExportColumnList.cshtml")
+@*@Html.Partial("~/Views/Search/OrderColumnList.cshtml")*@
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#exportcolumnlistModal").iziModal({
+                top: 30,
+                width: "70%"
+            });
+
+            //$("#ordercolumnlistModal").iziModal({
+            //    top: 30,
+            //    width: "90%"
+            //});
+        });   
+   
+    function ExportColumnClick() {       
+        $('#exportcolumnlistModal').iziModal('open');
+    }    
+
+    //function OrderColumnClick() {       
+    //    $('#ordercolumnlistModal').iziModal('open');
+    //}
+    </script>
+}
+
+

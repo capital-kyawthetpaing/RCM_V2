@@ -1,6 +1,5 @@
 ﻿using DL;
 using Models;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace View_BL
@@ -10,7 +9,8 @@ namespace View_BL
         public string View_Select(ViewModel viewModel)
         {
             BaseDL bdl = new BaseDL();
-            viewModel.Sqlprms = new SqlParameter[0];
+            viewModel.Sqlprms = new SqlParameter[1];
+            viewModel.Sqlprms[0] = new SqlParameter("@UserID", viewModel.UserID);
             return bdl.SelectJson("View_Select", viewModel.Sqlprms);
         }
     }

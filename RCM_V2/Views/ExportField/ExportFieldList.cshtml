@@ -1,0 +1,111 @@
+﻿@model Models.ExportFieldsModel
+@{
+    ViewBag.Title = "ExportFieldList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1>エクスポート定義一覧</h1>
+            <div class="resetValue searchBox">
+                <h2>エクスポート定義検索</h2>
+                <dl>
+                    <dt>定義名</dt>
+                    <dd><input type="text" id="ExportName" /></dd>
+                    <dt>ダウンロード項目</dt>
+                    <dd><input type="text" id="ExportValue" /></dd>
+                    <dt>タイプ</dt>
+                    <dd>
+                        <input type="radio" id="rdoItem" name="type" value="01" checked /><span> 商品情報</span>
+                        <input type="radio" id="rdoDescription" name="type" Value="02" /><span> 説明文</span>
+                    </dd>
+                    <dt class="padleft30">ステータス</dt>
+                    <dd>
+                        <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
+                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
+                        <input type="radio" id="RadioButton3" name="status" value="" /><span> 全て</span>
+                    </dd>
+                </dl>
+                <p>
+                    <input type="button" id="btnSearch" value="検索">
+                </p>
+            </div>
+
+            <div class="operationBtn">
+                <p>
+                    <input type="button" value="商品情報エクスポート定義を追加する" />
+                    <input type="button" value="説明文エクスポート定義を追加する" />
+                </p>
+            </div>
+
+            <div class="resetValue editBox">
+                <table class="listTable" id="ExportList" style="table-layout:fixed;width:100%">
+                    <thead>
+                        <tr>
+                            <th width="10%"></th>
+                            <th>定義名</th>
+                            <th>ダウンロード項目</th>
+                            <th>タイプ</th>
+                            <th>ステータス</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            Search();
+            $("#btnSearch").click(function () {
+                Search();
+            })
+        });
+
+        function Search() {
+            var obj = {
+                    ExportName: $("#ExportName").val(),
+                    ExportValue: $("#ExportValue").val(),
+                    ExportType: $("input[name='type']:checked").val(),
+                    Status: $("input[name='status']:checked").val()
+                };
+                var response = CalltoApiController('@Url.Action("ExportField_Select", "api/ShopApi")', obj);
+                BindTable(response);
+        }
+
+        function BindTable(response) {
+            table = $('#ExportList').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching":false,
+                "columns": [
+                    { "data": "AutoID", "className":"dt-center" },
+                    { "data": "ExportName"},
+                    { "data": "ExportValue" },
+                    { "data": "Type", "className": "dt-center" },
+                    { "data": "Status", "className":"dt-center"},
+                ],
+                "columnDefs": [
+                    {
+                    "targets": 0,
+                    "data": "AutoID",
+                    "render": function (data) {
+                        return '<input type="button"  onclick="ExportFieldEdit(\'' + data +'\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">'
+                        }
+                    },
+                ]
+            });
+        }
+
+        function ExportFieldEdit(data, mode) {
+           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
+        }
+
+    </script>
+}
+
