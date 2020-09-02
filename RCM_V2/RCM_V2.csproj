@@ -157,6 +157,8 @@
     <Compile Include="Controllers\DashboardApiController.cs" />
     <Compile Include="Controllers\ExportFieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemApiController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
@@ -721,6 +723,7 @@
     <Content Include="Views\Search\ExportColumnList.cshtml" />
     <Content Include="Views\Category\MainView.cshtml" />
     <Content Include="Views\Category\ChildView.cshtml" />
+    <Content Include="Views\Item\ItemManageList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -746,6 +749,10 @@
       <Project>{8291b6f5-9a1b-46f6-ba31-8fc657c5b3a9}</Project>
       <Name>ExportField_BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Item_BL\Item_BL.csproj">
+      <Project>{182f5aaf-fee3-4153-b42a-311b9afa5de2}</Project>
+      <Name>Item_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mall_BL\Mall_BL.csproj">
       <Project>{ac938e87-bacb-4eef-9d15-bdd2376e9d71}</Project>
       <Name>Mall_BL</Name>
@@ -770,6 +777,10 @@
       <Project>{65B8D6B3-17E8-4B94-8CA0-595328AFCB9E}</Project>
       <Name>Option_BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Season_BL\Season_BL.csproj">
+      <Project>{66d64ac5-848f-4bd0-9f53-e6caa1b0f148}</Project>
+      <Name>Season_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
       <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>
       <Name>ShopTemplate_BL</Name>
@@ -785,6 +796,10 @@
     <ProjectReference Include="..\View_BL\View_BL.csproj">
       <Project>{2b49d62c-b424-4e7c-b47d-caf20b770cd2}</Project>
       <Name>View_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Year_BL\Year_BL.csproj">
+      <Project>{573399a4-6d6a-42c8-8ab0-ef6efd9bb5a9}</Project>
+      <Name>Year_BL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
