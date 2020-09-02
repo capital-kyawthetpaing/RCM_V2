@@ -182,6 +182,7 @@
     <Content Include="Content\item.css" />
     <Content Include="Content\mall_category.css" />
     <Content Include="Content\manager-style.css" />
+    <Content Include="Content\option.css" />
     <Content Include="Content\shop.css" />
     <Content Include="Content\smartTemplateEntry.css" />
     <Content Include="Content\user.css" />
@@ -705,6 +706,7 @@
     <Content Include="Views\ExportField\ExportFieldEntry.cshtml" />
     <Content Include="Views\ExportField\ExportFieldList.cshtml" />
     <Content Include="Views\Shop\OptionTemplateList.cshtml" />
+    <Content Include="Views\Option\OptionEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
