@@ -37,7 +37,7 @@ namespace Option_BL
         {
             BaseDL bdl = new BaseDL();
             optionModel.Sqlprms = new SqlParameter[1];
-            optionModel.Sqlprms[0] = new SqlParameter("@AutoID", SqlDbType.SmallInt) { Value = optionModel.AutoID };
+            optionModel.Sqlprms[0] = new SqlParameter("@AutoID", SqlDbType.VarChar) { Value = optionModel.AutoID };
             DataTable dt = bdl.SelectDatatable("Option_Select", optionModel.Sqlprms);
             foreach (DataRow dr in dt.Rows)
             {
