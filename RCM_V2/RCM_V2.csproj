@@ -18,10 +18,14 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -796,10 +800,6 @@
     <ProjectReference Include="..\View_BL\View_BL.csproj">
       <Project>{2b49d62c-b424-4e7c-b47d-caf20b770cd2}</Project>
       <Name>View_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Year_BL\Year_BL.csproj">
-      <Project>{573399a4-6d6a-42c8-8ab0-ef6efd9bb5a9}</Project>
-      <Name>Year_BL</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
