@@ -1,0 +1,11 @@
+﻿@charset "utf-8";
+
+.optionCmnSet.editTable table.listTable td:nth-last-child(even) input[type=text] {
+    width: 50px;
+    background-color: red;
+}
+
+.optionCmnSet.editTable table.listTable td:nth-last-child(odd) input[type=text] {
+    width: 90px;
+}
+
