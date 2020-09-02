@@ -8,7 +8,7 @@ namespace Models
 {
     public class OptionModel : BaseModel
     {
-        public Int16 AutoID { get; set; }
+        public string AutoID { get; set; }
         public String GroupName { get; set; }
         public String Option1 { get; set; }
         public String Value1 { get; set; }
