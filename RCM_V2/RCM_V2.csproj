@@ -696,6 +696,7 @@
     <Content Include="Views\Shop\Shop_ItemNamePriority.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateList.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateEntry.cshtml" />
+    <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -720,6 +721,10 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
+      <Project>{F48323E9-08DB-49B3-9C7E-145AA2CB2575}</Project>
+      <Name>ShopNamePriority_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
       <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>

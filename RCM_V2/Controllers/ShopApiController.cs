@@ -7,6 +7,7 @@ using System.Web.Http;
 using Shop_BL;
 using Models;
 using ShopTemplate_BL;
+using ShopNamePriority_BL;
 
 namespace RCM_V2.Controllers
 {
@@ -46,6 +47,17 @@ namespace RCM_V2.Controllers
         }
         #endregion
 
+
+        #region ShopPriority 
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopPriority_Select")]
+        public IHttpActionResult ShopPriority_Select([FromBody] MutiModel shopModel)
+        {
+            ShopNamePriorityBL pp = new ShopNamePriorityBL();
+            return Ok(pp.ShopPriority_Select(shopModel));
+        }
+        #endregion
         #region Shop Template
 
         [UserAuthentication]
