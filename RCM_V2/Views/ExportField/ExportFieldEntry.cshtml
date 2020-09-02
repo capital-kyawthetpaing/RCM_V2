@@ -39,9 +39,10 @@
                             <div class="operationBtn">
                                 <p>
                                     <input type="button" value="項目を選択する" onclick="ExportColumnClick()" />
-                                    <input type="button" value="優先順設定" onclick="UserEdit('','New')" />
+                                    <input type="button" id="btnExportOrder" value="優先順設定" onclick="OrderColumnClick()" disabled/>
                                 </p>
                             </div>
+                            <br />
                             @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
@@ -58,21 +59,34 @@
         </div>
     </div>
 </div>
+
 @Html.Partial("~/Views/Search/ExportColumnList.cshtml")
+@*@Html.Partial("~/Views/Search/OrderColumnList.cshtml")*@
+
 
 @section Scripts
 {
     <script type="text/javascript">
+
         $(document).ready(function () {
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
-                width: "90%",
+                width: "70%"
             });
-        });
 
-        function ExportColumnClick() {
-            $('#exportcolumnlistModal').iziModal('open');
-        }
+            //$("#ordercolumnlistModal").iziModal({
+            //    top: 30,
+            //    width: "90%"
+            //});
+        });   
+   
+    function ExportColumnClick() {       
+        $('#exportcolumnlistModal').iziModal('open');
+    }    
+
+    //function OrderColumnClick() {       
+    //    $('#ordercolumnlistModal').iziModal('open');
+    //}
     </script>
 }
 

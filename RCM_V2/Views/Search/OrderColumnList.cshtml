@@ -1,0 +1,64 @@
+﻿<style type="text/css">
+    table th, table td {
+        width: 100px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .selected {
+        background-color: #666;
+        color: #fff;
+    }
+</style>
+
+<div id="ordercolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
+    <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
+        <table class="userCmnSet editTable" id="tblOrderList" border="1">
+            <thead>
+                <tr>
+                    <th>Column Name (Eng)</th>
+                    <th>Column Name (JP)</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="button" id="btnAddOrderColumn" value="Add Column" Style="width:100px;" onclick="AddColumnName();" />
+                        <input type="button" id="btnClose" value="Close" style="width: 100px" onclick="Close()" />
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+
+    </div>
+</div>
+
+<script src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery-ui.min.js")"></script>
+<link href="@Url.Content("~/Content/user.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/jquery-ui.css")" rel="stylesheet" />
+<script type="text/javascript">
+
+    //$(document).ready(function () {
+    //    $("#tblOrderList").sortable({
+    //        items: 'tr:not(tr:first-child)',
+    //        cursor: 'pointer',
+    //        axis: 'y',
+    //        dropOnEmpty: false,
+    //        start: function (e, ui) {
+    //            ui.item.addClass("selected");
+    //        },
+    //        stop: function (e, ui) {
+    //            ui.item.removeClass("selected");
+    //            $(this).find("tr").each(function (index) {
+    //                if (index > 0) {
+    //                    $(this).find("td").eq(2).html(index);
+    //                }
+    //            });
+    //        }
+    //    });
+    //});
+
+</script>

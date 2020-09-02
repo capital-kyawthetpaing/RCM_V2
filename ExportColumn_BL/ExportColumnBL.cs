@@ -10,7 +10,7 @@ namespace ExportColumn_BL
         {
             BaseDL bdl = new BaseDL();
             exportColumnModel.Sqlprms = new SqlParameter[0];
-            return bdl.SelectJson("ExprtColumn_Select", exportColumnModel.Sqlprms);
+            return bdl.SelectJson("ExportColumn_Select", exportColumnModel.Sqlprms);
         }
     }
 }

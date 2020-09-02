@@ -48,7 +48,7 @@ div.setListBox #entry p input {
 
 /*--- Table list ------------*/
 table.listTable {
-	width:100%;
+	width:100%!important;
     border: 1px solid #b5b5b5;
     margin: 8px auto 10px auto;
 }
@@ -191,7 +191,7 @@ div.setDetailBox table.editTable th {
 	padding: 5px 5px 5px 10px;
 }
 div.setDetailBox table.editTable td {
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;  
 	padding: 5px;
 }
 div.setDetailBox table.editTable td dt {
@@ -676,3 +676,4 @@ div.CateIdSar.searchBox dl dd input {
 input[type="radio"] {
     margin-bottom:7px;
 }
+

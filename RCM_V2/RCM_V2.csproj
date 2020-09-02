@@ -18,14 +18,10 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -190,8 +186,10 @@
     <Content Include="Content\item.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\mall_category.css" />
     <Content Include="Content\manager-style.css" />
+    <Content Include="Content\option.css" />
     <Content Include="Content\shop.css" />
     <Content Include="Content\smartTemplateEntry.css" />
     <Content Include="Content\user.css" />
@@ -249,6 +247,7 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\Common.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -724,6 +723,7 @@
     <Content Include="Views\Category\MainView.cshtml" />
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
+    <Content Include="Views\Search\OrderColumnList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

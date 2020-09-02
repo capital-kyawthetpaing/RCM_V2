@@ -31,16 +31,16 @@ namespace RCM_V2
                       "~/Scripts/cleave.min.js"
                       ));
 
-            //bundles.Add(new StyleBundle("~/Content/css").Include(
-            //            "~/Content/bootstrap.css",
-            //          "~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css",
-            //          "~/Content/bootstrap-datetimepicker.min.css",                 
-            //          //"~/Content/site.css",
-            //           "~/Content/base.css",
-            //          "~/Content/common.css",
-            //          "~/Content/common1.css",
-            //           "~/Content/manager-style.css"
-            //           ));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                        "~/Content/bootstrap.css",
+                      "~/Vendor/DataTables/DataTables-1.10.21/css/dataTables.bootstrap4.min.css",
+                      "~/Content/bootstrap-datetimepicker.min.css",
+                       //"~/Content/site.css",
+                       "~/Content/base.css",
+                      "~/Content/common.css",
+                      "~/Content/common1.css",
+                       "~/Content/manager-style.css"
+                       ));
         }
     }
 }
