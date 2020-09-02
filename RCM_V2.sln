@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Option_BL", "Option_BL\Opti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Category_BL", "Category_BL\Category_BL.csproj", "{37136003-0D72-4CA3-A688-4336D8904056}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExportColumn_BL", "ExportColumn_BL\ExportColumn_BL.csproj", "{B95E9E55-6297-4592-B6A1-70D455FF272F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{37136003-0D72-4CA3-A688-4336D8904056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37136003-0D72-4CA3-A688-4336D8904056}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37136003-0D72-4CA3-A688-4336D8904056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95E9E55-6297-4592-B6A1-70D455FF272F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95E9E55-6297-4592-B6A1-70D455FF272F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95E9E55-6297-4592-B6A1-70D455FF272F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95E9E55-6297-4592-B6A1-70D455FF272F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -17,11 +17,15 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -157,6 +161,8 @@
     <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
+    <Compile Include="Controllers\SearchApiController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
@@ -180,9 +186,10 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\item.css" />
+    <Content Include="Content\iziModal.css" />
+    <Content Include="Content\iziModal.min.css" />
     <Content Include="Content\mall_category.css" />
     <Content Include="Content\manager-style.css" />
-    <Content Include="Content\option.css" />
     <Content Include="Content\shop.css" />
     <Content Include="Content\smartTemplateEntry.css" />
     <Content Include="Content\user.css" />
@@ -232,6 +239,8 @@
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\iziModal.js" />
+    <Content Include="Scripts\iziModal.min.js" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Scripts\jquery-3.5.1.min.js" />
     <Content Include="Scripts\jquery-3.5.1.slim.js" />
@@ -311,6 +320,7 @@
     <Content Include="Scripts\src\utils\setAttributes.js" />
     <Content Include="Scripts\src\utils\setStyles.js" />
     <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\SweetAlert2.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -706,7 +716,10 @@
     <Content Include="Views\ExportField\ExportFieldEntry.cshtml" />
     <Content Include="Views\ExportField\ExportFieldList.cshtml" />
     <Content Include="Views\Shop\OptionTemplateList.cshtml" />
+    <Content Include="Views\Category\MallCategoryList.cshtml" />
     <Content Include="Views\Option\OptionEntry.cshtml" />
+    <Content Include="Views\Search\ExportColumnList.cshtml" />
+    <Content Include="Views\Search\OrderColumnList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -723,6 +736,10 @@
     <ProjectReference Include="..\Category_BL\Category_BL.csproj">
       <Project>{37136003-0d72-4ca3-a688-4336d8904056}</Project>
       <Name>Category_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ExportColumn_BL\ExportColumn_BL.csproj">
+      <Project>{b95e9e55-6297-4592-b6a1-70d455ff272f}</Project>
+      <Name>ExportColumn_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExportField_BL\ExportField_BL.csproj">
       <Project>{8291b6f5-9a1b-46f6-ba31-8fc657c5b3a9}</Project>

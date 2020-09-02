@@ -445,10 +445,14 @@ nav ul#userBlock li:last-of-type {
     width: 100px;
 }
 
-/*top align table cell*/
-.td-top {
-    vertical-align: top;
+/*top align table td cell*/
+table tbody td.td-topalign {
+    vertical-align: top !important;
 }
+
+
+
+
 
 
 

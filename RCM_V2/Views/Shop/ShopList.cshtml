@@ -13,18 +13,18 @@
                 <h2>ショップ検索</h2>
                 <dl>
                     <dt>ショップ名</dt>
-                    <dd><input type="text" id="ShopName" /></dd>
+                    <dd><input type="text" id="ShopName" tabindex="1"/></dd>
                     <dt>出店モール</dt>                    
-                    <dd><select id="ddlMall"></select></dd>
+                    <dd><select id="ddlMall" tabindex="2"></select></dd>
                     <dt>ステータス</dt>
                     <dd>
-                        <input type="radio" id="RadioButton1" name="status" value="1" checked /><span> 有効</span>
-                        <input type="radio" id="RadioButton2" name="status" Value="0" /><span> 無効</span>
-                        <input type="radio" id="RadioButton3" name="status" value="" /><span> 全て</span>
+                        <input type="radio" id="RadioButton1" name="status" value="1" tabindex="3" checked /><label> 有効</label>
+                        <input type="radio" id="RadioButton2" name="status" Value="0" tabindex="3"/><label> 無効</label>
+                        <input type="radio" id="RadioButton3" name="status" value="" tabindex="3"/><label> 全て</label>
                     </dd>
                 </dl>
                 <p>
-                    <input type="button" id="btnSearch" value="検索">
+                    <input type="button" id="btnSearch" value="検索" tabindex="4">
                 </p>
             </div>
 
@@ -35,7 +35,7 @@
             </div>
 
             <div class="userCmnSet resetValue editBox">
-                <table class="listTable" id="ShopList">
+                <table class="listTable" id="ShopList" style="width:100%;">
                     <thead>
                         <tr>
                             <th></th>
@@ -55,6 +55,7 @@
 {
     <script type="text/javascript">
         $(document).ready(function () {
+            $("#ShopName").select();
             BindMall();
             Search();
             $("#btnSearch").click(function () {
@@ -96,7 +97,7 @@
                     { "data": "ShopID", "width": "30%", "className":"dt-center" },
                     { "data": "ShopName","width":"40%"},
                     { "data": "MallName","width":"20%"},
-                    { "data": "Status", "width": "20%", "className":"dt-center"},
+                    { "data": "Status", "width": "20%", "className": "dt-center" }
                 ],
                 "columnDefs": [
                     {
