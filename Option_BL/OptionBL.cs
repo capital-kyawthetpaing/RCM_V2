@@ -16,7 +16,7 @@ namespace Option_BL
         {
             BaseDL bdl = new BaseDL();
             optionModel.Sqlprms = new SqlParameter[13];
-            optionModel.Sqlprms[0] = new SqlParameter("@AutoID", SqlDbType.SmallInt) { Value = optionModel.AutoID };
+            optionModel.Sqlprms[0] = new SqlParameter("@AutoID", SqlDbType.VarChar) { Value = optionModel.AutoID };
             optionModel.Sqlprms[1] = new SqlParameter("@GroupName", SqlDbType.VarChar) { Value = optionModel.GroupName };
             optionModel.Sqlprms[2] = new SqlParameter("@Option1", SqlDbType.VarChar) { Value = optionModel.Option1 };
             optionModel.Sqlprms[3] = new SqlParameter("@Value1", SqlDbType.VarChar) { Value = optionModel.Value1 };
