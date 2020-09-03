@@ -18,14 +18,10 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -162,6 +158,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
+    <Compile Include="Controllers\MultiApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
     <Compile Include="Controllers\SearchApiController.cs" />
@@ -770,6 +767,10 @@
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Multi_BL\Multi_BL.csproj">
+      <Project>{85530BA7-EFF2-4AB8-AAA4-E0850CD06971}</Project>
+      <Name>Multi_BL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Notice_BL\Notice_BL.csproj">
       <Project>{37af95eb-73b2-4345-bb74-df10d898ee41}</Project>
       <Name>Notice_BL</Name>
@@ -781,10 +782,6 @@
     <ProjectReference Include="..\Option_BL\Option_BL.csproj">
       <Project>{65B8D6B3-17E8-4B94-8CA0-595328AFCB9E}</Project>
       <Name>Option_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Season_BL\Season_BL.csproj">
-      <Project>{66d64ac5-848f-4bd0-9f53-e6caa1b0f148}</Project>
-      <Name>Season_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
       <Project>{247A1BBC-C715-4ECD-99B9-04F4A18E3BD3}</Project>

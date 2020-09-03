@@ -14,8 +14,7 @@ namespace RCM_V2.Controllers
             return View();
         }
 
-        //GET: Item_View2
-        public ActionResult Item_View2()
+        public ActionResult ItemStockList()
         {
             return View();
         }
