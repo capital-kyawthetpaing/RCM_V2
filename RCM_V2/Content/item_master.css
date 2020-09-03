@@ -23,6 +23,7 @@ div.itemCmnSetKnr.searchBox div > table th {
         font-weight: normal;
     }
     div.itemCmnSetKnr.searchBox div > table td select {
+        height:26px;
         font-size: 10px;
         width: 120px;
     }
@@ -35,7 +36,7 @@ div.itemCmnSetKnr.searchBox div > table th {
         width: 120px;
         vertical-align: bottom;
     }
-
+/*
     div#hideBlock p {
         text-align: left;
         padding-left: 27px;
@@ -46,9 +47,9 @@ div.itemCmnSetKnr.searchBox div > table th {
         background-position: 11px 3px;
         background-repeat: no-repeat;
         height: 20px;
-    }
-
+    }*/
+/*
         div#hideBlock p.active {
             border-bottom: none;
             background-position: 11px -26px;
-        }
+        }*/
