@@ -33,7 +33,16 @@ namespace ExportField_BL
             exportFieldsModel.Sqlprms[6] = new SqlParameter("@Mode", SqlDbType.VarChar) {Value=exportFieldsModel.Mode};
             exportFieldsModel.Sqlprms[7] = new SqlParameter("@AutoID", SqlDbType.VarChar) { Value = exportFieldsModel.AutoID };
             return bdl.InsertUpdateDeleteData("ExportColumn_CUD", exportFieldsModel.Sqlprms);
-
         }
+
+        //public ExportFieldsModel ExportField_Select(ExportFieldsModel exportFieldsModel)
+        //{
+        //    BaseDL bdl = new BaseDL();
+        //    exportFieldsModel.Sqlprms = new SqlParameter[4];
+        //    exportFieldsModel.Sqlprms[0] = new SqlParameter("@ExportName", exportFieldsModel.ExportName);
+        //    exportFieldsModel.Sqlprms[1] = new SqlParameter("@ExportValue", exportFieldsModel.ExportValue);
+        //    exportFieldsModel.Sqlprms[2] = new SqlParameter("@ExportType", exportFieldsModel.ExportType);
+        //    exportFieldsModel.Sqlprms[3] = new SqlParameter("@Status", exportFieldsModel.Status);
+        //}
     }
 }
