@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Shop_ItemNamePriorityList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1 id="head"></h1>
+        </div>
+
+        <div class="operationBtn">
+            <p>
+                <input type="button" value="ショップを追加する" onclick="ShopEdit('', 'New')" />
+            </p>
+        </div>
+
+        <div class="userCmnSet resetValue editBox">
+            <table class="listTable" id="ShopPriorityList">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ショップ名</th>
+                        <th>PrioritySEQForm</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+</div>
+</div>
+
+
+        @section Scripts
+{
+            <script type="text/javascript">
+        $(document).ready(function () {
+            //call shoppriority list
+            BindTable();
+
+
+        });
+                $("#head").text("商品名優先順設定一覧");
+
+        function BindTable() {
+            var obj = { ShopName: $("#ShopName").val(), PrioritySEQForm: $("#PrioritySEQForm").val() };
+            table = $('#ShopPriorityList').DataTable({
+                data: JSON.parse(CalltoApiController('@Url.Action("ShopPriority_Select", "api/ShopApi")', obj)),
+                "bFilter": false,
+                "bLengthChange": false,
+                "bInfo": false,
+                "bSort": false,
+                destroy: true,
+                "dataSrc": " ",
+                "columns": [
+                    { "data": "ShopID", "className":"dt-center" },
+                    { "data": "ShopName"},
+                    { "data": "PrioritySEQForm",className:"dt-center"},
+
+                ],
+                "columnDefs": [{
+                    "targets": 0,
+                    "data": "ShopID",
+                    "render": function (data) {
+                        return '<input type="button" style="width:70px;margin:3px;" onclick="UserEdit(\''+data+'\',\'Edit\')" value="編集">';
+                    }
+                }
+                ]
+            });
+        }
+
+           function ShopEdit(data, mode) {
+           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
+        }
+            </script>
+        }
+

@@ -18,10 +18,14 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -184,7 +188,6 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\item.css" />
-    <Content Include="Content\item_master.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -199,7 +202,6 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\amazon.png" />
-    <Content Include="images\btn_on-off.gif" />
     <Content Include="images\check.png" />
     <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />
@@ -726,7 +728,7 @@
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
-    <Content Include="Views\Item\Item_View2.cshtml" />
+    <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -783,6 +785,10 @@
     <ProjectReference Include="..\Season_BL\Season_BL.csproj">
       <Project>{66d64ac5-848f-4bd0-9f53-e6caa1b0f148}</Project>
       <Name>Season_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
+      <Project>{247A1BBC-C715-4ECD-99B9-04F4A18E3BD3}</Project>
+      <Name>ShopNamePriority_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
       <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>
