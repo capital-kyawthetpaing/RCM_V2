@@ -1,0 +1,105 @@
+﻿@model Models.ItemModel
+@{
+    ViewBag.Title = "ItemStockList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/itemStockList.css"))
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1>在庫一覧</h1>
+            <div class="itemCmnSetKnr itemCmnSet resetValue searchBox">
+                <h2>在庫検索</h2>
+                <div id="Panel1">
+                    <table>
+                        <tr>
+                            <th title="Item Number">
+                                商品番号<br>
+                                @Html.CheckBox("isActive", false)
+                                @Html.Label("完全")
+
+                            </th>
+                            <td>
+                                @Html.TextAreaFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+
+                            </td>
+                            <th title="Item code">メーカー<br />商品コード</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+
+
+                            </td>
+                            <th title="Shop Name">商品名</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                            <th title="Catalog Information">カタログ情報</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <th title="Brand Name">ブランド名</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                            <th title="Competition Name">競技名</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                            <th title="Year">年度</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                            <th title="Season">シーズン</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <th title="JAN Code">JANコード</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+                <p>
+                    <input type="button" id="btnsearch" value="検 索" />
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="userCmnSet resetValue editBox">
+    <table class="listTable" id="ItemShopList">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>商品番号</th>
+                <th>サイズコード</th>
+                <th>カラーコード</th>
+                <th>商品名</th>
+                <th>サイズ</th>
+                <th>カラー</th>
+                <th>在庫数</th>
+                <th>自社在庫数</th>
+                <th>更新日時</th>
+                <th>定価</th>
+                <th>販売価格</th>
+                <th>原価	</th>
+                <th>競技	</th>
+                <th>年度	</th>
+                <th>シーズン	</th>
+                <th>JANコード</th>
+
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>

@@ -188,6 +188,7 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\item.css" />
+    <Content Include="Content\itemStockList.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -729,6 +730,7 @@
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
+    <Content Include="Views\Item\ItemStockList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,35 @@
+﻿@charset "utf-8";
+
+#CmnContents {
+    width: 1000PX;
+    margin: 0px auto;
+    margin-top: -100px;
+    padding-top: 85px;
+}
+
+    div.itemCmnSetKnr.searchBox div > table th {
+        width: 110px;
+        font-size: 10px;
+    }
+
+    div.searchBox div > table th {
+        text-align: right;
+        margin-bottom: 1px;
+        font-weight: normal;
+    }
+
+    div.itemCmnSetKnr.searchBox div > table td select {
+        font-size: 10px;
+        width: 120px;
+    }
+
+    div.itemCmnSetKnr.searchBox div > table td input {
+        width: 120px;
+    }
+
+    div.searchBox div > table td select, div.searchBox div > table td input[type="text"], div.searchBox div > table td textarea {
+        width: 120px;
+        vertical-align: bottom;
+    }
+
+    
