@@ -17,15 +17,11 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -155,7 +151,6 @@
     <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DashboardApiController.cs" />
-    <Compile Include="Controllers\ExportFieldApiController.cs" />
     <Compile Include="Controllers\ExportFieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemApiController.cs" />
@@ -165,6 +160,7 @@
     <Compile Include="Controllers\OptionApiController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
     <Compile Include="Controllers\SearchApiController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
@@ -188,6 +184,7 @@
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\item.css" />
+    <Content Include="Content\item_master.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
     <Content Include="Content\jquery-ui.css" />
@@ -202,6 +199,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\amazon.png" />
+    <Content Include="images\btn_on-off.gif" />
     <Content Include="images\check.png" />
     <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />
@@ -728,7 +726,6 @@
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
-    <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
