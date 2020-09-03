@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -155,6 +155,7 @@
     <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\DashboardApiController.cs" />
+    <Compile Include="Controllers\ExportFieldApiController.cs" />
     <Compile Include="Controllers\ExportFieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemApiController.cs" />
@@ -164,7 +165,6 @@
     <Compile Include="Controllers\OptionApiController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
     <Compile Include="Controllers\SearchApiController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\ShopApiController.cs" />
     <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />

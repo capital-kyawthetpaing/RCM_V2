@@ -17,7 +17,7 @@ namespace RCM_V2.Controllers
         public IHttpActionResult ExportField_Save(ExportFieldsModel exportFieldsModel)
         {
             ExportFieldBL bl = new ExportFieldBL();
-            return Ok();
+            return Ok(bl.ExportField_Save(exportFieldsModel));
         }
     }
 }

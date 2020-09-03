@@ -29,6 +29,7 @@
 
 <script src="@Url.Content("~/Scripts/jquery-3.5.1.min.js")"></script>
 <link href="@Url.Content("~/Content/user.css")" rel="stylesheet" />
+
 <script type="text/javascript">
 
     $(document).ready(function () {          
@@ -78,17 +79,17 @@
     }
 
     function AddColumnName() {
-        TblColarrList = [];
-        FormColarrList = [];
         var exportVal;
+        var exportObj;
+         exportListarr = [];
         $("#ExportValue").val('');
 
         $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
 
-            if ($(this).attr("name") != undefined) {  
-                FormColarrList.push($(this).attr("id"));
-                TblColarrList.push($(this).val());
-                if (TblColarrList.length>1)
+            if ($(this).attr("name") != undefined) {
+                exportObj = { FormColumnName: $(this).attr("id"), TableColumnName: $(this).val() };
+                exportListarr.push(exportObj);
+                if (exportListarr.length>1)
                     exportVal += "," + $(this).val();                
                 else
                     exportVal= $(this).val();                
