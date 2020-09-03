@@ -251,7 +251,7 @@
             var obj = {
                 YearCD: "",
             };
-            var response = CalltoApiController('@Url.Action("Mall_Select", "api/MallApi")', obj);
+            var response = CalltoApiController('@Url.Action("Year_Select", "api/MallApi")', obj);
             var items = JSON.parse(response);
 
             $("#YearCD").empty();
@@ -270,7 +270,25 @@
         }
 
         function BindSeason() {
+             var obj = {
+                 SeasonCD: "",
+            };
+            var response = CalltoApiController('@Url.Action("Year_Select", "api/MallApi")', obj);
+            var items = JSON.parse(response);
 
+            $("#SeasonCD").empty();
+
+            $.each(items, function (i, item) {
+                
+                var SeasonCD = item.SeasonCD;
+                $("#SeasonCD").append(
+                    $('<option></option>').val(SeasonCD).html(item.MallName));
+             });
+
+             if('@Model.Mode'=="New")
+                 $('#SeasonCD option:first-child').attr("selected", "selected");
+             else
+                 $("#SeasonCD").val('@Model.SeasonCD');
         }
     </script>
 }
