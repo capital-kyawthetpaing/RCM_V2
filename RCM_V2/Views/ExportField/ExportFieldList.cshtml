@@ -34,8 +34,8 @@
 
             <div class="operationBtn">
                 <p>
-                    <input type="button" value="商品情報エクスポート定義を追加する" />
-                    <input type="button" value="説明文エクスポート定義を追加する" />
+                    <input type="button" value="商品情報エクスポート定義を追加する" onclick="ExportFieldEdit('','','01')"/>
+                    <input type="button" value="説明文エクスポート定義を追加する" onclick="ExportFieldEdit('','','02')"/>
                 </p>
             </div>
 
@@ -95,15 +95,16 @@
                     "targets": 0,
                     "data": "AutoID",
                     "render": function (data) {
-                        return '<input type="button"  onclick="ExportFieldEdit(\'' + data +'\',\'Edit\')" style="width:70px;margin-right:5px" value="編集">'
+                        return '<input type="button"  onclick="ExportFieldEdit(\'' + data +'\',\'Edit\',"")" style="width:70px;margin-right:5px" value="編集">'
                         }
                     },
                 ]
             });
         }
 
-        function ExportFieldEdit(data, mode) {
-           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
+        function ExportFieldEdit(data, mode, expType) {
+            alert(expType);
+            window.location.href = '@Url.Action("ExportFieldEntry", "ExportField")?AutoID=' + data + "&Mode=" + mode + "&ExportType=" + expType;
         }
 
     </script>

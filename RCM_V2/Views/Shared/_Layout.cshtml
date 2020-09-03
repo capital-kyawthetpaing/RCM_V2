@@ -14,7 +14,9 @@
     <link rel="stylesheet" href="@Url.Content("~/Content/common1.css")" />
     <link rel="stylesheet" href="@Url.Content("~/Content/manager-style.css")" />
     <link rel="stylesheet" href="@Url.Content("~/Content/iziModal.min.css")" />
-
+    <link rel="stylesheet" href="@Url.Content("~/Content/iziModal.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/iziModal.min.css")" />
+    
     @{
         if (System.Diagnostics.Debugger.IsAttached)
         {
@@ -43,7 +45,7 @@
                             <a href="#">商品管理</a>
                             <ul id="menu01-sub" class="subMenu">
                                 <li><a href="@Url.Content("#")">商品情報一覧<br>(ページ制作)</a></li>
-                                <li><a href="@Url.Content("#")">商品情報一覧<br>(商品管理)</a></li>
+                                <li><a href="@Url.Action("ItemManageList","Item")">商品情報一覧<br>(商品管理)</a></li>
                                 <li><a href="@Url.Content("#")">ステータス変更</a></li>
                                 <li><a href="@Url.Content("#")">出品一覧</a></li>
                                 <li><a href="@Url.Content("#")">出品一覧(New)</a></li>
@@ -171,7 +173,7 @@
     <script src="@Url.Content("~/Scripts/SweetAlert2.js")"></script>
     <script src="@Url.Content("~/Scripts/cleave.min.js")"></script>
     <script src="@Url.Content("~/Scripts/iziModal.min.js")"></script>
-
+    <script src="@Url.Content("~/Scripts/html5sortable.js")"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

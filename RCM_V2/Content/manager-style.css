@@ -572,13 +572,13 @@ div#hideBlock p {
     border-bottom: 1px dashed #333;
     width: 973px;
 	background-image: url(../images/btn_on-off.gif);
-    background-position: 11px 3px;
+    background-position: 11px 0px;
 	background-repeat: no-repeat;
     height: 20px;
 }
 div#hideBlock p.active {
     border-bottom: none;
-    background-position: 11px -26px;
+    background-position: 11px -29px;
 }
 
 /* Category Search */

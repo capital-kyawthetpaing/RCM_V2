@@ -130,12 +130,13 @@ function moveNext(ctrl) {
 
 function ErrorCheckOnClick(e1) {
     var r1 = "0";
-    $('#'+e1+' *').filter(':input').each(function () {
+    $('#' + e1 + ' *').filter(':input').each(function () {
         var result = ErrChk(this);
         if (result != "0") {
+            alert("a");
             $(this).focus();
             r1 = result;
-            return result;
+            return false;
         }
     });
     return r1;

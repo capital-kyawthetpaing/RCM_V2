@@ -1,8 +1,17 @@
-﻿@model Models.ExportFieldsModel
+﻿@using Models;
+@model Models.ExportFieldsModel
 @{
     ViewBag.Title = "ExportFieldEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    /*drag and drop table hover class*/
+    .sortable-dragging {
+        background-color: green;
+        color: white;
+    }
+</style>
+
 
 <div id="CmnContents">
     <div id="ComBlock">
@@ -15,7 +24,7 @@
         <div id="regi" class="setDetailBox iconSet iconEdit d-none">
             <h1 id="head"></h1>
         </div>
-        <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
+        <div class="setDetailBox confSet iconSet iconCheck" id="divExportEntry">
             <table class="userCmnSet editTable">
                 <tbody>
                     <tr>
@@ -30,7 +39,7 @@
                             定義名&nbsp;<span>※必須</span>
                         </th>
                         <td>
-                            @Html.TextBoxFor(x => x.ExportName, new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                            @Html.TextBoxFor(x => x.ExportName, new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })                            
                         </td>
                     </tr>
                     <tr>
@@ -39,7 +48,7 @@
                             <div class="operationBtn">
                                 <p>
                                     <input type="button" value="項目を選択する" onclick="ExportColumnClick()" />
-                                    <input type="button" id="btnExportOrder" value="優先順設定" onclick="OrderColumnClick()" disabled/>
+                                    <input type="button" id="btnExportOrder" value="優先順設定" onclick="OrderColumnClick()" disabled />
                                 </p>
                             </div>
                             <br />
@@ -61,32 +70,119 @@
 </div>
 
 @Html.Partial("~/Views/Search/ExportColumnList.cshtml")
-@*@Html.Partial("~/Views/Search/OrderColumnList.cshtml")*@
-
+@Html.Partial("~/Views/Search/OrderColumnList.cshtml")
 
 @section Scripts
 {
     <script type="text/javascript">
 
         $(document).ready(function () {
+            var OrderColarr = [];
+            var exportListarr = [];
+            //modal for exported column name
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
                 width: "70%"
             });
 
-            //$("#ordercolumnlistModal").iziModal({
-            //    top: 30,
-            //    width: "90%"
-            //});
-        });   
-   
-    function ExportColumnClick() {       
-        $('#exportcolumnlistModal').iziModal('open');
-    }    
+            //modal for exported order column name
+            $("#ordercolumnlistModal").iziModal({
+                top: 30,
+                width: "50%"
+            });
 
-    //function OrderColumnClick() {       
-    //    $('#ordercolumnlistModal').iziModal('open');
-    //}
+            //to input for save confirm
+            $("#btnSave").click(function () {
+                var res = ErrorCheckOnClick('divExportEntry');
+                if (res == "0") {
+                    $("#btnConfirm_Save").val("登録");
+                    $("#btnPrevious").removeClass('d-none');
+                    $("#btnSave").addClass('d-none');
+                    $("#btnConfirm_Save").removeClass('d-none');
+                    $("#btnback").addClass('d-none');
+                    $('.userCmnSet :input').attr('disabled', true);
+                    $("#btnConfirm_Save").focus();
+                }
+                else {
+                    ShowMessage(res);
+                }
+            });
+
+            $("#btnPrevious").click(function () {
+                $("#btnSave").removeClass('d-none');
+                $("#btnback").removeClass('d-none');
+                $("#btnPrevious").addClass('d-none');
+                $("#btnConfirm_Save").addClass('d-none');
+                $('.userCmnSet :input').removeAttr('disabled', true);
+            });
+
+        });
+
+        function ExportColumnClick() {
+            $('#exportcolumnlistModal').iziModal('open');
+        }
+
+        function OrderColumnClick() {
+            BindOrderColumn();
+            $('#ordercolumnlistModal').iziModal('open');
+        }
+
+        function BindOrderColumn() {
+            $("#tblOrderList tbody").html('');
+            for (i = 0; i < exportListarr.length; i++) {
+                var row = '<tr><td>' + exportListarr[i].FormColumnName + '</td><td>' + exportListarr[i].TableColumnName + '</td></tr>';
+                $("#tblOrderList tbody").append(row);
+            }
+            sortable('#tblOrderList tbody', {
+                items: "tr",
+                forcePlaceholderSize: true,
+                placeholderClass: 'ph-class',
+            })
+        }
+
+        function CloseOrderModal() {
+            $('#ordercolumnlistModal').iziModal('close');
+        }
+
+        function AddOrderColumn() {
+            exportListarr = [];
+            $("#ExportValue").val('');
+            var OrderColVal;
+           
+            $.each($("#tblOrderList > tbody > tr"), function () {
+                var exportObj = { FormColumnName: this.cells[0].innerHTML, TableColumnName: this.cells[1].innerHTML};
+                exportListarr.push(exportObj);
+                if (exportListarr.length > 1)
+                    OrderColVal += "," + this.cells[1].innerHTML;
+                else
+                    OrderColVal = this.cells[1].innerHTML;
+            });
+
+            $("#ExportValue").val(OrderColVal);
+            $('#ordercolumnlistModal').iziModal('close');
+        }
+
+        function ConfirmSave() {
+            var exportFieldModel = {
+                AutoID: '@Model.AutoID',
+                Status: $("input[name='rbdStatus']:checked").val(),
+                ExportName: $("#ExportName").val(),
+                ExportType:'@Model.ExportType',
+                CreatedBy: $("#lblUser").text(),
+                UpdatedBy: $("#lblUser").text(),
+                ExportFieldList: exportListarr,
+                Mode:'@Model.Mode'
+            };
+
+            var result = CalltoApiController("/api/ExportFieldApi/ExportField_Save", exportFieldModel);
+            if (result=="true") {
+                ShowMessage("I101","SaveOK");
+            }
+            else {
+                 $("#UserName").focus();
+                ShowMessage("E001");
+            }
+        }
     </script>
 }
 
