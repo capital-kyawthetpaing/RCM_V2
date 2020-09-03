@@ -1,0 +1,248 @@
+﻿@using Models;
+@model Models.ItemModel
+@{
+    ViewBag.Title = "Item_View2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/item_master.css"))
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1>商品情報一覧（商品管理）</h1>
+            <div class="itemCmnSetKnr itemCmnSet resetValue searchBox">
+                <h2>商品情報一覧検索</h2>
+                <div id="Panel1">
+                    <table>
+                        <tr>
+                            <th title="Item Number">
+                                商品番号<br>
+                                @Html.CheckBoxFor(x => x.chkiv, new
+                           {
+                               @tabindex = "0"
+                           })
+                            </th>
+                            <td>
+                                @Html.TextAreaFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+
+                            </td>
+                            <th title="Brand name">ブランド名</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+
+
+                            </td>
+                            <th title="Catalog information">カタログ情報</th>
+                            <td>
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                            </td>
+                            <th title="Person in charge">担当者</th>
+                            <td>
+                                @{
+                                    var listNew3 = new List<SelectListItem>();
+                                    listNew3.Add(new SelectListItem { Text = "---Select---", Value = "0" });
+                                    listNew3.Add(new SelectListItem { Text = "ページ制作", Value = "1" });
+                                    listNew3.Add(new SelectListItem { Text = "期日出品待ち", Value = "2" });
+                                    listNew3.Add(new SelectListItem { Text = "出品待ち", Value = "3" });
+                                    listNew3.Add(new SelectListItem { Text = "出品済", Value = "4" });
+                                }
+                                @Html.DropDownListFor(m => m.ItemName, listNew3, new
+                                  {
+                                      @class = "form-control",
+                                      @required = "required",
+                                      @id = "ddlsksstatus",
+                                      @tabindex = "4"
+                                  })
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th title="SKS status">SKSステータス</th>
+                            <td>
+                                @{
+                                    var listNew2 = new List<SelectListItem>();
+                                    listNew2.Add(new SelectListItem { Text = "---Select---", Value = "0" });
+                                    listNew2.Add(new SelectListItem { Text = "ページ制作", Value = "1" });
+                                    listNew2.Add(new SelectListItem { Text = "期日出品待ち", Value = "2" });
+                                    listNew2.Add(new SelectListItem { Text = "出品待ち", Value = "3" });
+                                    listNew2.Add(new SelectListItem { Text = "出品済", Value = "4" });
+                                }
+                                @Html.DropDownListFor(m => m.ItemName, listNew2, new
+                                  {
+                                      @class = "form-control",
+                                      @required = "required",
+                                      @id = "ddlsksstatus",
+                                      @tabindex = "5"
+                                  })
+
+                            </td>
+                            <th title="Date of approval">承認日</th>
+                            <td class="cal">
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+
+                            </td>
+                            <th title="Date of approval">~&nbsp;&nbsp;&nbsp;</th>
+                            <td class="cal">
+                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <div id="hideBlock">
+                        <p>詳細検索</p>
+                        <div id="hideBox">
+                            <table>
+                                <tr>
+                                    <th>商品名</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>メーカー商品コード</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>仕入先名</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>競技名</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>分類名</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 12, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>特記フラグ</th>
+                                    <td>
+                                        @{
+                                            var listYear = new List<SelectListItem>();
+                                            listYear.Add(new SelectListItem { Text = "---Select---", Value = "0" });
+                                            listYear.Add(new SelectListItem { Text = "【★】", Value = "2" });
+                                            listYear.Add(new SelectListItem { Text = "【■】", Value = "3" });
+                                            listYear.Add(new SelectListItem { Text = "【F】", Value = "4" });
+                                            listYear.Add(new SelectListItem { Text = "【□】", Value = "5" });
+                                            listYear.Add(new SelectListItem { Text = "送料別途", Value = "6" });
+                                            listYear.Add(new SelectListItem { Text = "送料お見積もり", Value = "7" });
+                                            listYear.Add(new SelectListItem { Text = "【◎】", Value = "8" });
+                                            listYear.Add(new SelectListItem { Text = "【◆】", Value = "9" });
+                                            listYear.Add(new SelectListItem { Text = "2027", Value = "2027" });
+                                            listYear.Add(new SelectListItem { Text = "2028", Value = "2028" });
+                                            listYear.Add(new SelectListItem { Text = "2029", Value = "2029" });
+                                            listYear.Add(new SelectListItem { Text = "2030", Value = "2030" });
+                                        }
+                                        @Html.DropDownListFor(m => m.ItemName, listYear, new
+                                          {
+                                              @class = "form-control",
+                                              @required = "required",
+                                              @id = "ddlYear",
+                                              @tabindex = "13"
+                                          })
+                                    </td>
+                                    <th>予約フラグ"</th>
+                                    <td>
+                                        @{
+                                            var listNew1 = new List<SelectListItem>();
+                                            listNew1.Add(new SelectListItem { Text = "---Select---", Value = "0" });
+                                            listNew1.Add(new SelectListItem { Text = "通常商品", Value = "1" });
+                                            listNew1.Add(new SelectListItem { Text = "予約商品", Value = "2" });
+                                            listNew1.Add(new SelectListItem { Text = "☆即☆", Value = "3" });
+                                        }
+                                        @Html.DropDownListFor(m => m.ItemName, listNew1, new
+                                          {
+                                              @class = "form-control",
+                                              @required = "required",
+                                              @id = "ddlYear",
+                                              @tabindex = "14"
+                                          })
+                                    </td>
+                                    <th>年度</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 15, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>シーズン</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 16, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>ショップ<br />ステータス</th>
+                                    <td>
+                                        @{
+                                            var listNew = new List<SelectListItem>();
+                                            listNew.Add(new SelectListItem { Text = "---Select---", Value = "0" });
+                                            listNew.Add(new SelectListItem { Text = "未掲載", Value = "n" });
+                                            listNew.Add(new SelectListItem { Text = "掲載中", Value = "u" });
+                                            listNew.Add(new SelectListItem { Text = "掲載無", Value = "g" });
+                                            listNew.Add(new SelectListItem { Text = "倉庫", Value = "w" });
+                                            listNew.Add(new SelectListItem { Text = "エラー", Value = "e" });
+                                            listNew.Add(new SelectListItem { Text = "削除", Value = "d" });
+                                            listNew.Add(new SelectListItem { Text = "削・無のぞく", Value = "nu" });
+                                        }
+                                        @Html.DropDownListFor(m => m.ItemName, listNew, new
+                                          {
+                                              @class = "form-control",
+                                              @required = "required",
+                                              @id = "ddlYear",
+                                              @tabindex = "17"
+                                          })
+                                    </td>
+                                    <th>備考</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 18, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>JANコード</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 19, onkeydown = "KeyDown(event,this)" })
+
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                    <th>販売管理コード </th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 20, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                    <th>指示書番号</th>
+                                    <td>
+                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 21, onkeydown = "KeyDown(event,this)" })
+                                    </td>
+                                </tr>
+                            </table>
+
+
+                        </div>
+                    </div>
+
+                    <p>
+                        <input type="button" id="btnsearch" value="検 索" />
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#hideBlock p').on('click', function () {
+                var hiddenbox = $(this).closest('#hideBlock p');
+                if (this.hidden) {
+                    // This row is already open - close it
+                    $(this).next().slideToggle();
+                    $(this).removeClass("active"); 
+                }
+                else {
+                    // Open this row
+                    $(this).next().slideToggle();
+                    $(this).toggleClass("active"); 
+                }
+            });
+        });
+    </script>
+}
+

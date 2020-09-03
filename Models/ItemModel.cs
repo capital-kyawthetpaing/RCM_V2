@@ -3,6 +3,7 @@
     public class ItemModel : BaseModel
     {
         #region Item
+        public bool chkiv { get; set; }
         public string ItemCD { get; set; }
         public string ItemName { get; set; }
         public string MakerCD { get; set; }
