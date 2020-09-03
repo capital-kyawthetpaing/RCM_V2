@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -191,7 +191,6 @@
     <Content Include="Content\item_master.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
-    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\mall_category.css" />
     <Content Include="Content\manager-style.css" />
     <Content Include="Content\option.css" />
@@ -229,6 +228,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\html5sortable.js" />
     <Content Include="Scripts\index.js.flow" />
     <Content Include="Scripts\esm\popper.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
@@ -253,7 +253,6 @@
     <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
     <Content Include="Scripts\Common.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -782,10 +781,6 @@
     <ProjectReference Include="..\Option_BL\Option_BL.csproj">
       <Project>{65B8D6B3-17E8-4B94-8CA0-595328AFCB9E}</Project>
       <Name>Option_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Season_BL\Season_BL.csproj">
-      <Project>{66d64ac5-848f-4bd0-9f53-e6caa1b0f148}</Project>
-      <Name>Season_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
       <Project>{247A1BBC-C715-4ECD-99B9-04F4A18E3BD3}</Project>
