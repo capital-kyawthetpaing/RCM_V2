@@ -16,10 +16,10 @@
 <div id="CmnContents">
     <div id="ComBlock">
         <div id="edi" class="setDetailBox confSet iconSet iconCheck d-none">
-            <h1>ユーザ編集確認画面</h1>
+            <h1>エクスポート定義 編集確認画面</h1>
         </div>
         <div id="reg_Confirm" class="setDetailBox confSet iconSet iconCheck d-none">
-            <h1>ユーザ登録 確認画面</h1>
+            <h1>エクスポート定義 登録 確認画面</h1>
         </div>
         <div id="regi" class="setDetailBox iconSet iconEdit d-none">
             <h1 id="head"></h1>
@@ -30,8 +30,8 @@
                     <tr>
                         <th>ステータス</th>
                         <td>
-                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked /><label for="rdostatus">有効</label>
-                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" /><label for="rdostatus1">無効</label>
+                            <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked tabindex="1" onkeydown="KeyDown(event,this)" /><label for="rdostatus">有効</label>
+                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" tabindex="1"/><label for="rdostatus1">無効</label>
                         </td>
                     </tr>
                     <tr>
@@ -39,7 +39,7 @@
                             定義名&nbsp;<span>※必須</span>
                         </th>
                         <td>
-                            @Html.TextBoxFor(x => x.ExportName, new { @required = true, @tabIndex = 1, onkeydown = "KeyDown(event,this)" })                            
+                            @Html.TextBoxFor(x => x.ExportName, new {@tabindex="2",onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                     <tr>
@@ -47,12 +47,14 @@
                         <td>
                             <div class="operationBtn">
                                 <p>
-                                    <input type="button" value="項目を選択する" onclick="ExportColumnClick()" />
-                                    <input type="button" id="btnExportOrder" value="優先順設定" onclick="OrderColumnClick()" disabled />
+                                    <input type="button" value="項目を選択する" onclick="ExportColumnClick()" tabindex="3" />
+                                    <input type="button" id="btnExportOrder" value="優先順設定" onclick="OrderColumnClick()" tabindex="4" disabled />
                                 </p>
                             </div>
                             <br />
-                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled", @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled",onkeydown = "KeyDown(event,this)" })
+                            @Html.HiddenFor(x => x.AutoID)
+                            @Html.HiddenFor(x => x.ExportValueID)
                         </td>
                     </tr>
                 </tbody>
@@ -62,7 +64,7 @@
             <div class="userRole">
                 <input type="button" id="btnback" value="戻る" Style="margin-bottom: 30px;width:100px;height:25px;" />
                 <input type="button" id="btnPrevious" value="戻る" class="d-none" Style="width:100px;" />
-                <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" />
+                <input type="button" id="btnSave" value="確認画面へ" style="width: 100px" tabindex="5" />
                 <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" Style="width:100px;" />
             </div>
         </div>
@@ -72,13 +74,39 @@
 @Html.Partial("~/Views/Search/ExportColumnList.cshtml")
 @Html.Partial("~/Views/Search/OrderColumnList.cshtml")
 
+
 @section Scripts
 {
     <script type="text/javascript">
 
         $(document).ready(function () {
-            var OrderColarr = [];
             var exportListarr = [];
+            var ExportValue;
+            var ExportValID;
+
+            $("#rdostatus").select();
+            //check required field
+            RequiredCheck($("#ExportName"));
+            RequiredCheck($("#ExportValue"));
+
+        if ('@Model.ExportType' == "01")
+        {
+            $("#head").text('商品情報エクスポート定義');
+            $("#regi").removeClass('d-none');
+        }
+        else
+        {
+            $("#head").text('説明文エクスポート定義');
+            $("#regi").removeClass('d-none');
+
+            //check radio based on Deleteflag
+            if ('@Model.Status' == "有効")
+                $("#rdostatus").attr('checked', true);
+            else
+                $("#rdostatus1").attr('checked', true);
+
+        }
+            
             //modal for exported column name
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
@@ -95,7 +123,15 @@
             $("#btnSave").click(function () {
                 var res = ErrorCheckOnClick('divExportEntry');
                 if (res == "0") {
-                    $("#btnConfirm_Save").val("登録");
+                 if ('@Model.Mode' == "New") {
+                      $("#btnConfirm_Save").val("登録");
+                      $("#reg_Confirm").removeClass('d-none');
+                  }
+                  else {
+                      $("#btnConfirm_Save").val("確認");
+                      $("#edi").removeClass('d-none');
+                  }
+                    
                     $("#btnPrevious").removeClass('d-none');
                     $("#btnSave").addClass('d-none');
                     $("#btnConfirm_Save").removeClass('d-none');
@@ -114,6 +150,12 @@
                 $("#btnPrevious").addClass('d-none');
                 $("#btnConfirm_Save").addClass('d-none');
                 $('.userCmnSet :input').removeAttr('disabled', true);
+                $("#ExportValue").prop("disabled", true);
+            });
+
+             // go to Export Field List
+            $("#btnback").click(function(){
+               window.location.href='@Url.Action("ExportFieldList","ExportField")';
             });
 
         });
@@ -130,7 +172,7 @@
         function BindOrderColumn() {
             $("#tblOrderList tbody").html('');
             for (i = 0; i < exportListarr.length; i++) {
-                var row = '<tr><td>' + exportListarr[i].FormColumnName + '</td><td>' + exportListarr[i].TableColumnName + '</td></tr>';
+                var row = '<tr><td>' + exportListarr[i].ExpValueID + '</td><td>' + exportListarr[i].ExpValue + '</td></tr>';
                 $("#tblOrderList tbody").append(row);
             }
             sortable('#tblOrderList tbody', {
@@ -146,19 +188,21 @@
 
         function AddOrderColumn() {
             exportListarr = [];
+            ExportValue = "";
+            ExportValueID = "";
             $("#ExportValue").val('');
-            var OrderColVal;
-           
             $.each($("#tblOrderList > tbody > tr"), function () {
-                var exportObj = { FormColumnName: this.cells[0].innerHTML, TableColumnName: this.cells[1].innerHTML};
-                exportListarr.push(exportObj);
-                if (exportListarr.length > 1)
-                    OrderColVal += "," + this.cells[1].innerHTML;
-                else
-                    OrderColVal = this.cells[1].innerHTML;
+                if (ExportValue == "") {
+                    ExportValueID = this.cells[0].innerHTML;
+                    ExportValue = this.cells[1].innerHTML;
+                }
+                else {
+                    ExportValueID += "," + this.cells[0].innerHTML;
+                    ExportValue += "," + this.cells[1].innerHTML;
+                }
             });
 
-            $("#ExportValue").val(OrderColVal);
+            $("#ExportValue").val(ExportValue);
             $('#ordercolumnlistModal').iziModal('close');
         }
 
@@ -170,7 +214,8 @@
                 ExportType:'@Model.ExportType',
                 CreatedBy: $("#lblUser").text(),
                 UpdatedBy: $("#lblUser").text(),
-                ExportFieldList: exportListarr,
+                ExportValue: ExportValue,
+                ExportValueID: ExportValueID,
                 Mode:'@Model.Mode'
             };
 
@@ -182,6 +227,10 @@
                  $("#UserName").focus();
                 ShowMessage("E001");
             }
+        }
+
+        function SaveOK() {
+            window.location.href = '@Url.Action("ExportFieldList","ExportField")';
         }
     </script>
 }

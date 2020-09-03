@@ -31,8 +31,15 @@
 <link href="@Url.Content("~/Content/user.css")" rel="stylesheet" />
 
 <script type="text/javascript">
-
-    $(document).ready(function () {          
+    var AutoID = "";
+    var exportValueArr = [];       
+    $(document).ready(function () {  
+        exportListarr = [];        
+         AutoID = $("#AutoID").val();        
+        if ($("#ExportValueID").val() != "") {
+            var ExportValueStr = $("#ExportValueID").val();
+            exportValueArr = ExportValueStr.split(',');
+        }
         BindColumn();
     });
 
@@ -45,14 +52,34 @@
         var ColumnGroupID = '0';
         var row = '';
         $.each(items, function (i, item) {
-            
-            //if different group, add group title
-            if (item.ColumnGroupID != ColumnGroupID) {
-                row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
-                $("#tblColumnList tbody").append(row);
+          
+            if (AutoID == "") {
+                //if different group, add group title
+                if (item.ColumnGroupID != ColumnGroupID) {
+                    row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
+                    $("#tblColumnList tbody").append(row);                    
+                }
+                row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';                
             }
-
-            row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';            
+            else {   
+                var checkedItem = "";
+                if (item.ColumnGroupID != ColumnGroupID) {
+                    
+                    var groupList = items.filter((obj) => obj.ColumnGroupID === item.ColumnGroupID);
+                    const groupCount = groupList.length;
+                    const checkCount = groupList.filter((obj) => exportValueArr.includes(obj.FormColumnName)).length;
+                    
+                    if (groupCount == checkCount)
+                        checkedItem = "checked";
+                    row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"' + checkedItem + '><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';                   
+                    $("#tblColumnList tbody").append(row);
+                }
+                if (exportValueArr.includes(item.FormColumnName)) {
+                    checkedItem = "checked";
+                }               
+                row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);" ' + checkedItem + '/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';               
+            }
+            
             $("#tblColumnList tbody").append(row);
             ColumnGroupID = item.ColumnGroupID;
         });
@@ -78,25 +105,26 @@
         }
     }
 
-    function AddColumnName() {
-        var exportVal;
-        var exportObj;
-         exportListarr = [];
+    function AddColumnName() {        
         $("#ExportValue").val('');
-
+        ExportValue = "";
+        ExportValueID = "";
         $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
-
-            if ($(this).attr("name") != undefined) {
-                exportObj = { FormColumnName: $(this).attr("id"), TableColumnName: $(this).val() };
-                exportListarr.push(exportObj);
-                if (exportListarr.length>1)
-                    exportVal += "," + $(this).val();                
+            if ($(this).attr("name") != undefined) {               
+                if (ExportValue == "") {
+                    ExportValue = $(this).val();
+                    ExportValueID = $(this).attr("id");
+                }             
                 else
-                    exportVal= $(this).val();                
+                {
+                    ExportValue += "," + $(this).val();
+                    ExportValueID += "," + $(this).attr("id");
+                }  
+                var exportObj = { ExpValue: $(this).val(), ExpValueID: $(this).attr("id")};
+                exportListarr.push(exportObj);
             }
         });
-
-        $("#ExportValue").val(exportVal); // add main page's textarea
+        $("#ExportValue").val(ExportValue); // add main page's textarea
         $('#exportcolumnlistModal').iziModal('close');
 
         if ($("#ExportValue").val()!="")
