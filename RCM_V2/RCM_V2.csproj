@@ -18,14 +18,10 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -162,6 +158,7 @@
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
+    <Compile Include="Controllers\MultiApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
     <Compile Include="Controllers\OptionController.cs" />
     <Compile Include="Controllers\SearchApiController.cs" />
@@ -769,6 +766,10 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{14f5245d-4c9c-49e6-98f2-026583fb8c65}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Multi_BL\Multi_BL.csproj">
+      <Project>{85530BA7-EFF2-4AB8-AAA4-E0850CD06971}</Project>
+      <Name>Multi_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Notice_BL\Notice_BL.csproj">
       <Project>{37af95eb-73b2-4345-bb74-df10d898ee41}</Project>
