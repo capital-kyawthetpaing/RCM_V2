@@ -782,10 +782,6 @@
       <Project>{65B8D6B3-17E8-4B94-8CA0-595328AFCB9E}</Project>
       <Name>Option_BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Season_BL\Season_BL.csproj">
-      <Project>{66d64ac5-848f-4bd0-9f53-e6caa1b0f148}</Project>
-      <Name>Season_BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
       <Project>{247A1BBC-C715-4ECD-99B9-04F4A18E3BD3}</Project>
       <Name>ShopNamePriority_BL</Name>
