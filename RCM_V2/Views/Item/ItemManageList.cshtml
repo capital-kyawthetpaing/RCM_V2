@@ -162,14 +162,12 @@
                                     <th>年度</th>
                                     <td>
                                         @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 15, onkeydown = "KeyDown(event,this)" })
-                                        @*@Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 15, onkeydown = "KeyDown(event,this)" })*@
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>シーズン</th>
                                     <td>
                                         @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 16, onkeydown = "KeyDown(event,this)"})
-                                        @*@Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 16, onkeydown = "KeyDown(event,this)" })*@
                                     </td>
                                     <th>ショップ<br />ステータス</th>
                                     <td>
@@ -230,7 +228,10 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
+
             BindYear();
+            BindSeason();
+
             $('#hideBlock p').on('click', function () {
                 var hiddenbox = $(this).closest('#hideBlock p');
                 if (this.hidden) {
@@ -248,10 +249,7 @@
 
 
         function BindYear() {
-            var obj = {
-                YearCD: "",
-            };
-            var response = CalltoApiController('@Url.Action("Year_Select", "api/MallApi")', obj);
+            var response = CalltoApiController('@Url.Action("Year_Select", "api/MultiApi")');
             var items = JSON.parse(response);
 
             $("#YearCD").empty();
@@ -260,20 +258,13 @@
                 
                 var YearCD = item.YearCD;
                 $("#YearCD").append(
-                    $('<option></option>').val(YearCD).html(item.MallName));
-             });
-
-             if('@Model.Mode'=="New")
-                 $('#YearCD option:first-child').attr("selected", "selected");
-             else
-                 $("#YearCD").val('@Model.YearCD');
+                    $('<option></option>').val(YearCD).html(item.Year));
+            });
+            $('#YearCD option:first-child').attr("selected", "selected");
         }
 
         function BindSeason() {
-             var obj = {
-                 SeasonCD: "",
-            };
-            var response = CalltoApiController('@Url.Action("Year_Select", "api/MallApi")', obj);
+            var response = CalltoApiController('@Url.Action("Season_Select", "api/MultiApi")');
             var items = JSON.parse(response);
 
             $("#SeasonCD").empty();
@@ -282,13 +273,9 @@
                 
                 var SeasonCD = item.SeasonCD;
                 $("#SeasonCD").append(
-                    $('<option></option>').val(SeasonCD).html(item.MallName));
-             });
-
-             if('@Model.Mode'=="New")
-                 $('#SeasonCD option:first-child').attr("selected", "selected");
-             else
-                 $("#SeasonCD").val('@Model.SeasonCD');
+                    $('<option></option>').val(SeasonCD).html(item.Season));
+            });
+            $('#SeasonCD option:first-child').attr("selected", "selected");
         }
     </script>
 }
