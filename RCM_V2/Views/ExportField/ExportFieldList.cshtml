@@ -94,8 +94,8 @@
                     {
                     "targets": 0,
                     "data": "AutoID",
-                    "render": function (data) {
-                        return '<input type="button"  onclick="ExportFieldEdit(\'' + data +'\',\'Edit\',"")" style="width:70px;margin-right:5px" value="編集">'
+                        "render": function (data, type, row) {
+                            return '<input type="button"  onclick="ExportFieldEdit(\'' + data + '\',\'Edit\',\'' + row.ExportType+'\')" style="width:70px;margin-right:5px" value="編集">'
                         }
                     },
                 ]

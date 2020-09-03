@@ -24,9 +24,8 @@ namespace RCM_V2.Controllers
             }
 
             ExportFieldBL bl = new ExportFieldBL();
-
-            //if (exportFieldModel.Mode.Equals("Edit"))
-            //    exportFieldModel = bl.ExportFieldModel_Select(exportFieldModel);           
+            if (exportFieldModel.Mode.Equals("Edit"))
+                exportFieldModel = bl.ExportFieldModel_Select(exportFieldModel);
             return View(exportFieldModel);
         }
     }

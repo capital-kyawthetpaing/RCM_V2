@@ -11,22 +11,23 @@ namespace ExportField_BL
         public string ExportField_Select(ExportFieldsModel exportFieldsModel)
         {
             BaseDL bdl = new BaseDL();
-            exportFieldsModel.Sqlprms = new SqlParameter[4];
+            exportFieldsModel.Sqlprms = new SqlParameter[5];
             exportFieldsModel.Sqlprms[0] = new SqlParameter("@ExportName", exportFieldsModel.ExportName);
             exportFieldsModel.Sqlprms[1] = new SqlParameter("@ExportValue", exportFieldsModel.ExportValue);
             exportFieldsModel.Sqlprms[2] = new SqlParameter("@ExportType", exportFieldsModel.ExportType);
             exportFieldsModel.Sqlprms[3] = new SqlParameter("@Status", exportFieldsModel.Status);
+            exportFieldsModel.Sqlprms[4] = new SqlParameter("@AutoID", exportFieldsModel.AutoID);
             return bdl.SelectJson("Export_Select", exportFieldsModel.Sqlprms);
         }
 
         public string ExportField_Save(ExportFieldsModel exportFieldsModel)
         {
-            BaseDL bdl = new BaseDL();
-            exportFieldsModel.ExportFieldJson = JsonConvert.SerializeObject(exportFieldsModel.ExportFieldList);
+            BaseDL bdl = new BaseDL();           
+           // exportFieldsModel.ExportFieldJson = JsonConvert.SerializeObject(exportFieldsModel.ExportFieldList);
             exportFieldsModel.Sqlprms= new SqlParameter[8];
             exportFieldsModel.Sqlprms[0] = new SqlParameter("@ExportName", SqlDbType.VarChar) { Value = exportFieldsModel.ExportName };
             exportFieldsModel.Sqlprms[1] = new SqlParameter("@Status", SqlDbType.VarChar) { Value = exportFieldsModel.Status };
-            exportFieldsModel.Sqlprms[2] = new SqlParameter("@ExportFieldJson", SqlDbType.VarChar) { Value = exportFieldsModel.ExportFieldJson };
+            //exportFieldsModel.Sqlprms[2] = new SqlParameter("@ExportFieldJson", SqlDbType.VarChar) { Value = exportFieldsModel.ExportFieldJson };
             exportFieldsModel.Sqlprms[3] = new SqlParameter("@CreatedBy", SqlDbType.VarChar) { Value = exportFieldsModel.CreatedBy };
             exportFieldsModel.Sqlprms[4] = new SqlParameter("@UpdatedBy", SqlDbType.VarChar) { Value = exportFieldsModel.UpdatedBy };
             exportFieldsModel.Sqlprms[5] = new SqlParameter("@ExportType", SqlDbType.VarChar) { Value=exportFieldsModel.ExportType};
@@ -35,14 +36,24 @@ namespace ExportField_BL
             return bdl.InsertUpdateDeleteData("ExportColumn_CUD", exportFieldsModel.Sqlprms);
         }
 
-        //public ExportFieldsModel ExportField_Select(ExportFieldsModel exportFieldsModel)
-        //{
-        //    BaseDL bdl = new BaseDL();
-        //    exportFieldsModel.Sqlprms = new SqlParameter[4];
-        //    exportFieldsModel.Sqlprms[0] = new SqlParameter("@ExportName", exportFieldsModel.ExportName);
-        //    exportFieldsModel.Sqlprms[1] = new SqlParameter("@ExportValue", exportFieldsModel.ExportValue);
-        //    exportFieldsModel.Sqlprms[2] = new SqlParameter("@ExportType", exportFieldsModel.ExportType);
-        //    exportFieldsModel.Sqlprms[3] = new SqlParameter("@Status", exportFieldsModel.Status);
-        //}
+        public ExportFieldsModel ExportFieldModel_Select(ExportFieldsModel exportFieldsModel)
+        {
+            BaseDL bdl = new BaseDL();
+            exportFieldsModel.Sqlprms = new SqlParameter[5];
+            exportFieldsModel.Sqlprms[0] = new SqlParameter("@ExportName", exportFieldsModel.ExportName);
+            exportFieldsModel.Sqlprms[1] = new SqlParameter("@ExportValue", exportFieldsModel.ExportValue);
+            exportFieldsModel.Sqlprms[2] = new SqlParameter("@ExportType", exportFieldsModel.ExportType);
+            exportFieldsModel.Sqlprms[3] = new SqlParameter("@Status", exportFieldsModel.Status);
+            exportFieldsModel.Sqlprms[4] = new SqlParameter("@AutoID", exportFieldsModel.AutoID);
+            DataTable dt = bdl.SelectDatatable("Export_Select", exportFieldsModel.Sqlprms);
+            foreach(DataRow dr in dt.Rows)
+            {
+                exportFieldsModel.AutoID = dr["AutoID"].ToString();
+                exportFieldsModel.ExportName = dr["ExportName"].ToString();
+                exportFieldsModel.Status = dr["Status"].ToString();
+                exportFieldsModel.ExportType = dr["ExportType"].ToString();
+            }
+            return exportFieldsModel;
+        }
     }
 }
