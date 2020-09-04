@@ -12,6 +12,7 @@ namespace Models {
 
         public ItemModel itemModel { get; set; }
         public ExportFieldsModel exportFieldsModel { get; set; }
+        public UserModel userModel { get; set; }
 
       
     }

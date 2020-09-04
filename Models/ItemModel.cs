@@ -10,6 +10,9 @@
         public string YearCD { get; set; }
         public string SeasonCD { get; set; }
         public string CatalogInfo { get; set; }
+        public string SpecialFlagCD { get; set; }
+        public string ReservationFlagCD { get; set; }
+        public string UserID { get; set; }
         #endregion
 
         #region ItemPrice
@@ -18,5 +21,7 @@
         public string RakutenPrice { get; set; }
         public string Cost { get; set; }
         #endregion
+
+        public ExportFieldsModel exportFieldsModel { get; set; }
     }
 }
