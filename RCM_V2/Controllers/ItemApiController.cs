@@ -19,5 +19,13 @@ namespace RCM_V2.Controllers
             ItemBL itemBL = new ItemBL();
             return Ok(itemBL.ItemManage_Select(itemModel));
         }
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ItemManage_List")]
+        public IHttpActionResult ItemManage_List([FromBody] ItemModel itemModel)
+        {
+            ItemBL itemBL = new ItemBL();
+            return Ok(itemBL.ItemManage_List(itemModel));
+        }
     }
 }
