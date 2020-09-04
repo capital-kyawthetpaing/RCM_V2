@@ -60,6 +60,7 @@
     <Compile Include="ShopItemNamePriorityModel.cs" />
     <Compile Include="ShopModel.cs" />
     <Compile Include="ShopTemplateModel.cs" />
+    <Compile Include="Shop_ItemNamePriorityModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="ViewModel.cs" />
   </ItemGroup>
