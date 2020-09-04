@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.902
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL", "DL\DL.csproj", "{8A0BE33C-985A-4E14-9AAE-827260406D83}"
 EndProject
@@ -44,6 +44,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationFlag_BL", "ReservationFlag_BL\ReservationFlag_BL.csproj", "{20A5E5C1-0B79-4A49-9D4E-6C9B692A48F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecialFlag_BL", "SpecialFlag_BL\SpecialFlag_BL.csproj", "{3FAF8651-C127-4DB6-8DF8-8C226D838980}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKUStockList_BL", "SKUStockList_BL\SKUStockList_BL.csproj", "{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{3FAF8651-C127-4DB6-8DF8-8C226D838980}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FAF8651-C127-4DB6-8DF8-8C226D838980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FAF8651-C127-4DB6-8DF8-8C226D838980}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
