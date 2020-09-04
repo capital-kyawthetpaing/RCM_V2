@@ -1,4 +1,4 @@
-﻿@model Models.ItemModel
+﻿@model Models.MutiModel
 @{
     ViewBag.Title = "ItemManageList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,24 +16,24 @@
                         <tr>
                             <th title="Item Number">
                                 商品番号<br>
-                                @Html.CheckBoxFor(x => x.chkiv, new
+                                @Html.CheckBoxFor(x => x.itemModel.chkiv, new
                            {
                                @tabindex = "0"
                            })
                             </th>
                             <td>
-                                @Html.TextAreaFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextAreaFor(x => x.itemModel.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                             <th title="Brand name">ブランド名</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
 
 
                             </td>
                             <th title="Catalog information">カタログ情報</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
                             </td>
                             <th title="Person in charge">担当者</th>
                             <td>
@@ -45,7 +45,7 @@
                                     listNew3.Add(new SelectListItem { Text = "出品待ち", Value = "3" });
                                     listNew3.Add(new SelectListItem { Text = "出品済", Value = "4" });
                                 }
-                                @Html.DropDownListFor(m => m.ItemName, listNew3, new
+                                @Html.DropDownListFor(m => m.itemModel.ItemName, listNew3, new
                                   {
                                       @class = "form-control",
                                       @required = "required",
@@ -66,7 +66,7 @@
                                     listNew2.Add(new SelectListItem { Text = "出品待ち", Value = "3" });
                                     listNew2.Add(new SelectListItem { Text = "出品済", Value = "4" });
                                 }
-                                @Html.DropDownListFor(m => m.ItemName, listNew2, new
+                                @Html.DropDownListFor(m => m.itemModel.ItemName, listNew2, new
                                   {
                                       @class = "form-control",
                                       @required = "required",
@@ -77,12 +77,12 @@
                             </td>
                             <th title="Date of approval">承認日</th>
                             <td class="cal">
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                             <th title="Date of approval">~&nbsp;&nbsp;&nbsp;</th>
                             <td class="cal">
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                         </tr>
@@ -96,25 +96,25 @@
                                 <tr>
                                     <th>商品名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>メーカー商品コード</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>仕入先名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>競技名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>分類名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 12, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 12, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>特記フラグ</th>
                                     <td>
@@ -134,7 +134,7 @@
                                             listYear.Add(new SelectListItem { Text = "2029", Value = "2029" });
                                             listYear.Add(new SelectListItem { Text = "2030", Value = "2030" });
                                         }
-                                        @Html.DropDownListFor(m => m.ItemName, listYear, new
+                                        @Html.DropDownListFor(m => m.itemModel.ItemName, listYear, new
                                           {
                                               @class = "form-control",
                                               @required = "required",
@@ -151,7 +151,7 @@
                                             listNew1.Add(new SelectListItem { Text = "予約商品", Value = "2" });
                                             listNew1.Add(new SelectListItem { Text = "☆即☆", Value = "3" });
                                         }
-                                        @Html.DropDownListFor(m => m.ItemName, listNew1, new
+                                        @Html.DropDownListFor(m => m.itemModel.ItemName, listNew1, new
                                           {
                                               @class = "form-control",
                                               @required = "required",
@@ -161,13 +161,13 @@
                                     </td>
                                     <th>年度</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 15, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.itemModel.YearCD, new SelectList(Enumerable.Empty<SelectListItem>()), new {id= "YearCD", @tabIndex = 15, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>シーズン</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 16, onkeydown = "KeyDown(event,this)"})
+                                        @Html.DropDownListFor(x => x.itemModel.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>()), new {id= "SeasonCD", @tabIndex = 16, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>ショップ<br />ステータス</th>
                                     <td>
@@ -182,7 +182,7 @@
                                             listNew.Add(new SelectListItem { Text = "削除", Value = "d" });
                                             listNew.Add(new SelectListItem { Text = "削・無のぞく", Value = "nu" });
                                         }
-                                        @Html.DropDownListFor(m => m.ItemName, listNew, new
+                                        @Html.DropDownListFor(m => m.itemModel.ItemName, listNew, new
                                           {
                                               @class = "form-control",
                                               @required = "required",
@@ -192,11 +192,11 @@
                                     </td>
                                     <th>備考</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 18, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 18, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>JANコード</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 19, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 19, onkeydown = "KeyDown(event,this)" })
 
                                     </td>
                                 </tr>
@@ -204,11 +204,11 @@
 
                                     <th>販売管理コード </th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 20, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 20, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>指示書番号</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 21, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.itemModel.ItemName, new { @tabIndex = 21, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                 </tr>
                             </table>
@@ -222,15 +222,66 @@
                     </p>
                 </div>
             </div>
+
+            <div class="widthhMax iconEx operationBtn">
+                <p>
+                    <input type="button" id="btnselectall" value="全て選択" />
+                </p>
+                <p>
+                    <input type="button" id="btncancelall" value="全て解除" />
+                </p>
+                <p>
+                    <input type="button" id="btnexhibition" value="出品" />
+                </p>
+                <p>
+                    <input type="button" id="btnwarehouse" value="倉庫" />
+                </p>
+                <p>
+                    <input type="button" id="btndelete" runat="server" value="削除" ToolTip="Delete" Visible="false" />
+                </p>
+
+                <p>
+                    ダウンロード項目
+                    @Html.DropDownListFor(x => x.exportFieldsModel.AutoID, new SelectList(Enumerable.Empty<SelectListItem>()), new {id= "AutoID", @tabIndex = 22, onkeydown = "KeyDown(event,this)" })
+                <p>
+                    <input type="button" id="btnGenerate" value="エクスポート" ToolTip="Export" />
+                </p>
+
+            </div>
+            <div class="resetValue editBox">
+                <table class="listTable" id="tbItemManage" style="width:100%;">
+                    <thead>
+                        <tr>
+                            <th>商品番号</th>
+                            <th>商品名</th>
+                            <th>定価</th>
+                            <th>販売価格</th>
+                            <th>原価</th>
+                            <th>割引率</th>
+                            <th>分類名</th>
+                            <th>競技名</th>
+                            <th>年度</th>
+                            <th>シーズン</th>
+                            <th>カタログ情報</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
 
             BindYear();
             BindSeason();
+            BindExportField();
+
+            BindItemManageTable();
 
             $('#hideBlock p').on('click', function () {
                 var hiddenbox = $(this).closest('#hideBlock p');
@@ -255,7 +306,7 @@
             $("#YearCD").empty();
 
             $.each(items, function (i, item) {
-                
+
                 var YearCD = item.YearCD;
                 $("#YearCD").append(
                     $('<option></option>').val(YearCD).html(item.Year));
@@ -270,12 +321,58 @@
             $("#SeasonCD").empty();
 
             $.each(items, function (i, item) {
-                
+
                 var SeasonCD = item.SeasonCD;
                 $("#SeasonCD").append(
                     $('<option></option>').val(SeasonCD).html(item.Season));
             });
             $('#SeasonCD option:first-child').attr("selected", "selected");
+        }
+
+        function BindExportField() {
+            var obj = {
+                ExportType: "01",
+            };
+            var response = CalltoApiController('@Url.Action("ExportField_Select", "api/ShopApi")', obj);
+            var items = JSON.parse(response);
+
+            $("#AutoID").empty();
+
+            $.each(items, function (i, item) {
+
+                var AutoID = item.AutoID;
+                $("#AutoID").append(
+                    $('<option></option>').val(AutoID).html(item.ExportName));
+            });
+            $('#AutoID option:first-child').attr("selected", "selected");
+        }
+
+        function BindItemManageTable() {
+             var obj = {
+                    TemplateID: $("#TemplateID").val(),
+                    TemplateName: $("#TemplateName").val(),
+                    Status: $("input[name='status']:checked").val()
+                };
+                var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
+            table = $('#tbItemManage').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "columns": [
+                    { "data": "ItemCD"},
+                    { "data": "ItemName"},
+                    { "data": "ListPrice"},
+                    { "data": "SalePrice" },
+                    { "data": "Cost" },
+                    { "data": "DistcountRate" },
+                    { "data": "ClassName" },
+                    { "data": "CompetitionName" },
+                    { "data": "[Year]" },
+                    { "data": "Season" },
+                    { "data": "CatalogInfo" },
+                ],
+            });
         }
     </script>
 }

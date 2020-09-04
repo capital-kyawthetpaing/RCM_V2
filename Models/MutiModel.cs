@@ -10,6 +10,8 @@ namespace Models {
         public ShopPriorityModel pmodel { get; set; }
 
 
+        public ItemModel itemModel { get; set; }
+        public ExportFieldsModel exportFieldsModel { get; set; }
 
       
     }
