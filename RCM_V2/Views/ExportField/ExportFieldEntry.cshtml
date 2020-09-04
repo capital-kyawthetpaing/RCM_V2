@@ -104,6 +104,8 @@
             }
 
             if ('@Model.Mode' == "Edit") {
+                ExportValue = $("#ExportValue").val();
+                ExportValueID = $("#ExportValueID").val();
                 ExpValueIDStr = $("#ExportValueID").val();
                 exportValueIDArr = ExpValueIDStr.split(',');
                 ExpValueStr = $("#ExportValue").val();
