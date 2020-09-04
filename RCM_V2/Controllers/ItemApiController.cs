@@ -52,7 +52,7 @@ namespace RCM_V2.Controllers
         public IHttpActionResult SKU_Stock_Select([FromBody] ItemModel skuModel)
         {
             SKUStockListBL skuBL = new SKUStockListBL();
-            return Ok(skuBL.SKU_Stock_Select(skuModel));
+            return Ok(skuBL.SKU_Stock_Select(skuModel));          
         }
     }
 }
