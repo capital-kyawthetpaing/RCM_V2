@@ -1,10 +1,10 @@
-﻿@model Models.ShopItemNamePriorityModel
+﻿@model Models.Shop_ItemNamePriorityModel
 @{
     ViewBag.Title = "Shop_ItemNameSettingEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @Styles.Render(Url.Content("~/Content/item.css"))
+
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconEdit">
@@ -15,7 +15,8 @@
                         <tbody>
                             <tr>
                                 <th colspan="2">
-                                    <h2 class="pad5"><img src="@Url.Content("~/images/rakutenmall.png")" /><span> #1 ラケットプラザ楽天</span></h2>
+                                    <h2 class="pad5"><img src="@Url.Content("~/images/rakutenmall.png")" />@Html.DisplayFor(m=>m.ShopName)</h2>
+                                    @*<h2 class="pad5"><img src="@Url.Content("~/images/rakutenmall.png")" /><span> #1 ラケットプラザ楽天</span></h2>*@
                                 </th>
                             </tr>
                             <tr>
@@ -26,7 +27,7 @@
                                         <input type="button" id="btnExportOrder" value="優先順設定" tabindex="4" style="width:100px;" disabled />
                                     </div>
 
-                                    @Html.TextAreaFor(m => m.R_racket, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 4 })
+                                    @Html.TextAreaFor(m => m.PriorityValue, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 4 })
                                 </td>
                             </tr>
                             @*<tr>

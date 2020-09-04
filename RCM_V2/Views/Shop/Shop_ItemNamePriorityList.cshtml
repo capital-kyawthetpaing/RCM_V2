@@ -33,21 +33,19 @@
 </div>
 
 
-        @section Scripts
+ @section Scripts
 {
-            <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function () {
             //call shoppriority list
             BindTable();
-
-
         });
-                $("#head").text("商品名優先順設定一覧");
+       $("#head").text("商品名優先順設定一覧");
 
         function BindTable() {
-          
+            var obj = { ShopID: "" };
             table = $('#ShopPriorityList').DataTable({
-                data: JSON.parse(CalltoApiController('@Url.Action("ShopPriority_Select", "api/ShopApi")')),
+                data: JSON.parse(CalltoApiController('@Url.Action("ShopPriority_Select", "api/ShopApi")', obj)),
                 "bFilter": false,
                 "bLengthChange": false,
                 "bInfo": false,
@@ -64,15 +62,15 @@
                     "targets": 0,
                     "data": "ShopID",
                     "render": function (data) {
-                        return '<input type="button" style="width:70px;margin:3px;" onclick="ShopItme(\''+data+'\',\'Edit\')" value="編集">';
+                        return '<input type="button" style="width:70px;margin:3px;" onclick="EditShopItemPriority(\''+data+'\')" value="編集">';
                     }
                 }
                 ]
             });
         }
 
-           function ShopEdit(data, mode) {
-           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
+        function EditShopItemPriority(data) {
+            window.location.href = '@Url.Action("Shop_ItemNameSettingEntry", "Shop")?ShopID=' + data;
         }
             </script>
         }
