@@ -31,9 +31,9 @@
 <link href="@Url.Content("~/Content/user.css")" rel="stylesheet" />
 
 <script type="text/javascript">
-    var AutoID = "";
-    //var exportValueArr = [];       
-    $(document).ready(function () {  
+    var AutoID = ""; 
+    $(document).ready(function () {
+        alert("Partial");
         exportListarr = [];        
         AutoID = $("#AutoID").val();
         if ($("#ExportValueID").val() != "") {
@@ -105,34 +105,34 @@
         }
     }
 
-    function AddColumnName() {        
-        $("#ExportValue").val('');
-        exportListarr = [];
-        ExportValue = "";
-        ExportValueID = "";
-        $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
-            if ($(this).attr("name") != undefined) {               
-                if (ExportValue == "") {
-                    ExportValue = $(this).val();
-                    ExportValueID = $(this).attr("id");
-                }             
-                else
-                {
-                    ExportValue += "," + $(this).val();
-                    ExportValueID += "," + $(this).attr("id");
-                }  
-                var exportObj = { ExpValue: $(this).val(), ExpValueID: $(this).attr("id")};
-                exportListarr.push(exportObj);
-            }
-        });
-        $("#ExportValue").val(ExportValue); // add main page's textarea
-        $('#exportcolumnlistModal').iziModal('close');
+    //function AddColumnName() {        
+    //    $("#ExportValue").val('');
+    //    exportListarr = [];
+    //    ExportValue = "";
+    //    ExportValueID = "";
+    //    $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
+    //        if ($(this).attr("name") != undefined) {               
+    //            if (ExportValue == "") {
+    //                ExportValue = $(this).val();
+    //                ExportValueID = $(this).attr("id");
+    //            }             
+    //            else
+    //            {
+    //                ExportValue += "," + $(this).val();
+    //                ExportValueID += "," + $(this).attr("id");
+    //            }  
+    //            var exportObj = { ExpValue: $(this).val(), ExpValueID: $(this).attr("id")};
+    //            exportListarr.push(exportObj);
+    //        }
+    //    });
+    //    $("#ExportValue").val(ExportValue); // add main page's textarea
+    //    $('#exportcolumnlistModal').iziModal('close');
 
-        if ($("#ExportValue").val()=="")
-            $("#btnExportOrder").prop("disabled", true);
-        else
-            $("#btnExportOrder").prop("disabled", false);
-    }
+    //    if ($("#ExportValue").val()=="")
+    //        $("#btnExportOrder").prop("disabled", true);
+    //    else
+    //        $("#btnExportOrder").prop("disabled", false);
+    //}
 
     function CloseExportModal() {
         $('#exportcolumnlistModal').iziModal('close');
