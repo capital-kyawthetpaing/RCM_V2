@@ -49,11 +49,11 @@
                             </td>
                             <th title="Year">年度</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                                @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
                             </td>
                             <th title="Season">シーズン</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                                @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
                             </td>
                         </tr>
                         <tr>
@@ -71,16 +71,16 @@
             </div>
         </div>
 
-
     </div>
 </div>
 
+
 <div class="userCmnSet resetValue editBox">
-    <table class="listTable" id="ItemShopList">
+    <table class="listTable" id="tbItemStock">
         <thead>
             <tr>
-                <th></th>
-                <th></th>
+
+
                 <th>商品番号</th>
                 <th>サイズコード</th>
                 <th>カラーコード</th>
@@ -103,3 +103,77 @@
         <tbody></tbody>
     </table>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            BindItemStockListTable();
+           BindYear();
+           BindSeason();
+
+        });
+         function BindItemStockListTable() {
+
+             var response = CalltoApiController('@Url.Action("SKU_Stock_Select", "api/ItemApi")');
+            table = $('#tbItemStock').DataTable({
+                data: JSON.parse(response),
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "columns": [
+                    { "data": "ItemCD" },
+                    { "data": "SizeCD" },
+                    { "data": "ColorCD" },
+                    { "data": "ItemName" },
+                    { "data": "SizeName" },
+                    { "data": "ColorName" },
+                    { "data": "Qty" },
+                    { "data": "JishaQty" },
+                    { "data": "UpdatedDate" },
+                    { "data": "ListPrice" },
+                    { "data": "SalePrice" },
+                    { "data": "Cost" },
+                    { "data": "CompetitionName" },
+                    { "data": "Year" },
+                    { "data": "Season" },
+                    { "data": "JanCD" },
+                ],
+            });
+        }
+
+        function BindYear() {
+            var response = CalltoApiController('@Url.Action("Year_Select", "api/MultiApi")');
+            var items = JSON.parse(response);
+
+            $("#YearCD").empty();
+
+            $.each(items, function (i, item) {
+
+                var YearCD = item.YearCD;
+                $("#YearCD").append(
+                    $('<option></option>').val(YearCD).html(item.Year));
+            });
+            $('#YearCD option:first-child').attr("selected", "selected");
+        }
+
+        function BindSeason() {
+            var response = CalltoApiController('@Url.Action("Season_Select", "api/MultiApi")');
+            var items = JSON.parse(response);
+
+            $("#SeasonCD").empty();
+
+            $.each(items, function (i, item) {
+
+                var SeasonCD = item.SeasonCD;
+                $("#SeasonCD").append(
+                    $('<option></option>').val(SeasonCD).html(item.Season));
+            });
+            $('#SeasonCD option:first-child').attr("selected", "selected");
+        }
+
+
+
+    </script>
+}
+
+

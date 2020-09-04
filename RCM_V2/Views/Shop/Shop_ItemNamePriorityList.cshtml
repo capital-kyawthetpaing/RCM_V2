@@ -23,7 +23,7 @@
                     <tr>
                         <th></th>
                         <th>ショップ名</th>
-                        <th>PrioritySEQForm</th>
+                        <th>PriorityValue</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -45,9 +45,9 @@
                 $("#head").text("商品名優先順設定一覧");
 
         function BindTable() {
-            var obj = { ShopName: $("#ShopName").val(), PrioritySEQForm: $("#PrioritySEQForm").val() };
+          
             table = $('#ShopPriorityList').DataTable({
-                data: JSON.parse(CalltoApiController('@Url.Action("ShopPriority_Select", "api/ShopApi")', obj)),
+                data: JSON.parse(CalltoApiController('@Url.Action("ShopPriority_Select", "api/ShopApi")')),
                 "bFilter": false,
                 "bLengthChange": false,
                 "bInfo": false,
@@ -57,7 +57,7 @@
                 "columns": [
                     { "data": "ShopID", "className":"dt-center" },
                     { "data": "ShopName"},
-                    { "data": "PrioritySEQForm",className:"dt-center"},
+                    { "data": "PriorityValue",className:"dt-center"},
 
                 ],
                 "columnDefs": [{
