@@ -7,8 +7,7 @@ using Shop_BL;
 using Models;
 using Newtonsoft.Json;
 using ShopTemplate_BL;
-using ShopNamePriority_BL;
-
+using Shop_ItemNamePriority_BL;
 
 namespace RCM_V2.Controllers
 {
@@ -78,15 +77,15 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
-
-        public ActionResult Shop_ItemNameSettingEntry(Shop_ItemNamePriorityModel shopitmNamePriModel)
+        
+        public ActionResult Shop_ItemNamePriorityEntry(Shop_ItemNamePriorityModel shopitmNamePriModel)
         {
-            ShopNamePriorityBL bl = new ShopNamePriorityBL();
-            if(!string.IsNullOrEmpty(shopitmNamePriModel.ShopID))
-            {
-                shopitmNamePriModel = bl.ShopPriorityModel_Select(shopitmNamePriModel);
-            }
-            shopitmNamePriModel = new Shop_ItemNamePriorityModel();
+            Shop_itemPriorityBL bl = new Shop_itemPriorityBL();
+           
+            if (string.IsNullOrEmpty(shopitmNamePriModel.ShopID))
+                shopitmNamePriModel = new Shop_ItemNamePriorityModel();
+
+            shopitmNamePriModel = bl.ShopPriorityModel_Select(shopitmNamePriModel);
             return View(shopitmNamePriModel);
         }
     }

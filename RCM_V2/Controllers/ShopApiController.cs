@@ -9,7 +9,6 @@ using Models;
 using ShopTemplate_BL;
 using OptionTemplate_BL;
 using ExportField_BL;
-using ShopNamePriority_BL;
 using Shop_ItemNamePriority_BL;
 
 namespace RCM_V2.Controllers

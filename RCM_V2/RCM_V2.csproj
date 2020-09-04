@@ -729,10 +729,10 @@
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
-    <Content Include="Views\Shop\Shop_ItemNameSettingEntry.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
     <Content Include="Views\Item\Item_View2.cshtml" />
     <Content Include="Views\Item\ItemStockList.cshtml" />
+    <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -793,10 +793,6 @@
     <ProjectReference Include="..\ReservationFlag_BL\ReservationFlag_BL.csproj">
       <Project>{20a5e5c1-0b79-4a49-9d4e-6c9b692a48f7}</Project>
       <Name>ReservationFlag_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
-      <Project>{247A1BBC-C715-4ECD-99B9-04F4A18E3BD3}</Project>
-      <Name>ShopNamePriority_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShopTemplate_BL\ShopTemplate_BL.csproj">
       <Project>{e9f26c32-762c-4fa7-8f8d-a3950e335e3c}</Project>

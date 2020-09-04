@@ -35,8 +35,10 @@
         $(document).ready(function () {
             //call shoppriority list
             BindTable();
+
+            $("#head").text("商品名優先順設定一覧");
         });
-       $("#head").text("商品名優先順設定一覧");
+      
 
         function BindTable() {
             var obj = { ShopID: "" };
@@ -60,14 +62,13 @@
                     "render": function (data) {
                         return '<input type="button" style="width:70px;margin:3px;" onclick="EditShopItemPriority(\''+data+'\')" value="編集">';
                     }
-                }
-                ]
+                }]
             });
         }
 
-           function ShopEdit(data, mode) {
-           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
+       function EditShopItemPriority(data) {
+           window.location.href = '@Url.Action("Shop_ItemNamePriorityEntry", "Shop")?ShopID=' + data;
         }
-            </script>
-        }
+      </script>
+}
 

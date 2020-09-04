@@ -1,0 +1,96 @@
+﻿@model Models.Shop_ItemNamePriorityModel
+
+@{
+    ViewBag.Title = "Shop_ItemNamePriorityEntry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/item.css"))
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconEdit">
+            <h1 id="MainContent_head">スマートテンプレート編集</h1>
+            <div class="smartTmp entryBox">
+                <div id="divSpTemplate">
+                    <table id="tblTemplateHeader">
+                        <tbody>
+                            <tr>
+                                <th colspan="2">
+                                    <h2 class="pad5">
+                                        <img src="@Url.Content("~/images/rakutenmall.png")" id="imgRakuten" class="d-none" />
+                                        <img src="@Url.Content("~/images/yahoo.png")" id="imgyahoo" class="d-none" />
+                                        <img src="@Url.Content("~/images/ponparemall.jpg")" id="imgponpare" class="d-none" />
+                                        <img src="@Url.Content("~/images/amazon.png")" id="imgamazon" class="d-none" />
+                                        <img src="@Url.Content("~/images/wowma.png")" id="imgwowma" class="d-none" />
+                                        <img src="@Url.Content("~/images/jisha.jpg")" id="imgjisha" class="d-none" />
+
+                                        @Html.DisplayFor(m => m.ShopName)
+                                    </h2>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="padleft30">テンプレート</th>
+                                <td valign="middle">
+                                    <div style="margin-bottom:7px;">
+                                        <input type="button" value="項目を選択する" tabindex="3" style="width:100px;" onclick="ExportColumnClick()" />
+                                        <input type="button" id="btnExportOrder" value="優先順設定" tabindex="4" style="width:100px;" disabled />
+                                    </div>
+
+                                    @Html.TextAreaFor(m => m.PriorityValue, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 4 })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="btn">
+                        <div class="userRole">
+                            <input type="button" id="btnback" value="戻る" />
+                            <input type="button" id="btnPrevious" value="戻る" class="d-none" />
+                            <input type="button" id="btnSave" value="確認画面へ" tabIndex=16 />
+                            <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Search/ExportColumnList.cshtml")
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            if ('@Model.MallID' == "01")
+                $("#imgRakuten").removeClass('d-none');
+            else if ('@Model.MallID' == "02")
+                $("#imgyahoo").removeClass('d-none');
+            else if ('@Model.MallID' == "03")
+                $("#imgponpare").removeClass('d-none');
+            else if ('@Model.MallID' == "04")
+                $("#imgamazon").removeClass('d-none');
+            else if ('@Model.MallID' == "05")
+                $("#imgwowma").removeClass('d-none');
+            else
+                $("#imgjisha").removeClass('d-none');
+
+            //modal for exported column name
+            $("#exportcolumnlistModal").iziModal({
+                top: 30,
+                width: "50%"
+            });
+
+
+        });
+
+        function ExportColumnClick() {
+            $("#exportcolumnlistModal").iziModal('open');
+        }
+
+        function AddColumnName() {
+            alert("AddColumnName");
+        }
+
+    </script>
+}
