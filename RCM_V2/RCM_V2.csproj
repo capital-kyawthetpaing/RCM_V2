@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -174,12 +174,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\RCM_V2.dll" />
-    <Content Include="bin\RCM_V2.pdb" />
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -733,14 +730,11 @@
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
-    <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
-    <Content Include="Views\Item\Item_View2.cshtml" />
-    <Content Include="Views\Item\ItemStockList.cshtml" />
+    <Content Include="Views\Shop\Shop_ItemNameSettingEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\ItemStockApi\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -794,10 +788,6 @@
       <Project>{65B8D6B3-17E8-4B94-8CA0-595328AFCB9E}</Project>
       <Name>Option_BL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ReservationFlag_BL\ReservationFlag_BL.csproj">
-      <Project>{6510AB91-9296-41BA-A34B-E1033CE3E391}</Project>
-      <Name>ReservationFlag_BL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ShopNamePriority_BL\ShopNamePriority_BL.csproj">
       <Project>{247A1BBC-C715-4ECD-99B9-04F4A18E3BD3}</Project>
       <Name>ShopNamePriority_BL</Name>
@@ -809,18 +799,6 @@
     <ProjectReference Include="..\Shop_BL\Shop_BL.csproj">
       <Project>{3e334c68-5f46-4282-b129-f9508addda27}</Project>
       <Name>Shop_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Shop_ItemNamePriority_BL\Shop_ItemNamePriority_BL.csproj">
-      <Project>{66BB7B2B-D0BF-449B-A4BC-29E7E3A90136}</Project>
-      <Name>Shop_ItemNamePriority_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SKUStockList_BL\SKUStockList_BL.csproj">
-      <Project>{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}</Project>
-      <Name>SKUStockList_BL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpecialFlag_BL\SpecialFlag_BL.csproj">
-      <Project>{6F1A5C5C-3D03-4B6D-912F-F53A3A3DCD1D}</Project>
-      <Name>SpecialFlag_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\User_BL\User_BL.csproj">
       <Project>{f55598ed-576a-4b32-bdba-5d6780eb0063}</Project>

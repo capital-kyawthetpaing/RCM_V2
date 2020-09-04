@@ -85,8 +85,7 @@
         var ExpValueIDStr = "";
         var exportValueIDArr = [];
         var exportValueArr = [];
-        $(document).ready(function () {
-           
+        $(document).ready(function () {            
             $("#rdostatus").select();
             //check required field
             RequiredCheck($("#ExportName"));
@@ -250,6 +249,7 @@
         function SaveOK() {
             window.location.href = '@Url.Action("ExportFieldList","ExportField")';
         }
+
     </script>
 }
 
