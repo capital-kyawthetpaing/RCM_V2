@@ -10,7 +10,12 @@
         public string YearCD { get; set; }
         public string SeasonCD { get; set; }
         public string CatalogInfo { get; set; }
+        public string SpecialFlagCD { get; set; }
+        public string ReservationFlagCD { get; set; }
+        public string UserID { get; set; }
         #endregion
+
+        public ExportFieldsModel exportFieldsModel { get; set; }
 
         #region ItemPrice
         public string ListPrice { get; set; }

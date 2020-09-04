@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopNamePriority_BL
+namespace Shop_ItemNamePriority_BL
 {
-    public class ShopNamePriorityBL
+    public class ShopItemNamePriorityBL
     {
-        public string ShopPriority_Select(MultiModel shopModel)
+        public string ShopPriority_Select(Shop_ItemNamePriorityModel shopModel)
         {
             BaseDL bdl = new BaseDL();
 

@@ -117,7 +117,7 @@ namespace RCM_V2.Controllers
         [UserAuthentication]
         [HttpPost]
         [ActionName("ShopPriority_Select")]
-        public IHttpActionResult ShopPriority_Select([FromBody] MutiModel shopModel)
+        public IHttpActionResult ShopPriority_Select([FromBody] MultiModel shopModel)
         {
             ShopNamePriorityBL pp = new ShopNamePriorityBL();
             return Ok(pp.ShopPriority_Select(shopModel));
