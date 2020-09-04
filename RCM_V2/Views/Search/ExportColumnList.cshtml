@@ -1,7 +1,7 @@
 ﻿
 <div id="exportcolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
     <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
-        <table class="userCmnSet editTable">
+        <table class="userCmnSet editTable"  style="margin-bottom:0px;">
             <tbody>
                 <tr>
                     <th></th>
@@ -18,8 +18,8 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input type="button" id="btnAddColumn" value="Add Column" Style="width:100px;" onclick="AddColumnName();"/>
-                        <input type="button" id="btnClose" value="Close" style="width: 100px" onclick="CloseExportModal()" />
+                        <input type="button" id="btnAddColumn" value="OK" Style="width:80px;" onclick="AddColumnName();"/>
+                        <input type="button" id="btnClose" value="Close" style="width:80px" onclick="CloseExportModal()" />
                     </td>
                 </tr>
             </tbody>
@@ -32,13 +32,13 @@
 
 <script type="text/javascript">
     var AutoID = "";
-    var exportValueArr = [];       
+    //var exportValueArr = [];       
     $(document).ready(function () {  
         exportListarr = [];        
-         AutoID = $("#AutoID").val();        
+        AutoID = $("#AutoID").val();
         if ($("#ExportValueID").val() != "") {
-            var ExportValueStr = $("#ExportValueID").val();
-            exportValueArr = ExportValueStr.split(',');
+            var ExportValueIDStr = $("#ExportValueID").val();
+            exportValueIDArr = ExportValueIDStr.split(',');
         }
         BindColumn();
     });
@@ -67,14 +67,14 @@
                     
                     var groupList = items.filter((obj) => obj.ColumnGroupID === item.ColumnGroupID);
                     const groupCount = groupList.length;
-                    const checkCount = groupList.filter((obj) => exportValueArr.includes(obj.FormColumnName)).length;
+                    const checkCount = groupList.filter((obj) => exportValueIDArr.includes(obj.FormColumnName)).length;
                     
                     if (groupCount == checkCount)
                         checkedItem = "checked";
                     row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"' + checkedItem + '><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';                   
                     $("#tblColumnList tbody").append(row);
                 }
-                if (exportValueArr.includes(item.FormColumnName)) {
+                if (exportValueIDArr.includes(item.FormColumnName)) {
                     checkedItem = "checked";
                 }               
                 row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);" ' + checkedItem + '/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';               
@@ -107,6 +107,7 @@
 
     function AddColumnName() {        
         $("#ExportValue").val('');
+        exportListarr = [];
         ExportValue = "";
         ExportValueID = "";
         $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
@@ -127,7 +128,9 @@
         $("#ExportValue").val(ExportValue); // add main page's textarea
         $('#exportcolumnlistModal').iziModal('close');
 
-        if ($("#ExportValue").val()!="")
+        if ($("#ExportValue").val()=="")
+            $("#btnExportOrder").prop("disabled", true);
+        else
             $("#btnExportOrder").prop("disabled", false);
     }
 

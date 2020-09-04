@@ -10,7 +10,7 @@ namespace ShopNamePriority_BL
 {
     public class ShopNamePriorityBL
     {
-        public string ShopPriority_Select(MutiModel shopModel)
+        public string ShopPriority_Select(MultiModel shopModel)
         {
             BaseDL bdl = new BaseDL();
 

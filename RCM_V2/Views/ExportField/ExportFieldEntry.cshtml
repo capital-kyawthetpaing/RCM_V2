@@ -31,7 +31,7 @@
                         <th>ステータス</th>
                         <td>
                             <input type="radio" id="rdostatus" value="1" name="rbdStatus" checked tabindex="1" onkeydown="KeyDown(event,this)" /><label for="rdostatus">有効</label>
-                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" tabindex="1"/><label for="rdostatus1">無効</label>
+                            <input type="radio" id="rdostatus1" value="0" name="rbdStatus" tabindex="1" /><label for="rdostatus1">無効</label>
                         </td>
                     </tr>
                     <tr>
@@ -39,7 +39,7 @@
                             定義名&nbsp;<span>※必須</span>
                         </th>
                         <td>
-                            @Html.TextBoxFor(x => x.ExportName, new {@tabindex="2",onkeydown = "KeyDown(event,this)" })
+                            @Html.TextBoxFor(x => x.ExportName, new { @tabindex = "2", onkeydown = "KeyDown(event,this)" })
                         </td>
                     </tr>
                     <tr>
@@ -52,7 +52,7 @@
                                 </p>
                             </div>
                             <br />
-                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled",onkeydown = "KeyDown(event,this)" })
+                            @Html.TextAreaFor(x => x.ExportValue, new { @autocomplete = "off", @disabled = "disabled", onkeydown = "KeyDown(event,this)" })
                             @Html.HiddenFor(x => x.AutoID)
                             @Html.HiddenFor(x => x.ExportValueID)
                         </td>
@@ -78,39 +78,54 @@
 @section Scripts
 {
     <script type="text/javascript">
-
+        var exportListarr = [];
+        var ExportValue;
+        var ExportValID;
+        var ExpValueStr = "";
+        var ExpValueIDStr = "";
+        var exportValueIDArr = [];
+        var exportValueArr = [];
         $(document).ready(function () {
-            var exportListarr = [];
-            var ExportValue;
-            var ExportValID;
-
+           
             $("#rdostatus").select();
             //check required field
             RequiredCheck($("#ExportName"));
             RequiredCheck($("#ExportValue"));
 
-        if ('@Model.ExportType' == "01")
-        {
-            $("#head").text('商品情報エクスポート定義');
-            $("#regi").removeClass('d-none');
-        }
-        else
-        {
-            $("#head").text('説明文エクスポート定義');
-            $("#regi").removeClass('d-none');
+            if ('@Model.ExportType' == "01")
+            {
+                $("#head").text('商品情報エクスポート定義');
+                $("#regi").removeClass('d-none');
+            }
+            else
+            {
+                $("#head").text('説明文エクスポート定義');
+                $("#regi").removeClass('d-none');
+            }
 
-            //check radio based on Deleteflag
+            if ('@Model.Mode' == "Edit") {
+                ExportValue = $("#ExportValue").val();
+                ExportValueID = $("#ExportValueID").val();
+                ExpValueIDStr = $("#ExportValueID").val();
+                exportValueIDArr = ExpValueIDStr.split(',');
+                ExpValueStr = $("#ExportValue").val();
+                exportValueArr = ExpValueStr.split(',');
+                for (i = 0; i < exportValueIDArr.length; i++) {
+                    var expObj = { ExpValueID: exportValueIDArr[i], ExpValue: exportValueArr[i] };
+                    exportListarr.push(expObj);
+                }
+
+                $("#btnExportOrder").prop("disabled", false);
+                //check radio based on Deleteflag
             if ('@Model.Status' == "有効")
                 $("#rdostatus").attr('checked', true);
             else
                 $("#rdostatus1").attr('checked', true);
-
-        }
-            
+            }
             //modal for exported column name
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
-                width: "70%"
+                width: "50%"
             });
 
             //modal for exported order column name
@@ -124,14 +139,14 @@
                 var res = ErrorCheckOnClick('divExportEntry');
                 if (res == "0") {
                  if ('@Model.Mode' == "New") {
-                      $("#btnConfirm_Save").val("登録");
+                     $("#btnConfirm_Save").val("登録");
                       $("#reg_Confirm").removeClass('d-none');
                   }
                   else {
                       $("#btnConfirm_Save").val("確認");
                       $("#edi").removeClass('d-none');
                   }
-                    
+                    $("#regi").addClass('d-none');
                     $("#btnPrevious").removeClass('d-none');
                     $("#btnSave").addClass('d-none');
                     $("#btnConfirm_Save").removeClass('d-none');
@@ -145,6 +160,9 @@
             });
 
             $("#btnPrevious").click(function () {
+                $("#edi").addClass('d-none');
+                $("#regi").removeClass('d-none');
+                $("#reg_Confirm").addClass('d-none');
                 $("#btnSave").removeClass('d-none');
                 $("#btnback").removeClass('d-none');
                 $("#btnPrevious").addClass('d-none');

@@ -10,7 +10,6 @@ using ShopTemplate_BL;
 using OptionTemplate_BL;
 using ExportField_BL;
 using ShopNamePriority_BL;
-using Shop_ItemNamePriority_BL;
 
 namespace RCM_V2.Controllers
 {
@@ -118,10 +117,10 @@ namespace RCM_V2.Controllers
         [UserAuthentication]
         [HttpPost]
         [ActionName("ShopPriority_Select")]
-        public IHttpActionResult ShopPriority_Select([FromBody] Shop_ItemNamePriorityModel shopModel)
+        public IHttpActionResult ShopPriority_Select([FromBody] MultiModel shopModel)
         {
-            ShopItemNamePriorityBL shopPriority = new ShopItemNamePriorityBL();
-            return Ok(shopPriority.ShopPriority_Select(shopModel));
+            ShopNamePriorityBL pp = new ShopNamePriorityBL();
+            return Ok(pp.ShopPriority_Select(shopModel));
         }
         #endregion
     }
