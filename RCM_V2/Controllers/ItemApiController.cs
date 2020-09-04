@@ -36,6 +36,7 @@ namespace RCM_V2.Controllers
             SpecialFlagBL specialFlagBL = new SpecialFlagBL();
             return Ok(specialFlagBL.SpecialFlag_Select());
         }
+
         [UserAuthentication]
         [HttpPost]
         public IHttpActionResult ReservationFlag_Select()
