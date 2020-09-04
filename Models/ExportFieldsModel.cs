@@ -9,7 +9,6 @@ namespace Models
         public string ExportValue { get; set; }
         public string ExportValueID { get; set; }
         public string ExportType { get; set; }
-        //public List<ExportFieldInfo> ExportFieldList { get; set; }
     }
 
 }
