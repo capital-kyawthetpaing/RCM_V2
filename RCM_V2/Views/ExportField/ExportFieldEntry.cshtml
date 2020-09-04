@@ -85,8 +85,7 @@
         var ExpValueIDStr = "";
         var exportValueIDArr = [];
         var exportValueArr = [];
-        $(document).ready(function () {
-            alert("Main")
+        $(document).ready(function () {            
             $("#rdostatus").select();
             //check required field
             RequiredCheck($("#ExportName"));
@@ -251,34 +250,6 @@
             window.location.href = '@Url.Action("ExportFieldList","ExportField")';
         }
 
-
-        function AddColumnName() {
-            $("#ExportValue").val('');
-            exportListarr = [];
-            ExportValue = "";
-            ExportValueID = "";
-            $.each($("#tblColumnList input[type=checkbox]:checked"), function () {
-                if ($(this).attr("name") != undefined) {
-                    if (ExportValue == "") {
-                        ExportValue = $(this).val();
-                        ExportValueID = $(this).attr("id");
-                    }
-                    else {
-                        ExportValue += "," + $(this).val();
-                        ExportValueID += "," + $(this).attr("id");
-                    }
-                    var exportObj = { ExpValue: $(this).val(), ExpValueID: $(this).attr("id") };
-                    exportListarr.push(exportObj);
-                }
-            });
-            $("#ExportValue").val(ExportValue); // add main page's textarea
-            $('#exportcolumnlistModal').iziModal('close');
-
-            if ($("#ExportValue").val() == "")
-                $("#btnExportOrder").prop("disabled", true);
-            else
-                $("#btnExportOrder").prop("disabled", false);
-        }
     </script>
 }
 

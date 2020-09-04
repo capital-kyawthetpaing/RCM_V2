@@ -56,10 +56,8 @@
     <Compile Include="OptionModel.cs" />
     <Compile Include="OptionTemplateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ShopItemNameSettingModel.cs" />
     <Compile Include="ShopModel.cs" />
     <Compile Include="ShopTemplateModel.cs" />
-    <Compile Include="Shop_ItemNamePriorityModel.cs" />
     <Compile Include="UserModel.cs" />
     <Compile Include="ViewModel.cs" />
   </ItemGroup>
