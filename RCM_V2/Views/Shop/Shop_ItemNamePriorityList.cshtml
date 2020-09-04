@@ -11,11 +11,7 @@
             <h1 id="head"></h1>
         </div>
 
-        <div class="operationBtn">
-            <p>
-                <input type="button" value="ショップを追加する" onclick="ShopEdit('', 'New')" />
-            </p>
-        </div>
+    
 
         <div class="userCmnSet resetValue editBox">
             <table class="listTable" id="ShopPriorityList">
@@ -69,8 +65,8 @@
             });
         }
 
-        function EditShopItemPriority(data) {
-            window.location.href = '@Url.Action("Shop_ItemNameSettingEntry", "Shop")?ShopID=' + data;
+           function ShopEdit(data, mode) {
+           window.location.href = '@Url.Action("ShopEntry", "Shop")?id=' + data + "&mode=" + mode;
         }
             </script>
         }
