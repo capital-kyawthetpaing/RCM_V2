@@ -18,10 +18,14 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -726,6 +730,7 @@
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
+    <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
