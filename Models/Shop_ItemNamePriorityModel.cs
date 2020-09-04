@@ -9,7 +9,7 @@ namespace Models {
 
         public string ShopID { get; set; }
         public string PriorityValue { get; set; }
-        public string PrioritySEQValueID { get; set; }
+        public string PriorityValueID { get; set; }
 
     }
 }

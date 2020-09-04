@@ -44,5 +44,15 @@
     <Compile Include="Shop_itemPriorityBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DL\DL.csproj">
+      <Project>{8A0BE33C-985A-4E14-9AAE-827260406D83}</Project>
+      <Name>DL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\Models.csproj">
+      <Project>{14F5245D-4C9C-49E6-98F2-026583FB8C65}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

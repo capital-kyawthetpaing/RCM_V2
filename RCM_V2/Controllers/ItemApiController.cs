@@ -8,6 +8,7 @@ using Models;
 using Item_BL;
 using SpecialFlag_BL;
 using ReservationFlag_BL;
+using SKUStockList_BL;
 
 namespace RCM_V2.Controllers
 {
@@ -42,6 +43,15 @@ namespace RCM_V2.Controllers
         {
             ReservationFlagBL reservationFlagBL = new ReservationFlagBL();
             return Ok(reservationFlagBL.ReservationFlag_Select());
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("SKU_Stock_Select")]
+        public IHttpActionResult SKU_Stock_Select([FromBody] ItemModel skuModel)
+        {
+            SKUStockListBL skuBL = new SKUStockListBL();
+            return Ok(skuBL.SKU_Stock_Select(skuModel));
         }
     }
 }

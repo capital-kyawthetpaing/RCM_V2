@@ -174,9 +174,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\RCM_V2.dll" />
+    <Content Include="bin\RCM_V2.pdb" />
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -731,10 +734,13 @@
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
+    <Content Include="Views\Item\Item_View2.cshtml" />
+    <Content Include="Views\Item\ItemStockList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\ItemStockApi\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -803,6 +809,14 @@
     <ProjectReference Include="..\Shop_BL\Shop_BL.csproj">
       <Project>{3e334c68-5f46-4282-b129-f9508addda27}</Project>
       <Name>Shop_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shop_ItemNamePriority_BL\Shop_ItemNamePriority_BL.csproj">
+      <Project>{66BB7B2B-D0BF-449B-A4BC-29E7E3A90136}</Project>
+      <Name>Shop_ItemNamePriority_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKUStockList_BL\SKUStockList_BL.csproj">
+      <Project>{3F5A65E2-AE5A-4BA2-86B1-B8221592BB4A}</Project>
+      <Name>SKUStockList_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SpecialFlag_BL\SpecialFlag_BL.csproj">
       <Project>{6F1A5C5C-3D03-4B6D-912F-F53A3A3DCD1D}</Project>
