@@ -717,7 +717,6 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\User\UserEntry.cshtml" />
     <Content Include="Views\Shop\ShopEntry.cshtml" />
-    <Content Include="Views\Shop\Shop_ItemNamePriority.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateList.cshtml" />
     <Content Include="Views\Shop\Shop_TemplateEntry.cshtml" />
     <Content Include="Views\ExportField\ExportFieldEntry.cshtml" />
