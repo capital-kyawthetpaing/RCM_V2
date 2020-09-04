@@ -6,15 +6,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shop_ItemNamePriority_BL
+namespace SKUStockList_BL
 {
-    public class Shop_itemPriorityBL
+    public class SKUStockListBL
     {
-        public string ShopPriority_Select(Shop_ItemNamePriorityModel shopModel)
+        public string SKU_Stock_Select(ItemModel item)
         {
             BaseDL bdl = new BaseDL();
 
-            return bdl.SelectJson("ShopPriority_Select", null);
+            return bdl.SelectJson("SKU_Stock_Select", null);
         }
     }
 }
