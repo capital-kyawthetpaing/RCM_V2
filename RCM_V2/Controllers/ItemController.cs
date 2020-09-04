@@ -13,5 +13,10 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
+
+        public ActionResult ItemStockList()
+        {
+            return View();
+        }
     }
 }
