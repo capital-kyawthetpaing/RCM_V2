@@ -52,7 +52,7 @@
     <Compile Include="MallCategoryModel.cs" />
     <Compile Include="MallModel.cs" />
     <Compile Include="MessageModel.cs" />
-    <Compile Include="MutiModel.cs" />
+    <Compile Include="MultiModel.cs" />
     <Compile Include="OptionModel.cs" />
     <Compile Include="OptionTemplateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

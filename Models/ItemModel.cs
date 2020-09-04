@@ -23,7 +23,5 @@
         public string RakutenPrice { get; set; }
         public string Cost { get; set; }
         #endregion
-
-        public ExportFieldsModel exportFieldsModel { get; set; }
     }
 }

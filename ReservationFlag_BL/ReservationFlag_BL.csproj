@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6510AB91-9296-41BA-A34B-E1033CE3E391}</ProjectGuid>
+    <ProjectGuid>{20A5E5C1-0B79-4A49-9D4E-6C9B692A48F7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ReservationFlag_BL</RootNamespace>
