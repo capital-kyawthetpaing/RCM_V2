@@ -12,6 +12,8 @@
         public string CatalogInfo { get; set; }
         #endregion
 
+        public ExportFieldsModel exportFieldsModel { get; set; }
+
         #region ItemPrice
         public string ListPrice { get; set; }
         public string SalePrice { get; set; }
