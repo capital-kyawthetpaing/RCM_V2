@@ -53,7 +53,6 @@
     <Compile Include="MallModel.cs" />
     <Compile Include="MessageModel.cs" />
     <Compile Include="MultiModel.cs" />
-    <Compile Include="obj\Debug\.NETFramework,Version=v4.8.AssemblyAttributes.cs" />
     <Compile Include="OptionModel.cs" />
     <Compile Include="OptionTemplateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
