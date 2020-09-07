@@ -2,6 +2,7 @@
 using Models;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Item_BL
 {
@@ -19,6 +20,13 @@ namespace Item_BL
             itemModel.Sqlprms[5] = new SqlParameter("@ClassName", SqlDbType.VarChar) { Value = itemModel.ClassName };
             itemModel.Sqlprms[6] = new SqlParameter("@CompetitionName", SqlDbType.VarChar) { Value = itemModel.CompetitionName };
             return bdl.SelectJson("ItemManage_Select", itemModel.Sqlprms);
+        }
+
+        public string ItemImportLog_Select(ItemImportLogModel itemImportModel)
+        {
+            BaseDL bdl = new BaseDL();
+            itemImportModel.Sqlprms = new SqlParameter[0];
+            return bdl.SelectJson("ItemImportLog_Select", itemImportModel.Sqlprms);
         }
     }
 }

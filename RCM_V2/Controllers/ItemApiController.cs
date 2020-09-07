@@ -46,5 +46,14 @@ namespace RCM_V2.Controllers
             SKUStockListBL skuBL = new SKUStockListBL();
             return Ok(skuBL.SKU_Stock_Select(skuModel));          
         }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ItemImportLog_Select")]
+        public IHttpActionResult ItemImportLog_Select([FromBody] ItemImportLogModel itmImportModel)
+        {
+            ItemBL bl = new ItemBL();
+            return Ok(bl.ItemImportLog_Select(itmImportModel));
+        }
     }
 }

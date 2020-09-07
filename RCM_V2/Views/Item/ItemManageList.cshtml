@@ -52,7 +52,7 @@
                                     listNew2.Add(new SelectListItem { Text = "出品待ち", Value = "3" });
                                     listNew2.Add(new SelectListItem { Text = "出品済", Value = "4" });
                                 }
-                                @Html.DropDownListFor(m => m.CatalogInfo, listNew2, new
+                                @Html.DropDownListFor(m => m.ItemCD, listNew2, new
                                   {
                                       @class = "form-control",
                                       @required = "required",
@@ -360,7 +360,7 @@
                     { "data": "DistcountRate" },
                     { "data": "ClassName" },
                     { "data": "CompetitionName" },
-                    { "data": "[Year]" },
+                    { "data": "Year" },
                     { "data": "Season" },
                     { "data": "CatalogInfo" },
                 ],
