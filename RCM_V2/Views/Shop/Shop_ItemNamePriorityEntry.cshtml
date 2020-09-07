@@ -9,12 +9,21 @@
     info.ExportValueID = Model.PriorityValueID;
     info.ControlID = "PriorityValue";
 }
+
+<style>
+    /*drag and drop table hover class*/
+    .sortable-dragging {
+        background-color: green;
+        color: white;
+    }
+</style>
+
 @Styles.Render(Url.Content("~/Content/item.css"))
 
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconEdit">
-            <h1 id="MainContent_head">スマートテンプレート編集</h1>
+            <h1 id="MainContent_head">商品名優先順設定一覧 編集</h1>
             <div class="smartTmp entryBox">
                 <div id="divSpTemplate">
                     <table id="tblTemplateHeader">
@@ -38,7 +47,7 @@
                                 <td valign="middle">
                                     <div style="margin-bottom:7px;">
                                         <input type="button" value="項目を選択する" tabindex="3" style="width:100px;" onclick="ExportColumnClick()" />
-                                        <input type="button" id="btnExportOrder" value="優先順設定" tabindex="4" style="width:100px;" disabled />
+                                        <input type="button" id="btnExportOrder" value="優先順設定" tabindex="4" style="width:100px;" onclick="OrderColumnClick()" disabled />
                                     </div>
 
                                     @Html.TextAreaFor(m => m.PriorityValue, new { @placeholder = "半角英数字／-（ハイフン）／_（アンダーバー）が利用可能", @tabIndex = 4 })
@@ -61,12 +70,22 @@
     </div>
 </div>
 
-@Html.Partial("~/Views/Search/ExportColumnList.cshtml",info)
+@Html.Partial("~/Views/Search/ExportColumnList.cshtml", info)
+@Html.Partial("~/Views/Search/OrderColumnList.cshtml")
 
 @section Scripts
 {
     <script>
+        var exportListarr = [];
+        var ExportValue;
+        var ExportValID;
+        var ExpValueStr = "";
+        var ExpValueIDStr = "";
+        var exportValueIDArr = [];
+        var exportValueArr = [];
+
         $(document).ready(function () {
+
             if ('@Model.MallID' == "01")
                 $("#imgRakuten").removeClass('d-none');
             else if ('@Model.MallID' == "02")
@@ -80,10 +99,65 @@
             else
                 $("#imgjisha").removeClass('d-none');
 
+            //check required field
+            RequiredCheck($("#PriorityValue"));
+
             //modal for exported column name
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
                 width: "50%"
+            });
+
+            //modal for exported column name
+            $("#ordercolumnlistModal").iziModal({
+                top: 30,
+                width: "50%"
+            });
+
+            if ('@Model.PriorityValueID' != "") {
+                $("#btnExportOrder").prop('disabled', false);
+                ExportValue = '@Model.PriorityValue';
+                ExportValueID = '@Model.PriorityValueID';
+                ExpValueIDStr = '@Model.PriorityValueID';
+                exportValueIDArr = ExpValueIDStr.split(',');
+                ExpValueStr = '@Model.PriorityValue';
+                exportValueArr = ExpValueStr.split(',');
+                for (i = 0; i < exportValueIDArr.length; i++) {
+                    var expObj = { ExpValueID: exportValueIDArr[i], ExpValue: exportValueArr[i] };
+                    exportListarr.push(expObj);
+                }
+            }
+
+             //to input for save confirm
+            $("#btnSave").click(function () {
+                
+                var res = ErrorCheckOnClick('divSpTemplate');
+                if (res == "0") {                
+                    $("#btnConfirm_Save").val("確認"); 
+                    $("#btnPrevious").removeClass('d-none');
+                    $("#btnSave").addClass('d-none');
+                    $("#btnConfirm_Save").removeClass('d-none');
+                    $("#btnback").addClass('d-none');
+                    $('#tblTemplateHeader :input').attr('disabled', true);
+                    $("#btnConfirm_Save").focus();
+                }
+                else {
+                    ShowMessage(res);
+                }
+            });
+
+            $("#btnPrevious").click(function () {              
+                $("#btnSave").removeClass('d-none');
+                $("#btnback").removeClass('d-none');
+                $("#btnPrevious").addClass('d-none');
+                $("#btnConfirm_Save").addClass('d-none');
+                $('#tblTemplateHeader :input').removeAttr('disabled', true);
+                $("#ExportValue").prop("disabled", true);
+            });
+
+             // go to Export Field List
+            $("#btnback").click(function(){
+               window.location.href='@Url.Action("Shop_ItemNamePriorityList", "Shop")';
             });
         });
 
@@ -91,5 +165,67 @@
             $("#exportcolumnlistModal").iziModal('open');
         }
 
+        function OrderColumnClick() {
+            BindOrderColumn();
+            $('#ordercolumnlistModal').iziModal('open');
+        }
+
+        function BindOrderColumn() {
+            $("#tblOrderList tbody").html('');
+            for (i = 0; i < exportListarr.length; i++) {
+                var row = '<tr><td>' + exportListarr[i].ExpValueID + '</td><td>' + exportListarr[i].ExpValue + '</td></tr>';
+                $("#tblOrderList tbody").append(row);
+            }
+            sortable('#tblOrderList tbody', {
+                items: "tr",
+                forcePlaceholderSize: true,
+                placeholderClass: 'ph-class',
+            })
+        }
+
+        function CloseOrderModal() {
+            $('#ordercolumnlistModal').iziModal('close');
+        }
+
+        function AddOrderColumn() {
+            exportListarr = [];
+            ExportValue = "";
+            ExportValueID = "";
+            $("#PriorityValue").val('');
+            $.each($("#tblOrderList > tbody > tr"), function () {
+                if (ExportValue == "") {
+                    ExportValueID = this.cells[0].innerHTML;
+                    ExportValue = this.cells[1].innerHTML;
+                }
+                else {
+                    ExportValueID += "," + this.cells[0].innerHTML;
+                    ExportValue += "," + this.cells[1].innerHTML;
+                }
+            });
+
+            $("#PriorityValue").val(ExportValue);
+            $('#ordercolumnlistModal').iziModal('close');
+        }
+
+        function ConfirmSave() {
+            var shopItmNameModel = {
+                ShopID: '@Model.ShopID',
+                PriorityValue: $("#PriorityValue").val(),
+                PriorityValueID: ExportValueID
+            };
+
+            var result = CalltoApiController("/api/ShopApi/ShopItemNamePriority_Save", shopItmNameModel);
+            if (result=="true") {
+                ShowMessage("I101","SaveOK");
+            }
+            else {
+                 $("#UserName").focus();
+                ShowMessage("E001");
+            }
+        }
+
+        function SaveOK() {
+            window.location.href = '@Url.Action("Shop_ItemNamePriorityList","Shop")';
+        }
     </script>
 }
