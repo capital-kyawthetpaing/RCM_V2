@@ -18,5 +18,10 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
+
+        public ActionResult ItemImportLogList()
+        {
+            return View();
+        }
     }
 }

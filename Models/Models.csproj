@@ -49,6 +49,7 @@
     <Compile Include="ExportColumnModel.cs" />
     <Compile Include="ExportFieldInfo.cs" />
     <Compile Include="ExportFieldsModel.cs" />
+    <Compile Include="ItemImportLogModel.cs" />
     <Compile Include="ItemModel.cs" />
     <Compile Include="MallCategoryModel.cs" />
     <Compile Include="MallModel.cs" />

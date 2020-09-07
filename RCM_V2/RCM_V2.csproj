@@ -188,6 +188,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
+    <Content Include="Content\database.css" />
     <Content Include="Content\item.css" />
     <Content Include="Content\item_master.css" />
     <Content Include="Content\iziModal.css" />
@@ -203,6 +204,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\amazon.png" />
+    <Content Include="images\arrow.png" />
     <Content Include="images\btn_on-off.gif" />
     <Content Include="images\check.png" />
     <Content Include="images\edit.png" />
@@ -733,6 +735,7 @@
     <Content Include="Views\Item\Item_View2.cshtml" />
     <Content Include="Views\Item\ItemStockList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
+    <Content Include="Views\Item\ItemImportLogList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
