@@ -22,18 +22,18 @@
                            })
                             </th>
                             <td>
-                                @Html.TextAreaFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextAreaFor(x => x.ItemCD, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                             <th title="Brand name">ブランド名</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
 
 
                             </td>
                             <th title="Catalog information">カタログ情報</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.CatalogInfo, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
                             </td>
                             <th title="Person in charge">担当者</th>
                             <td>
@@ -52,7 +52,7 @@
                                     listNew2.Add(new SelectListItem { Text = "出品待ち", Value = "3" });
                                     listNew2.Add(new SelectListItem { Text = "出品済", Value = "4" });
                                 }
-                                @Html.DropDownListFor(m => m.ItemName, listNew2, new
+                                @Html.DropDownListFor(m => m.ItemCD, listNew2, new
                                   {
                                       @class = "form-control",
                                       @required = "required",
@@ -63,12 +63,12 @@
                             </td>
                             <th title="Date of approval">承認日</th>
                             <td class="cal">
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                             <th title="Date of approval">~&nbsp;&nbsp;&nbsp;</th>
                             <td class="cal">
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                         </tr>
@@ -86,27 +86,27 @@
                                     </td>
                                     <th>メーカー商品コード</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>仕入先名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>競技名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.CompetitionName, new { @tabIndex = 11, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>分類名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 12, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.ClassName, new { @tabIndex = 12, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>特記フラグ</th>
                                     <td>
                                         @Html.DropDownListFor(x => x.SpecialFlagCD, new SelectList(Enumerable.Empty<SelectListItem>()," "," "), " ", new { id = "SpecialFlagCD", @tabIndex = 13, onkeydown = "KeyDown(event,this)" })
                                     </td>
-                                    <th>予約フラグ"</th>
+                                    <th>予約フラグ</th>
                                     <td>
                                         @Html.DropDownListFor(x => x.ReservationFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "ReservationFlagCD", @tabIndex = 14, onkeydown = "KeyDown(event,this)" })
                                     </td>
@@ -133,7 +133,7 @@
                                             listNew.Add(new SelectListItem { Text = "削除", Value = "d" });
                                             listNew.Add(new SelectListItem { Text = "削・無のぞく", Value = "nu" });
                                         }
-                                        @Html.DropDownListFor(m => m.ItemName, listNew, new
+                                        @Html.DropDownListFor(m => m.ItemCD, listNew, new
                                           {
                                               @class = "form-control",
                                               @required = "required",
@@ -143,11 +143,11 @@
                                     </td>
                                     <th>備考</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 18, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 18, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>JANコード</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 19, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.MakerCD, new { @tabIndex = 19, onkeydown = "KeyDown(event,this)" })
 
                                     </td>
                                 </tr>
@@ -155,11 +155,11 @@
 
                                     <th>販売管理コード </th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 20, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 20, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>指示書番号</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 21, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 21, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                 </tr>
                             </table>
@@ -249,6 +249,11 @@
                     $(this).toggleClass("active");
                 }
             });
+
+            $("#btnsearch").click(function()
+            {
+                BindItemManageTable();
+            });
         });
 
         function BindUser() {
@@ -330,10 +335,14 @@
         }
 
         function BindItemManageTable() {
-             var obj = {
-                    TemplateID: $("#TemplateID").val(),
-                    TemplateName: $("#TemplateName").val(),
-                    Status: $("input[name='status']:checked").val()
+            var obj = {
+                ItemName: $("#ItemName").val(),
+                MakerCD: $("#MakerCD").val(),
+                YearCD: $("#YearCD").val(),
+                SeasonCD: $("#SeasonCD").val(),
+                CatalogInfo: $("#CatalogInfo").val(),
+                ClassName: $("#ClassName").val(),
+                CompetitionName: $("#CompetitionName").val(),
                 };
                 var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
             table = $('#tbItemManage').DataTable({
@@ -351,7 +360,7 @@
                     { "data": "DistcountRate" },
                     { "data": "ClassName" },
                     { "data": "CompetitionName" },
-                    { "data": "[Year]" },
+                    { "data": "Year" },
                     { "data": "Season" },
                     { "data": "CatalogInfo" },
                 ],

@@ -13,6 +13,8 @@
         public string SpecialFlagCD { get; set; }
         public string ReservationFlagCD { get; set; }
         public string UserID { get; set; }
+        public string CompetitionName { get; set; }
+        public string ClassName { get; set; }
         #endregion
 
         public ExportFieldsModel exportFieldsModel { get; set; }
