@@ -1,4 +1,5 @@
-﻿
+﻿@model Models.ExportFieldInfo
+
 <div id="exportcolumnlistModal" data-iziModal-title="項目選択" data-iziModal-icon="icon-home">
     <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
         <table class="userCmnSet editTable"  style="margin-bottom:0px;">
@@ -33,10 +34,10 @@
 <script type="text/javascript">
     var AutoID = ""; 
     $(document).ready(function () {
-        exportListarr = [];        
-        AutoID = $("#AutoID").val();
+        exportListarr = [];
+        AutoID = '@Model.ID';
         if ($("#ExportValueID").val() != "") {
-            var ExportValueIDStr = $("#ExportValueID").val();
+            var ExportValueIDStr = '@Model.ExportValueID';
             exportValueIDArr = ExportValueIDStr.split(',');
         }
         BindColumn();
@@ -104,8 +105,8 @@
         }
     }
 
-    function AddColumnName() {        
-        $("#ExportValue").val('');
+    function AddColumnName() { 
+        $("#" + '@Model.ControlID').val(''); 
         exportListarr = [];
         ExportValue = "";
         ExportValueID = "";
@@ -124,10 +125,9 @@
                 exportListarr.push(exportObj);
             }
         });
-        $("#ExportValue").val(ExportValue); // add main page's textarea
+        $("#" + '@Model.ControlID').val(ExportValue);// add value main page's textarea
         $('#exportcolumnlistModal').iziModal('close');
-
-        if ($("#ExportValue").val()=="")
+        if ($("#" + '@Model.ControlID').val() == "")
             $("#btnExportOrder").prop("disabled", true);
         else
             $("#btnExportOrder").prop("disabled", false);

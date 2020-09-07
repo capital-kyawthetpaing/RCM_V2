@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "ExportFieldEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ExportFieldInfo info = new ExportFieldInfo();
+    info.ID = Model.AutoID;
+    info.ExportValueID = Model.ExportValueID;
+    info.ControlID = "ExportValue";
 }
 <style>
     /*drag and drop table hover class*/
@@ -71,7 +75,7 @@
     </div>
 </div>
 
-@Html.Partial("~/Views/Search/ExportColumnList.cshtml")
+@Html.Partial("~/Views/Search/ExportColumnList.cshtml", info)
 @Html.Partial("~/Views/Search/OrderColumnList.cshtml")
 
 

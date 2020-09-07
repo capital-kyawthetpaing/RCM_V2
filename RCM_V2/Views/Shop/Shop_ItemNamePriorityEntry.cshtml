@@ -1,8 +1,13 @@
-﻿@model Models.Shop_ItemNamePriorityModel
+﻿@using Models;
+@model Models.Shop_ItemNamePriorityModel
 
 @{
     ViewBag.Title = "Shop_ItemNamePriorityEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ExportFieldInfo info = new ExportFieldInfo();
+    info.ID = Model.ShopID;
+    info.ExportValueID = Model.PriorityValueID;
+    info.ControlID = "PriorityValue";
 }
 @Styles.Render(Url.Content("~/Content/item.css"))
 
@@ -56,7 +61,7 @@
     </div>
 </div>
 
-@Html.Partial("~/Views/Search/ExportColumnList.cshtml")
+@Html.Partial("~/Views/Search/ExportColumnList.cshtml",info)
 
 @section Scripts
 {
@@ -80,16 +85,10 @@
                 top: 30,
                 width: "50%"
             });
-
-
         });
 
         function ExportColumnClick() {
             $("#exportcolumnlistModal").iziModal('open');
-        }
-
-        function AddColumnName() {
-            alert("AddColumnName");
         }
 
     </script>
