@@ -122,6 +122,15 @@ namespace RCM_V2.Controllers
             Shop_itemPriorityBL pp = new Shop_itemPriorityBL();
             return Ok(pp.ShopPriority_Select(shopModel));
         }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ShopItemNamePriority_Save")]
+        public IHttpActionResult ShopItemNamePriority_Save([FromBody] Shop_ItemNamePriorityModel model)
+        {
+            Shop_itemPriorityBL bl = new Shop_itemPriorityBL();
+            return Ok(bl.ShopItemNamePriority_Update(model));
+        }
         #endregion
     }
 }
