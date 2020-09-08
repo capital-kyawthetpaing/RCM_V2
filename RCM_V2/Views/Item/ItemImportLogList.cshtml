@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "ItemImportLogList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render(Url.Content("~/Content/database.css"))
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox iconSet iconList">
+
+            <h1>データベース一覧</h1>
+
+            <!-- Link List -->
+            <h2>データのインポート</h2>
+            <div class="dbCmnSet linkList">
+                <ul>
+                    <li><a href="#" id="lnkmaster">商品マスタデータインポート</a></li>
+                    <li><a href="#" id="lnkdata">オプションデータインポート</a></li>
+                    <li><a href="#" id="lnkcategory">商品カテゴリデータインポート</a></li>
+                    <li><a href="#" id="lnkInfodata">商品情報データインポート</a></li>
+                    <li><a href="#" id="lnkSmartTemplateImport">商品説明文データインポート</a></li>
+                    <li><a href="#" id="lnkZettData">ゼットデータ取り込み</a></li>
+                    <li><a href="#" id="LnkManualUpload">ポンパレ商品取り込み</a></li>
+                    <li><a href="#" id="LnkSearchKeyword">検索キーワード取り込み</a></li>
+                    <li><a href="#" id="RakutenPriceImport">楽天価格インポート</a></li>
+                </ul>
+
+            </div>
+            <h2>インポートログ</h2>
+            <div class="dbCmnSet editBox">
+                <table class="listTable" style="table-layout:fixed;width:100%" id="ImportLogList">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>日時</th>
+                            <th>担当者</th>
+                            <th>データ種別</th>
+                            <th>データ件数 </th>
+                            <th>エラー件数</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div><!--setListBox-->
+    </div><!--ComBlock-->
+</div><!--CmnContents-->
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //call item import log list
+            BindTable();
+        });
+
+         function BindTable() {
+            var obj = { AutoID: "" };
+             table = $('#ImportLogList').DataTable({
+                data: JSON.parse(CalltoApiController('@Url.Action("ItemImportLog_Select", "api/ItemApi")', obj)),
+                "bFilter": false,
+                "bLengthChange": false,
+                "bInfo": false,
+                "bSort": false,
+                destroy: true,
+                "dataSrc": " ",
+                "columns": [
+                    { "data": "AutoID", "width": "8%" },
+                    { "data": "ImportedDateTime", "className": "dt-center"},
+                    { "data": "ImportedBy" }, 
+                    { "data": "ImportType" },
+                    { "data": "ImportCount" },
+                    { "data": "ErrorCount" }
+
+                ],
+                "columnDefs": [{
+                    "targets": 0,
+                    "data": "AutoID",
+                    "render": function (data) {
+                        return '<input type="button" style="width:70px;margin:3px;" value="詳　細">';
+                    }
+                },
+                {
+                    "targets": 5,
+                    "data": "ErrorCount",
+                    "render": function (data) {
+                        return '<a href="#" style="text-decoration:underline;">'+data+'</a>';
+                    }
+                }
+                ]
+            });
+        }
+
+       function EditShopItemPriority(data) {
+           window.location.href = '@Url.Action("Shop_ItemNamePriorityEntry", "Shop")?ShopID=' + data;
+        }
+    </script>
+}

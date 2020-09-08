@@ -4,17 +4,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconList">
             <h1 id="head"></h1>
         </div>
-
-    
-
         <div class="userCmnSet resetValue editBox">
-            <table class="listTable" id="ShopPriorityList">
+            <table class="listTable" style="table-layout:fixed;width:100%" id="ShopPriorityList">
                 <thead>
                     <tr>
                         <th></th>
@@ -51,7 +47,7 @@
                 destroy: true,
                 "dataSrc": " ",
                 "columns": [
-                    { "data": "ShopID", "className":"dt-center" },
+                    { "data": "ShopID", "width": "8%", "className":"dt-center" },
                     { "data": "ShopName"},
                     { "data": "PriorityValue",className:"dt-center"},
 
