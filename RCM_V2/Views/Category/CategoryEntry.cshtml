@@ -1,0 +1,89 @@
+﻿@model Models.MallCategoryModel
+
+@{
+    ViewBag.Title = "CategoryEntry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/categoryEntry.css"))
+
+<h2>CategoryEntry</h2>
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setDetailBox iconSet iconEdit">
+            <h1>
+                ショップ内カテゴリ登録項目定義
+            </h1>
+            <table class="mallCmnSet editTable">
+                <tr>
+                    <th title="Category Name">カテゴリ名 <br /><span>※競技登録の場合、必須です</span></th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                    </td>
+
+                </tr>
+                <tr>
+                    <th title="Rakuten ID">楽天ディレクトリID </th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Yahoo ID">ヤフーカテゴリID  </th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Pompare ID">ポンパレカテゴリID</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Wowma ID">WowmaカテゴリID </th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Rakuten No">楽天カテゴリセット番号 <br /><span>※競技登録の場合、必須です</span></th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { placeholder = "20", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Racket">楽天カテゴリID(Racket) </th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Luckpiece">楽天カテゴリID(Luckpiece)</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Sportsplaza">楽天カテゴリID(Sportsplaza)</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Honpo">楽天カテゴリID(Honpo)</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+            </table>
+            <div class="btn">
+                <div class="mallYahoo">
+                    <input type="button" id="btnback" value="戻る" style="width: 150px" />
+                    <input type="button" id="btnSave" value="確認画面へ" style="width: 150px" tabIndex=11 />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
