@@ -18,10 +18,14 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -187,9 +191,11 @@
     <Content Include="Content\common1.css" />
     <Content Include="Content\database.css" />
     <Content Include="Content\item.css" />
+    <Content Include="Content\itemStockList.css" />
     <Content Include="Content\item_master.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
+    <Content Include="Content\mallYahoo.css" />
     <Content Include="Content\mall_category.css" />
     <Content Include="Content\manager-style.css" />
     <Content Include="Content\option.css" />
@@ -739,6 +745,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\ItemStockApi\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

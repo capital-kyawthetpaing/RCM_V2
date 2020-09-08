@@ -153,6 +153,21 @@
                     { "data": "Season" },
                     { "data": "JanCD" },
                 ],
+                "columnDefs": [{
+                    "targets": 6,
+                    "data": "Qty",
+                    "render": function (data) {
+                        return '<input type="text" style="width:70px;margin:3px;text-align:right;" value="' + data+'">';
+                    }
+                },
+                    {
+                        "targets": 7,
+                        "data": "JishaQty",
+                        "render": function (data) {
+                            return '<input type="text" style="width:70px;margin:3px;text-align:right;" value="' + data +'"/>';
+                        },
+
+                }]
             });
         }
 
