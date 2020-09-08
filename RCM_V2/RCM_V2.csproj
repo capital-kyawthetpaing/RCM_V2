@@ -17,15 +17,11 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -161,6 +157,7 @@
     <Compile Include="Controllers\ItemApiController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
+    <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\MultiApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
@@ -736,6 +733,8 @@
     <Content Include="Views\Item\ItemStockList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
     <Content Include="Views\Item\ItemImportLogList.cshtml" />
+    <Content Include="Views\Mall\MallSetting_Rakuten_Fixed.cshtml" />
+    <Content Include="Views\Mall\MallSetting_Yahoo_Fixed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
