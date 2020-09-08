@@ -1,8 +1,93 @@
-﻿
+﻿@model Models.MallModel
+
 @{
     ViewBag.Title = "MallSetting_Yahoo_Fixed";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@Styles.Render(Url.Content("~/Content/mallYahoo.css"))
 <h2>MallSetting_Yahoo_Fixed</h2>
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setDetailBox iconSet iconEdit">
+            <table class="mallCmnSet editTable">
+                <tr>
+                    <th>ショップ名</th>
+                   <td style="font-size:140%">@Html.Label("ベースボールプラザヤフー")</td>
+
+                </tr>
+                <tr>
+                    <th>出品モール</th>
+                    <td style="font-size:130%">@Html.Label("Yahoo")</td>
+                </tr>
+                <tr>
+                    <th title="Special Price">特価</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Person Comment">ひと言コメント</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Tax">課税対象</th>
+                    <td>
+                        @Html.RadioButtonFor(x => x.MallCD, "1", new { @tabIndex = 3, @id = "rdotax", @checked = "true", onkeydown = "KeyDown(event,this)" }) <label>課税 </label>
+                        @Html.RadioButtonFor(x => x.MallCD, "0", new { @tabIndex = 3, @id = "rdotax1" }) <label>非課税</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Release date">発売日</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Temporary Point Time">仮ポイント期間</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Using Template">使用中のテンプレート</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @Value = "IT01", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Purchase Limit">購入数制限</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Product status">商品の状態</th>
+                    <td>
+                        @Html.RadioButtonFor(x => x.MallName, "1", new { @tabIndex = 8, @id = "rdostatus", @checked = "true", onkeydown = "KeyDown(event,this)" }) <label>新品  </label>
+                        @Html.RadioButtonFor(x => x.MallName, "0", new { @tabIndex = 8, @id = "rdostatus1" }) <label>中古</label>
+                    </td>
+                </tr>
+                <tr>
+                    <th title="Publication">淘日本への掲載</th>
+                    <td>
+                        @Html.TextBoxFor(x => x.MallCD, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                    </td>
+                </tr>
+
+
+            </table>
+            <div class="btn">
+                <div class="mallYahoo">
+                    <input type="button" id="btnSave" value="確認画面へ" style="width: 200px" tabIndex=10 />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
