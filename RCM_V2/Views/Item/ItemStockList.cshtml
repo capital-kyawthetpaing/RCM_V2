@@ -15,17 +15,17 @@
                         <tr>
                             <th title="Item Number">
                                 商品番号<br>
-                                @Html.CheckBox("isActive", false)
+                                @Html.CheckBoxFor(x => x.chkiv, new { @tabIndex = 0})
                                 @Html.Label("完全")
 
                             </th>
                             <td>
-                                @Html.TextAreaFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextAreaFor(x => x.ItemCD, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
 
                             </td>
                             <th title="Item code">メーカー<br />商品コード</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.MakerCD, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
 
 
                             </td>
@@ -35,31 +35,31 @@
                             </td>
                             <th title="Catalog Information">カタログ情報</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.CatalogInfo, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
                             </td>
                         </tr>
                         <tr>
                             <th title="Brand Name">ブランド名</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.BrandName, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
                             </td>
                             <th title="Competition Name">競技名</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.CompetitionName, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
                             </td>
                             <th title="Year">年度</th>
                             <td>
-                                @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                                @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "YearCD", @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
                             </td>
                             <th title="Season">シーズン</th>
                             <td>
-                                @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>()), new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                                @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SeasonCD", @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
                             </td>
                         </tr>
                         <tr>
                             <th title="JAN Code">JANコード</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.JanCD, new {@tabIndex = 9, onkeydown = "KeyDown(event,this)" })
                             </td>
                         </tr>
 
@@ -93,7 +93,7 @@
                 <th>定価</th>
                 <th>販売価格</th>
                 <th>原価	</th>
-                <th>競技	</th>
+                <th>競技名	</th>
                 <th>年度	</th>
                 <th>シーズン	</th>
                 <th>JANコード</th>
@@ -107,14 +107,29 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            BindItemStockListTable();
-           BindYear();
-           BindSeason();
+            BindYear();
+            BindSeason();
+            Search();
+            $("#btnsearch").click(function () {
+                Search();
+            })
 
         });
-         function BindItemStockListTable() {
 
-             var response = CalltoApiController('@Url.Action("SKU_Stock_Select", "api/ItemApi")');
+        function Search() {
+            var obj = {
+                JanCD: $("#JanCD").val(),
+                ItemCD: $("#ItemCD").val(),
+                ItemName: $("#ItemName").val(),
+                YearCD: $("#YearCD").val(),
+                SeasonCD: $("#SeasonCD").val(),
+                CompetitionName: $("#CompetitionName").val()
+            };
+
+                var response = CalltoApiController('@Url.Action("SKU_Stock_Select", "api/ItemApi")', obj);
+                BindItemStockListTable(response);
+        }
+        function BindItemStockListTable(response) {
             table = $('#tbItemStock').DataTable({
                 data: JSON.parse(response),
                 destroy: true,
@@ -138,14 +153,27 @@
                     { "data": "Season" },
                     { "data": "JanCD" },
                 ],
+                "columnDefs": [{
+                    "targets": 6,
+                    "data": "Qty",
+                    "render": function (data) {
+                        return '<input type="text" style="width:70px;margin:3px;text-align:right;" value="' + data+'">';
+                    }
+                },
+                    {
+                        "targets": 7,
+                        "data": "JishaQty",
+                        "render": function (data) {
+                            return '<input type="text" style="width:70px;margin:3px;text-align:right;" value="' + data +'"/>';
+                        },
+
+                }]
             });
         }
 
         function BindYear() {
             var response = CalltoApiController('@Url.Action("Year_Select", "api/MultiApi")');
             var items = JSON.parse(response);
-
-            $("#YearCD").empty();
 
             $.each(items, function (i, item) {
 
@@ -159,8 +187,6 @@
         function BindSeason() {
             var response = CalltoApiController('@Url.Action("Season_Select", "api/MultiApi")');
             var items = JSON.parse(response);
-
-            $("#SeasonCD").empty();
 
             $.each(items, function (i, item) {
 

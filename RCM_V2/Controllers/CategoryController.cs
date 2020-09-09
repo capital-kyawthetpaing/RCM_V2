@@ -22,9 +22,5 @@ namespace RCM_V2.Controllers
             return View();
         }
 
-        public ActionResult Test()
-        {
-            return View();
-        }
     }
 }
