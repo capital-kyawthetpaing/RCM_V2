@@ -161,6 +161,7 @@
     <Compile Include="Controllers\ItemApiController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
+    <Compile Include="Controllers\MallController.cs" />
     <Compile Include="Controllers\MessageApiController.cs" />
     <Compile Include="Controllers\MultiApiController.cs" />
     <Compile Include="Controllers\OptionApiController.cs" />
@@ -5265,6 +5266,7 @@
     <Content Include="Vendor\font-awesome\src\_plugins\icon_page_generator.rb" />
     <Content Include="Vendor\font-awesome\src\_plugins\site.rb" />
     <Content Include="Vendor\font-awesome\_config.yml" />
+    <Content Include="Views\Category\CategoryEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
