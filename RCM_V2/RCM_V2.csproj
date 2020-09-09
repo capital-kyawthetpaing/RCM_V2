@@ -192,6 +192,7 @@
     <Content Include="Content\item_master.css" />
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
+    <Content Include="Content\jquery.datetimepicker.css" />
     <Content Include="Content\mallYahoo.css" />
     <Content Include="Content\mall_category.css" />
     <Content Include="Content\manager-style.css" />
@@ -374,6 +375,7 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\jquery.datetimepicker.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

@@ -386,7 +386,7 @@
                 <tr>
                     <th>医薬品注意事項</th>
                     <td>
-                        @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                            @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
 
@@ -412,15 +412,21 @@
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
 
-
     <script type="text/javascript">
         $(document).ready(function () {
             $(function () {
                 // This will make every element with the class "date-picker" into a DatePicker element
-                $("#datepicker").datepicker();
+                $("#datepicker").datepicker({
+                    altFormat: "yy-mm-dd",
+                    dateFormat: "yy/mm/dd",
+                    autoSize: true,
+                    showOn: "button",
+                    showButtonPanel: true
+                }); 
             })
-
+           
         });
+        
     </script>
 
 }
