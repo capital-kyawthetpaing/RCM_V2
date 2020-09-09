@@ -14,9 +14,17 @@ namespace RCM_V2.Controllers
         {
             MallCategoryModel obj = new MallCategoryModel();
             obj.MallID = id;
-
             return View(obj);
         }
 
+        public ActionResult CategoryList()
+        {
+            return View();
+        }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }

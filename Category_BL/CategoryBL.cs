@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Models;
 using DL;
+using Newtonsoft.Json;
 
 
 namespace Category_BL
@@ -31,6 +32,22 @@ namespace Category_BL
             mallCategoryModel.Sqlprms[2] = new SqlParameter("@cname2", SqlDbType.VarChar) { Value = category2 };
             mallCategoryModel.Sqlprms[3] = new SqlParameter("@cname3", SqlDbType.VarChar) { Value = category3};
             return bdl.SelectJson("MallCategory_Select", mallCategoryModel.Sqlprms);
+        }
+
+        public DataTable Category_Select(CategoryModel model)
+        {
+            BaseDL bdl = new BaseDL();
+            model.Sqlprms = new SqlParameter[1];
+            model.Sqlprms[0] = new SqlParameter("@ParentCatCD", model.ParentCategoryCD);
+            return bdl.SelectDatatable("Category_Select", model.Sqlprms);
+        }
+        
+        public string CategorySerial_Update(CategoryListModel model)
+        {
+            BaseDL bdl = new BaseDL();
+            model.Sqlprms = new SqlParameter[1];
+            model.Sqlprms[0] = new SqlParameter("@CategoryJson", JsonConvert.SerializeObject(model.CategoryList));
+            return bdl.InsertUpdateDeleteData("CategorySerial_Update", model.Sqlprms);
         }
     }
 }
