@@ -183,6 +183,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\categoryEntry.css" />
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\database.css" />
@@ -861,6 +862,7 @@
     <Content Include="Views\Item\ItemImportLogList.cshtml" />
     <Content Include="Views\Mall\MallSetting_Rakuten_Fixed.cshtml" />
     <Content Include="Views\Mall\MallSetting_Yahoo_Fixed.cshtml" />
+    <Content Include="Views\Category\CategoryEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
