@@ -422,7 +422,7 @@
                     autoSize: true,
                     showOn: "button",
                     showButtonPanel: true,
-                    beforeShow: cleanDatepicker()
+                    beforeShow: cleanDatepicker(),
                 }); 
             })
            
@@ -431,6 +431,13 @@
             var old_fn = $.datepicker._updateDatepicker;
 
             $.datepicker._updateDatepicker = function (inst) {
+                setTimeout(function () {
+                    inst.dpDiv.css({
+                        top: $("#datepicker").offset().top - 20,
+                        left: $("#datepicker").offset().left
+                    });
+                }, 0);
+
                 old_fn.call(this, inst);
 
                 var buttonPane = $(this).datepicker("widget").find(".ui-datepicker-buttonpane");
