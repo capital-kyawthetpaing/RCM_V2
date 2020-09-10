@@ -4375,7 +4375,6 @@
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
-    <Content Include="Views\Item\Item_View2.cshtml" />
     <Content Include="Views\Item\ItemStockList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
     <Content Include="Views\Item\ItemImportLogList.cshtml" />
