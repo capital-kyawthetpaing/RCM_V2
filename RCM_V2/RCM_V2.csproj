@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -5267,6 +5267,8 @@
     <Content Include="Vendor\font-awesome\src\_plugins\site.rb" />
     <Content Include="Vendor\font-awesome\_config.yml" />
     <Content Include="Views\Category\CategoryEntry.cshtml" />
+    <Content Include="Views\Mall\MallSetting_Rakuten_Fixed.cshtml" />
+    <Content Include="Views\Mall\MallSetting_Yahoo_Fixed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
