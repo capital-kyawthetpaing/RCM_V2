@@ -7233,8 +7233,8 @@ function Datepicker() {
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[ "" ] = { // Default regional settings
 		closeText: "Done", // Display text for close link
-		prevText: "Prev", // Display text for previous month link
-		nextText: "Next", // Display text for next month link
+		prevText: "", // Display text for previous month link
+		nextText: "", // Display text for next month link
 		currentText: "Today", // Display text for current month link
 		monthNames: [ "January","February","March","April","May","June",
 			"July","August","September","October","November","December" ], // Names of months for drop-down and formatting
@@ -7407,7 +7407,7 @@ $.extend( Datepicker.prototype, {
 			buttonImage = this._get( inst, "buttonImage" );
 			inst.trigger = $( this._get( inst, "buttonImageOnly" ) ?
 				$( "<img/>" ).addClass( this._triggerClass ).
-					attr( { src: buttonImage, alt: buttonText, title: buttonText } ) :
+                    attr({ src: buttonImage, alt: buttonText, title: buttonText, width: "29px", height: "20px" } ) :
 				$( "<button type='button'></button>" ).addClass( this._triggerClass ).
 					html( !buttonImage ? buttonText : $( "<img/>" ).attr(
 					{ src:buttonImage, alt:buttonText, title:buttonText } ) ) );
