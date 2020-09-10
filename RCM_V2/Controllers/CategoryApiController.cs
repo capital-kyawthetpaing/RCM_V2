@@ -79,5 +79,15 @@ namespace RCM_V2.Controllers
             return Ok(bl.CategorySerial_Update(categoryModel));
         }
 
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("Category_CUD")]
+        public IHttpActionResult Category_CUD([FromBody] CategoryEntryModel categoryModel)
+        {
+            CategoryBL categoryBL = new CategoryBL();
+            return Ok(categoryBL.Category_CUD(categoryModel));
+        }
+
     }
 }

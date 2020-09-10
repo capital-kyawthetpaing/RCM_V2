@@ -91,5 +91,18 @@ namespace RCM_V2.Controllers
             }
             return items;
         }
+
+        public ActionResult CategoryEntry(CategoryEntryModel categoryModel)
+        {
+            if (categoryModel.Mode == null)
+            {
+                categoryModel = new CategoryEntryModel();
+                categoryModel.Mode = "New";
+            }
+            return View(categoryModel);
+
+
+        }
+
     }
 }

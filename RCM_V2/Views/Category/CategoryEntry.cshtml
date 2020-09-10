@@ -48,7 +48,7 @@
                 <tr>
                     <th title="Rakuten No">楽天カテゴリセット番号 <br /><span>※競技登録の場合、必須です</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new {placeholder="20", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new { placeholder = "20", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
@@ -115,11 +115,11 @@
               var res = ErrorCheckOnClick('divCat');
               if (res == "0") {
                   if ('@Model.Mode' == "New") {
-                    
+
                       $("#btnConfirm_Save").val("登録");
                   }
                   else {
-                     
+
                       $("#btnConfirm_Save").val("反映");
                   }
                   $("#btnSave").addClass('d-none');
@@ -137,7 +137,7 @@
             //save categoryEntry data
             function ConfirmSave() {
                 var result = CalltoApiController("/api/CategoryApi/Category_CUD", {
-                    Mode: '@Model.Mode', 
+                    Mode: '@Model.Mode',
                     CategoryName: $("#CategoryName").val(),
                     ParentCategoryCD: null,
                     RakutenDirectoryID: $("#RakutenDirectoryID").val(),
@@ -156,9 +156,11 @@
                     ShowMessage("I101");
                 }
                 else {
-                    $("#CategoryName").focus();
+                    $("#UserName").focus();
                     ShowMessage("E001");
                 }
             }
     </script>
 }
+
+
