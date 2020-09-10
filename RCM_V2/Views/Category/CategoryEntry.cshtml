@@ -1,4 +1,5 @@
-﻿@model Models.MallCategoryModel
+﻿@using Models;
+@model Models.CategoryEntryModel
 
 @{
     ViewBag.Title = "CategoryEntry";
@@ -8,7 +9,7 @@
 
 <div id="CmnContents">
     <div id="ComBlock">
-        <div class="setDetailBox iconSet iconEdit">
+        <div class="setDetailBox iconSet iconEdit" id="divCat">
             <h1>
                 ショップ内カテゴリ登録項目定義
             </h1>
@@ -16,62 +17,62 @@
                 <tr>
                     <th title="Category Name">カテゴリ名 <br /><span>※競技登録の場合、必須です</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.CategoryName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
 
                 </tr>
                 <tr>
                     <th title="Rakuten ID">楽天ディレクトリID </th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.RakutenDirectoryID, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Yahoo ID">ヤフーカテゴリID  </th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.YahooCategoryID, new { @tabIndex = 3, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
-                    <th title="Pompare ID">ポンパレカテゴリID</th>
+                    <th title="Ponpare ID">ポンパレカテゴリID</th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.PonpareCategoryID, new { @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Wowma ID">WowmaカテゴリID </th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.WowmaCategoryID, new { @tabIndex = 5, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Rakuten No">楽天カテゴリセット番号 <br /><span>※競技登録の場合、必須です</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { placeholder = "20", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new { placeholder = "20", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Racket">楽天カテゴリID(Racket) </th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.R_RacketCategoryID, new { @tabIndex = 7, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Luckpiece">楽天カテゴリID(Luckpiece)</th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.R_LuckpieceCategoryID, new { @tabIndex = 8, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Sportsplaza">楽天カテゴリID(Sportsplaza)</th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.R_SportsPlazaCategoryID, new { @tabIndex = 9, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>
                     <th title="Honpo">楽天カテゴリID(Honpo)</th>
                     <td>
-                        @Html.TextBoxFor(x => x.CategoryID, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.R_HonpoCategoryID, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
             </table>
@@ -79,9 +80,87 @@
                 <div class="mallYahoo">
                     <input type="button" id="btnback" value="戻る" style="width: 150px" />
                     <input type="button" id="btnSave" value="確認画面へ" style="width: 150px" tabIndex=11 />
+                    <input type="button" id="btnConfirm_Save" value="確認画面へ" onclick="ConfirmSave()" class="d-none" />
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+               if ('@Model.Mode' == "New") {
+
+                //check required field
+                RequiredCheck($("#CategoryName"));
+                RequiredCheck($("#RakutenDirectoryID"));
+                RequiredCheck($("#YahooCategoryID"));
+                RequiredCheck($("#PonpareCategoryID"));
+                RequiredCheck($("#WowmaCategoryID"));
+                RequiredCheck($("#R_RacketCategoryID"));
+                RequiredCheck($("#R_LuckpieceCategoryID"));
+                RequiredCheck($("#R_SportsPlazaCategoryID"));
+                RequiredCheck($("#R_HonpoCategoryID"));
+
+
+            }
+
+               //to input for save confirm
+          $("#btnSave").click(function()
+          {
+              var res = ErrorCheckOnClick('divCat');
+              if (res == "0") {
+                  if ('@Model.Mode' == "New") {
+
+                      $("#btnConfirm_Save").val("登録");
+                  }
+                  else {
+
+                      $("#btnConfirm_Save").val("反映");
+                  }
+                  $("#btnSave").addClass('d-none');
+                  $("#btnConfirm_Save").removeClass('d-none');
+                  $('.mallCmnSet :input').attr('disabled', true);
+                  $("#btnConfirm_Save").focus();
+              }
+              else
+                  ShowMessage(res);
+         });
+
+        })
+
+
+            //save categoryEntry data
+            function ConfirmSave() {
+                var result = CalltoApiController("/api/CategoryApi/Category_CUD", {
+                    Mode: '@Model.Mode',
+                    CategoryName: $("#CategoryName").val(),
+                    ParentCategoryCD: null,
+                    RakutenDirectoryID: $("#RakutenDirectoryID").val(),
+                    YahooCategoryID: $("#YahooCategoryID").val(),
+                    PonpareCategoryID: $("#PonpareCategoryID").val(),
+                    WowmaCategoryID: $("#WowmaCategoryID").val(),
+                    RakutenCategorySetNo: "20",
+                    R_RacketCategoryID: $("#R_RacketCategoryID").val(),
+                    R_SportsPlazaCategoryID: $("#R_SportsPlazaCategoryID").val(),
+                    R_LuckpieceCategoryID: $("#R_LuckpieceCategoryID").val(),
+                    R_HonpoCategoryID: $("#R_HonpoCategoryID").val(),
+                    SEQ: null
+                });
+
+                if (result == "true") {
+                    ShowMessage("I101");
+                }
+                else {
+                    $("#UserName").focus();
+                    ShowMessage("E001");
+                }
+            }
+    </script>
+}
+
 
