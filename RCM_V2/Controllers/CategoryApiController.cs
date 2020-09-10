@@ -19,5 +19,15 @@ namespace RCM_V2.Controllers
             CategoryBL bl = new CategoryBL();
             return Ok(bl.MallCategory_Select(mallCategoryModel));
         }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("Category_CUD")]
+        public IHttpActionResult Category_CUD([FromBody] CategoryEntryModel categoryModel)
+        {
+            CategoryBL categoryBL = new CategoryBL();
+            return Ok(categoryBL.Category_CUD(categoryModel));
+        }
+
     }
 }

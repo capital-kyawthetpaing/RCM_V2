@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseModel.cs" />
+    <Compile Include="CategoryEntryModel.cs" />
     <Compile Include="ExportColumnModel.cs" />
     <Compile Include="ExportFieldInfo.cs" />
     <Compile Include="ExportFieldsModel.cs" />

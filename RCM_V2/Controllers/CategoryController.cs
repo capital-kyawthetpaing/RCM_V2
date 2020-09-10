@@ -18,9 +18,16 @@ namespace RCM_V2.Controllers
             return View(obj);
         }
 
-        public ActionResult CategoryEntry()
+        public ActionResult CategoryEntry(CategoryEntryModel categoryModel)
         {
-            return View();
+            if (categoryModel.Mode == null)
+            {
+                categoryModel = new CategoryEntryModel();
+                categoryModel.Mode = "New";
+            }
+            return View(categoryModel);
+
+
         }
 
     }
