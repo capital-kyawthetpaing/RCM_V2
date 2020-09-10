@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render(Url.Content("~/Content/shop_category.css"))
+
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox inlineSet iconSet iconList">
+            <h1>ショップカテゴリ一覧画面</h1>
+            <!-- CategoryID search -->
+            <div class="CateIdSar resetValue searchBox">
+                <h2>カテゴリ検索<span>※注意：スペース区切りで一致検 索</span></h2>
+                <dl>
+                    <dt>カテゴリ名</dt>
+                    <dd><input type="text" id="txtcatid" placeholder="例）テニス シューズ プリンス" /></dd>
+                    <dd><input type="text" id="txtcatid" class="d-none" /></dd>
+                </dl>
+                <p><input type="button" id="btnSearch" value="検 索" /></p>
+            </div>
+
+            <div class="shopCate operationBtn">
+                <input type="file" id="upload" />
+                <input type="button" id="btnImport" value="インポート" />
+                <input type="button" id="btnExport" value="ー覧データをエクスポート" />
+            </div>
+            <!-- /operationBtn -->
+            <div class="shopCate resetValue">
+                <input type="text" id="btnNew" value="New" class="d-none" />
+                &nbsp;&nbsp;<p class="cateTop">カテゴリTOP</p>
+
+                <table>
+                    <tr>
+                        <td>
+                            <ul id="menuTree">
+                                <li>
+                                    <div class="shopCateEdit">
+                                        <p><input type="button" value="カテゴリの編集" /></p>
+                                        <p><input type="button" id="btnAdd" value="孫カテゴリの追加" /></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+                <div class="shopCateList">
+                    <div id="treeview1" class="treeview"></div>
+                </div>
+
+                <div class="shopCateDate">
+                    <table class="listTable" id="CategoryChildList" style="margin-top:0px;">
+                        <thead>
+                            <tr>
+                                <th hidden>Category Code</th>
+                                <th>Description</th>
+                                <th>Serial Number</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
+            </div><!-- /.shopCate.resetValue -->
+
+        </div><!--setListBox-->
+    </div><!--ComBlock-->
+</div><!--/#CmnContents-->
+
+@section Scripts
+    {
+    <script src="~/Vendor/bootstrap-treeview-master/src/js/bootstrap-treeview.js"></script>
+    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+           var obj = { ParentCategoryCD:""};
+           var response = CalltoApiController('@Url.Action("CategoryTree_Select", "api/CategoryApi")', obj);
+
+           BindTreeView(response); //bind tree view
+           BindChildCategory('Root'); //bind table
+        });
+
+        function BindTreeView(response) {
+           
+            $('#treeview1').treeview({
+                    expandIcon: 'fa fa-plus-square-o',
+                    collapseIcon: 'fa fa-minus-square-o',
+                    emptyIcon: '',
+                    selectedBackColor: "#03a9f3",
+                    onhoverColor: "rgba(0, 0, 0, 0.05)",                    
+                    data: response,
+                    onNodeSelected: function (event, data) {                       
+                        BindChildCategory(data.Code);
+                    }
+            });
+
+            //$('#treeview1').treeview('selectNode', [1, { silent: true }]).on('nodeSelected', function (event, data) {
+            //    alert("success");
+            //});;
+        }
+
+        function BindChildCategory(CategoryCD) {
+
+            var obj = { ParentCategoryCD: CategoryCD};
+            table = $('#CategoryChildList').DataTable({
+                data:CalltoApiController('@Url.Action("ChildCategory_Select", "api/CategoryApi")', obj),
+                destroy: true,
+                "searching": false,
+                "paging": false,
+                "info": false,
+                "ordering":false,
+                "columns": [
+                    { "data": "CategoryCD","visible":false},
+                    { "data": "CategoryName" },
+                    { "data": "SEQ" }
+                ],
+                "columnDefs": [
+                    {
+                        "targets": 1,
+                        "data": "CategoryName",
+                        "render": function (data, type, row) {
+                            return '<span class="spnCatCD" id=' + row.CategoryCD + '>' + row.CategoryName+'</span>';
+                        }
+                    }]
+            });
+
+            sortable('#CategoryChildList tbody', {
+                items: "tr",
+                forcePlaceholderSize: true,
+                placeholderClass: 'ph-class',
+            })
+        }
+
+        function UpdateCategory() {
+            var CategoryList = [];
+            $.each($("#CategoryChildList > tbody > tr"), function (index) {
+                var CategoryCD = $(this).find("span.spnCatCD").attr('id');
+                var SEQ = index + 1;
+                var CategoryModel = { CategoryCD: CategoryCD, SEQ: SEQ };
+                CategoryList.push(CategoryModel);
+            });
+
+            var response = CalltoApiController('@Url.Action("CategorySerial_Update", "api/CategoryApi")', { CategoryList: CategoryList});
+            if (response == "true") {
+               ShowMessage("I101");
+            }
+            else {
+               ShowMessage("E001");
+            }
+        }
+    </script>
+}

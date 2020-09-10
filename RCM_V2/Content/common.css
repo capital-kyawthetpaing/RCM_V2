@@ -5,6 +5,10 @@
 	border-radius:0;
 }
 
+.custom-select{
+	font-size:10px !important;
+}
+
 .pad5 {
 	padding: 5px !important;
 }

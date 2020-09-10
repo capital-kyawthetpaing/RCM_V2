@@ -112,7 +112,6 @@ namespace DL
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
-
                 return "true";
             }
             catch (Exception ex)

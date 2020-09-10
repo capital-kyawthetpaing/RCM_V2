@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.SqlClient;
 using Models;
 using DL;
+using Newtonsoft.Json;
 
 
 namespace Category_BL
@@ -33,25 +34,20 @@ namespace Category_BL
             return bdl.SelectJson("MallCategory_Select", mallCategoryModel.Sqlprms);
         }
 
-        public string Category_CUD(CategoryEntryModel categoryModel)
+        public DataTable Category_Select(CategoryModel model)
         {
             BaseDL bdl = new BaseDL();
-            categoryModel.Sqlprms = new SqlParameter[13];
-            categoryModel.Sqlprms[0] = new SqlParameter("@CategoryName", SqlDbType.VarChar) { Value = categoryModel.CategoryName };
-            categoryModel.Sqlprms[1] = new SqlParameter("@ParentCategoryCD", SqlDbType.VarChar) { Value = categoryModel.ParentCategoryCD };
-            categoryModel.Sqlprms[2] = new SqlParameter("@RakutenDirectoryID", SqlDbType.VarChar) { Value = categoryModel.RakutenDirectoryID };
-            categoryModel.Sqlprms[3] = new SqlParameter("@YahooCategoryID", SqlDbType.VarChar) { Value = categoryModel.YahooCategoryID };
-            categoryModel.Sqlprms[4] = new SqlParameter("@PonpareCategoryID", SqlDbType.VarChar) { Value = categoryModel.PonpareCategoryID };
-            categoryModel.Sqlprms[5] = new SqlParameter("@WowmaCategoryID", SqlDbType.VarChar) { Value = categoryModel.WowmaCategoryID };
-            categoryModel.Sqlprms[6] = new SqlParameter("@RakutenCategorySetNo", SqlDbType.VarChar) { Value = categoryModel.RakutenCategorySetNo};
-            categoryModel.Sqlprms[7] = new SqlParameter("@R_RacketCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_RacketCategoryID };
-            categoryModel.Sqlprms[8] = new SqlParameter("@R_SportsPlazaCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_SportsPlazaCategoryID };
-            categoryModel.Sqlprms[9] = new SqlParameter("@R_LuckpieceCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_LuckpieceCategoryID };
-            categoryModel.Sqlprms[10] = new SqlParameter("@R_HonpoCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_HonpoCategoryID };
-            categoryModel.Sqlprms[11] = new SqlParameter("@SEQ", SqlDbType.VarChar) { Value = categoryModel.SEQ };
-            categoryModel.Sqlprms[12] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = categoryModel.Mode };
-            return bdl.InsertUpdateDeleteData("Category_CUD", categoryModel.Sqlprms);
+            model.Sqlprms = new SqlParameter[1];
+            model.Sqlprms[0] = new SqlParameter("@ParentCatCD", model.ParentCategoryCD);
+            return bdl.SelectDatatable("Category_Select", model.Sqlprms);
         }
-
+        
+        public string CategorySerial_Update(CategoryListModel model)
+        {
+            BaseDL bdl = new BaseDL();
+            model.Sqlprms = new SqlParameter[1];
+            model.Sqlprms[0] = new SqlParameter("@CategoryJson", JsonConvert.SerializeObject(model.CategoryList));
+            return bdl.InsertUpdateDeleteData("CategorySerial_Update", model.Sqlprms);
+        }
     }
 }

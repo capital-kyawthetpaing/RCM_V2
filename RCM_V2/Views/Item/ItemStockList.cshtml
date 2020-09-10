@@ -79,8 +79,6 @@
     <table class="listTable" id="tbItemStock">
         <thead>
             <tr>
-
-
                 <th>商品番号</th>
                 <th>サイズコード</th>
                 <th>カラーコード</th>
@@ -134,6 +132,7 @@
                 data: JSON.parse(response),
                 destroy: true,
                 "dataSrc": " ",
+                "ordering":false,
                 "searching": false,
                 "columns": [
                     { "data": "ItemCD" },
