@@ -208,6 +208,7 @@
                             <th>定価</th>
                             <th>販売価格</th>
                             <th>原価</th>
+                            <th>原価率</th>
                             <th>割引率</th>
                             <th>分類名</th>
                             <th>競技名</th>
@@ -350,13 +351,15 @@
                 destroy: true,
                 "dataSrc": " ",
                 "searching": false,
+                "ordering": false,
                 "fixedHeader": true,
                 "columns": [
                     { "data": "ItemCD"},
                     { "data": "ItemName"},
-                    { "data": "ListPrice"},
+                    { "data": "ListPrice" },
                     { "data": "SalePrice" },
                     { "data": "Cost" },
+                    { "data": "CostRate"},
                     { "data": "DistcountRate" },
                     { "data": "ClassName" },
                     { "data": "CompetitionName" },
@@ -364,6 +367,33 @@
                     { "data": "Season" },
                     { "data": "CatalogInfo" },
                 ],
+                "columnDefs": [
+                    {
+                        "targets": [2, 3, 4, 5, 6],
+                        "className": 'textAlign',
+                    },
+                    {
+                        "targets": 2,
+                        "data": "ListPrice",
+                        "render": function (data, type, row) {
+                            return data + '<br/>(' + row['ListPrice1'] + ')';
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "data": "SalePrice",
+                        "render": function (data, type, row) {
+                            return data + '<br/>(' + row['SalePrice1'] + ')';
+                        }
+                    },
+                    {
+                        "targets": 4,
+                        "data": "Cost",
+                        "render": function (data, type, row) {
+                            return data + '<br/>(' + row['Cost1'] + ')';
+                        }
+                    }
+                ]
             });
         }
     </script>

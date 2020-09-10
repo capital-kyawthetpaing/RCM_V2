@@ -36,6 +36,9 @@ div.itemCmnSetKnr.searchBox div > table th {
         width: 120px;
         vertical-align: bottom;
     }
+    .textAlign{
+        text-align:right;
+    }
 /*
     div#hideBlock p {
         text-align: left;
