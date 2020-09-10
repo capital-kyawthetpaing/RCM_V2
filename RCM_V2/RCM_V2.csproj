@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -178,6 +178,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\32px.png" />
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -200,6 +201,7 @@
     <Content Include="Content\shop.css" />
     <Content Include="Content\shop_category.css" />
     <Content Include="Content\smartTemplateEntry.css" />
+    <Content Include="Content\style.min.css" />
     <Content Include="Content\user.css" />
     <Content Include="Content\userlogin.css" />
     <Content Include="favicon.ico" />
@@ -718,7 +720,6 @@
     <Content Include="images\amazon.png" />
     <Content Include="images\arrow.png" />
     <Content Include="images\btn_on-off.gif" />
-    <Content Include="images\calendar.png" />
     <Content Include="images\check.png" />
     <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />
@@ -1051,6 +1052,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jstree.js" />
+    <Content Include="Scripts\jstree.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -4376,6 +4379,7 @@
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
+    <Content Include="Views\Item\Item_View2.cshtml" />
     <Content Include="Views\Item\ItemStockList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
     <Content Include="Views\Item\ItemImportLogList.cshtml" />
@@ -5267,8 +5271,7 @@
     <Content Include="Vendor\font-awesome\src\_plugins\site.rb" />
     <Content Include="Vendor\font-awesome\_config.yml" />
     <Content Include="Views\Category\CategoryEntry.cshtml" />
-    <Content Include="Views\Mall\MallSetting_Rakuten_Fixed.cshtml" />
-    <Content Include="Views\Mall\MallSetting_Yahoo_Fixed.cshtml" />
+    <Content Include="Views\Category\Test1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
