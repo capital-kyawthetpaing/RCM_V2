@@ -178,6 +178,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\32px.png" />
     <Content Include="Content\base.css" />
     <Content Include="Content\bootstrap-datetimepicker.css" />
     <Content Include="Content\bootstrap-datetimepicker.min.css" />
@@ -200,6 +201,7 @@
     <Content Include="Content\shop.css" />
     <Content Include="Content\shop_category.css" />
     <Content Include="Content\smartTemplateEntry.css" />
+    <Content Include="Content\style.min.css" />
     <Content Include="Content\user.css" />
     <Content Include="Content\userlogin.css" />
     <Content Include="favicon.ico" />
@@ -1050,6 +1052,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jstree.js" />
+    <Content Include="Scripts\jstree.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\popper-utils.js" />
@@ -5267,6 +5271,7 @@
     <Content Include="Vendor\font-awesome\src\_plugins\site.rb" />
     <Content Include="Vendor\font-awesome\_config.yml" />
     <Content Include="Views\Category\CategoryEntry.cshtml" />
+    <Content Include="Views\Category\Test1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
