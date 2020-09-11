@@ -17,6 +17,7 @@
         public string ClassName { get; set; }
         public string JanCD { get; set; }
         public string BrandName { get; set; }
+        public string MakerName { get; set; }
         #endregion
 
         public ExportFieldsModel exportFieldsModel { get; set; }
