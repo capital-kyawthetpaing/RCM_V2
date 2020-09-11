@@ -6,6 +6,9 @@
 }
 
 
+@Styles.Render(Url.Content("~/Content/themes/base/jquery-ui.min.css"))
+@Styles.Render(Url.Content("~/Content/themes/base/jquery-ui.css"))
+
 <div id="CmnContents">
     <div id="ComBlock">
 
@@ -307,10 +310,13 @@
 
                     <td>
 
-                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 1,
+                        @Html.TextBoxFor(x => x.ItemCD, new
+                        {
+                            @tabIndex = 1,
                        @id = "datepicker",
-                       style="width: 52%",
-                       onkeydown = "KeyDown(event,this)" })
+                       style = "width: 52%",
+                       onkeydown = "KeyDown(event,this)"
+                        })
 
                     </td>
 
@@ -401,8 +407,7 @@
 
 @section Scripts {
     <!-- jQuery UI CSS Reference -->
-    <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
-    <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" />
+
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.js")"></script>
 
