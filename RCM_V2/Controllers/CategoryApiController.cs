@@ -26,11 +26,11 @@ namespace RCM_V2.Controllers
         [UserAuthentication]
         [HttpPost]
         [ActionName("GetRootNode")]
-        public IHttpActionResult GetRootNode()
+        public IHttpActionResult GetRootNode(CategoryModel model)
         {
             CategoryModel m = new CategoryModel();
             List<CategoryTreeInfo> items = GetTree(m);
-            return Json(items);
+            return Ok(items);
         }
 
         public static List<CategoryTreeInfo> GetTree(CategoryModel categoryModel)
@@ -46,6 +46,7 @@ namespace RCM_V2.Controllers
                     m.id = dr["CategoryCD"].ToString();
                     m.text = dr["CategoryName"].ToString();
                     m.parent = "#";
+                    m.SEQ = dr["SEQ"].ToString();
                     m.children = Convert.ToInt32(dr["ChildCount"]) > 0 ? true : false;
                     items.Add(m);
                 }
@@ -58,11 +59,10 @@ namespace RCM_V2.Controllers
         [ActionName("GetChildren")]
         public IHttpActionResult GetChildren(string id)
         {
-            CategoryModel categoryModel = new CategoryModel(); ;
+            CategoryModel categoryModel = new CategoryModel();
             categoryModel.ParentCategoryCD = id;
             List<CategoryTreeInfo> items = GetChildTree(categoryModel);
-
-            return Json(items);
+            return Ok(items);
         }
         public static List<CategoryTreeInfo> GetChildTree(CategoryModel categoryModel)
         {
@@ -75,6 +75,7 @@ namespace RCM_V2.Controllers
                 m.id = dr["CategoryCD"].ToString();
                 m.text = dr["CategoryName"].ToString();
                 m.parent = dr["ParentCategoryCD"].ToString();
+                m.SEQ = dr["SEQ"].ToString();
                 m.children = Convert.ToInt32(dr["ChildCount"]) > 0 ? true : false;
                 items.Add(m);
             }
@@ -87,7 +88,7 @@ namespace RCM_V2.Controllers
         public IHttpActionResult ChildCategory_Select(CategoryModel categoryModel)
         {
             CategoryBL bl = new CategoryBL();
-            return Ok(bl.Category_Select(categoryModel));
+            return Ok(GetChildTree(categoryModel));
         }
 
         [UserAuthentication]

@@ -3,16 +3,7 @@
     ViewBag.Title = "CategoryList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .inlineSet li {
-        display: block;
-        text-align: left;
-    }
 
-    .jstree li > a > .jstree-icon {
-        display: none !important;
-    }
-</style>
 @Styles.Render(Url.Content("~/Content/shop_category.css"))
 
 <div id="CmnContents">
@@ -46,6 +37,7 @@
                             <ul id="menuTree">
                                 <li>
                                     <div class="shopCateEdit">
+                                        <label id="lblCategoryCD" class="d-none"></label>
                                         <p><input type="button" value="カテゴリの編集" onclick="EditCategory()" /></p>
                                         <p><input type="button" id="btnAdd" value="孫カテゴリの追加" /></p>
                                     </div>
@@ -61,8 +53,7 @@
                 <div class="shopCateDate">
                     <table class="listTable" id="CategoryChildList" style="margin-top:0px;">
                         <thead>
-                            <tr>
-                                <th hidden>Category Code</th>
+                            <tr>                               
                                 <th>Description</th>
                                 <th>Serial Number</th>
                             </tr>
@@ -79,27 +70,30 @@
 
 @section Scripts
 {
-    <link href="~/Content/style.min.css" rel="stylesheet" />
     <script src="~/Scripts/jstree.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 
             var selectedNodeId;
+            var nodeid;
             $('#treeview1')
-                .on('select_node.jstree', function (e, data) {
+                .on('select_node.jstree', function (e, data) {                   
                     if (selectedNodeId === data.node.id) {
                         data.instance.deselect_node(data.node);
-                        selectedNodeId = "";
+                        selectedNodeId = "";   
+                        $("#lblCategoryCD").text(selectedNodeId);
                     } else {
                         selectedNodeId = data.node.id;
+                        $("#lblCategoryCD").text(selectedNodeId);
+                        BindChildCategory(data.node.id);
                     }
                 })
                 .jstree({
                     "plugins": ["search", "wholerow"],
                     'core': {
                         'data': {
-                           'url': function (node) {
-                                return node.id === '#' ? "/api/CategoryApi/GetRootNode" : "/api/CategoryApi/GetChildren/" + node.id;
+                            'url': function (node) {                                
+                               return node.id === '#' ? "/api/CategoryApi/GetRootNode" : "/api/CategoryApi/GetChildren/" + node.id;
                             },
                             'method': 'POST',
                             'headers':
@@ -107,17 +101,74 @@
                                 Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
                             },
                             'data': function (node) {
+                                nodeid = node.id;
                                 return { 'id': node.id };
+                            },
+                            'success': function (result) {
+                                if (nodeid === "#") {
+                                    BindChildCategoryDetail(result);
+                                }
                             }
                         }
                     }
                 });
-
         });
 
+        function BindChildCategory(id) {
+            var obj = {ParentCategoryCD:id};
+            var response = CalltoApiController('@Url.Action("ChildCategory_Select", "api/CategoryApi")', obj);
+            BindChildCategoryDetail(response);
+        }
+
+        function BindChildCategoryDetail(result) {
+           
+           table = $('#CategoryChildList').DataTable({
+                data:result,
+                destroy: true,
+                "searching": false,
+                "paging": false,
+                "info": false,
+                "ordering":false,
+                "columns": [
+                    { "data": "text" },
+                    { "data": "SEQ" }
+                ],
+                "columnDefs": [
+                    {
+                        "targets": 0,
+                        "data": "text",
+                        "render": function (data, type, row) {
+                            return '<span class="spnCatCD" id=' + row.id + '>' + row.text+'</span>';
+                        }
+                    }]
+            });
+            sortable('#CategoryChildList tbody', {
+                items: "tr",
+                forcePlaceholderSize: true,
+                placeholderClass: 'ph-class',
+            })
+        }
+
+        function UpdateCategory() {
+            var CategoryList = [];
+            $.each($("#CategoryChildList > tbody > tr"), function (index) {
+                var CategoryCD = $(this).find("span.spnCatCD").attr('id');
+                var SEQ = index + 1;
+                var CategoryModel = { CategoryCD: CategoryCD, SEQ: SEQ };
+                CategoryList.push(CategoryModel);
+            });
+            var response = CalltoApiController('@Url.Action("CategorySerial_Update", "api/CategoryApi")', { CategoryList: CategoryList});
+            if (response == "true") {
+               ShowMessage("I101");
+            }
+            else {
+               ShowMessage("E001");
+            }
+        }
+
         function EditCategory()
-        {
-            window.location
+        {          
+            window.location.href = '@Url.Action("CategoryEntry", "Category")?CategoryCD=' + $("#lblCategoryCD").text();
         }
     </script>
 }
