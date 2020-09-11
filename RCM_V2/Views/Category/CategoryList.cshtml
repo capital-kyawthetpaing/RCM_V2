@@ -4,13 +4,6 @@
 }
 @Styles.Render(Url.Content("~/Content/shop_category.css"))
 
-<style>
-    /*drag and drop table hover class*/
-    .sortable-dragging {
-        background-color: green;
-        color: white;
-    }
-</style>
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconList">
@@ -42,7 +35,7 @@
                             <ul id="menuTree">
                                 <li>
                                     <div class="shopCateEdit">
-                                        <p><input type="button" value="カテゴリの編集" onclick="EditCategory('Edit')" /></p>
+                                        <p><input type="button" id="btnUpdateCat" value="カテゴリの編集" onclick="EditCategory('Edit')" disabled/></p>
                                         <p><input type="button" id="btnAdd" value="孫カテゴリの追加" onclick="EditCategory('New')"/></p>
                                     </div>
                                 </li>
@@ -59,7 +52,6 @@
                         <thead>
                             <tr>                               
                                 <th>Description</th>
-                                <th>Serial Number</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -85,9 +77,11 @@
                         data.instance.deselect_node(data.node);
                         selectedNodeId = "";   
                         $("#txtcategoryid").val(selectedNodeId);
+                        $("#btnUpdateCat").prop("disabled", true);
                     } else {
                         selectedNodeId = data.node.id;
                         $("#txtcategoryid").val(selectedNodeId);
+                        $("#btnUpdateCat").prop("disabled", false);
                         BindChildCategory(data.node.id);
                     }
                 })
@@ -133,8 +127,7 @@
                 "info": false,
                 "ordering":false,
                 "columns": [
-                    { "data": "text" },
-                    { "data": "SEQ" }
+                    { "data": "text" }
                 ],
                 "columnDefs": [
                     {
@@ -170,10 +163,18 @@
         }
 
         function EditCategory(mode)
-        {
-            if (mode == "New")
-                $("#txtcategoryid").val('');
-            window.location.href = '@Url.Action("CategoryEntry", "Category")?CategoryCD=' + $("#txtcategoryid").val()+"&Mode="+mode;
+        {            
+            if (mode == "New") {
+                var ParentCatCD;
+                if ($("#txtcategoryid").val() == "")
+                    ParentCatCD = "0000";
+                else
+                    ParentCatCD = $("#txtcategoryid").val();
+                window.location.href = '@Url.Action("CategoryEntry", "Category")?ParentCategoryCD=' + ParentCatCD+ "&Mode=" + mode;
+            }
+            else {
+                window.location.href = '@Url.Action("CategoryEntry", "Category")?CategoryCD=' + $("#txtcategoryid").val() + "&Mode=" + mode;
+            }
         }
     </script>
 }

@@ -45,8 +45,7 @@ namespace RCM_V2.Controllers
                 {
                     m.id = dr["CategoryCD"].ToString();
                     m.text = dr["CategoryName"].ToString();
-                    m.parent = "#";
-                    m.SEQ = dr["SEQ"].ToString();
+                    m.parent = "#";                    
                     m.children = Convert.ToInt32(dr["ChildCount"]) > 0 ? true : false;
                     items.Add(m);
                 }
@@ -74,8 +73,7 @@ namespace RCM_V2.Controllers
                 CategoryTreeInfo m = new CategoryTreeInfo();
                 m.id = dr["CategoryCD"].ToString();
                 m.text = dr["CategoryName"].ToString();
-                m.parent = dr["ParentCategoryCD"].ToString();
-                m.SEQ = dr["SEQ"].ToString();
+                m.parent = dr["ParentCategoryCD"].ToString();                
                 m.children = Convert.ToInt32(dr["ChildCount"]) > 0 ? true : false;
                 items.Add(m);
             }
