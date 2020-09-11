@@ -48,7 +48,7 @@
                 <tr>
                     <th title="Rakuten No">楽天カテゴリセット番号 <br /><span>※競技登録の場合、必須です</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new { placeholder = "20", @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
+                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)"})
                     </td>
                 </tr>
                 <tr>
@@ -101,6 +101,7 @@
                 RequiredCheck($("#YahooCategoryID"));
                 RequiredCheck($("#PonpareCategoryID"));
                 RequiredCheck($("#WowmaCategoryID"));
+                RequiredCheck($("#RakutenCategorySetNo"))
                 RequiredCheck($("#R_RacketCategoryID"));
                 RequiredCheck($("#R_LuckpieceCategoryID"));
                 RequiredCheck($("#R_SportsPlazaCategoryID"));
@@ -144,7 +145,7 @@
                     YahooCategoryID: $("#YahooCategoryID").val(),
                     PonpareCategoryID: $("#PonpareCategoryID").val(),
                     WowmaCategoryID: $("#WowmaCategoryID").val(),
-                    RakutenCategorySetNo: "20",
+                    RakutenCategorySetNo: $("#RakutenCategorySetNo").val(),
                     R_RacketCategoryID: $("#R_RacketCategoryID").val(),
                     R_SportsPlazaCategoryID: $("#R_SportsPlazaCategoryID").val(),
                     R_LuckpieceCategoryID: $("#R_LuckpieceCategoryID").val(),
