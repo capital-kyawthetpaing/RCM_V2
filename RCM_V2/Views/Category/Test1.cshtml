@@ -2,9 +2,6 @@
 <script src="~/Scripts/jquery-3.5.1.min.js"></script>
 <link href="~/Content/style.min.css" rel="stylesheet" />
 <script src="~/Scripts/jstree.js"></script>
-@*<script src="~/Scripts/jstree.min.js"></script>*@
-@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>*@
 <script src="~/Scripts/Common.js"></script>
 @{
     Layout = null;
@@ -21,32 +18,41 @@
     <title>Test1</title>
 </head>
 <body>
-    <div id='treeview'></div>
+    <div id='treeview1'></div>
 </body>
 </html>
 <link href="~/Vendor/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
+<script src="~/Scripts/json2-min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-
-        $('#treeview').jstree({
-            "plugins": ["search", "wholerow"],
-            'core': {
-                'data': {
-                    'url': function (node) {
-                        return node.id === '#' ? "/Category/GetRoot" : "/Category/GetChildren/" + node.id;
-                    },
-                    'data': function (node) {
-                        return { 'id': node.id };
+      
+                 var selectedNodeId;
+            $('#treeview1')
+                .on('select_node.jstree', function (e, data) {
+                    if (selectedNodeId === data.node.id) {
+                        data.instance.deselect_node(data.node);
+                        selectedNodeId = "";
+                    } else {
+                        selectedNodeId = data.node.id;
                     }
-                }
-            }
-        });
-       
-        //$('#treeview').on('changed.jstree', function (e, data) {
-        //    alert(data.node.id);
-        //    //console.log("=> selected node: " + data.node.id);
-        //});
-    })
-
+                })
+                .jstree({
+                    "plugins": ["search", "wholerow"],
+                    'core': {
+                        'data': {
+                            'url': function (node) {
+                                return node.id === '#' ? "/api/CategoryApi/GetRootNode" : "/api/CategoryApi/GetChildren/" + node.id;
+                            },
+                            'method': 'POST',
+                            'headers':
+                            {
+                                Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+                            },
+                            'data': function (node) {
+                                return { 'id': node.id };
+                            }
+                        }
+                    }
+                });
+        })
 </script>

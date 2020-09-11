@@ -3,7 +3,16 @@
     ViewBag.Title = "CategoryList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .inlineSet li {
+        display: block;
+        text-align: left;
+    }
 
+    .jstree li > a > .jstree-icon {
+        display: none !important;
+    }
+</style>
 @Styles.Render(Url.Content("~/Content/shop_category.css"))
 
 <div id="CmnContents">
@@ -37,7 +46,7 @@
                             <ul id="menuTree">
                                 <li>
                                     <div class="shopCateEdit">
-                                        <p><input type="button" value="カテゴリの編集" /></p>
+                                        <p><input type="button" value="カテゴリの編集" onclick="EditCategory()" /></p>
                                         <p><input type="button" id="btnAdd" value="孫カテゴリの追加" /></p>
                                     </div>
                                 </li>
@@ -61,8 +70,7 @@
                         <tbody></tbody>
                     </table>
                 </div>
-
-                <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
+              <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
             </div><!-- /.shopCate.resetValue -->
 
         </div><!--setListBox-->
@@ -70,85 +78,46 @@
 </div><!--/#CmnContents-->
 
 @section Scripts
-    {
-    <script src="~/Vendor/bootstrap-treeview-master/src/js/bootstrap-treeview.js"></script>
-    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
+{
+    <link href="~/Content/style.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jstree.js"></script>
     <script type="text/javascript">
-        $(document).ready(function () {
-           var obj = { ParentCategoryCD:""};
-           var response = CalltoApiController('@Url.Action("CategoryTree_Select", "api/CategoryApi")', obj);
+        $(document).ready(function(){
 
-           BindTreeView(response); //bind tree view
-           BindChildCategory('Root'); //bind table
+            var selectedNodeId;
+            $('#treeview1')
+                .on('select_node.jstree', function (e, data) {
+                    if (selectedNodeId === data.node.id) {
+                        data.instance.deselect_node(data.node);
+                        selectedNodeId = "";
+                    } else {
+                        selectedNodeId = data.node.id;
+                    }
+                })
+                .jstree({
+                    "plugins": ["search", "wholerow"],
+                    'core': {
+                        'data': {
+                           'url': function (node) {
+                                return node.id === '#' ? "/api/CategoryApi/GetRootNode" : "/api/CategoryApi/GetChildren/" + node.id;
+                            },
+                            'method': 'POST',
+                            'headers':
+                            {
+                                Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+                            },
+                            'data': function (node) {
+                                return { 'id': node.id };
+                            }
+                        }
+                    }
+                });
+
         });
 
-        function BindTreeView(response) {
-           
-            $('#treeview1').treeview({
-                    expandIcon: 'fa fa-plus-square-o',
-                    collapseIcon: 'fa fa-minus-square-o',
-                    emptyIcon: '',
-                    selectedBackColor: "#03a9f3",
-                    onhoverColor: "rgba(0, 0, 0, 0.05)",                    
-                    data: response,
-                    onNodeSelected: function (event, data) {                       
-                        BindChildCategory(data.Code);
-                    }
-            });
-
-            //$('#treeview1').treeview('selectNode', [1, { silent: true }]).on('nodeSelected', function (event, data) {
-            //    alert("success");
-            //});;
-        }
-
-        function BindChildCategory(CategoryCD) {
-
-            var obj = { ParentCategoryCD: CategoryCD};
-            table = $('#CategoryChildList').DataTable({
-                data:CalltoApiController('@Url.Action("ChildCategory_Select", "api/CategoryApi")', obj),
-                destroy: true,
-                "searching": false,
-                "paging": false,
-                "info": false,
-                "ordering":false,
-                "columns": [
-                    { "data": "CategoryCD","visible":false},
-                    { "data": "CategoryName" },
-                    { "data": "SEQ" }
-                ],
-                "columnDefs": [
-                    {
-                        "targets": 1,
-                        "data": "CategoryName",
-                        "render": function (data, type, row) {
-                            return '<span class="spnCatCD" id=' + row.CategoryCD + '>' + row.CategoryName+'</span>';
-                        }
-                    }]
-            });
-
-            sortable('#CategoryChildList tbody', {
-                items: "tr",
-                forcePlaceholderSize: true,
-                placeholderClass: 'ph-class',
-            })
-        }
-
-        function UpdateCategory() {
-            var CategoryList = [];
-            $.each($("#CategoryChildList > tbody > tr"), function (index) {
-                var CategoryCD = $(this).find("span.spnCatCD").attr('id');
-                var SEQ = index + 1;
-                var CategoryModel = { CategoryCD: CategoryCD, SEQ: SEQ };
-                CategoryList.push(CategoryModel);
-            });
-
-            var response = CalltoApiController('@Url.Action("CategorySerial_Update", "api/CategoryApi")', { CategoryList: CategoryList});
-            if (response == "true") {
-               ShowMessage("I101");
-            }
-            else {
-               ShowMessage("E001");
-            }
+        function EditCategory()
+        {
+            window.location
         }
     </script>
 }

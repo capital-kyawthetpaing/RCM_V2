@@ -7,6 +7,7 @@ using System.Web.Http;
 using Models;
 using Category_BL;
 using System.Data;
+using System.Web.Http.Results;
 
 
 namespace RCM_V2.Controllers
@@ -24,41 +25,60 @@ namespace RCM_V2.Controllers
 
         [UserAuthentication]
         [HttpPost]
-        [ActionName("CategoryTree_Select")]
-        public IHttpActionResult CategoryTree_Select(CategoryModel categoryModel)
+        [ActionName("GetRootNode")]
+        public IHttpActionResult GetRootNode()
         {
-            CategoryBL bl = new CategoryBL();
-            DataTable dt = bl.Category_Select(categoryModel);
-            List<CategoryTreeInfo> clist = new List<CategoryTreeInfo>();
-            foreach (DataRow dr in dt.Rows)
-            {
-                if (string.IsNullOrEmpty(dr["ParentCategoryCD"].ToString()) && dr["CategoryCD"].ToString()=="Root")
-                {
-                    CategoryTreeInfo info = new CategoryTreeInfo();
-                    info.text = dr["CategoryName"].ToString();
-                    info.Code = dr["CategoryCD"].ToString();
-                    info.nodes = GetChildern(dr["CategoryCD"].ToString(), dt);
-                    clist.Add(info);
-                }
-            }        
-            return Ok(clist);
+            CategoryModel m = new CategoryModel();
+            List<CategoryTreeInfo> items = GetTree(m);
+            return Json(items);
         }
 
-        public List<CategoryTreeInfo> GetChildern(string ParentCode,DataTable dt)
+        public static List<CategoryTreeInfo> GetTree(CategoryModel categoryModel)
         {
-            List<CategoryTreeInfo> clist = new List<CategoryTreeInfo>();            
-            foreach(DataRow dr in dt.Rows)
+            var items = new List<CategoryTreeInfo>();
+            CategoryBL bl = new CategoryBL();
+            DataTable dt = bl.Category_Select(categoryModel);
+            foreach (DataRow dr in dt.Rows)
             {
-                if (dr["ParentCategoryCD"].ToString() == ParentCode)
+                CategoryTreeInfo m = new CategoryTreeInfo();
+                if (dr["ParentCategoryCD"].ToString() == "0000")
                 {
-                    CategoryTreeInfo cinfo = new CategoryTreeInfo();
-                    cinfo.text = dr["CategoryName"].ToString();
-                    cinfo.Code = dr["CategoryCD"].ToString();
-                    cinfo.nodes = GetChildern(dr["CategoryCD"].ToString(), dt);
-                    clist.Add(cinfo);
-                }                
+                    m.id = dr["CategoryCD"].ToString();
+                    m.text = dr["CategoryName"].ToString();
+                    m.parent = "#";
+                    m.children = Convert.ToInt32(dr["ChildCount"]) > 0 ? true : false;
+                    items.Add(m);
+                }
             }
-            return clist;
+            return items;
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("GetChildren")]
+        public IHttpActionResult GetChildren(string id)
+        {
+            CategoryModel categoryModel = new CategoryModel(); ;
+            categoryModel.ParentCategoryCD = id;
+            List<CategoryTreeInfo> items = GetChildTree(categoryModel);
+
+            return Json(items);
+        }
+        public static List<CategoryTreeInfo> GetChildTree(CategoryModel categoryModel)
+        {
+            var items = new List<CategoryTreeInfo>();
+            CategoryBL bl = new CategoryBL();
+            DataTable dt = bl.Category_Select(categoryModel);
+            foreach (DataRow dr in dt.Rows)
+            {
+                CategoryTreeInfo m = new CategoryTreeInfo();
+                m.id = dr["CategoryCD"].ToString();
+                m.text = dr["CategoryName"].ToString();
+                m.parent = dr["ParentCategoryCD"].ToString();
+                m.children = Convert.ToInt32(dr["ChildCount"]) > 0 ? true : false;
+                items.Add(m);
+            }
+            return items;
         }
 
         [UserAuthentication]

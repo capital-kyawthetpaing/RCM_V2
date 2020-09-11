@@ -8,8 +8,9 @@ namespace Models
 {
     public class CategoryTreeInfo
     {
+        public string id { get; set; }
+        public string parent { get; set; }
         public string text { get; set; }
-        public string Code { get; set; }
-        public List<CategoryTreeInfo> nodes { get; set; }
+        public bool children { get; set; } // if node has sub-nodes set true or not set false
     }
 }
