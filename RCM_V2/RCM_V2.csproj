@@ -194,6 +194,7 @@
     <Content Include="Content\iziModal.css" />
     <Content Include="Content\iziModal.min.css" />
     <Content Include="Content\mall_category.css" />
+    <Content Include="Content\mall_setting_rakuten_fixed.css" />
     <Content Include="Content\manager-style.css" />
     <Content Include="Content\option.css" />
     <Content Include="Content\shop.css" />
