@@ -1,11 +1,16 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "CategoryList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @Styles.Render(Url.Content("~/Content/shop_category.css"))
 
+<style>
+    /*drag and drop table hover class*/
+    .sortable-dragging {
+        background-color: green;
+        color: white;
+    }
+</style>
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconList">
@@ -15,10 +20,10 @@
                 <h2>カテゴリ検索<span>※注意：スペース区切りで一致検 索</span></h2>
                 <dl>
                     <dt>カテゴリ名</dt>
-                    <dd><input type="text" id="txtcatid" placeholder="例）テニス シューズ プリンス" /></dd>
-                    <dd><input type="text" id="txtcatid" class="d-none" /></dd>
+                    <dd><input type="text" id="txtcatid" placeholder="例）テニス シューズ プリンス" tabindex="1" /></dd>
+                    <dd><input type="text" id="txtcategoryid" class="d-none" /></dd>
                 </dl>
-                <p><input type="button" id="btnSearch" value="検 索" /></p>
+                <p><input type="button" id="btnSearch" value="検 索" tabindex="2"/></p>
             </div>
 
             <div class="shopCate operationBtn">
@@ -37,9 +42,8 @@
                             <ul id="menuTree">
                                 <li>
                                     <div class="shopCateEdit">
-                                        <label id="lblCategoryCD" class="d-none"></label>
-                                        <p><input type="button" value="カテゴリの編集" onclick="EditCategory()" /></p>
-                                        <p><input type="button" id="btnAdd" value="孫カテゴリの追加" /></p>
+                                        <p><input type="button" value="カテゴリの編集" onclick="EditCategory('Edit')" /></p>
+                                        <p><input type="button" id="btnAdd" value="孫カテゴリの追加" onclick="EditCategory('New')"/></p>
                                     </div>
                                 </li>
                             </ul>
@@ -70,10 +74,9 @@
 
 @section Scripts
 {
-    <script src="~/Scripts/jstree.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-
+        $(document).ready(function () {
+            $("#txtcatid").select();
             var selectedNodeId;
             var nodeid;
             $('#treeview1')
@@ -81,10 +84,10 @@
                     if (selectedNodeId === data.node.id) {
                         data.instance.deselect_node(data.node);
                         selectedNodeId = "";   
-                        $("#lblCategoryCD").text(selectedNodeId);
+                        $("#txtcategoryid").val(selectedNodeId);
                     } else {
                         selectedNodeId = data.node.id;
-                        $("#lblCategoryCD").text(selectedNodeId);
+                        $("#txtcategoryid").val(selectedNodeId);
                         BindChildCategory(data.node.id);
                     }
                 })
@@ -166,9 +169,11 @@
             }
         }
 
-        function EditCategory()
-        {          
-            window.location.href = '@Url.Action("CategoryEntry", "Category")?CategoryCD=' + $("#lblCategoryCD").text();
+        function EditCategory(mode)
+        {
+            if (mode == "New")
+                $("#txtcategoryid").val('');
+            window.location.href = '@Url.Action("CategoryEntry", "Category")?CategoryCD=' + $("#txtcategoryid").val()+"&Mode="+mode;
         }
     </script>
 }
