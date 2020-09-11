@@ -16,7 +16,7 @@
                     <dd><input type="text" id="txtcatid" placeholder="例）テニス シューズ プリンス" tabindex="1" /></dd>
                     <dd><input type="text" id="txtcategoryid" class="d-none" /></dd>
                 </dl>
-                <p><input type="button" id="btnSearch" value="検 索" tabindex="2"/></p>
+                <p><input type="button" id="btnSearch" value="検 索" tabindex="2" /></p>
             </div>
 
             <div class="shopCate operationBtn">
@@ -26,41 +26,58 @@
             </div>
             <!-- /operationBtn -->
             <div class="shopCate resetValue">
-                <input type="text" id="btnNew" value="New" class="d-none" />
                 &nbsp;&nbsp;<p class="cateTop">カテゴリTOP</p>
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td width="68%">
+                                <ul id="menuTree">
+                                    <li>
+                                        <div class="shopCateEdit">
+                                            <p><input type="button" id="btnAdd" value="孫カテゴリの追加" onclick="EditCategory('New')" /></p>
 
-                <table>
-                    <tr>
-                        <td>
-                            <ul id="menuTree">
-                                <li>
-                                    <div class="shopCateEdit">
-                                        <p><input type="button" id="btnUpdateCat" value="カテゴリの編集" onclick="EditCategory('Edit')" disabled/></p>
-                                        <p><input type="button" id="btnAdd" value="孫カテゴリの追加" onclick="EditCategory('New')"/></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <p><input type="button" id="btnTop" value="カテゴリTOP" style="width:100px;float:right;margin-left:3px;" /></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+
                 </table>
                 <div class="shopCateList">
                     <div id="treeview1" class="treeview"></div>
                 </div>
 
                 <div class="shopCateDate">
+                    @*<p><input type="button" id="btnTop" value="カテゴリTOP" style="width:100px;" /></p>*@
                     <table class="listTable" id="CategoryChildList" style="margin-top:0px;">
                         <thead>
-                            <tr>                               
+                            <tr>
                                 <th>Description</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>
-              <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
+                <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
             </div><!-- /.shopCate.resetValue -->
 
         </div><!--setListBox-->
+
+        <div class="btn">
+            <div class="userRole">
+                <p><input type="button" id="btnUpdateCat" value="カテゴリの編集" onclick="EditCategory('Edit')" disabled /></p>
+            </div>
+        </div>
     </div><!--ComBlock-->
 </div><!--/#CmnContents-->
 
@@ -109,6 +126,10 @@
                         }
                     }
                 });
+
+            $("#btnTop").click(function () {
+                BindChildCategory("0000");
+            });
         });
 
         function BindChildCategory(id) {
