@@ -183,8 +183,7 @@ div.setDetailBox table.editTable {
 }
 
 div.setDetailBox table.editTable th {
-	/*width: 180px;*/
-    width: 20%; /*byami- for MallSettingRakutenFixed*/
+	width: 180px;
 	text-align: left;
 	border-right: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
@@ -192,7 +191,6 @@ div.setDetailBox table.editTable th {
 	padding: 5px 5px 5px 10px;
 }
     div.setDetailBox table.editTable td {
-        width: 80%; /*byami- for MallSettingRakutenFixed*/
         border-bottom: 1px solid #ddd;
         padding: 5px;
     }
@@ -209,8 +207,7 @@ div.setDetailBox table.editTable td dd label {
     line-height: 2em;
 }
 div.setDetailBox input[type="text"] {
-    /*width: 55%;*/
-    width: 500px; /*byami- for MallSettingRakutenFixed*/
+    width: 55%;
 }
 
 div.setDetailBox textarea{

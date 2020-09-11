@@ -1,0 +1,26 @@
+﻿
+
+div.setDetailBox table.editTable {
+    width: 100%;
+    margin-bottom: 90px;
+}
+
+    div.setDetailBox table.editTable th {
+        width: 20%;
+        text-align: left;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        border-left: 5px solid #73c5ff;
+        padding: 5px 5px 5px 10px;
+    }
+
+    div.setDetailBox table.editTable td {
+        width:80%;
+        border-bottom: 1px solid #ddd;
+        padding: 5px;
+    }
+    div.setDetailBox input[type="text"] {
+        width: 500px;
+    }
+
+
