@@ -755,6 +755,7 @@
     <Content Include="images\amazon.png" />
     <Content Include="images\arrow.png" />
     <Content Include="images\btn_on-off.gif" />
+    <Content Include="images\calendar.png" />
     <Content Include="images\check.png" />
     <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />

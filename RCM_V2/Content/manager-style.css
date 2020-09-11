@@ -309,7 +309,8 @@ div.setDetailBox.confSet table td dt {
 .iconLog h1 { background-image: url(../images/log.png); }
 
 .iconRakuten h1 {
-	background-image: url(../images/icon-rakuten.png);
+    /*background-image: url(../images/icon-rakuten.png);*/
+    background-image: url('../images/rakutenmall.png');
 }
 .iconYahoo h1 {
 	background-image: url(../images/icon-yahoo.png);
