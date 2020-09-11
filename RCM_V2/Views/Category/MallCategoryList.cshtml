@@ -77,7 +77,7 @@
                 $("#Label3").removeClass('d-none');
                 $("#lblPom").removeClass('d-none');
             }
-            //show label for Wowma if Mall id=4
+            //show label for Wowma if Mall id=5
             else {
                 $("#Label4").removeClass('d-none');
                 $("#lblWow").removeClass('d-none');
@@ -97,11 +97,18 @@
                 destroy: true,
                 "dataSrc": " ",
                 "searching": false,
+                "ordering": false,
                 "lengthChange": false,
                 "pageLength":50,
                 "columns": [
-                    { "data": "CategoryID"},
-                    { "data": "CategoryPath"}
+                    { "data": "CategoryID", "width": "20%" },
+                    { "data": "CategoryPath", "width": "80%" }
+                ],
+                "columnDefs": [
+                    {
+                        "targets": [0],
+                        "className": 'textAlign',
+                    }
                 ]
             });
         }

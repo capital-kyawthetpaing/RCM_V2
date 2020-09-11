@@ -6,174 +6,87 @@
 }
 
 
-<script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+@Styles.Render(Url.Content("~/Content/themes/base/jquery-ui.min.css"))
+@Styles.Render(Url.Content("~/Content/themes/base/jquery-ui.css"))
 
 <div id="CmnContents">
     <div id="ComBlock">
-
         <div class="setDetailBox shopCmnSet defaultSet iconSet iconRakuten">
-
-
             <h1>楽天固定値編集<span>全て必須項目。ただし、ブランク可</span></h1>
-
             <table class="editTable">
                 <tr>
-
-
                     <th>ショップ名</th>
-
-
                     <td></td>
                 </tr>
-
-
                 <tr>
-
                     <th>出品モール</th>
                     <td></td>
                 </tr>
-
-
                 <tr>
-
                     <th>タグID</th>
-
-
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
                 <tr style="border-style:none">
-
                     <th>消費税</th>
                     <td>
-
-
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "rd1", @checked = "true", onkeydown = "KeyDown(event,this)" }) <label>消費税込み</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "rd2" }) <label>消費税別</label>
-
-
                     </td>
-
                 </tr>
                 <tr>
-
                     <th>送料区分１</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
                 <tr>
-
                     <th>送料区分２</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
-
-
                 <tr>
-
-
                     <th> 商品情報レイアウト</th>
-
-
                     <td>
-
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
-
-
-
                 </tr>
-
-
-
-
-
-
-
-
-
                 <tr style="border-style:none">
                     <th>注文ボタン</th>
-
-
-
                     <td>
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "r1" }) <label>ボタンをつけない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "r2", @checked = "true", }) <label>通常注文ボタンをつける</label>
                         @Html.RadioButtonFor(x => x.Status, "3", new { @tabIndex = 1, @id = "r3" }) <label>予約注文ボタンをつける</label>
 
                     </td>
-
-
-
                 </tr>
-
-
                 <tr>
-
-
                     <th class="style1">資料請求ボタン</th>
                     <td class="style1">
-
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "radio1", @checked = "true", onkeydown = "KeyDown(event,this)" }) <label>ボタンをつけない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "radio2" }) <label>ボタンをつける</label>
-
-
-
                     </td>
                 </tr>
-
                 <tr>
                     <th>商品問い合わせボタン</th>
                     <td>
-
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "a1", @checked = "true" }) <label>ボタンをつけない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "a2" }) <label>ボタンをつける</label>
 
                     </td>
                 </tr>
-
-
                 <tr>
-
                     <th>再入荷お知らせボタン</th>
                     <td>
-
-
-
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "s1", @checked = "true" }) <label>ボタンをつけない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "s2" }) <label>ボタンをつける</label>
-
-
                     </td>
                 </tr>
-
                 <tr>
-
                     <th>モバイル表示</th>
                     <td>
-
 
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "d1", @checked = "true" }) <label>表示する</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "d2" }) <label>表示しない</label>
@@ -184,14 +97,12 @@
 
                     <th>のし対応</th>
                     <td>
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "f1", @checked = "true" }) <label>対応しない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "f2" }) <label>対応する</label>
                     </td>
                 </tr>
 
                 <tr>
-
                     <th>動画</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
@@ -207,14 +118,12 @@
                 <tr>
                     <th>在庫タイプ</th>
                     <td>
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "g1", @checked = "true", }) <label>在庫設定しない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "g2" }) <label>通常在庫設定</label>
                         @Html.RadioButtonFor(x => x.Status, "3", new { @tabIndex = 1, @id = "g3" }) <label>項目選択肢別在庫設定</label>
 
                     </td>
                 </tr>
-
                 <tr>
                     <th>在庫数</th>
                     <td>
@@ -223,10 +132,8 @@
                 </tr>
 
                 <tr>
-
                     <th>在庫数表示</th>
                     <td>
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "h1", @checked = "true" }) <label>残り在庫数表示しない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "h2" }) <label>残り在庫数表示する</label>
                     </td>
@@ -268,7 +175,6 @@
                 <tr>
                     <th>在庫戻しフラグ"</th>
                     <td>
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "j1", @checked = "true" }) <label>利用しない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "j2" }) <label>利用する</label>
 
@@ -277,47 +183,39 @@
                 <tr>
                     <th>在庫切れ時の注文受付</th>
                     <td>
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "k1", @checked = "true" }) <label>受け付けない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "k2" }) <label>受け付ける</label>
 
                     </td>
 
                 </tr>
-
                 <tr>
                     <th>在庫あり時納期管理番号</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
-
                 <tr>
                     <th>在庫切れ時納期管理番号</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
-
-
                 <tr>
                     <th>予約商品発売日</th>
 
                     <td>
 
-                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 1,
+                        @Html.TextBoxFor(x => x.ItemCD, new
+                        {
+                            @tabIndex = 1,
                        @id = "datepicker",
-                       style="width: 52%",
-                       onkeydown = "KeyDown(event,this)" })
+                       style = "width: 471px",
+                       onkeydown = "KeyDown(event,this)"
+                        })
 
                     </td>
-
                 </tr>
-
                 <tr>
                     <th>ヘッダー・フッター・レフトナビ"</th>
                     <td>
@@ -337,9 +235,7 @@
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
                 <tr>
-
                     <th>共通説明文(大)</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
@@ -347,18 +243,12 @@
                 </tr>
                 <tr style="border-style:none">
                     <th>レビュー本文表示</th>
-
                     <td>
-
-
-
                         @Html.RadioButtonFor(x => x.Status, "1", new { @tabIndex = 1, @id = "l1", @checked = "true" }) <label>表示しない</label>
                         @Html.RadioButtonFor(x => x.Status, "2", new { @tabIndex = 1, @id = "l2" }) <label>表示する</label>
                         @Html.RadioButtonFor(x => x.Status, "3", new { @tabIndex = 1, @id = "l3" }) <label>デザイン設定での設定を使用</label>
 
                     </td>
-
-
                 </tr>
                 <tr>
                     <th>海外配送管理番号</th>
@@ -366,7 +256,6 @@
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
                 <tr>
                     <th>サイズ表リンク</th>
                     <td>
@@ -374,7 +263,6 @@
                     </td>
                 </tr>
                 <tr>
-
                     <th>医薬品説明文</th>
                     <td>
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
@@ -386,13 +274,9 @@
                         @Html.TextBoxFor(x => x.ItemName, new { @tabIndex = 1, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
-
-
                 <tr></tr>
             </table>
             <div class="btn">
-
-
                 <input type="submit" id="btnpopup" style="width:200px" value="確認画面へ" />
                 <input type="button" id="btnConfirm_Save" value="確認画面へ" class="d-none" />
             </div>
@@ -402,17 +286,13 @@
 
 
 @section Scripts {
-    <!-- jQuery UI CSS Reference -->
-    <link href="@Url.Content("~/Content/themes/base/minified/jquery-ui.min.css")" rel="stylesheet" />
-    <!-- Required jQuery and jQuery UI Javascript references -->
-    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
     <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <script src="@Url.Content("~/Scripts/jquery-ui-1.12.1.js")"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $(function () {
-                // This will make every element with the class "date-picker" into a DatePicker element
                 $("#datepicker").datepicker({
                     altFormat: "yy-mm-dd",
                     dateFormat: "yy/mm/dd",

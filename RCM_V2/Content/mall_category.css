@@ -46,4 +46,6 @@ div.setDetailBox.mallCate .listTable td:nth-of-type(5){
 	height: 20px;
 }
 
-
+.textAlign{
+    text-align:center;
+}

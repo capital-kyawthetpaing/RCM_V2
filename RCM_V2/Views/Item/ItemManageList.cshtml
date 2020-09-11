@@ -27,7 +27,7 @@
                             </td>
                             <th title="Brand name">ブランド名</th>
                             <td>
-                                @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
+                                @Html.TextBoxFor(x => x.BrandName, new { @tabIndex = 2, onkeydown = "KeyDown(event,this)" })
 
 
                             </td>
@@ -90,7 +90,7 @@
                                     </td>
                                     <th>仕入先名</th>
                                     <td>
-                                        @Html.TextBoxFor(x => x.ItemCD, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
+                                        @Html.TextBoxFor(x => x.MakerName, new { @tabIndex = 10, onkeydown = "KeyDown(event,this)" })
                                     </td>
                                     <th>競技名</th>
                                     <td>
@@ -208,9 +208,14 @@
                             <th>定価</th>
                             <th>販売価格</th>
                             <th>原価</th>
+                            <th>原価率</th>
                             <th>割引率</th>
-                            <th>分類名</th>
+                            <th>掲載可能日</th>
+                            <th>発売日</th>
                             <th>競技名</th>
+                            <th>分類名</th>
+                            <th>ブランド名</th>
+                            <th>仕入先名</th>
                             <th>年度</th>
                             <th>シーズン</th>
                             <th>カタログ情報</th>
@@ -336,8 +341,10 @@
 
         function BindItemManageTable() {
             var obj = {
+                BrandName: $("#BrandName").val(),
                 ItemName: $("#ItemName").val(),
                 MakerCD: $("#MakerCD").val(),
+                MakerName: $("#MakerName").val(),
                 YearCD: $("#YearCD").val(),
                 SeasonCD: $("#SeasonCD").val(),
                 CatalogInfo: $("#CatalogInfo").val(),
@@ -350,20 +357,53 @@
                 destroy: true,
                 "dataSrc": " ",
                 "searching": false,
+                "ordering": false,
                 "fixedHeader": true,
                 "columns": [
                     { "data": "ItemCD"},
                     { "data": "ItemName"},
-                    { "data": "ListPrice"},
+                    { "data": "ListPrice" },
                     { "data": "SalePrice" },
                     { "data": "Cost" },
+                    { "data": "CostRate"},
                     { "data": "DistcountRate" },
-                    { "data": "ClassName" },
+                    { "data": "AvailableDate"},
+                    { "data": "ReleaseDate"},
                     { "data": "CompetitionName" },
+                    { "data": "ClassName" },
+                    { "data": "BrandName"},
+                    { "data": "MakerName"},
                     { "data": "Year" },
                     { "data": "Season" },
                     { "data": "CatalogInfo" },
                 ],
+                "columnDefs": [
+                    {
+                        "targets": [2, 3, 4, 5, 6],
+                        "className": 'textAlign',
+                    },
+                    {
+                        "targets": 2,
+                        "data": "ListPrice",
+                        "render": function (data, type, row) {
+                            return data + '<br/>(' + row['ListPrice1'] + ')';
+                        }
+                    },
+                    {
+                        "targets": 3,
+                        "data": "SalePrice",
+                        "render": function (data, type, row) {
+                            return data + '<br/>(' + row['SalePrice1'] + ')';
+                        }
+                    },
+                    {
+                        "targets": 4,
+                        "data": "Cost",
+                        "render": function (data, type, row) {
+                            return data + '<br/>(' + row['Cost1'] + ')';
+                        }
+                    }
+                ]
             });
         }
     </script>
