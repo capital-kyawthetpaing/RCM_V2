@@ -23,5 +23,10 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
+
+        public ActionResult ItemEntry()
+        {
+            return View();
+        }
     }
 }
