@@ -1,11 +1,11 @@
 ﻿@charset "utf-8";
 
-#CmnContents {
+/*#CmnContents {
     width: 1000PX;
     margin: 0px auto;
     margin-top: -100px;
     padding-top: 85px;
-}
+}*/
 
 ul, ol, li, dl, dt, dd, p, div, h1, h2, h3, h4, h5, h6 {
     margin: 0px;
@@ -39,6 +39,16 @@ div.itemCmnSetKnr.searchBox div > table th {
     .textAlign{
         text-align:right;
     }
+
+td.details-control {
+    background: url('../../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('../../images/details_close.png') no-repeat center center;
+}
+
 /*
     div#hideBlock p {
         text-align: left;

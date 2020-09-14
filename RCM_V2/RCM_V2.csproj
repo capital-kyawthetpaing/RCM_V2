@@ -17,9 +17,9 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -255,6 +255,8 @@
     <Content Include="images\btn_on-off.gif" />
     <Content Include="images\calendar.png" />
     <Content Include="images\check.png" />
+    <Content Include="images\details_close.png" />
+    <Content Include="images\details_open.png" />
     <Content Include="images\edit.png" />
     <Content Include="images\h_arrow.png" />
     <Content Include="images\jisha.jpg" />
