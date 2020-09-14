@@ -5,16 +5,7 @@
 }
 
 @Styles.Render(Url.Content("~/Content/item_master.css"))
-<style>
-    td.details-control {
-        background: url('../../images/details_open.png') no-repeat center center;
-        cursor: pointer;
-    }
 
-    tr.shown td.details-control {
-        background: url('../../images/details_close.png') no-repeat center center;
-    }
-</style>
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconList">
@@ -210,7 +201,7 @@
 
             </div>
             <div class="resetValue editBox">
-                <table class="listTable" id="tbItemManage" style="width:100%;">
+                <table class="listTable" id="tbItemManage" style="width:100%;table-layout:fixed">
                     <thead>
                         <tr>
                             <th width="5%"></th>
@@ -420,7 +411,7 @@
                 ],
                 "columnDefs": [
                     {
-                        "targets": [3, 4, 5, 6,7],
+                        "targets": [3, 4, 5, 6,7,8],
                         "className": 'textAlign',
                     },
                     {
@@ -463,7 +454,7 @@
 
         function format(d) {
             // `d` is the original data object for the row
-            return '<table style="width:25%;">' +
+            return '<table style="width:20%;">' +
                 '<tr>' +
                 '<th width="10%">年度</th>' +
                 '<td>' + d.Year + '</td>' +

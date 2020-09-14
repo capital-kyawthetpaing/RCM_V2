@@ -12,10 +12,10 @@ ul, ol, li, dl, dt, dd, p, div, h1, h2, h3, h4, h5, h6 {
     padding: 0px;
 }
 
-/*div.itemCmnSetKnr.searchBox div > table th {
+div.itemCmnSetKnr.searchBox div > table th {
     width: 110px;
     font-size: 10px;
-}*/
+}
 
     div.searchBox div > table th {
         text-align: right;
@@ -39,6 +39,16 @@ ul, ol, li, dl, dt, dd, p, div, h1, h2, h3, h4, h5, h6 {
     .textAlign{
         text-align:right;
     }
+
+td.details-control {
+    background: url('../../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('../../images/details_close.png') no-repeat center center;
+}
+
 /*
     div#hideBlock p {
         text-align: left;
