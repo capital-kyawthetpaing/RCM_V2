@@ -5,6 +5,16 @@
 }
 
 @Styles.Render(Url.Content("~/Content/item_master.css"))
+<style>
+    td.details-control {
+        background: url('../../images/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+
+    tr.shown td.details-control {
+        background: url('../../images/details_close.png') no-repeat center center;
+    }
+</style>
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconList">
@@ -203,6 +213,7 @@
                 <table class="listTable" id="tbItemManage" style="width:100%;">
                     <thead>
                         <tr>
+                            <th width="5%"></th>
                             <th>商品番号</th>
                             <th>商品名</th>
                             <th>定価</th>
@@ -217,8 +228,6 @@
                             <th>分類名</th>
                             <th>ブランド名</th>
                             <th>仕入先名</th>
-                            <th>年度</th>
-                            <th>シーズン</th>
                             <th>カタログ情報</th>
                         </tr>
                     </thead>
@@ -228,6 +237,7 @@
         </div>
     </div>
 </div>
+
 <div id="divSKU" style="display:none">
     @Html.Partial("~/Views/Search/SKUView.cshtml")
 </div>
@@ -267,6 +277,24 @@
             {
                 BindItemManageTable();
             });
+
+
+            $('#tbItemManage tbody').on('click', 'td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = table.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }
+                else {
+                    // Open this row
+                    row.child(format(row.data())).show();
+                    tr.addClass('shown');
+                }
+            });
+
         });
 
         function BindUser() {
@@ -367,7 +395,13 @@
                 "searching": false,
                 "ordering": false,
                 "fixedHeader": true,
-                "columns": [
+                "columns": [ 
+                    {
+                        "className": 'details-control',
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": ''
+                    },
                     { "data": "ItemCD"},
                     { "data": "ItemName"},
                     { "data": "ListPrice" },
@@ -382,38 +416,36 @@
                     { "data": "ClassName" },
                     { "data": "BrandName"},
                     { "data": "MakerName"},
-                    { "data": "Year" },
-                    { "data": "Season" },
                     { "data": "CatalogInfo" },
                 ],
                 "columnDefs": [
                     {
-                        "targets": [2, 3, 4, 5, 6],
+                        "targets": [3, 4, 5, 6,7],
                         "className": 'textAlign',
                     },
                     {
-                        "targets": 2,
+                        "targets": 3,
                         "data": "ListPrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['ListPrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 3,
+                        "targets": 4,
                         "data": "SalePrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['SalePrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 4,
+                        "targets": 5,
                         "data": "Cost",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['Cost1'] + ')';
                         }
                     },
                     {
-                        "targets": 7,
+                        "targets": 8,
                         "data": "ItemCD",
                         "render": function (data) {
                             return '<input type="button" style="width:70px;margin:3px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
@@ -427,6 +459,20 @@
             $('#divSKU').show();
             BindSKU(itemCD);
             $('#SKUViewModal').iziModal('open');
+        }
+
+        function format(d) {
+            // `d` is the original data object for the row
+            return '<table style="width:25%;">' +
+                '<tr>' +
+                '<th width="10%">年度</th>' +
+                '<td>' + d.Year + '</td>' +
+                '</tr>' +
+                '<tr>' +
+                '<th>シーズン</th>' +
+                '<td style="background-color:#ffffff">' + d.Season + '</td>' +
+                '</tr>' +                
+                '</table>';
         }
     </script>
 }
