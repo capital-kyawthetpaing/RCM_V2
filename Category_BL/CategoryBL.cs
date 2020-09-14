@@ -41,7 +41,7 @@ namespace Category_BL
             model.Sqlprms[0] = new SqlParameter("@ParentCatCD", model.ParentCategoryCD);
             return bdl.SelectDatatable("Category_Select", model.Sqlprms);
         }
-        
+
         public string CategorySerial_Update(CategoryListModel model)
         {
             BaseDL bdl = new BaseDL();
@@ -49,8 +49,6 @@ namespace Category_BL
             model.Sqlprms[0] = new SqlParameter("@CategoryJson", JsonConvert.SerializeObject(model.CategoryList));
             return bdl.InsertUpdateDeleteData("CategorySerial_Update", model.Sqlprms);
         }
-
-
 
         public string Category_CUD(CategoryEntryModel categoryModel)
         {

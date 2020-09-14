@@ -5,8 +5,8 @@
     ViewBag.Title = "CategoryEntry";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<img src="~/images/32px.png" />
 @Styles.Render(Url.Content("~/Content/categoryEntry.css"))
-
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setDetailBox iconSet iconEdit" id="divCat">
@@ -48,7 +48,7 @@
                 <tr>
                     <th title="Rakuten No">楽天カテゴリセット番号 <br /><span>※競技登録の場合、必須です</span></th>
                     <td>
-                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)"})
+                        @Html.TextBoxFor(x => x.RakutenCategorySetNo, new { @tabIndex = 6, onkeydown = "KeyDown(event,this)" })
                     </td>
                 </tr>
                 <tr>

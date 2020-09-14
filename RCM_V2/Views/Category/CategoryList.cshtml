@@ -1,9 +1,7 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "CategoryList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 @Styles.Render(Url.Content("~/Content/shop_category.css"))
 
 <div id="CmnContents">
@@ -15,10 +13,10 @@
                 <h2>カテゴリ検索<span>※注意：スペース区切りで一致検 索</span></h2>
                 <dl>
                     <dt>カテゴリ名</dt>
-                    <dd><input type="text" id="txtcatid" placeholder="例）テニス シューズ プリンス" /></dd>
-                    <dd><input type="text" id="txtcatid" class="d-none" /></dd>
+                    <dd><input type="text" id="txtcatid" placeholder="例）テニス シューズ プリンス" tabindex="1" /></dd>
+                    <dd><input type="text" id="txtcategoryid" class="d-none" /></dd>
                 </dl>
-                <p><input type="button" id="btnSearch" value="検 索" /></p>
+                <p><input type="button" id="btnSearch" value="検 索" tabindex="2" /></p>
             </div>
 
             <div class="shopCate operationBtn">
@@ -28,104 +26,139 @@
             </div>
             <!-- /operationBtn -->
             <div class="shopCate resetValue">
-                <input type="text" id="btnNew" value="New" class="d-none" />
                 &nbsp;&nbsp;<p class="cateTop">カテゴリTOP</p>
+                <table style="width:100%;">
+                    <tbody>
+                        <tr>
+                            <td width="68%">
+                                <ul id="menuTree">
+                                    <li>
+                                        <div class="shopCateEdit">
+                                            <p><input type="button" id="btnAdd" value="孫カテゴリの追加" onclick="EditCategory('New')" /></p>
 
-                <table>
-                    <tr>
-                        <td>
-                            <ul id="menuTree">
-                                <li>
-                                    <div class="shopCateEdit">
-                                        <p><input type="button" value="カテゴリの編集" /></p>
-                                        <p><input type="button" id="btnAdd" value="孫カテゴリの追加" /></p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <div>
+                                            <p><input type="button" id="btnTop" value="カテゴリTOP" style="width:100px;float:right;margin-left:3px;" /></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+
                 </table>
                 <div class="shopCateList">
                     <div id="treeview1" class="treeview"></div>
                 </div>
 
                 <div class="shopCateDate">
+                    @*<p><input type="button" id="btnTop" value="カテゴリTOP" style="width:100px;" /></p>*@
                     <table class="listTable" id="CategoryChildList" style="margin-top:0px;">
                         <thead>
                             <tr>
-                                <th hidden>Category Code</th>
                                 <th>Description</th>
-                                <th>Serial Number</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
                 </div>
-
                 <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
             </div><!-- /.shopCate.resetValue -->
 
         </div><!--setListBox-->
+
+        <div class="btn">
+            <div class="userRole">
+                <p><input type="button" id="btnUpdateCat" value="カテゴリの編集" onclick="EditCategory('Edit')" disabled /></p>
+            </div>
+        </div>
     </div><!--ComBlock-->
 </div><!--/#CmnContents-->
 
 @section Scripts
-    {
-    <script src="~/Vendor/bootstrap-treeview-master/src/js/bootstrap-treeview.js"></script>
-    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
+{
     <script type="text/javascript">
         $(document).ready(function () {
-           var obj = { ParentCategoryCD:""};
-           var response = CalltoApiController('@Url.Action("CategoryTree_Select", "api/CategoryApi")', obj);
+            $("#txtcatid").select();
+            var selectedNodeId;
+            var nodeid;
+            $('#treeview1')
+                .on('select_node.jstree', function (e, data) {                   
+                    if (selectedNodeId === data.node.id) {
+                        data.instance.deselect_node(data.node);
+                        selectedNodeId = "";   
+                        $("#txtcategoryid").val(selectedNodeId);
+                        $("#btnUpdateCat").prop("disabled", true);
+                    } else {
+                        selectedNodeId = data.node.id;
+                        $("#txtcategoryid").val(selectedNodeId);
+                        $("#btnUpdateCat").prop("disabled", false);
+                        BindChildCategory(data.node.id);
+                    }
+                })
+                .jstree({
+                    "plugins": ["search", "wholerow"],
+                    'core': {
+                        'data': {
+                            'url': function (node) {                                
+                               return node.id === '#' ? "/api/CategoryApi/GetRootNode" : "/api/CategoryApi/GetChildren/" + node.id;
+                            },
+                            'method': 'POST',
+                            'headers':
+                            {
+                                Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+                            },
+                            'data': function (node) {
+                                nodeid = node.id;
+                                return { 'id': node.id };
+                            },
+                            'success': function (result) {
+                                if (nodeid === "#") {
+                                    BindChildCategoryDetail(result);
+                                }
+                            }
+                        }
+                    }
+                });
 
-           BindTreeView(response); //bind tree view
-           BindChildCategory('Root'); //bind table
+            $("#btnTop").click(function () {
+                BindChildCategory("0000");
+            });
         });
 
-        function BindTreeView(response) {
-           
-            $('#treeview1').treeview({
-                    expandIcon: 'fa fa-plus-square-o',
-                    collapseIcon: 'fa fa-minus-square-o',
-                    emptyIcon: '',
-                    selectedBackColor: "#03a9f3",
-                    onhoverColor: "rgba(0, 0, 0, 0.05)",                    
-                    data: response,
-                    onNodeSelected: function (event, data) {                       
-                        BindChildCategory(data.Code);
-                    }
-            });
-
-            //$('#treeview1').treeview('selectNode', [1, { silent: true }]).on('nodeSelected', function (event, data) {
-            //    alert("success");
-            //});;
+        function BindChildCategory(id) {
+            var obj = {ParentCategoryCD:id};
+            var response = CalltoApiController('@Url.Action("ChildCategory_Select", "api/CategoryApi")', obj);
+            BindChildCategoryDetail(response);
         }
 
-        function BindChildCategory(CategoryCD) {
-
-            var obj = { ParentCategoryCD: CategoryCD};
-            table = $('#CategoryChildList').DataTable({
-                data:CalltoApiController('@Url.Action("ChildCategory_Select", "api/CategoryApi")', obj),
+        function BindChildCategoryDetail(result) {
+           
+           table = $('#CategoryChildList').DataTable({
+                data:result,
                 destroy: true,
                 "searching": false,
                 "paging": false,
                 "info": false,
                 "ordering":false,
                 "columns": [
-                    { "data": "CategoryCD","visible":false},
-                    { "data": "CategoryName" },
-                    { "data": "SEQ" }
+                    { "data": "text" }
                 ],
                 "columnDefs": [
                     {
-                        "targets": 1,
-                        "data": "CategoryName",
+                        "targets": 0,
+                        "data": "text",
                         "render": function (data, type, row) {
-                            return '<span class="spnCatCD" id=' + row.CategoryCD + '>' + row.CategoryName+'</span>';
+                            return '<span class="spnCatCD" id=' + row.id + '>' + row.text+'</span>';
                         }
                     }]
             });
-
             sortable('#CategoryChildList tbody', {
                 items: "tr",
                 forcePlaceholderSize: true,
@@ -141,13 +174,27 @@
                 var CategoryModel = { CategoryCD: CategoryCD, SEQ: SEQ };
                 CategoryList.push(CategoryModel);
             });
-
             var response = CalltoApiController('@Url.Action("CategorySerial_Update", "api/CategoryApi")', { CategoryList: CategoryList});
             if (response == "true") {
                ShowMessage("I101");
             }
             else {
                ShowMessage("E001");
+            }
+        }
+
+        function EditCategory(mode)
+        {            
+            if (mode == "New") {
+                var ParentCatCD;
+                if ($("#txtcategoryid").val() == "")
+                    ParentCatCD = "0000";
+                else
+                    ParentCatCD = $("#txtcategoryid").val();
+                window.location.href = '@Url.Action("CategoryEntry", "Category")?ParentCategoryCD=' + ParentCatCD+ "&Mode=" + mode;
+            }
+            else {
+                window.location.href = '@Url.Action("CategoryEntry", "Category")?CategoryCD=' + $("#txtcategoryid").val() + "&Mode=" + mode;
             }
         }
     </script>
