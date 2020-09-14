@@ -4533,6 +4533,7 @@
     <Content Include="Views\Mall\MallSetting_Rakuten_Fixed.cshtml" />
     <Content Include="Views\Mall\MallSetting_Yahoo_Fixed.cshtml" />
     <Content Include="Views\Search\SKUView.cshtml" />
+    <Content Include="Views\Item\ItemEntry.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
