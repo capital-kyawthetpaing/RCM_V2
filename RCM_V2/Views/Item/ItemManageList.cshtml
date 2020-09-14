@@ -5,6 +5,13 @@
 }
 
 @Styles.Render(Url.Content("~/Content/item_master.css"))
+<style>
+    .listTable tr th, td {
+        text-align:center;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+</style>
 
 <div id="CmnContents">
     <div id="ComBlock">
@@ -201,10 +208,10 @@
 
             </div>
             <div class="resetValue editBox">
-                <table class="listTable" id="tbItemManage" style="width:100%;table-layout:fixed">
+                <table class="listTable" id="tbItemManage" style="width:100%;" >
                     <thead>
                         <tr>
-                            <th width="5%"></th>
+                            <th width="4%"></th>
                             <th>商品番号</th>
                             <th>商品名</th>
                             <th>定価</th>
@@ -386,6 +393,7 @@
                 "searching": false,
                 "ordering": false,
                 "fixedHeader": true,
+                "scrollX": true,
                 "columns": [ 
                     {
                         "className": 'details-control',
@@ -411,7 +419,7 @@
                 ],
                 "columnDefs": [
                     {
-                        "targets": [3, 4, 5, 6,7,8],
+                        "targets": [3, 4, 5, 6,7],
                         "className": 'textAlign',
                     },
                     {
@@ -439,7 +447,7 @@
                         "targets": 8,
                         "data": "ItemCD",
                         "render": function (data) {
-                            return '<input type="button" style="width:70px;margin:3px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
+                            return '<input type="button" style="width:70px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
                         }
                     }
                 ]
