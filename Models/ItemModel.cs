@@ -4,6 +4,8 @@
     {
         #region Item
         public bool chkiv { get; set; }
+        public string Type { get; set; }
+        public string ExportID { get; set; }
         public string ItemCD { get; set; }
         public string ItemName { get; set; }
         public string MakerCD { get; set; }
