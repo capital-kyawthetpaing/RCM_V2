@@ -23,7 +23,7 @@ namespace Item_BL
             itemModel.Sqlprms[8] = new SqlParameter("@CompetitionName", SqlDbType.VarChar) { Value = itemModel.CompetitionName };
             itemModel.Sqlprms[9] = new SqlParameter("@ItemCD", SqlDbType.VarChar) { Value = itemModel.ItemCD };
             itemModel.Sqlprms[10] = new SqlParameter("@Type", SqlDbType.VarChar) { Value = itemModel.Type };
-            itemModel.Sqlprms[11] = new SqlParameter("@ExportID", SqlDbType.VarChar) { Value = itemModel.ExportID };
+            itemModel.Sqlprms[11] = new SqlParameter("@ExportID", SqlDbType.Int) { Value = itemModel.ExportID };
             return bdl.SelectJson("ItemManage_Select", itemModel.Sqlprms);
         }
 
