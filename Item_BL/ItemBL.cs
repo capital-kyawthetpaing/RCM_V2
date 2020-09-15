@@ -11,7 +11,7 @@ namespace Item_BL
         public string ItemManage_List(ItemModel itemModel)
         {
             BaseDL bdl = new BaseDL();
-            itemModel.Sqlprms = new SqlParameter[9];
+            itemModel.Sqlprms = new SqlParameter[10];
             itemModel.Sqlprms[0] = new SqlParameter("@BrandName", SqlDbType.VarChar) { Value = itemModel.BrandName };
             itemModel.Sqlprms[1] = new SqlParameter("@ItemName", SqlDbType.VarChar) { Value = itemModel.ItemName };
             itemModel.Sqlprms[2] = new SqlParameter("@MakerCD", SqlDbType.VarChar) { Value = itemModel.MakerCD };
@@ -21,6 +21,7 @@ namespace Item_BL
             itemModel.Sqlprms[6] = new SqlParameter("@CatalogInfo", SqlDbType.VarChar) { Value = itemModel.CatalogInfo };
             itemModel.Sqlprms[7] = new SqlParameter("@ClassName", SqlDbType.VarChar) { Value = itemModel.ClassName };
             itemModel.Sqlprms[8] = new SqlParameter("@CompetitionName", SqlDbType.VarChar) { Value = itemModel.CompetitionName };
+            itemModel.Sqlprms[9] = new SqlParameter("@ItemCD", SqlDbType.VarChar) { Value = itemModel.ItemCD };
             return bdl.SelectJson("ItemManage_Select", itemModel.Sqlprms);
         }
 
