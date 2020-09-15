@@ -352,8 +352,7 @@
                 };
                 var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
             table = $('#tbItemManage').DataTable({
-                //data: JSON.parse(response),
-                data: response,
+                data: JSON.parse(response),                
                 destroy: true,
                 "dataSrc": " ",
                 "searching": false,
