@@ -9,6 +9,7 @@ using Item_BL;
 using SpecialFlag_BL;
 using ReservationFlag_BL;
 using SKUStockList_BL;
+using System.Data;
 
 namespace RCM_V2.Controllers
 {
@@ -20,7 +21,8 @@ namespace RCM_V2.Controllers
         public IHttpActionResult ItemManage_List(ItemModel itemModel)
         {
             ItemBL itemBL = new ItemBL();
-            return Ok(itemBL.ItemManage_List(itemModel));
+            DataTable dt = itemBL.ItemManage_List(itemModel);
+            return Ok(dt);
         }
         [UserAuthentication]
         [HttpPost]
