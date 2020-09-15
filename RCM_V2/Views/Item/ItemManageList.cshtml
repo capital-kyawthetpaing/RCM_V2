@@ -375,6 +375,7 @@
 
         function BindItemManageTable() {
             var obj = {
+                Type:'1',
                 ItemCD: $('#ItemCD').val(),
                 BrandName: $("#BrandName").val(),
                 ItemName: $("#ItemName").val(),
@@ -394,7 +395,7 @@
                 "searching": false,
                 "ordering": false,
                 "fixedHeader": true,
-                "scrollX": true,
+                //"scrollX": true,
                 "columns": [ 
                     {
                         "className": 'details-control',
