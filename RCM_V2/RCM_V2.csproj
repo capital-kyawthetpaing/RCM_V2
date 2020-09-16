@@ -19,7 +19,8 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress>
     </Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
     </IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>
@@ -1978,44 +1979,6 @@
     <Content Include="Vendor\bower_components\jquery\src\var\support.js" />
     <Content Include="Vendor\bower_components\jquery\src\var\toString.js" />
     <Content Include="Vendor\bower_components\jquery\src\wrap.js" />
-    <Content Include="Vendor\bower_components\jsgrid\css\icons-2x.png" />
-    <Content Include="Vendor\bower_components\jsgrid\css\icons.png" />
-    <Content Include="Vendor\bower_components\jsgrid\css\jsgrid.css" />
-    <Content Include="Vendor\bower_components\jsgrid\css\theme.css" />
-    <Content Include="Vendor\bower_components\jsgrid\db.js" />
-    <Content Include="Vendor\bower_components\jsgrid\dist\jsgrid-theme.css" />
-    <Content Include="Vendor\bower_components\jsgrid\dist\jsgrid-theme.min.css" />
-    <Content Include="Vendor\bower_components\jsgrid\dist\jsgrid.css" />
-    <Content Include="Vendor\bower_components\jsgrid\dist\jsgrid.js" />
-    <Content Include="Vendor\bower_components\jsgrid\dist\jsgrid.min.css" />
-    <Content Include="Vendor\bower_components\jsgrid\dist\jsgrid.min.js" />
-    <Content Include="Vendor\bower_components\jsgrid\external\jquery\jquery-1.8.3.js" />
-    <Content Include="Vendor\bower_components\jsgrid\external\qunit\qunit-1.10.0.css" />
-    <Content Include="Vendor\bower_components\jsgrid\external\qunit\qunit-1.10.0.js" />
-    <Content Include="Vendor\bower_components\jsgrid\Gruntfile.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\fields\jsgrid.field.checkbox.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\fields\jsgrid.field.control.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\fields\jsgrid.field.number.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\fields\jsgrid.field.select.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\fields\jsgrid.field.text.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\fields\jsgrid.field.textarea.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\i18n\es.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\i18n\fr.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\i18n\pl.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\i18n\pt-br.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\i18n\pt.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\i18n\ru.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\jsgrid.core.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\jsgrid.field.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\jsgrid.load-indicator.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\jsgrid.load-strategies.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\jsgrid.sort-strategies.js" />
-    <Content Include="Vendor\bower_components\jsgrid\src\jsgrid.validation.js" />
-    <Content Include="Vendor\bower_components\jsgrid\tests\index.html" />
-    <Content Include="Vendor\bower_components\jsgrid\tests\jsgrid.field.tests.js" />
-    <Content Include="Vendor\bower_components\jsgrid\tests\jsgrid.sort-strategies.tests.js" />
-    <Content Include="Vendor\bower_components\jsgrid\tests\jsgrid.tests.js" />
-    <Content Include="Vendor\bower_components\jsgrid\tests\jsgrid.validation.tests.js" />
     <Content Include="Vendor\bower_components\knob\jquery.knob.js" />
     <Content Include="Vendor\bower_components\knob\jquery.knob.min.js" />
     <Content Include="Vendor\bower_components\Magnific-Popup-master\dist\jquery.magnific-popup-init.js" />
@@ -4051,14 +4014,6 @@
     <Content Include="Vendor\bower_components\jquery\bower.json" />
     <Content Include="Vendor\bower_components\jquery\dist\jquery.min.map" />
     <Content Include="Vendor\bower_components\jquery\src\sizzle\dist\sizzle.min.map" />
-    <Content Include="Vendor\bower_components\jsgrid\.editorconfig" />
-    <Content Include="Vendor\bower_components\jsgrid\.gitignore" />
-    <Content Include="Vendor\bower_components\jsgrid\.npmignore" />
-    <Content Include="Vendor\bower_components\jsgrid\.travis.yml" />
-    <Content Include="Vendor\bower_components\jsgrid\bower.json" />
-    <Content Include="Vendor\bower_components\jsgrid\LICENSE" />
-    <Content Include="Vendor\bower_components\jsgrid\package.json" />
-    <Content Include="Vendor\bower_components\jsgrid\README.md" />
     <Content Include="Vendor\bower_components\Magnific-Popup-master\.gitignore" />
     <Content Include="Vendor\bower_components\Magnific-Popup-master\.jshintrc" />
     <Content Include="Vendor\bower_components\Magnific-Popup-master\.travis.yml" />
