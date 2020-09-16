@@ -1,22 +1,148 @@
 ﻿
-<div id="SKUViewModal" data-iziModal-title="SKU" data-iziModal-icon="icon-home">
-            <div class="setDetailBox confSet iconSet iconCheck" id="divUser">
-                <table class="userCmnSet editTable" style="margin-bottom:0px;" id="tblOrderList" border="1">
-                    <thead>
-                        <tr>
-                            <td>Test1</td>
-                            <td>Test2</td>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+<div id="SKUViewModal" style="width:1000px;" data-iziModal-title="SKU" data-iziModal-icon="icon-home">
+    <div class="setDetailBox confSet iconSet iconCheck">
+@*<div id="CmnContents">
+    <div id="ComBlock">*@
+        @*<table class="userCmnSet editTable" style="margin-bottom:0px;" id="tblOrderList" border="1">
+                <thead>
+                    <tr>
+                        <td>Test1</td>
+                        <td>Test2</td>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>*@
+        <div class="dynamcdiv">
+            <div class="dynamicAtt">
 
             </div>
+        </div>
+
+    </div>
 
 </div>
 
+
 <script type="text/javascript">
     function BindSKU(itemCD) {
-        
+         var obj = {
+                itemCD: itemCD
+                };
+        var response = CalltoApiController('@Url.Action("SKU_Select", "api/ItemApi")', obj);
+
+        $(".dynamicAtt").remove();
+        var maindiv = $(".dynamcdiv");
+        var newdiv = document.createElement('div');
+        newdiv.className = 'dynamicAtt';
+        $(maindiv).append(newdiv);
+        var json = JSON.parse(response);
+            var wrapper = $(".dynamicAtt");
+        $(wrapper).append(' <table id="tbSKU" class="listTable" style="margin-bottom:0px;" border="1">' +
+            '<thead>' +
+            '<tr>'+
+            '<th>&nbsp;&nbsp;&nbsp;</th>' +
+            '</tr>'+
+                '</thead>' +
+                '<tbody>' +
+                '</tbody>' +
+            '</table>');
+
+
+        for (var x = 1; x <= Object.keys(json).length; x++) {
+            var countHeader = $('#tbSKU > thead > tr > th').length;
+            if (countHeader == 1) {
+                $("#tbSKU > thead > tr").append(
+                    ' <th>' + json[x - 1].SizeName + '<hr style="margin: 3px 0px;">' + json[x - 1].SizeCD + ' </th>'
+                );
+            }
+            else if (countHeader >= 2) {
+                var selectedHeader;
+                var jsonHeader;
+                var existHeader = 0;
+
+                for (var i = 1; i < countHeader; i++) {
+                    selectedHeader = $("#tbSKU > thead > tr").find("th:eq(" + i + ")").html();
+                    jsonHeader = json[x - 1].SizeName + '<hr style="margin: 3px 0px;">' + json[x - 1].SizeCD;
+                    if (jsonHeader.toString().trim() == selectedHeader.toString().trim()) {
+                        existHeader += 1;
+                    }
+                }
+                if (existHeader <1) {
+                    $("#tbSKU > thead > tr").append(
+                        ' <th>' + json[x - 1].SizeName + '<hr style="margin: 3px 0px;">' + json[x - 1].SizeCD + ' </th>'
+                    );
+                }
+            }
+        }
+
+        for (var y = 1; y <= Object.keys(json).length; y++) {
+            var countRow = $('#tbSKU > tbody > tr').length;
+
+            if (countRow == 0) {
+                $("#tbSKU > tbody").append(
+                    '<tr>' +
+                    ' <td>' + json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD + ' </td>' +
+                    '</tr>'
+                );
+                var countH = $('#tbSKU > thead > tr > th').length;
+                for (var i = 1; i < countH; i++) {
+
+                    for (var z = 1; z <= Object.keys(json).length; z++) {
+
+                        var selectedSizeHeader = $("#tbSKU > thead > tr").find("th:eq(" + i + ")").html();
+                        var jsonSizeRow = json[z - 1].SizeName + '<hr style="margin: 3px 0px;">' + json[z - 1].SizeCD;
+                        var jsonColorRow = json[z - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[z - 1].ColorCD;
+                        var jsonColor = json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD;
+
+                        if (jsonSizeRow.toString().trim() == selectedSizeHeader.toString().trim() && jsonColorRow.toString().trim() == jsonColor.toString().trim()) {
+                            $("#tbSKU > tbody > tr").append(
+                                '<td>' + json[z - 1].Qty + '</td>'
+                            );
+
+                        }
+                    }
+
+
+                }
+            }
+            else if (countRow >= 1) {
+                var selectedRow;
+                var jsonRow;
+                var existRow = 0;
+                for (var a = 0; a < countRow; a++) {
+                     selectedRow = $("#tbSKU > tbody > tr:eq(" + a + ")").find("td:eq(0)").html();
+                     jsonRow = json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD;
+
+                    if (selectedRow.toString().trim() == jsonRow.toString().trim()) {
+                        existRow += 1;
+                    }
+                }
+                if (existRow < 1) {
+                    $("#tbSKU > tbody").append(
+                        '<tr>' +
+                        ' <td>' + json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD + ' </td>' +
+                        '</tr>'
+                    );
+                    var count1 = $('#tbSKU > thead > tr > th').length;
+                    for (var i = 1; i < count1; i++) {
+                        for (var j = y - 1; j <= Object.keys(json).length; j++) {
+
+                            var selectedSize = $("#tbSKU > thead > tr").find("th:eq(" + i + ")").html();
+                            var jsonSize = json[j - 1].SizeName + '<hr style="margin: 3px 0px;">' + json[j - 1].SizeCD;
+                            var jsonColorR= json[j - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[j - 1].ColorCD;
+                            var jsoncolorr = json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD;
+
+                            if (jsonSize.toString().trim() == selectedSize.toString().trim() && jsonColorR.toString().trim() == jsoncolorr.toString().trim()) {
+
+                                $("#tbSKU > tbody > tr:eq(" + countRow + ")").append(
+                                    '<td>' + json[j - 1].Qty + '</td>'
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+           
+        }
     }
 </script>

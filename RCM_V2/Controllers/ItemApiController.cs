@@ -9,7 +9,7 @@ using Item_BL;
 using SpecialFlag_BL;
 using ReservationFlag_BL;
 using SKUStockList_BL;
-
+using SKU_BL;
 
 namespace RCM_V2.Controllers
 {
@@ -55,6 +55,14 @@ namespace RCM_V2.Controllers
         {
             ItemBL bl = new ItemBL();
             return Ok(bl.ItemImportLog_Select(itmImportModel));
+        }
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("SKU_Select")]
+        public IHttpActionResult SKU_Select([FromBody] ItemModel skuModel)
+        {
+            SKUBL _skuBL = new SKUBL();
+            return Ok(_skuBL.SKU_Select(skuModel));
         }
     }
 }

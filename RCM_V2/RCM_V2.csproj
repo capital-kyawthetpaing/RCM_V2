@@ -17,16 +17,11 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>
-    </Use64BitIISExpress>
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>
-    </IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>
-    </IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>
-    </IISExpressUseClassicPipelineMode>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>44395</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -1695,6 +1690,10 @@
     <ProjectReference Include="..\SKUStockList_BL\SKUStockList_BL.csproj">
       <Project>{3f5a65e2-ae5a-4ba2-86b1-b8221592bb4a}</Project>
       <Name>SKUStockList_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKU_BL\SKU_BL.csproj">
+      <Project>{37D8C8D8-0A9C-4A90-BF2E-87AEB9D58069}</Project>
+      <Name>SKU_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SpecialFlag_BL\SpecialFlag_BL.csproj">
       <Project>{3faf8651-c127-4db6-8df8-8c226d838980}</Project>
