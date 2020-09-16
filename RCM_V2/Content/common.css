@@ -5,8 +5,16 @@
 	border-radius:0;
 }
 
-.custom-select{
-	font-size:10px !important;
+table.dataTable tbody th, table.dataTable tbody td{
+	padding: 0px 10px;
+}
+
+table.dataTable thead th, table.dataTable thead td{
+	padding: 0px 10px;
+}
+
+.custom-select {
+	font-size: 10px !important;
 }
 
 .pad5 {

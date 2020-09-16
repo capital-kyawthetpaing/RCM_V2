@@ -14,12 +14,22 @@ namespace RCM_V2.Controllers
             return View();
         }
 
+        public ActionResult  ItemManageList2()
+        {
+            return View();
+        }
+
         public ActionResult ItemStockList()
         {
             return View();
         }
 
         public ActionResult ItemImportLogList()
+        {
+            return View();
+        }
+
+        public ActionResult ItemEntry()
         {
             return View();
         }

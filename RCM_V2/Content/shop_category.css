@@ -49,9 +49,9 @@ div.shopCate ul#menuTree li:last-child {
 	background-position: 0px -1764px;
 }
 
-#menuTree div.shopCateEdit {
+/*#menuTree div.shopCateEdit {
 	background-color: #D2ECFF;
-}
+}*/
 #menuTree li div {
 	padding: 2px 0px 2px 5px;
 }
@@ -62,7 +62,7 @@ div.shopCate div.shopCateList {
 	vertical-align: top;
 }
 div.shopCate .shopCateDate {   
-    width:40%;
+    width:30%;
     float:right;
     margin-right:20px;
 	display: inline-block;
@@ -91,8 +91,15 @@ div.setDetailBox.shopCate table.shopCate.editTable {
 }
 
 .inlineSet li {
+    display: block;
     text-align: left;
 }
+
+.jstree li > a > .jstree-icon {
+    display: none !important;
+}
+
+
 
 
 
