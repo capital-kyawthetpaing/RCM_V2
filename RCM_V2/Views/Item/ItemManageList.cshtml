@@ -411,6 +411,7 @@
                     { "data": "CostRate"},
                     { "data": "DistcountRate" },
                     { "data": "ItemCD" },
+                    { "data": "ItemCD" },
                     { "data": "AvailableDate"},
                     { "data": "ReleaseDate"},
                     { "data": "CompetitionName" },
@@ -459,6 +460,8 @@
                             var jsonData = JSON.parse(row.TargetShop);
                             var $select = $("<select></select>", {
                             });
+                            var $option = $("<option></option>", { "text": 'ショップ選択', "value": '0' });
+                            $select.append($option);
                             $.each(jsonData, function (x, y) {
                                 var keys = Object.keys(y);
                                 if (!x) {
