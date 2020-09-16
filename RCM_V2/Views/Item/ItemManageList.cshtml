@@ -220,6 +220,7 @@
                             <th>原価率</th>
                             <th>割引率</th>
                             <th></th>
+                            <th>ショップページ</th>
                             <th>掲載可能日</th>
                             <th>発売日</th>
                             <th>競技名</th>
@@ -449,6 +450,27 @@
                         "data": "ItemCD",
                         "render": function (data) {
                             return '<input type="button" style="width:70px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
+                        }
+                    },
+                    {
+                        "targets": 9,
+                        "data": "ItemCD",
+                        "render": function (data, type, row) {
+                            var jsonData = JSON.parse(row.TargetShop);
+                            var $select = $("<select></select>", {
+                            });
+                            $.each(jsonData, function (x, y) {
+                                var keys = Object.keys(y);
+                                if (!x) {
+                                    keys.forEach(function (key) {
+                                        if (key != "ItemCD" && y[key] != false) {
+                                            var $option = $("<option></option>", { "text": key, "value": key });
+                                            $select.append($option);
+                                        }
+                                    });
+                                }
+                            });
+                            return $select.prop("outerHTML");
                         }
                     }
                 ]
