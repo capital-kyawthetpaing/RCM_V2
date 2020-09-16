@@ -21,9 +21,9 @@ namespace Item_BL
             itemModel.Sqlprms[6] = new SqlParameter("@CatalogInfo", SqlDbType.VarChar) { Value = itemModel.CatalogInfo };
             itemModel.Sqlprms[7] = new SqlParameter("@ClassName", SqlDbType.VarChar) { Value = itemModel.ClassName };
             itemModel.Sqlprms[8] = new SqlParameter("@CompetitionName", SqlDbType.VarChar) { Value = itemModel.CompetitionName };
-            itemModel.Sqlprms[9] = new SqlParameter("@Type", SqlDbType.VarChar) { Value = "1" };
-            itemModel.Sqlprms[10] = new SqlParameter("@ItemCD", SqlDbType.VarChar) { Value = "" };
-            itemModel.Sqlprms[11] = new SqlParameter("@ExportID", SqlDbType.VarChar) { Value = "" };
+            itemModel.Sqlprms[9] = new SqlParameter("@Type", SqlDbType.VarChar) { Value = itemModel.Type };
+            itemModel.Sqlprms[10] = new SqlParameter("@ItemCD", SqlDbType.VarChar) { Value = itemModel.ItemCD };
+            itemModel.Sqlprms[11] = new SqlParameter("@ExportID", SqlDbType.VarChar) { Value = itemModel.ExportID };
             return bdl.SelectJson("ItemManage_Select", itemModel.Sqlprms);
         }
 
