@@ -300,7 +300,7 @@
             var obj = {
                 UserID: null,
             };
-            var response = CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj);
+            var response = CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj,false);
             var items = JSON.parse(response);
 
             $.each(items, function (i, item) {
