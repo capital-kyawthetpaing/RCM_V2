@@ -1,6 +1,27 @@
-﻿function CalltoApiController(url, model) {
+﻿function BindDropdown(ctrl,key,value,url,model) {
+    $.ajax({
+        url: url.replace("%2F", "/"),
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(model),
+        headers:
+        {
+            Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+        },
+        success: function (data) {
+            var items = JSON.parse(data);
+            $.each(items, function (i, item) {
+                $("#"+ctrl).append(
+                    $('<option></option>').val(item[key]).html(item[value]));
+            });
+        },
+    });
+}
+
+function CalltoApiController(url, model) {
   
-    var result;
+    var result = '';
     $.ajax({
         url: url.replace("%2F", "/"),
         method: 'POST',
@@ -15,7 +36,8 @@
         success: function (data) {           
             result = data;
         },
-    });
+    }); 
+    
     return result;
 }
 
