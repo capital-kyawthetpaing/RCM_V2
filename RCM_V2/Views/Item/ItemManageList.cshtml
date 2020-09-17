@@ -246,14 +246,14 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
             BindUser();
             BindSpecialFlag();
             BindReservationFlag();
             BindYear();
             BindSeason();
             BindExportField();
-            BindItemManageTable();
+
             $("#SKUViewModal").iziModal({
                 width: "70%"
             });
@@ -294,84 +294,39 @@
                 }
             });
 
+            BindItemManageTable();
+            //setTimeout(function () { BindItemManageTable(); }, 100);
+
         });
 
         function BindUser() {
             var obj = {
                 UserID: null,
             };
-            var response = CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj,false);
-            var items = JSON.parse(response);
-
-            $.each(items, function (i, item) {
-
-                var UserID = item.UserID;
-                $("#UserID").append(
-                    $('<option></option>').val(UserID).html(item.UserName));
-            });
+            BindDropdown('UserID','UserID','UserName','@Url.Action("User_Select", "api/UserApi")', obj);
         }
+
         function BindSpecialFlag() {
-            var response = CalltoApiController('@Url.Action("SpecialFlag_Select", "api/ItemApi")');
-            var items = JSON.parse(response);
-
-
-            $.each(items, function (i, item) {
-
-                var SpecialFlagCD = item.SpecialFlagCD;
-                $("#SpecialFlagCD").append(
-                    $('<option></option>').val(SpecialFlagCD).html(item.SpecialFlagName));
-            });
+            BindDropdown('SpecialFlagCD', 'SpecialFlagCD','SpecialFlagName','@Url.Action("SpecialFlag_Select", "api/ItemApi")');
         }
 
         function BindReservationFlag() {
-            var response = CalltoApiController('@Url.Action("ReservationFlag_Select", "api/ItemApi")');
-            var items = JSON.parse(response);
-
-            $.each(items, function (i, item) {
-
-                var ReservationFlagCD = item.ReservationFlagCD;
-                $("#ReservationFlagCD").append(
-                    $('<option></option>').val(ReservationFlagCD).html(item.ReservationFlagName));
-            });
+            BindDropdown('ReservationFlagCD', 'ReservationFlagCD','ReservationFlagName','@Url.Action("ReservationFlag_Select", "api/ItemApi")');
         }
 
         function BindYear() {
-            var response = CalltoApiController('@Url.Action("Year_Select", "api/MultiApi")');
-            var items = JSON.parse(response);
-
-            $.each(items, function (i, item) {
-
-                var YearCD = item.YearCD;
-                $("#YearCD").append(
-                    $('<option></option>').val(YearCD).html(item.Year));
-            });
+            BindDropdown('YearCD', 'YearCD','Year','@Url.Action("Year_Select", "api/MultiApi")');
         }
 
         function BindSeason() {
-            var response = CalltoApiController('@Url.Action("Season_Select", "api/MultiApi")');
-            var items = JSON.parse(response);
-
-            $.each(items, function (i, item) {
-
-                var SeasonCD = item.SeasonCD;
-                $("#SeasonCD").append(
-                    $('<option></option>').val(SeasonCD).html(item.Season));
-            });
+            BindDropdown('SeasonCD', 'SeasonCD','Season','@Url.Action("Season_Select", "api/MultiApi")');
         }
 
         function BindExportField() {
             var obj = {
                 ExportType: "01",
             };
-            var response = CalltoApiController('@Url.Action("ExportField_Select", "api/ShopApi")', obj);
-            var items = JSON.parse(response);
-
-            $.each(items, function (i, item) {
-
-                var AutoID = item.AutoID;
-                $("#AutoID").append(
-                    $('<option></option>').val(AutoID).html(item.ExportName));
-            });
+            BindDropdown('AutoID', 'AutoID','ExportName','@Url.Action("ExportField_Select", "api/ShopApi")',obj);
         }
 
         function BindItemManageTable() {
@@ -396,7 +351,7 @@
                 "searching": false,
                 "ordering": false,
                 //"scrollX": true,
-                "columns": [ 
+                "columns": [
                     {
                         "className": 'details-control',
                         "orderable": false,
@@ -491,10 +446,13 @@
             return '<table>' +
                 '<tr>' +
                 '<th>年度</th>' +
-                '<td>' + d.Year + '</td>' +
                 '<th>シーズン</th>' +
-                '<td style="background-color:#ffffff">' + d.Season + '</td>' +
-                '</tr>' +               
+                '</tr>'+
+                '<tbody>' +
+                '<tr>' +
+                '<td>' + d.Year + '</td>' +
+                '<td>' + d.Season + '</td>' +
+                '</tbody>'
                 '</table>';
         }
     </script>

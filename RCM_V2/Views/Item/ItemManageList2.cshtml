@@ -263,7 +263,7 @@
             var obj = {
                 UserID: null,
             };
-            var response = CalltoApiController('@Url.Action("User_Select", "api/UserApi")', obj);
+            var response = BindDropdown('UserID','UserID','UserName','@Url.Action("User_Select", "api/UserApi")', obj);
             var items = JSON.parse(response);
 
             $.each(items, function (i, item) {
