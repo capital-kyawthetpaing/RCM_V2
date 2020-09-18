@@ -23,6 +23,16 @@ namespace RCM_V2.Controllers
             ItemBL itemBL = new ItemBL();
             return Ok(itemBL.ItemManage_List(itemModel));
         }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ItemManage_Export")]
+        public IHttpActionResult ItemManage_Export(ItemModel itemModel)
+        {
+            ItemBL itemBL = new ItemBL();
+            return Ok(itemBL.ItemManage_Export(itemModel));
+        }
+
         [UserAuthentication]
         [HttpPost]
         public IHttpActionResult SpecialFlag_Select()

@@ -201,9 +201,9 @@
 
                 <p>
                     ダウンロード項目
-                    @Html.DropDownListFor(x => x.exportFieldsModel.AutoID, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "AutoID", @tabIndex = 22, onkeydown = "KeyDown(event,this)" })
+                    @Html.DropDownListFor(x => x.exportFieldsModel.AutoID, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { @id = "AutoID", @tabIndex = 22, onkeydown = "KeyDown(event,this)" })
                 <p>
-                    <input type="button" id="btnGenerate" value="エクスポート" ToolTip="Export" />
+                    <input type="button" id="btnGenerate" value="エクスポート" ToolTip="Export"/>
                 </p>
 
             </div>
@@ -246,7 +246,7 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
             BindUser();
             BindSpecialFlag();
             BindReservationFlag();
@@ -275,6 +275,18 @@
             $("#btnsearch").click(function()
             {
                 BindItemManageTable();
+            });
+
+            $('#btnGenerate').click(function () {
+                var obj = {
+                   Type: '2',
+                   ExportID: $("#AutoID").val(),
+                      
+            };
+            var response = CalltoApiController('@Url.Action("ItemManage_Export", "api/ItemApi")', obj);
+                var items = JSON.parse(response);
+                //alert(items);
+
             });
 
 
@@ -396,7 +408,7 @@
                 "searching": false,
                 "ordering": false,
                 //"scrollX": true,
-                "columns": [ 
+                "columns": [
                     {
                         "className": 'details-control',
                         "orderable": false,
@@ -494,7 +506,7 @@
                 '<td>' + d.Year + '</td>' +
                 '<th>シーズン</th>' +
                 '<td style="background-color:#ffffff">' + d.Season + '</td>' +
-                '</tr>' +               
+                '</tr>' +
                 '</table>';
         }
     </script>
