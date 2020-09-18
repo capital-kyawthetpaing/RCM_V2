@@ -68,9 +68,9 @@ table.listTable th {
 	text-align:center;
 }
 
-	table.listTable tr:nth-of-type(2n) {
+/*	table.listTable tr:nth-of-type(2n) {
 		background: #EEEEEE;
-	}
+	}*/
 
 table.listTable td span {
     display: block;
@@ -571,7 +571,6 @@ div#hideBlock p {
     padding-left: 27px;
     font-weight: bold;
     border-bottom: 1px dashed #333;
-    width: 973px;
 	background-image: url(../images/btn_on-off.gif);
     background-position: 11px 0px;
 	background-repeat: no-repeat;
