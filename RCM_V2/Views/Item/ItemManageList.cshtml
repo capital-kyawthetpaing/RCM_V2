@@ -247,12 +247,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            BindItemManageTable();
             BindUser();
             BindSpecialFlag();
             BindReservationFlag();
             BindYear();
             BindSeason();
             BindExportField();
+
 
             $("#SKUViewModal").iziModal({
                 width: "70%"
@@ -274,14 +276,7 @@
 
             $("#btnsearch").click(function()
             {
-                  var obj = {
-                      Type: '2',
-                      ExportID: $("#AutoID").val(),
-                };
-                var response = CalltoApiController('@Url.Action("ItemManage_Export", "api/ItemApi")', obj);
-                var items = JSON.parse(response);
-                alert(items);
-
+                BindItemManageTable();
             });
 
 
@@ -333,7 +328,7 @@
             var obj = {
                 ExportType: "01",
             };
-            BindDropdown('AutoID', 'AutoID','ExportName','@Url.Action("ExportField_Select", "api/ShopApi")',obj);
+            BindDropdown('AutoID', 'AutoID', 'ExportName', '@Url.Action("ExportField_Select", "api/ShopApi")', obj);
         }
 
         function BindItemManageTable() {
