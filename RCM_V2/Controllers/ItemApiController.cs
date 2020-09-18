@@ -26,15 +26,6 @@ namespace RCM_V2.Controllers
 
         [UserAuthentication]
         [HttpPost]
-        [ActionName("ItemManage_Export")]
-        public IHttpActionResult ItemManage_Export(ItemModel itemModel)
-        {
-            ItemBL itemBL = new ItemBL();
-            return Ok(itemBL.ItemManage_Export(itemModel));
-        }
-
-        [UserAuthentication]
-        [HttpPost]
         public IHttpActionResult SpecialFlag_Select()
         {
             SpecialFlagBL specialFlagBL = new SpecialFlagBL();

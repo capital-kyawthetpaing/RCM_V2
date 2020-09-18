@@ -294,12 +294,10 @@
                     ClassName: $("#ClassName").val(),
                     CompetitionName: $("#CompetitionName").val(),
                 };
-                var response = CalltoApiController('@Url.Action("ItemManage_Export", "api/ItemApi")', obj);
+                var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
                 var items = JSON.parse(response);
                 alert(items);
             });
-
-
 
             $('#tbItemManage tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
