@@ -274,7 +274,14 @@
 
             $("#btnsearch").click(function()
             {
-                BindItemManageTable();
+                  var obj = {
+                      Type: '2',
+                      ExportID: $("#AutoID").val(),
+                };
+                var response = CalltoApiController('@Url.Action("ItemManage_Export", "api/ItemApi")', obj);
+                var items = JSON.parse(response);
+                alert(items);
+
             });
 
 
