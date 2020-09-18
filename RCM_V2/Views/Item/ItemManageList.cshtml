@@ -223,11 +223,7 @@
                             <th>ショップページ</th>
                             <th>掲載可能日</th>
                             <th>発売日</th>
-                            <th>競技名</th>
-                            <th>分類名</th>
-                            <th>ブランド名</th>
                             <th>仕入先名</th>
-                            <th>カタログ情報</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -390,11 +386,7 @@
                     { "data": "ItemCD" },
                     { "data": "AvailableDate"},
                     { "data": "ReleaseDate"},
-                    { "data": "CompetitionName" },
-                    { "data": "ClassName" },
-                    { "data": "BrandName"},
                     { "data": "MakerName"},
-                    { "data": "CatalogInfo" },
                 ],
                 "columnDefs": [
                     {
@@ -468,11 +460,19 @@
                 '<tr>' +
                 '<th>年度</th>' +
                 '<th>シーズン</th>' +
+                '<th>競技名</th>' +
+                '<th>分類名</th>' +
+                '<th>ブランド名</th>' +
+                '<th>カタログ情報</th>' +
                 '</tr>'+
                 '<tbody>' +
                 '<tr>' +
                 '<td>' + d.Year + '</td>' +
                 '<td>' + d.Season + '</td>' +
+                '<td>' + d.CompetitionName + '</td>' +
+                '<td>' + d.ClassName + '</td>' +
+                '<td>' + d.BrandName + '</td>' +
+                '<td>' + d.CatalogInfo + '</td>' +
                 '</tbody>'
                 '</table>';
         }
