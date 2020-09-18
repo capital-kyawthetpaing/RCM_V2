@@ -35,7 +35,7 @@
         $(maindiv).append(newdiv);
         var json = JSON.parse(response);
             var wrapper = $(".dynamicAtt");
-        $(wrapper).append(' <table id="tbSKU" class="listTable" style="margin-bottom:0px;" border="1">' +
+        $(wrapper).append('<label style="margin-top:10px;font-weight:bold;">&nbsp;&nbsp;商品番号 : </label>' +'<b>'+itemCD+'</b>' +'<table id="tbSKU" class="listTable" style="margin-bottom:0px;" border="1">' +
             '<thead>' +
             '<tr>'+
             '<th>&nbsp;&nbsp;&nbsp;</th>' +
@@ -79,7 +79,7 @@
             if (countRow == 0) {
                 $("#tbSKU > tbody").append(
                     '<tr>' +
-                    ' <td>' + json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD + ' </td>' +
+                    ' <td style="font-weight:bold;">' + json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD + ' </td>' +
                     '</tr>'
                 );
                 var countH = $('#tbSKU > thead > tr > th').length;
@@ -118,7 +118,7 @@
                 if (existRow < 1) {
                     $("#tbSKU > tbody").append(
                         '<tr>' +
-                        ' <td>' + json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD + ' </td>' +
+                        ' <td style="font-weight:bold;">' + json[y - 1].ColorName + '<hr style="margin: 3px 0px;">' + json[y - 1].ColorCD + ' </td>' +
                         '</tr>'
                     );
                     var count1 = $('#tbSKU > thead > tr > th').length;
