@@ -279,6 +279,27 @@
                 BindItemManageTable();
             });
 
+            $("#btnGenerate").click(function () {
+                var obj = {
+                    Type: '2',
+                    ExportID: $("#AutoID").val(),
+                    ItemCD: $("#ItemCD").val(),
+                    BrandName: $("#BrandName").val(),
+                    ItemName: $("#ItemName").val(),
+                    MakerCD: $("#MakerCD").val(),
+                    MakerName: $("#MakerName").val(),
+                    YearCD: $("#YearCD").val(),
+                    SeasonCD: $("#SeasonCD").val(),
+                    CatalogInfo: $("#CatalogInfo").val(),
+                    ClassName: $("#ClassName").val(),
+                    CompetitionName: $("#CompetitionName").val(),
+                };
+                var response = CalltoApiController('@Url.Action("ItemManage_Export", "api/ItemApi")', obj);
+                var items = JSON.parse(response);
+                alert(items);
+            });
+
+
 
             $('#tbItemManage tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
