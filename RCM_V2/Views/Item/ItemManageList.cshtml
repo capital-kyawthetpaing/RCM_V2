@@ -112,21 +112,21 @@
                                     </td>
                                     <th>特記フラグ</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.SpecialFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SpecialFlagCD", @tabIndex = 13, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.SpecialFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SpecialFlagCD", @tabIndex = 13, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                                     </td>
                                     <th>予約フラグ</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.ReservationFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "ReservationFlagCD", @tabIndex = 14, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.ReservationFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "ReservationFlagCD", @tabIndex = 14, onkeydown = "KeyDown(event,this)",style = "height: 21px" })
                                     </td>
                                     <th>年度</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "YearCD", @tabIndex = 15, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "YearCD", @tabIndex = 15, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>シーズン</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SeasonCD", @tabIndex = 16, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SeasonCD", @tabIndex = 16, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                                     </td>
                                     <th>ショップ<br />ステータス</th>
                                     <td>
@@ -142,12 +142,12 @@
                                             listNew.Add(new SelectListItem { Text = "削・無のぞく", Value = "nu" });
                                         }
                                         @Html.DropDownListFor(m => m.ItemCD, listNew, new
-                                          {
-                                              @class = "form-control",
-                                              @required = "required",
-                                              @id = "ddlYear",
-                                              @tabindex = "17"
-                                          })
+                                   {
+                                       @required = "required",
+                                       @id = "ddlYear",
+                                       @tabindex = "17",
+                                       style = "height: 21px"
+                                   })
                                     </td>
                                     <th>備考</th>
                                     <td>
