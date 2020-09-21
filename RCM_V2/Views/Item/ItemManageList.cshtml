@@ -45,7 +45,7 @@
                             </td>
                             <th title="Person in charge">担当者</th>
                             <td>
-                                @Html.DropDownListFor(x => x.UserID, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "UserID", @tabIndex = 4, onkeydown = "KeyDown(event,this)", style = "height: 20px" })
+                                @Html.DropDownListFor(x => x.UserID, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "UserID", @tabIndex = 4, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                             </td>
                         </tr>
                         <tr>
@@ -62,11 +62,10 @@
                                 }
                                 @Html.DropDownListFor(m => m.ItemCD, listNew2, new
                            {
-                               @class = "form-control",
                                @required = "required",
                                @id = "ddlsksstatus",
                                @tabindex = "5",
-                               style = "height: 20px"
+                               style = "height: 21px"
                            })
 
                             </td>
