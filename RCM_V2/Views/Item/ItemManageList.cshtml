@@ -45,7 +45,7 @@
                             </td>
                             <th title="Person in charge">担当者</th>
                             <td>
-                                @Html.DropDownListFor(x => x.UserID, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "UserID", @tabIndex = 4, onkeydown = "KeyDown(event,this)" })
+                                @Html.DropDownListFor(x => x.UserID, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "UserID", @tabIndex = 4, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                             </td>
                         </tr>
                         <tr>
@@ -61,12 +61,12 @@
                                     listNew2.Add(new SelectListItem { Text = "出品済", Value = "4" });
                                 }
                                 @Html.DropDownListFor(m => m.ItemCD, listNew2, new
-                                  {
-                                      @class = "form-control",
-                                      @required = "required",
-                                      @id = "ddlsksstatus",
-                                      @tabindex = "5"
-                                  })
+                           {
+                               @required = "required",
+                               @id = "ddlsksstatus",
+                               @tabindex = "5",
+                               style = "height: 21px"
+                           })
 
                             </td>
                             <th title="Date of approval">承認日</th>
@@ -112,21 +112,21 @@
                                     </td>
                                     <th>特記フラグ</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.SpecialFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SpecialFlagCD", @tabIndex = 13, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.SpecialFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SpecialFlagCD", @tabIndex = 13, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                                     </td>
                                     <th>予約フラグ</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.ReservationFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "ReservationFlagCD", @tabIndex = 14, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.ReservationFlagCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "ReservationFlagCD", @tabIndex = 14, onkeydown = "KeyDown(event,this)",style = "height: 21px" })
                                     </td>
                                     <th>年度</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "YearCD", @tabIndex = 15, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.YearCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "YearCD", @tabIndex = 15, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>シーズン</th>
                                     <td>
-                                        @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SeasonCD", @tabIndex = 16, onkeydown = "KeyDown(event,this)" })
+                                        @Html.DropDownListFor(x => x.SeasonCD, new SelectList(Enumerable.Empty<SelectListItem>(), " ", " "), " ", new { id = "SeasonCD", @tabIndex = 16, onkeydown = "KeyDown(event,this)", style = "height: 21px" })
                                     </td>
                                     <th>ショップ<br />ステータス</th>
                                     <td>
@@ -142,12 +142,12 @@
                                             listNew.Add(new SelectListItem { Text = "削・無のぞく", Value = "nu" });
                                         }
                                         @Html.DropDownListFor(m => m.ItemCD, listNew, new
-                                          {
-                                              @class = "form-control",
-                                              @required = "required",
-                                              @id = "ddlYear",
-                                              @tabindex = "17"
-                                          })
+                                   {
+                                       @required = "required",
+                                       @id = "ddlYear",
+                                       @tabindex = "17",
+                                       style = "height: 21px"
+                                   })
                                     </td>
                                     <th>備考</th>
                                     <td>
@@ -223,11 +223,7 @@
                             <th>ショップページ</th>
                             <th>掲載可能日</th>
                             <th>発売日</th>
-                            <th>競技名</th>
-                            <th>分類名</th>
-                            <th>ブランド名</th>
                             <th>仕入先名</th>
-                            <th>カタログ情報</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
@@ -247,6 +243,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
+            BindItemManageTable();
             BindUser();
             BindSpecialFlag();
             BindReservationFlag();
@@ -254,8 +251,10 @@
             BindSeason();
             BindExportField();
 
+
             $("#SKUViewModal").iziModal({
-                width: "70%"
+                width: "70%",
+                headerColor: "#307D7E"
             });
 
             $('#hideBlock p').on('click', function () {
@@ -277,6 +276,25 @@
                 BindItemManageTable();
             });
 
+            $("#btnGenerate").click(function () {
+                var obj = {
+                    Type: '2',
+                    ExportID: $("#AutoID").val(),
+                    ItemCD: $("#ItemCD").val(),
+                    BrandName: $("#BrandName").val(),
+                    ItemName: $("#ItemName").val(),
+                    MakerCD: $("#MakerCD").val(),
+                    MakerName: $("#MakerName").val(),
+                    YearCD: $("#YearCD").val(),
+                    SeasonCD: $("#SeasonCD").val(),
+                    CatalogInfo: $("#CatalogInfo").val(),
+                    ClassName: $("#ClassName").val(),
+                    CompetitionName: $("#CompetitionName").val(),
+                };
+                var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
+                var items = JSON.parse(response);
+                alert(items);
+            });
 
             $('#tbItemManage tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
@@ -294,8 +312,8 @@
                 }
             });
 
-            BindItemManageTable();
-            //setTimeout(function () { BindItemManageTable(); }, 100);
+            //BindItemManageTable();
+            setTimeout(function () { BindItemManageTable(); }, 100);
 
         });
 
@@ -326,7 +344,7 @@
             var obj = {
                 ExportType: "01",
             };
-            BindDropdown('AutoID', 'AutoID','ExportName','@Url.Action("ExportField_Select", "api/ShopApi")',obj);
+            BindDropdown('AutoID', 'AutoID', 'ExportName', '@Url.Action("ExportField_Select", "api/ShopApi")', obj);
         }
 
         function BindItemManageTable() {
@@ -369,11 +387,7 @@
                     { "data": "ItemCD" },
                     { "data": "AvailableDate"},
                     { "data": "ReleaseDate"},
-                    { "data": "CompetitionName" },
-                    { "data": "ClassName" },
-                    { "data": "BrandName"},
                     { "data": "MakerName"},
-                    { "data": "CatalogInfo" },
                 ],
                 "columnDefs": [
                     {
@@ -447,11 +461,19 @@
                 '<tr>' +
                 '<th>年度</th>' +
                 '<th>シーズン</th>' +
+                '<th>競技名</th>' +
+                '<th>分類名</th>' +
+                '<th>ブランド名</th>' +
+                '<th>カタログ情報</th>' +
                 '</tr>'+
                 '<tbody>' +
                 '<tr>' +
                 '<td>' + d.Year + '</td>' +
                 '<td>' + d.Season + '</td>' +
+                '<td>' + d.CompetitionName + '</td>' +
+                '<td>' + d.ClassName + '</td>' +
+                '<td>' + d.BrandName + '</td>' +
+                '<td>' + d.CatalogInfo + '</td>' +
                 '</tbody>'
                 '</table>';
         }
