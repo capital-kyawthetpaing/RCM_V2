@@ -295,17 +295,21 @@
                 var items = JSON.parse(response);
 
                 var createXLSLFormatObj = [];
+                var xlsHeader = ["商品名", "商品番号", "", "", "定価","販売価格"];
 
-                // createXLSLFormatObj.push(xlsHeader);
-                $.each(items, function (index, value) {
-                    var innerRowData = [];
-                    $.each(value, function (ind, val) {
+                createXLSLFormatObj.push(xlsHeader);
+               
 
-                        innerRowData.push(val);
+                    $.each(items, function (index, value) {
+                        var innerRowData = [];
+                        $.each(value, function (ind, val) {
+
+                            innerRowData.push(val);
+                        });
+                        createXLSLFormatObj.push(innerRowData);
                     });
-                    createXLSLFormatObj.push(innerRowData);
-                });
 
+                
 
                 /* File Name */
                 var filename = "FreakyJSON_To_XLS.xlsx";
