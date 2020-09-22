@@ -22,12 +22,7 @@ namespace RCM_V2.Controllers
         public ActionResult ItemStockList()
         {
             return View();
-        }
-
-        public ActionResult ItemImportLogList()
-        {
-            return View();
-        }
+        }     
 
         public ActionResult ItemEntry()
         {

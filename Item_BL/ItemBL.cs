@@ -25,13 +25,6 @@ namespace Item_BL
             itemModel.Sqlprms[10] = new SqlParameter("@ItemCD", SqlDbType.VarChar) { Value = itemModel.ItemCD };
             itemModel.Sqlprms[11] = new SqlParameter("@ExportID", SqlDbType.VarChar) { Value = itemModel.ExportID };
             return bdl.SelectJson("ItemManage_Select", itemModel.Sqlprms);
-        }
-
-        public string ItemImportLog_Select(ItemImportLogModel itemImportModel)
-        {
-            BaseDL bdl = new BaseDL();
-            itemImportModel.Sqlprms = new SqlParameter[0];
-            return bdl.SelectJson("ItemImportLog_Select", itemImportModel.Sqlprms);
-        }
+        }      
     }
 }
