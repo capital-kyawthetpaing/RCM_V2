@@ -59,7 +59,7 @@
          function BindTable() {
             var obj = { AutoID: "" };
              table = $('#ImportLogList').DataTable({
-                data: JSON.parse(CalltoApiController('@Url.Action("ItemImportLog_Select", "api/ItemApi")', obj)),
+                data: JSON.parse(CalltoApiController('@Url.Action("ItemImportLog_Select", "api/ImportApi")', obj)),
                 "bFilter": false,
                 "bLengthChange": false,
                 "bInfo": false,
@@ -69,7 +69,7 @@
                 "columns": [
                     { "data": "AutoID", "width": "8%" },
                     { "data": "ImportedDateTime", "className": "dt-center"},
-                    { "data": "ImportedBy" }, 
+                    { "data": "ImportedBy" },
                     { "data": "ImportType" },
                     { "data": "ImportCount" },
                     { "data": "ErrorCount" }

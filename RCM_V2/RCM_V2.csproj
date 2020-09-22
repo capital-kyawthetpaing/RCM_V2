@@ -154,6 +154,8 @@
     <Compile Include="Controllers\ExportFieldApiController.cs" />
     <Compile Include="Controllers\ExportFieldController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImportApiController.cs" />
+    <Compile Include="Controllers\ImportController.cs" />
     <Compile Include="Controllers\ItemApiController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\MallApiController.cs" />
@@ -1317,7 +1319,6 @@
     <Content Include="Views\Item\Item_View2.cshtml" />
     <Content Include="Views\Item\ItemStockList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
-    <Content Include="Views\Item\ItemImportLogList.cshtml" />
     <Content Include="Views\Category\CategoryList.cshtml" />
     <Content Include="Vendor\bootstrap-treeview-master\.bowerrc" />
     <Content Include="Vendor\bootstrap-treeview-master\.gitattributes" />
@@ -1614,6 +1615,7 @@
     <Content Include="Views\Search\SKUView.cshtml" />
     <Content Include="Views\Item\ItemEntry.cshtml" />
     <Content Include="Views\Item\ItemManageList2.cshtml" />
+    <Content Include="Views\Import\ItemImportLogList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1638,6 +1640,10 @@
     <ProjectReference Include="..\ExportField_BL\ExportField_BL.csproj">
       <Project>{8291b6f5-9a1b-46f6-ba31-8fc657c5b3a9}</Project>
       <Name>ExportField_BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Import_BL\Import_BL.csproj">
+      <Project>{6DBF5D0C-6511-4F1A-9039-227C9D5945E5}</Project>
+      <Name>Import_BL</Name>
     </ProjectReference>
     <ProjectReference Include="..\Item_BL\Item_BL.csproj">
       <Project>{182f5aaf-fee3-4153-b42a-311b9afa5de2}</Project>
