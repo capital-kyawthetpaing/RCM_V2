@@ -212,6 +212,7 @@
                     <thead>
                         <tr>
                             <th width="4%"></th>
+                            <th width="3%"></th>
                             <th>商品番号</th>
                             <th>商品名</th>
                             <th>定価</th>
@@ -317,6 +318,13 @@
             //BindItemManageTable();
             setTimeout(function () { BindItemManageTable(); }, 100);
 
+            $("#btnselectall").click(function () {
+                $('.itemchk').prop('checked', true)
+            });
+            $("#btncancelall").click(function () {
+                $('.itemchk').prop('checked', false)
+            });
+
         });
 
         function BindUser() {
@@ -371,6 +379,9 @@
                 "searching": false,
                 "ordering": false,
                 //"scrollX": true,
+                "createdRow": function (row, data, dataIndex) {
+                    $(row).addClass("itemchk");
+                },
                 "columns": [
                     {
                         "className": 'details-control',
@@ -378,6 +389,7 @@
                         "data": null,
                         "defaultContent": ''
                     },
+                    {},
                     { "data": "ItemCD"},
                     { "data": "ItemName"},
                     { "data": "ListPrice" },
@@ -393,39 +405,49 @@
                 ],
                 "columnDefs": [
                     {
-                        "targets": [3, 4, 5, 6,7],
+                        "targets": 1,
+                        "className": 'itemchk',
+                        "data": "",
+                        "render": function (data, type, row) {
+
+                            return '<input type="checkbox" class="itemchk" value="' + row.ItemCD + '" >';
+
+                        }
+                    },
+                    {
+                        "targets": [4, 5, 6, 7, 8],
                         "className": 'textAlign',
                     },
                     {
-                        "targets": 3,
+                        "targets": 4,
                         "data": "ListPrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['ListPrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 4,
+                        "targets": 5,
                         "data": "SalePrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['SalePrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 5,
+                        "targets": 6,
                         "data": "Cost",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['Cost1'] + ')';
                         }
                     },
                     {
-                        "targets": 8,
+                        "targets": 9,
                         "data": "ItemCD",
                         "render": function (data) {
                             return '<input type="button" style="width:70px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
                         }
                     },
                     {
-                        "targets": 9,
+                        "targets": 10,
                         "data": "ItemCD",
                         "render": function (data, type, row) {
                             var jsonData = JSON.parse(row.TargetShop);
