@@ -178,3 +178,47 @@ var cleave = new Cleave(obj, {
     numeralThousandsGroupStyle: 'thousand'
     });
 }
+
+function ExportToExcel(items) {
+    var createXLSLFormatObj = [];
+    var xlsHeader = [];
+
+    $.each(items, function (x, y) {
+        var keys = Object.keys(y);
+        keys.forEach(function (key) {
+            xlsHeader.push(key);
+        })
+    });
+
+    createXLSLFormatObj.push(xlsHeader);
+
+    $.each(items, function (index, value) {
+        var innerRowData = [];
+
+        $.each(value, function (ind, val) {
+
+            innerRowData.push(val);
+        });
+        createXLSLFormatObj.push(innerRowData);
+    });
+
+
+
+    /* File Name */
+    var filename = "FreakyJSON_To_XLS.xlsx";
+
+    /* Sheet Name */
+    var ws_name = "FreakySheet";
+
+    if (typeof console !== 'undefined') console.log(new Date());
+    var wb = XLSX.utils.book_new(),
+        ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
+
+    /* Add worksheet to workbook */
+    XLSX.utils.book_append_sheet(wb, ws, ws_name);
+
+    /* Write workbook and Download */
+    if (typeof console !== 'undefined') console.log(new Date());
+    XLSX.writeFile(wb, filename);
+    if (typeof console !== 'undefined') console.log(new Date());
+}
