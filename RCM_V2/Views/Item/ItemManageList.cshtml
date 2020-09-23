@@ -244,14 +244,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
 
-            BindItemManageTable();
+            
             BindUser();
             BindSpecialFlag();
             BindReservationFlag();
             BindYear();
             BindSeason();
             BindExportField();
-
+            //BindItemManageTable();
+            setTimeout(function () { BindItemManageTable(); }, 100);
 
             $("#SKUViewModal").iziModal({
                 width: "70%",
@@ -322,7 +323,7 @@
             });
 
             //BindItemManageTable();
-            setTimeout(function () { BindItemManageTable(); }, 100);
+
 
             $("#btnselectall").click(function () {
                 $('.itemchk').prop('checked', true)
