@@ -202,7 +202,7 @@ function ExportToExcel(items, filename, ws_name  ) {
         createXLSLFormatObj.push(innerRowData);
     });
    
-    if (typeof console !== 'undefined') console.log(new Date("ddMMyyyy"));
+    if (typeof console !== 'undefined') console.log(new Date());
     var wb = XLSX.utils.book_new(),
         ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
 
@@ -210,7 +210,7 @@ function ExportToExcel(items, filename, ws_name  ) {
     XLSX.utils.book_append_sheet(wb, ws, ws_name);
 
     /* Write workbook and Download */
-    if (typeof console !== 'undefined') console.log(new Date("ddMMyyyy"));
+    if (typeof console !== 'undefined') console.log(new Date());
     XLSX.writeFile(wb, filename);
-    if (typeof console !== 'undefined') console.log(new Date("ddMMyyyy"));
+    if (typeof console !== 'undefined') console.log(new Date());
 }
