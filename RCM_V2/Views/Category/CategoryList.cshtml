@@ -35,7 +35,7 @@
                                     <li>
                                         <div class="shopCateEdit">
                                             <p><input type="button" id="btnAdd" value="孫カテゴリの追加" onclick="EditCategory('New')" /></p>
-
+                                            <p><input type="button" id="btnUpdateCat" value="カテゴリの編集" onclick="EditCategory('Edit')"/></p>
                                         </div>
                                     </li>
                                 </ul>
@@ -68,14 +68,13 @@
                         <tbody></tbody>
                     </table>
                 </div>
-                <div class="shopCateBtn"><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" /></div>
             </div><!-- /.shopCate.resetValue -->
 
         </div><!--setListBox-->
 
         <div class="btn">
             <div class="userRole">
-                <p><input type="button" id="btnUpdateCat" value="カテゴリの編集" onclick="EditCategory('Edit')" disabled /></p>
+                <p><input type="button" id="btnupdate" value="編集" onclick="UpdateCategory()" style="width:150px"/></p>
             </div>
         </div>
     </div><!--ComBlock-->
