@@ -3,11 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @Styles.Render(Url.Content("~/Content/shop_category.css"))
-<style>
-    .shopCate.resetValue{
-        padding-bottom:90px;
-    }
-</style>
+
 <div id="CmnContents">
     <div id="ComBlock">
         <div class="setListBox inlineSet iconSet iconList">
@@ -29,7 +25,7 @@
                 <input type="button" id="btnExport" value="ー覧データをエクスポート" />
             </div>
             <!-- /operationBtn -->
-            <div class="shopCate resetValue">
+            <div class="shopCate resetValue" style="overflow:hidden;margin-bottom:40px;">
                 &nbsp;&nbsp;<p class="cateTop">カテゴリTOP</p>
                 <table style="width:100%;">
                     <tbody>
