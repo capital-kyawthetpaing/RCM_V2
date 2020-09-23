@@ -179,7 +179,7 @@ var cleave = new Cleave(obj, {
     });
 }
 
-function ExportToExcel(items) {
+function ExportToExcel(items, filename, ws_name  ) {
     var createXLSLFormatObj = [];
     var xlsHeader = [];
 
@@ -201,16 +201,8 @@ function ExportToExcel(items) {
         });
         createXLSLFormatObj.push(innerRowData);
     });
-
-
-
-    /* File Name */
-    var filename = "FreakyJSON_To_XLS.xlsx";
-
-    /* Sheet Name */
-    var ws_name = "FreakySheet";
-
-    if (typeof console !== 'undefined') console.log(new Date());
+   
+    if (typeof console !== 'undefined') console.log(new Date("ddMMyyyy"));
     var wb = XLSX.utils.book_new(),
         ws = XLSX.utils.aoa_to_sheet(createXLSLFormatObj);
 
@@ -218,7 +210,7 @@ function ExportToExcel(items) {
     XLSX.utils.book_append_sheet(wb, ws, ws_name);
 
     /* Write workbook and Download */
-    if (typeof console !== 'undefined') console.log(new Date());
+    if (typeof console !== 'undefined') console.log(new Date("ddMMyyyy"));
     XLSX.writeFile(wb, filename);
-    if (typeof console !== 'undefined') console.log(new Date());
+    if (typeof console !== 'undefined') console.log(new Date("ddMMyyyy"));
 }

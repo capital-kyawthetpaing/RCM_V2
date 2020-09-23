@@ -292,9 +292,15 @@
                     CompetitionName: $("#CompetitionName").val(),
                 };
                 var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
-                var items = JSON.parse(response);
+                var items = JSON.parse(response); 
 
-                ExportToExcel(items);
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); 
+                var yyyy = today.getFullYear();
+
+                today = yyyy + mm + dd;
+                ExportToExcel(items, "商品情報_" + today + ".xlsx","Sheet1");
             });
 
 
