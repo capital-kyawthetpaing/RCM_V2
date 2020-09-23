@@ -318,11 +318,19 @@
             //BindItemManageTable();
             setTimeout(function () { BindItemManageTable(); }, 100);
 
-            $("#btnselectall").click(function () {
-                $('.itemchk').prop('checked', true)
+            var oTable = $('#tbItemManage').dataTable({
+                stateSave: true,
+                destroy: true,
+                "dataSrc": " ",
+                "searching": false,
+                "ordering": false,
+            });
+
+            $("#btnselectall").click(function () { 
+                oTable.$(".itemchk").prop('checked', true).attr('checked', 'checked');
             });
             $("#btncancelall").click(function () {
-                $('.itemchk').prop('checked', false)
+                oTable.$(".itemchk").prop('checked', false).attr('checked', false);
             });
 
         });
