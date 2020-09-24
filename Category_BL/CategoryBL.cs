@@ -53,7 +53,7 @@ namespace Category_BL
         public string Category_CUD(CategoryEntryModel categoryModel)
         {
             BaseDL bdl = new BaseDL();
-            categoryModel.Sqlprms = new SqlParameter[13];
+            categoryModel.Sqlprms = new SqlParameter[12];
             categoryModel.Sqlprms[0] = new SqlParameter("@CategoryName", SqlDbType.VarChar) { Value = categoryModel.CategoryName };
             categoryModel.Sqlprms[1] = new SqlParameter("@ParentCategoryCD", SqlDbType.VarChar) { Value = categoryModel.ParentCategoryCD };
             categoryModel.Sqlprms[2] = new SqlParameter("@RakutenDirectoryID", SqlDbType.VarChar) { Value = categoryModel.RakutenDirectoryID };
@@ -65,8 +65,7 @@ namespace Category_BL
             categoryModel.Sqlprms[8] = new SqlParameter("@R_SportsPlazaCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_SportsPlazaCategoryID };
             categoryModel.Sqlprms[9] = new SqlParameter("@R_LuckpieceCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_LuckpieceCategoryID };
             categoryModel.Sqlprms[10] = new SqlParameter("@R_HonpoCategoryID", SqlDbType.VarChar) { Value = categoryModel.R_HonpoCategoryID };
-            categoryModel.Sqlprms[11] = new SqlParameter("@SEQ", SqlDbType.VarChar) { Value = categoryModel.SEQ };
-            categoryModel.Sqlprms[12] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = categoryModel.Mode };
+            categoryModel.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = categoryModel.Mode };
             return bdl.InsertUpdateDeleteData("Category_CUD", categoryModel.Sqlprms);
         }
     }
