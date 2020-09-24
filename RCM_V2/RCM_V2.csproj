@@ -17,11 +17,16 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
-    <IISExpressSSLPort>44395</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
-    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
-    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>
+    </IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>
+    </IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>
+    </IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -183,6 +188,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\categoryEntry.css" />
     <Content Include="Content\common.css" />
     <Content Include="Content\common1.css" />
     <Content Include="Content\database.css" />
@@ -1610,13 +1616,11 @@
     <Content Include="Vendor\font-awesome\src\_plugins\icon_page_generator.rb" />
     <Content Include="Vendor\font-awesome\src\_plugins\site.rb" />
     <Content Include="Vendor\font-awesome\_config.yml" />
-    <Content Include="Views\Category\CategoryEntry.cshtml" />
     <Content Include="Views\Mall\MallSetting_Rakuten_Fixed.cshtml" />
     <Content Include="Views\Mall\MallSetting_Yahoo_Fixed.cshtml" />
     <Content Include="Views\Search\SKUView.cshtml" />
     <Content Include="Views\Item\ItemEntry.cshtml" />
     <Content Include="Views\Import\ItemImportLogList.cshtml" />
-    <Content Include="Views\Import\Import_Item_Data.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
