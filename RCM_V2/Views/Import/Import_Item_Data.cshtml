@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Import_Item_Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Styles.Render(Url.Content("~/Content/database.css"))
+<div id="CmnContents">
+    <div id="ComBlock">
+        <div class="setListBox iconSet iconImport">
+            <h1>商品情報データインポート</h1>
+            <div class="dbCmnSet itemDateImp">
+                <div>
+                    商品情報データ
+                    <input type="file" id="uploadFile1" style="border:1px solid #b5b5b5;" name="uploadFile1" />
+                    <input type="button" value="インポート開始" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
