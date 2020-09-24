@@ -139,7 +139,7 @@
                 var result = CalltoApiController("/api/CategoryApi/Category_CUD", {
                     Mode: '@Model.Mode',
                     CategoryName: $("#CategoryName").val(),
-                    ParentCategoryCD: null,
+                    ParentCategoryCD: '@Model.ParentCategoryCD',
                     RakutenDirectoryID: $("#RakutenDirectoryID").val(),
                     YahooCategoryID: $("#YahooCategoryID").val(),
                     PonpareCategoryID: $("#PonpareCategoryID").val(),
@@ -148,8 +148,7 @@
                     R_RacketCategoryID: $("#R_RacketCategoryID").val(),
                     R_SportsPlazaCategoryID: $("#R_SportsPlazaCategoryID").val(),
                     R_LuckpieceCategoryID: $("#R_LuckpieceCategoryID").val(),
-                    R_HonpoCategoryID: $("#R_HonpoCategoryID").val(),
-                    SEQ: null
+                    R_HonpoCategoryID: $("#R_HonpoCategoryID").val(),                
                 });
 
                 if (result == "true") {
