@@ -77,7 +77,7 @@ namespace Category_BL
             categoryModel.Sqlprms[0] = new SqlParameter("@ParentCatCD", SqlDbType.VarChar) { Value = categoryModel.ParentCategoryCD };
             categoryModel.Sqlprms[1] = new SqlParameter("@CategoryCD", SqlDbType.VarChar) { Value = categoryModel.CategoryCD };
             DataTable dt= bdl.SelectDatatable("Category_Select", categoryModel.Sqlprms);
-            DataRow dr = dt.Rows[10];
+            DataRow dr = dt.Rows[0];
 
                 categoryModel.CategoryName = dr["CategoryName"].ToString();
                 categoryModel.RakutenDirectoryID = dr["RakutenDirectoryID"].ToString();
