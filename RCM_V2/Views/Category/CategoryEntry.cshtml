@@ -105,9 +105,22 @@
                 RequiredCheck($("#R_LuckpieceCategoryID"));
                 RequiredCheck($("#R_SportsPlazaCategoryID"));
                 RequiredCheck($("#R_HonpoCategoryID"));
-
-
             }
+              else if('@Model.Mode'=="Edit")
+            {
+                //check required field
+                RequiredCheck($("#CategoryName"));
+                RequiredCheck($("#RakutenDirectoryID"));
+                RequiredCheck($("#YahooCategoryID"));
+                RequiredCheck($("#PonpareCategoryID"));
+                RequiredCheck($("#WowmaCategoryID"));
+                RequiredCheck($("#RakutenCategorySetNo"))
+                RequiredCheck($("#R_RacketCategoryID"));
+                RequiredCheck($("#R_LuckpieceCategoryID"));
+                RequiredCheck($("#R_SportsPlazaCategoryID"));
+                RequiredCheck($("#R_HonpoCategoryID"));
+            }
+
 
                //to input for save confirm
           $("#btnSave").click(function()
@@ -148,7 +161,7 @@
                     R_RacketCategoryID: $("#R_RacketCategoryID").val(),
                     R_SportsPlazaCategoryID: $("#R_SportsPlazaCategoryID").val(),
                     R_LuckpieceCategoryID: $("#R_LuckpieceCategoryID").val(),
-                    R_HonpoCategoryID: $("#R_HonpoCategoryID").val(),                
+                    R_HonpoCategoryID: $("#R_HonpoCategoryID").val(),
                 });
 
                 if (result == "true") {
