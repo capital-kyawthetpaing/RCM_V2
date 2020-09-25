@@ -32,6 +32,11 @@ namespace RCM_V2.Controllers
                 categoryModel = new CategoryEntryModel();
                 categoryModel.Mode = "New";
             }
+            CategoryBL bl = new CategoryBL();
+
+            if (categoryModel.Mode.Equals("Edit"))
+                categoryModel = bl.CategoryModel_Select(categoryModel);
+
             return View(categoryModel);
 
 

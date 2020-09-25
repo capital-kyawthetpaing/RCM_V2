@@ -37,8 +37,9 @@ namespace Category_BL
         public DataTable Category_Select(CategoryModel model)
         {
             BaseDL bdl = new BaseDL();
-            model.Sqlprms = new SqlParameter[1];
+            model.Sqlprms = new SqlParameter[2];
             model.Sqlprms[0] = new SqlParameter("@ParentCatCD", model.ParentCategoryCD);
+            model.Sqlprms[1] = new SqlParameter("@CategoryCD", model.CategoryCD);
             return bdl.SelectDatatable("Category_Select", model.Sqlprms);
         }
 
@@ -68,5 +69,31 @@ namespace Category_BL
             categoryModel.Sqlprms[11] = new SqlParameter("@Mode", SqlDbType.VarChar) { Value = categoryModel.Mode };
             return bdl.InsertUpdateDeleteData("Category_CUD", categoryModel.Sqlprms);
         }
+
+        public CategoryEntryModel CategoryModel_Select(CategoryEntryModel categoryModel)
+        {
+            BaseDL bdl = new BaseDL();
+            categoryModel.Sqlprms = new SqlParameter[2];
+            categoryModel.Sqlprms[0] = new SqlParameter("@ParentCatCD", SqlDbType.VarChar) { Value = categoryModel.ParentCategoryCD };
+            categoryModel.Sqlprms[1] = new SqlParameter("@CategoryCD", SqlDbType.VarChar) { Value = categoryModel.CategoryCD };
+            DataTable dt= bdl.SelectDatatable("Category_Select", categoryModel.Sqlprms);
+            DataRow dr = dt.Rows[10];
+
+                categoryModel.CategoryName = dr["CategoryName"].ToString();
+                categoryModel.RakutenDirectoryID = dr["RakutenDirectoryID"].ToString();
+                categoryModel.YahooCategoryID = dr["YahooCategoryID"].ToString();
+                categoryModel.PonpareCategoryID = dr["PonpareCategoryID"].ToString();
+                categoryModel.WowmaCategoryID = dr["WowmaCategoryID"].ToString();
+                categoryModel.RakutenCategorySetNo = dr["RakutenCategorySetNo"].ToString();
+                categoryModel.R_RacketCategoryID = dr["R_RacketCategoryID"].ToString();
+                categoryModel.R_SportsPlazaCategoryID = dr["R_SportsPlazaCategoryID"].ToString();
+                categoryModel.R_LuckpieceCategoryID = dr["R_LuckpieceCategoryID"].ToString();
+                categoryModel.R_HonpoCategoryID = dr["R_HonpoCategoryID"].ToString();
+            
+            return categoryModel;
+
+
+        }
+
     }
 }
