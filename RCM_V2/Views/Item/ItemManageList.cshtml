@@ -470,12 +470,13 @@
                             });
                             var $option = $("<option></option>", { "text": 'ショップ選択', "value": '0' });
                             $select.append($option);
+
                             $.each(jsonData, function (x, y) {
                                 var keys = Object.keys(y);
                                 if (!x) {
                                     keys.forEach(function (key) {
-                                        if (key != "ItemCD" && y[key] != false) {
-                                            var $option = $("<option></option>", { "text": key, "value": key });
+                                        if (key != "ItemCD" && y[key] != '') {
+                                            var $option = $("<option></option>", { "text": y[key], "value": key });
                                             $select.append($option);
                                         }
                                     });
@@ -496,7 +497,7 @@
 
         function format(d) {
             // `d` is the original data object for the row
-            return '<table>' +
+            return '<table style="margin-left:2%">' +
                 '<tr>' +
                 '<th>年度</th>' +
                 '<th>シーズン</th>' +
