@@ -165,13 +165,18 @@
                 });
 
                 if (result == "true") {
-                    ShowMessage("I101");
+                    ShowMessage("I101","SaveOK");
                 }
                 else {
                     $("#UserName").focus();
                     ShowMessage("E001");
                 }
-            }
+        }
+
+          function SaveOK() {
+            window.location.href = '@Url.Action("CategoryList","Category")';
+        }
+
     </script>
 }
 
