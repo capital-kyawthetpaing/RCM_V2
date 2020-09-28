@@ -17,7 +17,8 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
     <IISExpressSSLPort>
     </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>
@@ -1317,12 +1318,10 @@
     <Content Include="Views\Category\MallCategoryList.cshtml" />
     <Content Include="Views\Option\OptionEntry.cshtml" />
     <Content Include="Views\Search\ExportColumnList.cshtml" />
-    <Content Include="Views\Category\MainView.cshtml" />
     <Content Include="Views\Category\ChildView.cshtml" />
     <Content Include="Views\Item\ItemManageList.cshtml" />
     <Content Include="Views\Search\OrderColumnList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityList.cshtml" />
-    <Content Include="Views\Item\Item_View2.cshtml" />
     <Content Include="Views\Item\ItemStockList.cshtml" />
     <Content Include="Views\Shop\Shop_ItemNamePriorityEntry.cshtml" />
     <Content Include="Views\Category\CategoryList.cshtml" />
