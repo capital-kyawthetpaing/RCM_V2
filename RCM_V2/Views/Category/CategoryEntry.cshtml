@@ -105,9 +105,22 @@
                 RequiredCheck($("#R_LuckpieceCategoryID"));
                 RequiredCheck($("#R_SportsPlazaCategoryID"));
                 RequiredCheck($("#R_HonpoCategoryID"));
-
-
             }
+              else if('@Model.Mode'=="Edit")
+            {
+                //check required field
+                RequiredCheck($("#CategoryName"));
+                RequiredCheck($("#RakutenDirectoryID"));
+                RequiredCheck($("#YahooCategoryID"));
+                RequiredCheck($("#PonpareCategoryID"));
+                RequiredCheck($("#WowmaCategoryID"));
+                RequiredCheck($("#RakutenCategorySetNo"))
+                RequiredCheck($("#R_RacketCategoryID"));
+                RequiredCheck($("#R_LuckpieceCategoryID"));
+                RequiredCheck($("#R_SportsPlazaCategoryID"));
+                RequiredCheck($("#R_HonpoCategoryID"));
+            }
+
 
                //to input for save confirm
           $("#btnSave").click(function()
@@ -138,8 +151,9 @@
             function ConfirmSave() {
                 var result = CalltoApiController("/api/CategoryApi/Category_CUD", {
                     Mode: '@Model.Mode',
+                    CategoryCD:'@Model.CategoryCD',
                     CategoryName: $("#CategoryName").val(),
-                    ParentCategoryCD: null,
+                    ParentCategoryCD: '@Model.ParentCategoryCD',
                     RakutenDirectoryID: $("#RakutenDirectoryID").val(),
                     YahooCategoryID: $("#YahooCategoryID").val(),
                     PonpareCategoryID: $("#PonpareCategoryID").val(),
@@ -149,17 +163,21 @@
                     R_SportsPlazaCategoryID: $("#R_SportsPlazaCategoryID").val(),
                     R_LuckpieceCategoryID: $("#R_LuckpieceCategoryID").val(),
                     R_HonpoCategoryID: $("#R_HonpoCategoryID").val(),
-                    SEQ: null
                 });
 
                 if (result == "true") {
-                    ShowMessage("I101");
+                    ShowMessage("I101","SaveOK");
                 }
                 else {
                     $("#UserName").focus();
                     ShowMessage("E001");
                 }
-            }
+        }
+
+          function SaveOK() {
+            window.location.href = '@Url.Action("CategoryList","Category")';
+        }
+
     </script>
 }
 
