@@ -17,5 +17,17 @@ namespace Import_BL
             itemImportModel.Sqlprms = new SqlParameter[0];
             return bdl.SelectJson("ItemImportLog_Select", itemImportModel.Sqlprms);
         }
+
+        public string Import_Item_Data(string filename, string sheetname)
+        {
+            BaseDL bdl = new BaseDL();
+            ItemModel itemModel = new ItemModel(); ;
+            itemModel.fileName = filename;
+            itemModel.sheetName = sheetname;
+            itemModel.Sqlprms = new SqlParameter[2];
+            itemModel.Sqlprms[0] = new SqlParameter("@FileName", itemModel.fileName);
+            itemModel.Sqlprms[1] = new SqlParameter("@SheetName", itemModel.sheetName);
+            return bdl.InsertUpdateDeleteData("Import_ItemData", itemModel.Sqlprms);
+        }
     }
 }
