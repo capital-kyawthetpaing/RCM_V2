@@ -31,7 +31,7 @@ namespace RCM_V2.Controllers
         public HttpResponseMessage Import_Item_Data_Save()
         {
             //Create the Directory.
-            string path = HttpContext.Current.Server.MapPath("~/Uploads/");
+            string path = HttpContext.Current.Server.MapPath("~/ImportFiles/ItemData/");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
