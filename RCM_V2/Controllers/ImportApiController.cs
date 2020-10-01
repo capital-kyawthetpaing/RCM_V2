@@ -1,8 +1,11 @@
-﻿using Import_BL;
+﻿using DL;
+using Import_BL;
 using Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -49,13 +52,22 @@ namespace RCM_V2.Controllers
             }
             //Save the File.
             postedFile.SaveAs(path + fileName);
+            //string filepath = path + fileName;
 
-            //insert M_Item table
             ImportBL bl = new ImportBL();
-            bl.Import_Item_Data(fileName,"Sheet1");
+            DataTable dt = new DataTable();
+            string extension = System.IO.Path.GetExtension(postedFile.FileName).ToLower();
+            string connString = "";
+            if (extension.Trim() == ".xlsx")
+            {
+                 dt = bl.ConvertXSLXtoDataTable(path + fileName, connString);
+            }
+            //insert to table
+            bl.Import_Item_Data(dt);
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
-        }      
+        }
+       
     }
 }
