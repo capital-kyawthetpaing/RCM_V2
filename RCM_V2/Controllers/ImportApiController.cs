@@ -52,18 +52,10 @@ namespace RCM_V2.Controllers
             }
             //Save the File.
             postedFile.SaveAs(path + fileName);
-            //string filepath = path + fileName;
 
-            ImportBL bl = new ImportBL();
-            DataTable dt = new DataTable();
-            string extension = System.IO.Path.GetExtension(postedFile.FileName).ToLower();
-            string connString = "";
-            if (extension.Trim() == ".xlsx")
-            {
-                 dt = bl.ConvertXSLXtoDataTable(path + fileName, connString);
-            }
             //insert to table
-            bl.Import_Item_Data(dt);
+            ImportBL bl = new ImportBL();
+            bl.Import_Item_Data(path + fileName, "Sheet1");
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
