@@ -1639,6 +1639,10 @@
       <Project>{37136003-0d72-4ca3-a688-4336d8904056}</Project>
       <Name>Category_BL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DL\DL.csproj">
+      <Project>{8A0BE33C-985A-4E14-9AAE-827260406D83}</Project>
+      <Name>DL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExportColumn_BL\ExportColumn_BL.csproj">
       <Project>{b95e9e55-6297-4592-b6a1-70d455ff272f}</Project>
       <Name>ExportColumn_BL</Name>

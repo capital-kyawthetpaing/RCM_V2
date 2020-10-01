@@ -30,5 +30,8 @@
         public string RakutenPrice { get; set; }
         public string Cost { get; set; }
         #endregion
+
+        public string fileName { get; set; }
+        public string sheetName { get; set; }
     }
 }
