@@ -297,7 +297,7 @@
                         };
                         var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
                         var items = JSON.parse(response);
-                        debugger;
+                        
                         var today = new Date();
                         var dd = String(today.getDate()).padStart(2, '0');
                         var mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -316,30 +316,36 @@
             });
 
             function ErrorCheck(e1) {
-                var r1 = "0";
-                $('#' + e1 + ' *').filter(':input[type=text]').each(function () {
-                    var result = Err_Chk(this);
-                    if (result == "0") {
-                        r1 = "0";
-                        return false;
+                var r1;
+                var type = [":input[type=text], textarea", "select"];
+                for (var i = 0; i < type.length; i++) {
+                    if (r1 != "0") {
+                        $('#' + e1 + ' *').filter(type[i]).each(function () {
+                            var result;
+                            if (i == 0)
+                                result = Err_Chk_Text(this);
+                            else
+                                result = Err_Chk_Select(this);
+                            if (result == "0") {
+                                r1 = "0";
+                                return false;
+                            }
+                            else
+                                r1 = result;
+                        });
                     }
-                    else
-                        r1 = result;
-                });
-                $('#' + e1 + ' *').filter('select').each(function () {
-                    debugger;
-                    var result = Err_Chk(this);
-                    if (result == "0") {
-                        r1 = "0";
-                        return false;
-                    }
-                    else
-                        r1 = result;
-                });
+                }
                 return r1;
             }
 
-            function Err_Chk(ctrl) {
+            function Err_Chk_Text(ctrl) {
+                if (!$(ctrl).val()) {
+                    return "E111";
+                }
+                else
+                    return "0";
+            }
+            function Err_Chk_Select(ctrl) {
                 if ($(ctrl).val() == "0") {
                     return "E111";
                 }
