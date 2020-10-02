@@ -278,32 +278,77 @@
             });
 
             $("#btnGenerate").click(function () {
-                var obj = {
-                    Type: '2',
-                    ExportID: $("#AutoID").val(),
-                    ItemCD: $("#ItemCD").val(),
-                    BrandName: $("#BrandName").val(),
-                    ItemName: $("#ItemName").val(),
-                    MakerCD: $("#MakerCD").val(),
-                    MakerName: $("#MakerName").val(),
-                    YearCD: $("#YearCD").val(),
-                    SeasonCD: $("#SeasonCD").val(),
-                    CatalogInfo: $("#CatalogInfo").val(),
-                    ClassName: $("#ClassName").val(),
-                    CompetitionName: $("#CompetitionName").val(),
-                };
-                var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
-                var items = JSON.parse(response); 
+                var res = ErrorCheck('Panel1');
+                if (res == "0") {
+                    if ($("#AutoID").val()) {
+                        var obj = {
+                            Type: '2',
+                            ExportID: $("#AutoID").val(),
+                            ItemCD: $("#ItemCD").val(),
+                            BrandName: $("#BrandName").val(),
+                            ItemName: $("#ItemName").val(),
+                            MakerCD: $("#MakerCD").val(),
+                            MakerName: $("#MakerName").val(),
+                            YearCD: $("#YearCD").val(),
+                            SeasonCD: $("#SeasonCD").val(),
+                            CatalogInfo: $("#CatalogInfo").val(),
+                            ClassName: $("#ClassName").val(),
+                            CompetitionName: $("#CompetitionName").val(),
+                        };
+                        var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
+                        var items = JSON.parse(response);
+                        debugger;
+                        var today = new Date();
+                        var dd = String(today.getDate()).padStart(2, '0');
+                        var mm = String(today.getMonth() + 1).padStart(2, '0');
+                        var yyyy = today.getFullYear();
 
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-                var yyyy = today.getFullYear();
-
-                today = yyyy + mm + dd;
-                ExportToExcel(items, "商品情報_" + today + ".xlsx","Sheet1");
+                        today = yyyy + mm + dd;
+                        ExportToExcel(items, "商品情報_" + today + ".xlsx", "Sheet1");
+                    }
+                    else {
+                        ShowMessage("E102");
+                    }
+                }
+                else {
+                    ShowMessage(res);
+                }
             });
 
+            function ErrorCheck(e1) {
+                var r1 = "0";
+                $('#' + e1 + ' *').filter(':input[type=text]').each(function () {
+                    var result = Err_Chk(this);
+                    if (result == "0") {
+                        r1 = "0";
+                        return false;
+                    }
+                    else
+                        r1 = result;
+                });
+                $('#' + e1 + ' *').filter('select').each(function () {
+                    debugger;
+                    var result = Err_Chk(this);
+                    if (result == "0") {
+                        r1 = "0";
+                        return false;
+                    }
+                    else
+                        r1 = result;
+                });
+                return r1;
+            }
+
+            function Err_Chk(ctrl) {
+                if ($(ctrl).val() == "0") {
+                    return "E111";
+                }
+                else if (!$(ctrl).val()) {
+                    return "E111";
+                }
+                else
+                    return "0";
+            }
 
             $('#tbItemManage tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
