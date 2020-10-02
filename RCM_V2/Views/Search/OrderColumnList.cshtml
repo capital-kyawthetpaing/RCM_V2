@@ -3,15 +3,16 @@
             <table class="userCmnSet editTable" style="margin-bottom:0px;" id="tblOrderList" border="1">
                 <thead>
                     <tr>
-                        <td style="font-weight:bold">Column Name (Eng)</td>
-                        <td style="font-weight:bold">Column Name (JP)</td>
+                        @*<td style="font-weight:bold">Column Name (Eng)</td>
+                        <td style="font-weight:bold">Column Name (JP)</td>*@
+                        <td style="font-weight:bold">項目名</td>
                     </tr>
                 </thead>
                 <tbody class="sort-able-tbody"></tbody>
                 <tfoot>
                     <tr>
-                        <td></td>
-                        <td>
+                        @*<td></td>*@
+                        <td style="text-align:center;">
                             <input type="button" id="btnAddOrderColumn" value="OK" Style="width:80px;" onclick="AddOrderColumn();" />
                             <input type="button" id="btnClose" value="Close" style="width: 80px" onclick="CloseOrderModal()" />
                         </td>
