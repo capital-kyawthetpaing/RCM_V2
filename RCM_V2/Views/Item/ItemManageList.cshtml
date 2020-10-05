@@ -213,6 +213,7 @@
                         <tr>
                             <th width="4%"></th>
                             <th width="3%"></th>
+                            <th>商品画像</th>
                             <th>商品番号</th>
                             <th>商品名</th>
                             <th>定価</th>
@@ -453,6 +454,7 @@
                         "defaultContent": ''
                     },
                     {},
+                    { "data": "itemImage"},
                     { "data": "ItemCD"},
                     { "data": "ItemName"},
                     { "data": "ListPrice" },
@@ -478,39 +480,46 @@
                         }
                     },
                     {
-                        "targets": [4, 5, 6, 7, 8],
+                        "targets": 2,
+                        "data": "itemImage",
+                        "render": function (data, type, row) {
+                            return '<img src="/ItemImages/' + row.itemImage + '" width="50px" height="50px" />';
+                        }
+                    },
+                    {
+                        "targets": [5, 6, 7, 8, 9],
                         "className": 'textAlign',
                     },
                     {
-                        "targets": 4,
+                        "targets": 5,
                         "data": "ListPrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['ListPrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 5,
+                        "targets": 6,
                         "data": "SalePrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['SalePrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 6,
+                        "targets": 7,
                         "data": "Cost1",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['Cost'] + ')';
                         }
                     },
                     {
-                        "targets": 9,
+                        "targets": 10,
                         "data": "ItemCD",
                         "render": function (data) {
                             return '<input type="button" style="width:70px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
                         }
                     },
                     {
-                        "targets": 10,
+                        "targets": 11,
                         "data": "ItemCD",
                         "render": function (data, type, row) {
                             var jsonData = JSON.parse(row.TargetShop);
