@@ -1625,6 +1625,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ImportFiles\ItemData\" />
+    <Folder Include="ItemImages\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
