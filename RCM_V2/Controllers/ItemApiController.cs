@@ -56,5 +56,14 @@ namespace RCM_V2.Controllers
             SKUBL _skuBL = new SKUBL();
             return Ok(_skuBL.SKU_Select(skuModel));
         }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ItemPageCreate_List")]
+        public IHttpActionResult ItemPageCreate_List(ItemModel itemModel)
+        {
+            ItemBL itemBL = new ItemBL();
+            return Ok(itemBL.ItemPageCreate_List(itemModel));
+        }
     }
 }
