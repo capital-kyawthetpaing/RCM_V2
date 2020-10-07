@@ -1616,6 +1616,7 @@
     <Content Include="Views\Import\ItemImportLogList.cshtml" />
     <Content Include="Views\Import\Import_Item_Data.cshtml" />
     <Content Include="Views\Category\CategoryEntry.cshtml" />
+    <Content Include="Views\Import\Import_Template_Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
