@@ -119,10 +119,17 @@
                 background: #843f5b;
             }
 
-    table.dataTable tbody th, table.dataTable tbody td:nth-child(2){vertical-align: middle;}
+    table.dataTable tbody th, table.dataTable tbody td.itemchk {
+        vertical-align: middle;
+    }
+    table.dataTable tbody th, table.dataTable tbody td:nth-child(3),
+    table.dataTable tbody th, table.dataTable tbody td:nth-child(5),
+    table.dataTable tbody th, table.dataTable tbody td:nth-child(6) {
+        white-space: nowrap;
+    }
     table.dataTable tbody th, table.dataTable tbody td {
         vertical-align: top;
-        padding-top: 8px;
+        padding: 8px 8px;
     }
 </style>
 
@@ -290,9 +297,9 @@
                         <th width="3%"></th>
                         <th width="3%"></th>
                         <th>商品番号</th>
-                        <th width="100px">商品名</th>
-                        <th width="100px">価格</th>
-                        <th width="170px">商品画像</th>
+                        <th width="13%">商品名</th>
+                        <th width="11%">価格</th>
+                        <th width="16%">商品画像</th>
                         <th>ショップカテゴリ</th>
                         <th>オプション</th>
                         <th>掲載可能日</th>
@@ -494,9 +501,6 @@
                 { "data": "ItemImage1" },
                 { "data": "ShopCategory" },
                 { "data": "Option" },
-                //{ "data": "Year" },
-                //{ "data": "Season" },
-                //{ "data": "CatalogInfo" },
                 { "data": "PostableDate" },
                 { "data": "ReleaseDate" },
                 { "data": "TargetShop" },
