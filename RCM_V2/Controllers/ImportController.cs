@@ -21,5 +21,9 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
+        public ActionResult Import_Search_Keyword()
+        {
+            return View();
+        }
     }
 }
