@@ -34,6 +34,18 @@ namespace Import_BL
             itemModel.Sqlprms[1] = new SqlParameter("@SheetName", itemModel.sheetName);
             return bdl.InsertUpdateDeleteData("Import_ItemData", itemModel.Sqlprms);
         }
-         
+
+        public string Import_SKU_Inventory_Update(string filename, string sheetname)
+        {
+            ItemModel itemModel = new ItemModel();
+            itemModel.fileName = filename;
+            itemModel.sheetName = sheetname;
+            BaseDL bdl = new BaseDL();
+            itemModel.Sqlprms = new SqlParameter[2];
+            itemModel.Sqlprms[0] = new SqlParameter("@FileName", itemModel.fileName);
+            itemModel.Sqlprms[1] = new SqlParameter("@SheetName", itemModel.sheetName);
+            return bdl.InsertUpdateDeleteData("Import_SKUInventory_Update", itemModel.Sqlprms);
+        }
+
     }
 }

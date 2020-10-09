@@ -72,6 +72,11 @@
             </div>
         </div>
 
+        <div class="widthhMax iconEx operationBtn" >
+            <input type="file" id="uploadFile1" style="border:1px solid #b5b5b5;" name="uploadFile1" accept=".xls,.xlsx" />
+            <input type="button" id="btnImport" value="インポート" />
+        </div>
+
     </div>
 </div>
 
@@ -112,6 +117,34 @@
             $("#btnsearch").click(function () {
                 Search();
             })
+
+            $("#btnImport").click(function () {
+                var fileUpload = $("#uploadFile1").get(0);
+                var files = fileUpload.files;
+                var formData = new FormData();
+                formData.append("fileName", $("#uploadFile1").val().replace(/C:\\fakepath\\/i, ''));
+                formData.append("file", $("#uploadFile1")[0].files[0]);
+
+                $.ajax({
+                    url: '/api/ImportApi/Import_Item_Data_Save',
+                    type: 'POST',
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: formData,
+                    async: false,
+                    headers:
+                    {
+                        Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
+                    },
+                    success: function (data) {
+                        alert('OK');
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
+                        alert('Error');
+                    }
+                });
+
+            });
 
         });
 
