@@ -20,6 +20,12 @@
         public string JanCD { get; set; }
         public string BrandName { get; set; }
         public string MakerName { get; set; }
+        public string ImageFileName { get; set; }
+        public string CategoryName { get; set; }
+        public string ColorName { get; set; }
+        public string SearchKeyword { get; set; }
+        public string SKSStatus { get; set; }
+        public string ShopStatus { get; set; }
         #endregion
 
         public ExportFieldsModel exportFieldsModel { get; set; }
