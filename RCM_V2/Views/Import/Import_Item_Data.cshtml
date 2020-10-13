@@ -24,7 +24,6 @@
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-
             $("#btnImport").click(function () {
                 var fileUpload = $("#uploadFile1").get(0);
                 var files = fileUpload.files;
@@ -32,6 +31,8 @@
                 formData.append("fileName", $("#uploadFile1").val().replace(/C:\\fakepath\\/i, ''));
                 formData.append("file", $("#uploadFile1")[0].files[0]);
                 formData.append("importType", "1");
+                formData.append("ImportedBy",$("#LoginID").val());
+
 
                 $.ajax({
                     url: '/api/ImportApi/Import_Item_Data_Save',

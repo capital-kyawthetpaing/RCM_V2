@@ -46,6 +46,7 @@ namespace RCM_V2.Controllers
             //Fetch the File Name.
             string fileName = HttpContext.Current.Request.Form["fileName"];
             string importType = HttpContext.Current.Request.Form["importType"];
+            string ImportedBy = HttpContext.Current.Request.Form["ImportedBy"];
             if (fileName.Contains(".xlsx"))
             {
                 fileName = fileName.Replace(" ", "_").Replace(".xls", "");
@@ -56,7 +57,7 @@ namespace RCM_V2.Controllers
 
             //insert to table
             ImportBL bl = new ImportBL();
-            bl.Import_Item_Data(path + fileName, "Sheet1", importType);
+            bl.Import_Item_Data(path + fileName, "Sheet1", importType, ImportedBy);
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
@@ -75,7 +76,8 @@ namespace RCM_V2.Controllers
 
             HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
             string fileName = HttpContext.Current.Request.Form["fileName"];
-            if(fileName.Contains(".xlsx"))
+            string ImportedBy = HttpContext.Current.Request.Form["ImportedBy"];
+            if (fileName.Contains(".xlsx"))
             {
                 fileName = fileName.Replace(" ", "_").Replace(".xls", "");
                 fileName = fileName + "$" + DateTime.Now.ToString("yyyyMMdd") + DateTime.Now.ToString("HHmmss") + ".xlsx";
@@ -85,7 +87,7 @@ namespace RCM_V2.Controllers
 
             //insert to table
             ImportBL bl = new ImportBL();
-            bl.Import_SKU_Inventory_Update(path + fileName, "Sheet1");
+            bl.Import_SKU_Inventory_Update(path + fileName, "Sheet1", ImportedBy);
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
