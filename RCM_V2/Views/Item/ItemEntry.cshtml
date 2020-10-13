@@ -156,8 +156,384 @@
                             </tr>
                         </thead>
                     </table>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <br />
+                    <table class="item3">
+                        <thead>
+                            <tr>
+                                <th id="th3">関連商品</th>
+                                <td> @Html.TextBoxFor(x => x.RelatedProduct, new { id = "text2" })</td>
+                                <td> @Html.TextBoxFor(x => x.RelatedProduct, new { id = "text2" })</td>
+                                <td> @Html.TextBoxFor(x => x.RelatedProduct, new { id = "text2" })</td>
+                                <td> @Html.TextBoxFor(x => x.RelatedProduct, new { id = "text2" })</td>
+                                <td> @Html.TextBoxFor(x => x.RelatedProduct, new { id = "text2" })</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br />
+                    <table class="item4">
+                        <thead>
+                            <tr>
+                                <th id="th4">関連商品名</th>
+                                <td> @Html.TextAreaFor(x => x.ProductName, new { id = "text3" })</td>
+                                <td> @Html.TextAreaFor(x => x.ProductName, new { id = "text3" })</td>
+                                <td> @Html.TextAreaFor(x => x.ProductName, new { id = "text3" })</td>
+                                <td> @Html.TextAreaFor(x => x.ProductName, new { id = "text3" })</td>
+                                <td> @Html.TextAreaFor(x => x.ProductName, new { id = "text3" })</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br />
+                    <table class="item5">
+                        <thead>
+                            <tr>
+                                <th id="th5">関連コメント</th>
+                                <td> @Html.TextAreaFor(x => x.RelatedComment, new { id = "text4" })</td>
+                                <td> @Html.TextAreaFor(x => x.RelatedComment, new { id = "text4" })</td>
+                                <td> @Html.TextAreaFor(x => x.RelatedComment, new { id = "text4" })</td>
+                                <td> @Html.TextAreaFor(x => x.RelatedComment, new { id = "text4" })</td>
+                                <td> @Html.TextAreaFor(x => x.RelatedComment, new { id = "text4" })</td>
+                            </tr>
+
+                        </thead>
+                    </table>
+
+                    <table class="item6">
+                        <tr>
+                            <th colspan="2">
+                                <div id="hideBlocks">
+
+
+                                    商品詳細情報
+
+
+                                </div>
+
+                            </th>
+
+                        </tr>
+
+                        <tr>
+
+                            <td style="vertical-align:top;">
+                                @Html.TextBoxFor(x => x.ProductDetail, new { id = "text5" })
+                            </td>
+                            <td>
+                                @Html.TextAreaFor(x => x.ProductDetail, new { id = "text6" })
+                            </td>
+
+                        </tr>
+                        <tr>
+
+                            <td style="vertical-align:top;">
+                                @Html.TextBoxFor(x => x.ProductDetail, new { id = "text7" })
+                            </td>
+                            <td>
+                                @Html.TextAreaFor(x => x.ProductDetail, new { id = "text8" })
+                            </td>
+
+                        </tr>
+
+
+                    </table>
+                    <table class="item8">
+                        <tr>
+
+                            <th>
+                                <input type="checkbox" id="chk1" />
+                                <span>エビデンス</span>
+                            </th>
+                        </tr>
+
+                    </table>
+                    <br />
+                    <div class="col-md-12" style="display:flex;padding-left:0px;">
+                        <div class="col-md-6" style="padding-left:0px;">
+                            <table class="item9">
+                                <thead>
+                                    <tr>
+                                        <th id="th7">PC用商品説明文</th>
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                            @{
+                                                var listNew = new List<SelectListItem>();
+
+                                                listNew.Add(new SelectListItem { Text = "通常", Value = "1" });
+                                                listNew.Add(new SelectListItem { Text = "グラブ加工", Value = "2" });
+                                                listNew.Add(new SelectListItem { Text = "P革加工", Value = "3" });
+
+                                            }
+                                            @Html.DropDownListFor(m => m.ItemCD, listNew, new
+                                       {
+                                           @required = "required",
+                                           @id = "ddlpcdescription",
+                                           @tabindex = "5",
+                                           style = "width: 250px"
+                                       })
+
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="item9">
+                                <thead>
+                                    <tr>
+                                        <th id="th8">PC用販売説明文</th>
+                                    </tr>
+                                    <tr>
+
+
+                                        <td>
+                                            @Html.TextAreaFor(x => x.PcSaleDescription, new { id = "text9" })
+
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+                    <br />
+                    <div class="col-md-12" style="display:flex;padding-left:0px;">
+                        <div class="col-md-6" style="padding-left:0px;">
+                            <table class="item10">
+                                <thead>
+                                    <tr>
+                                        <th id="th9">スマートフォン用商品説明文</th>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.TextAreaFor(x => x.PcSaleDescriptionSmart, new { id = "text10" })
+
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="item11">
+                                <thead>
+                                    <tr>
+                                        <th id="th10">商品情報</th>
+                                    </tr>
+                                    <tr>
+
+
+                                        <td>
+                                            @Html.TextAreaFor(x => x.ProductInfo, new { id = "text11" })
+
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+
+                    </div>
+
+                    <table class="item12">
+                        <thead>
+                            <tr>
+                                <th id="th11">ゼット用項目（PC商品説明文）</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.TextAreaFor(x => x.ItemZ, new { id = "text12" })
+
+                                </td>
+                            </tr>
+
+                        </thead>
+                    </table>
+                    <table class="item13">
+                        <thead>
+                            <tr>
+                                <th id="th12">ゼット用項目（PC商品説明文）</th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.TextAreaFor(x => x.ItemZSale, new { id = "text13" })
+
+                                </td>
+                            </tr>
+
+                        </thead>
+                    </table>
+
+                    <div class="dBlock inlineSet" id="lbloption" runat="server">
+                        <table class="item14">
+                            <thead>
+                                <tr>
+                                    <th id="th13">
+                                        オプション <br />
+                                        <input type="button" id="btn" value="選 ぶ" />
+                                    </th>
+                                    <td>
+                                        <p>
+                                            項目名
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text14" })
+                                        </p>
+
+                                        <p style="margin-left:15px">
+                                            選択肢
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text15" })
+                                        </p>
+                                        <p>
+                                            項目名
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text16" })
+                                        </p>
+                                        <p style="margin-left:15px">
+                                            選択肢
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text17" })
+                                        </p>
+                                        <p>
+                                            項目名
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text18" })
+                                        </p>
+                                        <p style="margin-left:15px">
+                                            選択肢
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text19" })
+                                        </p>
+                                        <p>
+                                            項目名
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text20" })
+                                        </p>
+                                        <p style="margin-left:15px">
+                                            選択肢
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text21" })
+                                        </p>
+                                        <p>
+                                            項目名
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text22" })
+                                        </p>
+                                        <p style="margin-left:15px">
+                                            選択肢
+                                            @Html.TextBoxFor(x => x.ItemName, new { id = "text23" })
+                                        </p>
+                                    </td>
+
+                                </tr>
+
+                            </thead>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="col-md-12" style="display:flex;padding-left:0px;">
+                        <div class="col-md-6" style="padding-left:0px;">
+                            <table class="item15">
+                                <thead>
+                                    <tr>
+                                        <th id="th14">キャンペーン画像</th>
+                                    </tr>
+                                    <tr>
+
+                                        <td>
+                                            @Html.TextBoxFor(x => x.CampaignImage, new { id = "text24" })
+                                            @Html.TextBoxFor(x => x.CampaignImage, new { id = "text25" })
+                                            @Html.TextBoxFor(x => x.CampaignImage, new { id = "text26" })
+                                            @Html.TextBoxFor(x => x.CampaignImage, new { id = "text27" })
+                                            @Html.TextBoxFor(x => x.CampaignImage, new { id = "text28" })
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="item16">
+                                <thead>
+                                    <tr>
+                                        <th id="th15">
+                                            ショップカテゴリ
+                                            <input type="button" id="btn1" value="選 ぶ" />
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.TextBoxFor(x => x.ShopCategory, new { id = "text29" })
+                                            @Html.TextBoxFor(x => x.ShopCategory, new { id = "text30" })
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="dBlock itemCategory inlineSet">
+                        <table class="item17">
+                            <thead>
+                                <tr>
+                                    <th id="th16">
+                                        カテゴリID
+                                        Yahooスペック
+
+                                    </th>
+                                    <td>
+                                        <p style="margin-left:40px;">
+                                            楽天
+                                            @Html.TextBoxFor(x => x.CategoryRakuten, new { id = "text31" })
+                                            @Html.TextBoxFor(x => x.CategoryRakuten, new { id = "text32" })
+                                            <input type="button" id="btn2" value="選 ぶ" />
+                                        </p>
+
+                                        <p style="margin-left:32px;margin-top:3px;">
+                                            ヤフー
+                                            @Html.TextBoxFor(x => x.CategoryYahoo, new { id = "text33" })
+                                            @Html.TextBoxFor(x => x.CategoryYahoo, new { id = "text34" })
+                                            <input type="button" id="btn2" value="選 ぶ" />
+                                        </p>
+                                        <p style="margin-left:20px;margin-top:3px;">
+                                            ポンパレ
+                                            @Html.TextBoxFor(x => x.CategoryPonpare, new { id = "text35" })
+                                            @Html.TextBoxFor(x => x.CategoryPonpare, new { id = "text36" })
+                                            <input type="button" id="btn2" value="選 ぶ" />
+                                        </p>
+                                        <p style="margin-left:23px;margin-top:3px;">
+                                            Wowma
+                                            @Html.TextBoxFor(x => x.CategoryWowma, new { id = "text37" })
+                                            @Html.TextBoxFor(x => x.CategoryWowma, new { id = "text38" })
+                                            <input type="button" id="btn2" value="選 ぶ" style="margin-left:2px;" />
+                                        </p>
+                                        <p style="margin-left:40px;margin-top:3px;">
+                                            ヤフースペック値
+                                            @Html.TextBoxFor(x => x.Yahoospec, new { id = "text39" })
+                                            @Html.TextBoxFor(x => x.Yahoospec, new { id = "text40" })
+                                            @Html.TextBoxFor(x => x.Yahoospec, new { id = "text41" })
+                                            @Html.TextBoxFor(x => x.Yahoospec, new { id = "text42" })
+                                            @Html.TextBoxFor(x => x.Yahoospec, new { id = "text43" })
+                                            <input type="button" id="btn2" value="選 ぶ" style="margin-left:2px;" />
+                                        </p>
+
+                                    </td>
+                        </table>
+                    </div>
+                    <br />
+                    <div class="col-md-12" style="display:flex;padding-left:0px;">
+                        <div class="col-md-2" style="padding-left:0px;">
+                            <table class="item18">
+                                <tr>
+                                    <th id="th17">楽天</th>
+                                    <td><input type="checkbox" id="chkrakuten" /></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-4" style="padding-left:0px;">
+                            <table class="item19">
+                                <tr>
+                                    <th id="th18">JAN</th>
+                                    <td>@Html.TextBoxFor(x => x.JanTextbox, new { id = "text44" })</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <table class="item20">
+                                <tr>
+                                    <th id="th19">カタログなしの理由</th>
+                                    <td>@Html.TextBoxFor(x => x.JanTextbox, new { id = "text44" })</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    
 </div>
