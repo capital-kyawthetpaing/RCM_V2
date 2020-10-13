@@ -305,7 +305,7 @@
                         var yyyy = today.getFullYear();
 
                         today = yyyy + mm + dd;
-                        ExportToExcel(items, "商品情報_" + today + ".xlsx", "Sheet1");
+                        ExportToExcel(items, $("#AutoID option:selected").text() + today + ".xlsx", "Sheet1");
                     }
                     else {
                         ShowMessage("E102");
