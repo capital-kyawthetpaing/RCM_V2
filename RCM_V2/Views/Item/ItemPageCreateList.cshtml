@@ -515,6 +515,13 @@
                     }
                 },
                 {
+                    "targets": 2,
+                    "data": "ItemCD",
+                    "render": function (data, type, row) {
+                        return '<a href="\ItemEntry?ItemCD=' + row.ItemCD + '" > ' + row.ItemCD + '</a > ';
+                    }
+                },
+                {
                     "targets": 4,
                     "data": "ListPrice",
                     "className": 'textAlign',
