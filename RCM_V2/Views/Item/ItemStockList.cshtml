@@ -124,7 +124,6 @@
                 var formData = new FormData();
                 formData.append("fileName", $("#uploadFile1").val().replace(/C:\\fakepath\\/i, ''));
                 formData.append("file", $("#uploadFile1")[0].files[0]);
-                formData.append("importType", "商品");
                 $.ajax({
                     url: '/api/ImportApi/Import_Item_Data_Save',
                     type: 'POST',
