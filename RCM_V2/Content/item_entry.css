@@ -12,6 +12,36 @@
     width: 270px;
     height: 23px;
 }
+.item3  #text2 {
+    width: 98px;
+    height: 15px;
+    margin-left:15px;
+}
+
+.item4 #text3,#text4 {
+    width: 97px;
+    margin-left: 8px;
+}
+.item5 #text4 {
+    width: 97px;
+    margin-left: 8px;
+}
+.item6 #text5{
+    width:100px;
+    height:15px;
+}
+.item6 #text6 {
+    width: 180px;
+    margin-left: 8px;
+}
+.item6 #text7 {
+    width: 100px;
+    height: 15px;
+}
+.item6 #text8 {
+    width: 180px;
+    margin-left: 8px;
+}
 .item1 img{
     width:50px;
     height:50px
@@ -52,6 +82,31 @@
         padding-left: 27px;
     }
 
+.item6 tr th > #hideBlocks {
+    background-color: #E1F5FE;
+    height: 17px;
+    padding: 3px;
+    background-image: url('../images/btn_on-off.gif');
+    background-position: 11px 3px;
+    background-repeat: no-repeat;
+    text-align: left;
+    padding-left: 27px;
+    border-left: 3px solid #81D4FA;
+    width:312px;
+}
+.item6  th > #Block {
+    background-color: #E1F5FE;
+    height: 17px;
+    padding: 3px;
+    background-image: url('../images/btn_on-off.gif');
+    background-position: 11px 3px;
+    background-repeat: no-repeat;
+    text-align: left;
+    padding-left: 27px;
+    border-left: 3px solid #81D4FA;
+    width: 312px;
+    margin-left:15px;
+}
     .item1 tr > #th1 {
         border-left: 3px solid #0288D1;
         background-color: #73C2FB;
@@ -65,6 +120,25 @@
         padding: 3px;
         height: 2px;
     }
+   .item3 tr > #th3 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    }
+
+   .item4 tr > #th4 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    }
+.item5 tr > #th5 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+}
 
 .item2 td {
     margin-top: 10px;
@@ -100,6 +174,263 @@ label {
     margin-left:15px
 
 }
+.item8 tr > #th6 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+}
+.item9 tr > #th7 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width:312px;
+}
+.item9 tr > #th8 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 312px;
+    
+}
+
+.item10 tr > #th9 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 312px;
+}
+.item11 tr > #th10 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 312px;
+}
+.item12 tr > #th11 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 668px;
+}
+.item13 tr > #th12 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 668px;
+}
+.item14 tr > #th13 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 66px;
+}
+.item17 tr > #th16 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 2px;
+    width: 120px;
+    letter-spacing:normal;
+}
+.item9 #text9 {
+    width: 312px;
+    height: 50px;
+}
+
+.item10 #text10 {
+    width: 305px;
+    height: 50px;
+}
+
+.item11 #text11 {
+    width: 312px;
+    height: 50px;
+}
+.item12 #text12 {
+    width: 655px;
+    height: 50px;
+}
+.item13 #text13 {
+    width: 655px;
+    height: 50px;
+}
+.item14 #text14 {
+    width: 130px;
+   
+}
+.item14 #text15 {
+    width: 360px;
+}
+.item14 #text16 {
+    width: 130px;
+    margin-top: 0.5px;
+}
+.item14 #text17 {
+    width: 360px;
+}
+.item14 #text18 {
+    width: 130px;
+    margin-top: 0.5px;
+}
+.item14 #text19 {
+    width: 360px;
+}
+.item14 #text20 {
+    width: 130px;
+    margin-top: 1px;
+}
+.item14 #text21 {
+    width: 360px;
+}
+.item14 #text22 {
+    width: 130px;
+    margin-top: 1px;
+}
+
+.item14 #text23 {
+    width: 360px;
+}
+.item15 #text24 {
+    width: 310px;
+}
+.item15 tr > #th14 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 25px;
+    width: 312px;
+}
+.item16 tr > #th15 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 25px;
+    width: 312px;
+}
+.item18 tr > #th17 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    width: 45px;
+}
+.item19 tr > #th18 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    width: 45px;
+}
+
+
+
+    .item21 tr > #th20{
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    width: 70px;
+    
+}
+.item20 tr > #th19 {
+    border-left: 3px solid #81D4FA;
+    background-color: #E1F5FE;
+    padding: 3px;
+    width: 150px;
+}
+.item15 #text25 {
+    width: 310px;
+    margin-top: 0.5px;
+}
+.item15 #text26 {
+    width: 310px;
+    margin-top: 0.5px;
+}
+.item15 #text27 {
+    width: 310px;
+    margin-top: 1px;
+}
+.item15 #text28 {
+    width: 310px;
+    margin-top: 1px;
+}
+.item16 #text29 {
+    width: 310px;
+    margin-top: 5px;
+}
+.item16 #text30 {
+    width: 310px;
+    margin-top: 16px;
+}
+.item17 #text31 {
+    width: 100px;
+    
+  
+}
+.item17 #text32 {
+    width: 310px;
+    margin-left:8px;
+    
+}
+.item17 #text33 {
+    width: 100px;
+}
+
+.item17 #text34 {
+    width: 310px;
+    margin-left: 8px;
+}
+.item17 #text35 {
+    width: 100px;
+}
+
+.item17 #text36 {
+    width: 310px;
+    margin-left: 8px;
+}
+.item17 #text37 {
+    width: 100px;
+}
+
+.item17 #text38 {
+    width: 310px;
+    margin-left: 8px;
+}
+.item17 #text39 {
+    width: 66px;
+}
+
+.item17 #text40 {
+    width: 66px;
+    margin-left: 8px;
+}
+.item17 #text41 {
+    width: 66px;
+}
+.item17 #text42 {
+    width: 66px;
+}
+
+.item17 #text43 {
+    width: 66px;
+    margin-left: 8px;
+}
+.item19 #text44 {
+    width: 150px;
+}
+
+
+.item20 #text45 {
+    width: 170px;
+}
+
+
+
+
 
 
 

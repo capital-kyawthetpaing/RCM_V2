@@ -236,8 +236,8 @@ div.setListBox div.btn {
 
 
 div.setDetailBox div input,div.setListBox div.btn input {
-	height: 25px;
-	width: 150px;
+	/*height: 25px;
+	width: 150px;*/
 }
 
 /*--------------------------------------------------------------------------------------
