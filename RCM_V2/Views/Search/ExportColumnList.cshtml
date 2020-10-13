@@ -60,14 +60,14 @@
                     if (row != '')
                         $("#tblColumnList tbody").append(row);
                     count = 0;
-                    row = '<tr><td class="userRoleHeader" colspan=3><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
+                    row = '<tr><td class="userRoleHeader" colspan=5><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
                     $("#tblColumnList tbody").append(row);
                 }
                 if (count == 0) {
                     row = '<tr>'
                 }
                 row += '<td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td>';
-                if (count == 2) {
+                if (count == 4) {
                     row += '</tr>';
                 }
             }
@@ -83,7 +83,7 @@
                     
                     if (groupCount == checkCount)
                         checkedItem = "checked";
-                    row = '<tr><td class="userRoleHeader" colspan=3><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"' + checkedItem + '><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';                   
+                    row = '<tr><td class="userRoleHeader" colspan=5><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"' + checkedItem + '><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';                   
                     $("#tblColumnList tbody").append(row);
                 }
                 if (exportValueIDArr.includes(item.FormColumnName)) {
@@ -93,12 +93,12 @@
                     row = '<tr>'
                 }
                 row += '<td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);" ' + checkedItem + '/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td>';
-                if (count == 2) {
+                if (count == 4) {
                     row += '</tr>';
                 }
             }
             count = count + 1;
-            if (count > 2) {
+            if (count > 4) {
                 count = 0;
                 $("#tblColumnList tbody").append(row);
                 row = '';
