@@ -52,6 +52,7 @@
         var ColumnGroupID = '0';
         var row = '';
         var count = 0;
+        var totalcount = 0;
         $.each(items, function (i, item) {
           
             if (AutoID == "") {
@@ -97,11 +98,21 @@
                     row += '</tr>';
                 }
             }
+            totalcount = totalcount + 1;
             count = count + 1;
             if (count > 4) {
                 count = 0;
                 $("#tblColumnList tbody").append(row);
                 row = '';
+            }
+            if (totalcount > items.length - 1) {
+                debugger;
+                if (row != '' && count < 5) {
+                    count = 0;
+                    row += '</tr>';
+                    $("#tblColumnList tbody").append(row);
+                    row = '';
+                }
             }
             ColumnGroupID = item.ColumnGroupID;
         });
