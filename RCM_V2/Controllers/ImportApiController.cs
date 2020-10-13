@@ -74,7 +74,6 @@ namespace RCM_V2.Controllers
             }
 
             HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
-            string importType = HttpContext.Current.Request.Form["importType"];
             string fileName = HttpContext.Current.Request.Form["fileName"];
             if(fileName.Contains(".xlsx"))
             {
@@ -86,7 +85,7 @@ namespace RCM_V2.Controllers
 
             //insert to table
             ImportBL bl = new ImportBL();
-            bl.Import_SKU_Inventory_Update(path + fileName, "Sheet1", importType);
+            bl.Import_SKU_Inventory_Update(path + fileName, "Sheet1");
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
