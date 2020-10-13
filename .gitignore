@@ -338,3 +338,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/RCM_V2/ImportFiles/ItemData/Item_StockViewForm_ImportFormat_1x$20201009123309.xlsx
+/RCM_V2/ImportFiles/ItemData

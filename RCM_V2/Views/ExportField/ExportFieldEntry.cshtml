@@ -128,13 +128,15 @@
             //modal for exported column name
             $("#exportcolumnlistModal").iziModal({
                 top: 30,
-                width: "50%"
+                width: "80%",
+                overlayClose: false
             });
 
             //modal for exported order column name
             $("#ordercolumnlistModal").iziModal({
                 top: 30,
-                width: "50%"
+                width: "50%",
+                overlayClose: false
             });
 
             //to input for save confirm
@@ -193,7 +195,8 @@
         function BindOrderColumn() {
             $("#tblOrderList tbody").html('');
             for (i = 0; i < exportListarr.length; i++) {
-                var row = '<tr><td>' + exportListarr[i].ExpValueID + '</td><td>' + exportListarr[i].ExpValue + '</td></tr>';
+                //var row = '<tr><td>' + exportListarr[i].ExpValueID + '</td><td>' + exportListarr[i].ExpValue + '</td></tr>';
+                var row = '<tr><td>' + exportListarr[i].ExpValue + '</td></tr>';
                 $("#tblOrderList tbody").append(row);
             }
             sortable('#tblOrderList tbody', {
@@ -214,14 +217,15 @@
             $("#ExportValue").val('');
             $.each($("#tblOrderList > tbody > tr"), function () {
                 if (ExportValue == "") {
-                    ExportValueID = this.cells[0].innerHTML;
+                    //ExportValueID = this.cells[0].innerHTML;
                     ExportValue = this.cells[1].innerHTML;
                 }
                 else {
-                    ExportValueID += "," + this.cells[0].innerHTML;
+                    //ExportValueID += "," + this.cells[0].innerHTML;
                     ExportValue += "," + this.cells[1].innerHTML;
                 }
-                var exportObj = { ExpValue: this.cells[1].innerHTML, ExpValueID: this.cells[0].innerHTML };
+                //var exportObj = { ExpValue: this.cells[1].innerHTML, ExpValueID: this.cells[0].innerHTML };
+                var exportObj = { ExpValue: this.cells[1].innerHTML};
                 exportListarr.push(exportObj);
             });
 

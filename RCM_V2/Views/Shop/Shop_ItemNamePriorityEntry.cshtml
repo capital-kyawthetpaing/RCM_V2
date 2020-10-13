@@ -173,7 +173,8 @@
         function BindOrderColumn() {
             $("#tblOrderList tbody").html('');
             for (i = 0; i < exportListarr.length; i++) {
-                var row = '<tr><td>' + exportListarr[i].ExpValueID + '</td><td>' + exportListarr[i].ExpValue + '</td></tr>';
+                //var row = '<tr><td>' + exportListarr[i].ExpValueID + '</td><td>' + exportListarr[i].ExpValue + '</td></tr>';
+                var row = '<tr><td>' + exportListarr[i].ExpValue + '</td></tr>';
                 $("#tblOrderList tbody").append(row);
             }
             sortable('#tblOrderList tbody', {
@@ -194,11 +195,11 @@
             $("#PriorityValue").val('');
             $.each($("#tblOrderList > tbody > tr"), function () {
                 if (ExportValue == "") {
-                    ExportValueID = this.cells[0].innerHTML;
+                    //ExportValueID = this.cells[0].innerHTML;
                     ExportValue = this.cells[1].innerHTML;
                 }
                 else {
-                    ExportValueID += "," + this.cells[0].innerHTML;
+                    //ExportValueID += "," + this.cells[0].innerHTML;
                     ExportValue += "," + this.cells[1].innerHTML;
                 }
             });

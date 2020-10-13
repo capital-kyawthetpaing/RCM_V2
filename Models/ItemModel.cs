@@ -20,30 +20,12 @@
         public string JanCD { get; set; }
         public string BrandName { get; set; }
         public string MakerName { get; set; }
-        public string RelatedProduct { get; set; }
-        public string ProductName { get; set; }
-        public string RelatedComment { get; set; }
-        public string ProductDetail { get; set; }
-
-        public string PCDescription { get; set; }
-
-        public string PcSaleDescription { get; set; }
-
-        public string PcSaleDescriptionSmart { get; set; }
-        
-        public string ProductInfo { get; set; }
-
-        public string ItemZ { get; set; }
-        public string ItemZSale { get; set; }
-        public string CampaignImage { get; set; }
-        public string ShopCategory { get; set; }
-        public string CategoryRakuten { get; set; }
-        public string CategoryYahoo { get; set; }
-        public string CategoryPonpare { get; set; }
-        public string CategoryWowma { get; set; }
-        public string Yahoospec { get; set; }
-        public string JanTextbox { get; set; }
-
+        public string ImageFileName { get; set; }
+        public string CategoryName { get; set; }
+        public string ColorName { get; set; }
+        public string SearchKeyword { get; set; }
+        public string SKSStatus { get; set; }
+        public string ShopStatus { get; set; }
         #endregion
 
         public ExportFieldsModel exportFieldsModel { get; set; }

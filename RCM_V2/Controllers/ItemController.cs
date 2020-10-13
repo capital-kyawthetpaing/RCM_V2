@@ -28,5 +28,10 @@ namespace RCM_V2.Controllers
         {
             return View();
         }
+
+        public ActionResult ItemPageCreateList()
+        {
+            return View();
+        }
     }
 }

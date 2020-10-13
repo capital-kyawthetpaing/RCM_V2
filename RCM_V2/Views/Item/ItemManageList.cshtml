@@ -213,6 +213,7 @@
                         <tr>
                             <th width="4%"></th>
                             <th width="3%"></th>
+                            <th>商品画像</th>
                             <th>商品番号</th>
                             <th>商品名</th>
                             <th>定価</th>
@@ -278,32 +279,83 @@
             });
 
             $("#btnGenerate").click(function () {
-                var obj = {
-                    Type: '2',
-                    ExportID: $("#AutoID").val(),
-                    ItemCD: $("#ItemCD").val(),
-                    BrandName: $("#BrandName").val(),
-                    ItemName: $("#ItemName").val(),
-                    MakerCD: $("#MakerCD").val(),
-                    MakerName: $("#MakerName").val(),
-                    YearCD: $("#YearCD").val(),
-                    SeasonCD: $("#SeasonCD").val(),
-                    CatalogInfo: $("#CatalogInfo").val(),
-                    ClassName: $("#ClassName").val(),
-                    CompetitionName: $("#CompetitionName").val(),
-                };
-                var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
-                var items = JSON.parse(response); 
+                var res = ErrorCheck('Panel1');
+                if (res == "0") {
+                    if ($("#AutoID").val()) {
+                        var obj = {
+                            Type: '2',
+                            ExportID: $("#AutoID").val(),
+                            ItemCD: $("#ItemCD").val(),
+                            BrandName: $("#BrandName").val(),
+                            ItemName: $("#ItemName").val(),
+                            MakerCD: $("#MakerCD").val(),
+                            MakerName: $("#MakerName").val(),
+                            YearCD: $("#YearCD").val(),
+                            SeasonCD: $("#SeasonCD").val(),
+                            CatalogInfo: $("#CatalogInfo").val(),
+                            ClassName: $("#ClassName").val(),
+                            CompetitionName: $("#CompetitionName").val(),
+                        };
+                        var response = CalltoApiController('@Url.Action("ItemManage_List", "api/ItemApi")', obj);
+                        var items = JSON.parse(response);
+                        
+                        var today = new Date();
+                        var dd = String(today.getDate()).padStart(2, '0');
+                        var mm = String(today.getMonth() + 1).padStart(2, '0');
+                        var yyyy = today.getFullYear();
 
-                var today = new Date();
-                var dd = String(today.getDate()).padStart(2, '0');
-                var mm = String(today.getMonth() + 1).padStart(2, '0'); 
-                var yyyy = today.getFullYear();
-
-                today = yyyy + mm + dd;
-                ExportToExcel(items, "商品情報_" + today + ".xlsx","Sheet1");
+                        today = yyyy + mm + dd;
+                        ExportToExcel(items, $("#AutoID option:selected").text() + today + ".xlsx", "Sheet1");
+                    }
+                    else {
+                        ShowMessage("E102");
+                    }
+                }
+                else {
+                    ShowMessage(res);
+                }
             });
 
+            function ErrorCheck(e1) {
+                var r1;
+                var type = [":input[type=text], textarea", "select"];
+                for (var i = 0; i < type.length; i++) {
+                    if (r1 != "0") {
+                        $('#' + e1 + ' *').filter(type[i]).each(function () {
+                            var result;
+                            if (i == 0)
+                                result = Err_Chk_Text(this);
+                            else
+                                result = Err_Chk_Select(this);
+                            if (result == "0") {
+                                r1 = "0";
+                                return false;
+                            }
+                            else
+                                r1 = result;
+                        });
+                    }
+                }
+                return r1;
+            }
+
+            function Err_Chk_Text(ctrl) {
+                if (!$(ctrl).val()) {
+                    return "E111";
+                }
+                else
+                    return "0";
+            }
+            function Err_Chk_Select(ctrl) {
+                if ($(ctrl).val() == "0") {
+                    return "E111";
+                }
+                else if (!$(ctrl).val()) {
+                    return "E111";
+                }
+                else
+                    return "0";
+            }
 
             $('#tbItemManage tbody').on('click', 'td.details-control', function () {
                 var tr = $(this).closest('tr');
@@ -402,6 +454,7 @@
                         "defaultContent": ''
                     },
                     {},
+                    { "data": "itemImage"},
                     { "data": "ItemCD"},
                     { "data": "ItemName"},
                     { "data": "ListPrice" },
@@ -427,39 +480,46 @@
                         }
                     },
                     {
-                        "targets": [4, 5, 6, 7, 8],
+                        "targets": 2,
+                        "data": "itemImage",
+                        "render": function (data, type, row) {
+                            return '<img src="/ItemImages/' + row.itemImage + '" width="50px" height="50px" />';
+                        }
+                    },
+                    {
+                        "targets": [5, 6, 7, 8, 9],
                         "className": 'textAlign',
                     },
                     {
-                        "targets": 4,
+                        "targets": 5,
                         "data": "ListPrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['ListPrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 5,
+                        "targets": 6,
                         "data": "SalePrice",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['SalePrice1'] + ')';
                         }
                     },
                     {
-                        "targets": 6,
+                        "targets": 7,
                         "data": "Cost1",
                         "render": function (data, type, row) {
                             return data + '<br/>(' + row['Cost'] + ')';
                         }
                     },
                     {
-                        "targets": 9,
+                        "targets": 10,
                         "data": "ItemCD",
                         "render": function (data) {
                             return '<input type="button" style="width:70px;" onclick="ShowSKUView(\'' + data + '\')" value="SKU表示">';
                         }
                     },
                     {
-                        "targets": 10,
+                        "targets": 11,
                         "data": "ItemCD",
                         "render": function (data, type, row) {
                             var jsonData = JSON.parse(row.TargetShop);

@@ -1,8 +1,11 @@
-﻿using Import_BL;
+﻿using DL;
+using Import_BL;
 using Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -50,12 +53,41 @@ namespace RCM_V2.Controllers
             //Save the File.
             postedFile.SaveAs(path + fileName);
 
-            //insert M_Item table
+            //insert to table
             ImportBL bl = new ImportBL();
-            bl.Import_Item_Data(fileName,"Sheet1");
+            bl.Import_Item_Data(path + fileName, "Sheet1");
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);
-        }      
+        }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("Import_SKU_Inventory_Update")]
+        public HttpResponseMessage Import_SKU_Inventory_Update()
+        {
+            string path = HttpContext.Current.Server.MapPath("~/ImportFiles/ItemData/");
+            if(!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            HttpPostedFile postedFile = HttpContext.Current.Request.Files[0];
+            string fileName = HttpContext.Current.Request.Form["fileName"];
+            if(fileName.Contains(".xlsx"))
+            {
+                fileName = fileName.Replace(" ", "_").Replace(".xls", "");
+                fileName = fileName + "$" + DateTime.Now.ToString("yyyyMMdd") + DateTime.Now.ToString("HHmmss") + ".xlsx";
+            }
+            //Save the File.
+            postedFile.SaveAs(path + fileName);
+
+            //insert to table
+            ImportBL bl = new ImportBL();
+            bl.Import_SKU_Inventory_Update(path + fileName, "Sheet1");
+
+            //Send OK Response to Client.
+            return Request.CreateResponse(HttpStatusCode.OK, fileName);
+        }
     }
 }

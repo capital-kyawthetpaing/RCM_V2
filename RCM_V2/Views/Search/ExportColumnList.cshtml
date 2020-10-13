@@ -5,7 +5,7 @@
         <table class="userCmnSet editTable"  style="margin-bottom:0px;">
             <tbody>
                 <tr>
-                    <th></th>
+                    @*<th></th>*@
                     <td>
                         <div>
                             <table cellspacing="0" id="tblColumnList" style="border-collapse:collapse;table-layout:fixed;width:100%">
@@ -17,7 +17,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <th></th>
+                    @*<th></th>*@
                     <td>
                         <input type="button" id="btnAddColumn" value="OK" Style="width:80px;" onclick="AddColumnName();"/>
                         <input type="button" id="btnClose" value="Close" style="width:80px" onclick="CloseExportModal()" />
@@ -51,36 +51,69 @@
         var items = JSON.parse(response);
         var ColumnGroupID = '0';
         var row = '';
+        var count = 0;
+        var totalcount = 0;
         $.each(items, function (i, item) {
           
             if (AutoID == "") {
                 //if different group, add group title
                 if (item.ColumnGroupID != ColumnGroupID) {
-                    row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
-                    $("#tblColumnList tbody").append(row);                    
+                    if (row != '')
+                        $("#tblColumnList tbody").append(row);
+                    count = 0;
+                    row = '<tr><td class="userRoleHeader" colspan=5><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';
+                    $("#tblColumnList tbody").append(row);
                 }
-                row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';                
+                if (count == 0) {
+                    row = '<tr>'
+                }
+                row += '<td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);"/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td>';
+                if (count == 4) {
+                    row += '</tr>';
+                }
             }
             else {   
                 var checkedItem = "";
                 if (item.ColumnGroupID != ColumnGroupID) {
-                    
+                    if (row != '')
+                        $("#tblColumnList tbody").append(row);
+                    count = 0;
                     var groupList = items.filter((obj) => obj.ColumnGroupID === item.ColumnGroupID);
                     const groupCount = groupList.length;
                     const checkCount = groupList.filter((obj) => exportValueIDArr.includes(obj.FormColumnName)).length;
                     
                     if (groupCount == checkCount)
                         checkedItem = "checked";
-                    row = '<tr><td class="userRoleHeader"><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"' + checkedItem + '><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';                   
+                    row = '<tr><td class="userRoleHeader" colspan=5><input id="' + item.ColumnGroupID + '" class="userRole" type="checkbox" onChange="CheckView(this);"' + checkedItem + '><label for="' + item.ColumnGroupID + '">' + item.ColumnGroupName + '</label></td></tr>';                   
                     $("#tblColumnList tbody").append(row);
                 }
                 if (exportValueIDArr.includes(item.FormColumnName)) {
                     checkedItem = "checked";
-                }               
-                row = '<tr><td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);" ' + checkedItem + '/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td></tr>';               
+                }
+                if (count == 0) {
+                    row = '<tr>'
+                }
+                row += '<td><input id="' + item.FormColumnName + '" value="' + item.TableColumnName + '" name="' + item.ColumnGroupID + '" class="userRoleChild" type="checkbox" onChange="CheckView(this);" ' + checkedItem + '/><label for="' + item.FormColumnName + '">' + item.TableColumnName + '</label></td>';
+                if (count == 4) {
+                    row += '</tr>';
+                }
             }
-            
-            $("#tblColumnList tbody").append(row);
+            totalcount = totalcount + 1;
+            count = count + 1;
+            if (count > 4) {
+                count = 0;
+                $("#tblColumnList tbody").append(row);
+                row = '';
+            }
+            if (totalcount > items.length - 1) {
+                debugger;
+                if (row != '' && count < 5) {
+                    count = 0;
+                    row += '</tr>';
+                    $("#tblColumnList tbody").append(row);
+                    row = '';
+                }
+            }
             ColumnGroupID = item.ColumnGroupID;
         });
     }
