@@ -161,6 +161,7 @@
 
         <div class="container-fluid body-content">
             <input type="hidden" id="MessageURL" value="@Url.Action("Message_Select", "api/MessageApi")" />
+            <input type="hidden" id="LoginID" value="@ID" />
             @RenderBody()
         </div>
     </form>
