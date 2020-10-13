@@ -39,5 +39,6 @@
 
         public string fileName { get; set; }
         public string sheetName { get; set; }
+        public string importType { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Models.ItemModel
+@{
     ViewBag.Title = "Import_Item_Data";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -25,31 +26,32 @@
         $(document).ready(function () {
 
             $("#btnImport").click(function () {
-               var fileUpload = $("#uploadFile1").get(0);
+                var fileUpload = $("#uploadFile1").get(0);
                 var files = fileUpload.files;
                 var formData = new FormData();
                 formData.append("fileName", $("#uploadFile1").val().replace(/C:\\fakepath\\/i, ''));
                 formData.append("file", $("#uploadFile1")[0].files[0]);
+                formData.append("importType", "商品");
 
                 $.ajax({
                     url: '/api/ImportApi/Import_Item_Data_Save',
                     type: 'POST',
-                    contentType: false, // Not to set any content header  
-                    processData: false, // Not to process data  
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
                     data: formData,
                     async: false,
                     headers:
                     {
                         Authorization: 'Basic ' + btoa('Capital_MM' + ':' + 'CKM12345!')
-                    },                  
+                    },
                     success: function (data) {
-                       alert('OK');
+                        alert('OK');
                     },
                     error: function (xhr, textStatus, errorThrown) {
-                       alert('Error');
+                        alert('Error');
                     }
                 });
-                
+
             });
         });
 

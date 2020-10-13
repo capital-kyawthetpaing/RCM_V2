@@ -45,6 +45,7 @@ namespace RCM_V2.Controllers
 
             //Fetch the File Name.
             string fileName = HttpContext.Current.Request.Form["fileName"];
+            string importType = HttpContext.Current.Request.Form["importType"];
             if (fileName.Contains(".xlsx"))
             {
                 fileName = fileName.Replace(" ", "_").Replace(".xls", "");
@@ -55,7 +56,7 @@ namespace RCM_V2.Controllers
 
             //insert to table
             ImportBL bl = new ImportBL();
-            bl.Import_Item_Data(path + fileName, "Sheet1");
+            bl.Import_Item_Data(path + fileName, "Sheet1", importType);
 
             //Send OK Response to Client.
             return Request.CreateResponse(HttpStatusCode.OK, fileName);

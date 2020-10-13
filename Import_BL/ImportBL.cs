@@ -23,15 +23,19 @@ namespace Import_BL
             return bdl.SelectJson("ItemImportLog_Select", itemImportModel.Sqlprms);
         }
 
-        public string Import_Item_Data(string filename, string sheetname)
+        public string Import_Item_Data(string filename, string sheetname,string importType)
         {
             ItemModel itemModel = new ItemModel();
             itemModel.fileName = filename;
             itemModel.sheetName = sheetname;
+            itemModel.importType = importType;
+            itemModel.UserID = "KTP";
             BaseDL bdl = new BaseDL();
-            itemModel.Sqlprms = new SqlParameter[2];
+            itemModel.Sqlprms = new SqlParameter[4];
             itemModel.Sqlprms[0] = new SqlParameter("@FileName", itemModel.fileName);
             itemModel.Sqlprms[1] = new SqlParameter("@SheetName", itemModel.sheetName);
+            itemModel.Sqlprms[2] = new SqlParameter("@ImportType", itemModel.importType);
+            itemModel.Sqlprms[3] = new SqlParameter("@ImportedBy", itemModel.UserID);
             return bdl.InsertUpdateDeleteData("Import_ItemData", itemModel.Sqlprms);
         }
 
