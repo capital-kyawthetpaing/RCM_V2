@@ -1,50 +1,92 @@
-﻿#CmnContents {
+﻿#block {
+    position: fixed;
+    background: #fff;
+    top: 100px;
+    z-index: 99;
+    width: 305px;
+}
+#scrollArea {
+    margin-left: 310px;
+}
+
+div.setDetailBox .fixed_header {
+    letter-spacing: 0.1em;
+    position: fixed;
+    width: 75%;
+    z-index: 99;
+    background: white;
+    height: 60px;
+    margin-top: -10px;
+    padding-top: 10px;
+}
+
+div.setDetailBox .row{
+    padding-top: 50px;
+}
+
+#CmnContents {
     display: flex;
     justify-content:center
  }
 
-.item1 tr td > #text{
-    width:130px;
-    height:23px;
+.item1 tr td > input[type="text"] {
+    width: 130px;
+    margin-bottom: 4px;
 }
 
-.item1 tr td > #text1 {
-    width: 270px;
-    height: 23px;
-}
-.item3  #text2 {
-    width: 98px;
-    height: 15px;
-    margin-left:15px;
-}
-
-.item4 #text3,#text4 {
-    width: 97px;
-    margin-left: 8px;
-}
-.item5 #text4 {
-    width: 97px;
-    margin-left: 8px;
-}
-.item6 #text5{
-    width:100px;
-    height:15px;
-}
-.item6 #text6 {
-    width: 180px;
-    margin-left: 8px;
-}
-.item6 #text7 {
+    .item1 tr td > #text1 {
+        width: 270px;
+        height: 23px;
+    }
+div.setDetailBox input[type="text"].RP, div.setDetailBox .RPName, div.setDetailBox .RPComment {
     width: 100px;
+}
+
+/*---商品詳細情報---*/
+div.setDetailBox input[type="text"].ProductDetail, div.setDetailBox input[type="text"].ProductInfo {
+    width: 105px;
     height: 15px;
+    margin-right: 5px;
 }
-.item6 #text8 {
-    width: 180px;
-    margin-left: 8px;
+div.setDetailBox .ProductDetailContent, div.setDetailBox .ProductInfoContent {
+    width: 190px;
+    height: 56px;
 }
-.item1 img{
-    width:50px;
-    height:50px
+div#scrollArea #hbProductDetail p, div#scrollArea #hbProductInfo p {
+    border-left: 3px solid #73c5ff;
+    border-bottom: 1px solid #73c5ff;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 17px;
+    background-image: url('../images/btn_on-off.gif');
+    background-position: 11px 3px;
+    background-repeat: no-repeat;
+    text-align: left;
+    padding-left: 27px;
+    width: 100%;
+}
+    div#scrollArea #hbProductDetail p.active, div#scrollArea #hbProductInfo p.active {
+        background-position: 11px -25px;
+    }
+div#scrollArea .item4, div#scrollArea .item5 {
+    display: block;
+}
+    div#scrollArea .item4 .hideProductDetail, div#scrollArea .item5 .hideProductInfo {
+        display: none;
+    }
+/*---商品詳細情報---*/
+
+.evidence {
+    border-left: 3px solid #73c5ff;
+    border-bottom: 1px solid #73c5ff;
+    background-color: #E1F5FE;
+    padding: 3px;
+    width: 100px;
+}
+
+.item1 img {
+    width: 52px;
+    height: 52px
 }
 
 .item1 tr th > #btnRegister1 {
@@ -66,8 +108,7 @@
 
 .item1 {
     margin-top: 3px;
-    width: 310px;
-    margin-left: 15px
+    width: 292px;
 }
 
     .item1 tr th > #hideBlocks {
@@ -76,83 +117,132 @@
         padding: 3px;
         border-bottom: 1px dashed #333;
         background-image: url('../images/btn_on-off.gif');
-        background-position: 11px 3px;
+        background-position: 11px -25px;
         background-repeat: no-repeat;
         text-align: left;
         padding-left: 27px;
     }
 
-.item6 tr th > #hideBlocks {
-    background-color: #E1F5FE;
-    height: 17px;
-    padding: 3px;
-    background-image: url('../images/btn_on-off.gif');
-    background-position: 11px 3px;
-    background-repeat: no-repeat;
-    text-align: left;
-    padding-left: 27px;
-    border-left: 3px solid #81D4FA;
-    width:312px;
-}
-.item6  th > #Block {
-    background-color: #E1F5FE;
-    height: 17px;
-    padding: 3px;
-    background-image: url('../images/btn_on-off.gif');
-    background-position: 11px 3px;
-    background-repeat: no-repeat;
-    text-align: left;
-    padding-left: 27px;
-    border-left: 3px solid #81D4FA;
-    width: 312px;
-    margin-left:15px;
-}
-    .item1 tr > #th1 {
+    .item1 tr > #th1, .item1 tr .th1 {
         border-left: 3px solid #0288D1;
         background-color: #73C2FB;
         padding: 3px;
         height: 2px;
     }
- 
-   .item2 tr > #th2 {
-        border-left: 3px solid #81D4FA;
-        background-color: #E1F5FE;
-        padding: 3px;
-        height: 2px;
-    }
-   .item3 tr > #th3 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    }
 
-   .item4 tr > #th4 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
+.itemPC, .itemOption, .option, .imgCampaign, .shopCategory, .categoryID, .itemCategoryID {
+    width: 100%;
+}
+        .itemPC tr:last-child td{
+            padding-top: 5px;
+            padding-bottom: 10px;
+        }
+
+/*---オプション---*/
+span {
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+}
+.option tr td{
+    height:15px;
+}
+    .option tr td:first-child{
+        width: 30%;
     }
-.item5 tr > #th5 {
-    border-left: 3px solid #81D4FA;
+    .option tr td:first-child input[type="text"] {
+        width: 70%;
+    }
+.option tr td:last-child input[type="text"]{
+    width: 85%;
+}
+/*---オプション---*/
+/*--キャンペーン画像--*/
+div.setDetailBox input[type="text"].CampaignImg, div.setDetailBox input[type="text"].txtshopCategory {
+    width: 100%;
+}
+.lblCampaignImage {
+    border-left: 3px solid #73c5ff;
+    border-bottom: 1px solid #73c5ff;
     background-color: #E1F5FE;
     padding: 3px;
-    height: 2px;
+}
+.imgCampaign tr:last-child td input[type="text"], .txtshopCategory {
+    margin-bottom: 2px;
+}
+/*--キャンペーン画像--*/
+/*---カテゴリID - Yahooスペック---*/
+.itemCategoryID tr td{
+    padding-right: 0px;
+}
+.lblCategoryID {
+    border-left: 3px solid #73c5ff;
+    border-bottom: 1px solid #73c5ff;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 15px;
+    vertical-align: top;
+}
+.categoryID tr td, .categoryID1 tr td {
+    height: 15px;
+}
+    .categoryID tr td:first-child, .categoryID1 tr td:first-child {
+        width: 30%;
+        text-align: right;
+    }
+    .categoryID tr td:first-child input[type="text"] {
+        width: 70%;
+    }
+.categoryID tr td:nth-child(2) input[type="text"]{
+    width: 100%;
+}
+    .categoryID tr td:last-child, .categoryID1 tr td:last-child {
+        width: 50px;
+        padding-right: 0px;
+    }
+.dBlock table:last-child.categoryID1 tr td input[type="text"]{
+    width:100%;
+}
+/*---カテゴリID - Yahooスペック---*/
+div.setDetailBox .PCTextArea {
+    width: 100%;
 }
 
-.item2 td {
+.th2, .PCLabel, .lblOption, .lblshopCategory, .lblJan, .lblTagID, .lblShop {
+    border-left: 3px solid #73c5ff;
+    border-bottom: 1px solid #73c5ff;
+    background-color: #E1F5FE;
+    padding: 3px;
+    height: 15px;
+    vertical-align: top;
+    white-space: nowrap;
+}
+.item2 tr > td, .item3 tr > td {
+    height: 15px;
+}
+
+.item2 td #lblYear, .item2 td #lblSeason {
     margin-top: 10px;
-    padding-right: 55px;
+    width: 25%;
+    padding-right: 15px;
     font-size: 12px;
     height: 2px;
 }
 
+.item2 td #lblCatalogInfo {
+    margin-top: 10px;
+    padding-right: 15px;
+    font-size: 12px;
+    height: 2px;
+}
+.item2{
+    margin-top: 10px;
+}
 
 table #td1 {
-    height:40px;
-    padding-bottom:20px;
-    font-size:12px;
-   
+    height: 40px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    padding-right: 5px;
 }
 
 table #td {
@@ -162,7 +252,6 @@ table #td {
 }
 
 label {
-    margin-top: 30px;
     border-left: 3px solid #0288D1;
     background-color: #73C2FB;
     padding: 3px;
@@ -171,270 +260,60 @@ label {
     width: 60px;
     margin-right: 15px;
     font-weight: bold;
-    margin-left:15px
-
 }
-.item8 tr > #th6 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
+
+/*--JAN--*/
+.col-md-2 .Jan tr th.lblJan {
+    width: 80%;
+}
+.col-md-5 .Jan tr th.lblJan {
+    width: 30%;
+}
+.col-md-5 .Jan tr td input[type="text"] {
+    width: 100%;
+}
+.Jan tr td{
+    height: 15px;
+}
+/*--JAN--*/
+
+/*--タグID--*/
+table.TagID{
+    width: 100%;
+    margin-top: 10px;
+}
+.TagID p {
+    border-bottom: 1px dotted #000;
     padding: 3px;
-    height: 2px;
+    height: 17px;
+    background-image: url('../images/btn_on-off.gif');
+    background-position: 11px 3px;
+    background-repeat: no-repeat;
+    text-align: left;
+    padding-left: 27px;
+    width: 100%;
+    letter-spacing: 0.1em;
+    font-size: 15px;
+    font-weight: bold;
 }
-.item9 tr > #th7 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width:312px;
+.TagID tr td{
+    width: 23%;
 }
-.item9 tr > #th8 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 312px;
-    
+div.setDetailBox input[type="text"].txtTagID, .tblTagID {
+    width: 100%;
 }
-
-.item10 tr > #th9 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 312px;
+    .tblTagID tr th, .tblTagID tr td {
+        border: 1px solid;
+        border-color: inherit;
+        width: 50%
+    }
+    .tblTagID tr th{
+        text-align:center;
+    }
+/*--タグID--*/
+/*--出品対象ショップ--*/
+.tblShop tr{
+    border-bottom: 1px solid;
+    border-color: inherit;
 }
-.item11 tr > #th10 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 312px;
-}
-.item12 tr > #th11 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 668px;
-}
-.item13 tr > #th12 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 668px;
-}
-.item14 tr > #th13 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 66px;
-}
-.item17 tr > #th16 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 2px;
-    width: 120px;
-    letter-spacing:normal;
-}
-.item9 #text9 {
-    width: 312px;
-    height: 50px;
-}
-
-.item10 #text10 {
-    width: 305px;
-    height: 50px;
-}
-
-.item11 #text11 {
-    width: 312px;
-    height: 50px;
-}
-.item12 #text12 {
-    width: 655px;
-    height: 50px;
-}
-.item13 #text13 {
-    width: 655px;
-    height: 50px;
-}
-.item14 #text14 {
-    width: 130px;
-   
-}
-.item14 #text15 {
-    width: 360px;
-}
-.item14 #text16 {
-    width: 130px;
-    margin-top: 0.5px;
-}
-.item14 #text17 {
-    width: 360px;
-}
-.item14 #text18 {
-    width: 130px;
-    margin-top: 0.5px;
-}
-.item14 #text19 {
-    width: 360px;
-}
-.item14 #text20 {
-    width: 130px;
-    margin-top: 1px;
-}
-.item14 #text21 {
-    width: 360px;
-}
-.item14 #text22 {
-    width: 130px;
-    margin-top: 1px;
-}
-
-.item14 #text23 {
-    width: 360px;
-}
-.item15 #text24 {
-    width: 310px;
-}
-.item15 tr > #th14 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 25px;
-    width: 312px;
-}
-.item16 tr > #th15 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    height: 25px;
-    width: 312px;
-}
-.item18 tr > #th17 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    width: 45px;
-}
-.item19 tr > #th18 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    width: 45px;
-}
-
-
-
-    .item21 tr > #th20{
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    width: 70px;
-    
-}
-.item20 tr > #th19 {
-    border-left: 3px solid #81D4FA;
-    background-color: #E1F5FE;
-    padding: 3px;
-    width: 150px;
-}
-.item15 #text25 {
-    width: 310px;
-    margin-top: 0.5px;
-}
-.item15 #text26 {
-    width: 310px;
-    margin-top: 0.5px;
-}
-.item15 #text27 {
-    width: 310px;
-    margin-top: 1px;
-}
-.item15 #text28 {
-    width: 310px;
-    margin-top: 1px;
-}
-.item16 #text29 {
-    width: 310px;
-    margin-top: 5px;
-}
-.item16 #text30 {
-    width: 310px;
-    margin-top: 16px;
-}
-.item17 #text31 {
-    width: 100px;
-    
-  
-}
-.item17 #text32 {
-    width: 310px;
-    margin-left:8px;
-    
-}
-.item17 #text33 {
-    width: 100px;
-}
-
-.item17 #text34 {
-    width: 310px;
-    margin-left: 8px;
-}
-.item17 #text35 {
-    width: 100px;
-}
-
-.item17 #text36 {
-    width: 310px;
-    margin-left: 8px;
-}
-.item17 #text37 {
-    width: 100px;
-}
-
-.item17 #text38 {
-    width: 310px;
-    margin-left: 8px;
-}
-.item17 #text39 {
-    width: 66px;
-}
-
-.item17 #text40 {
-    width: 66px;
-    margin-left: 8px;
-}
-.item17 #text41 {
-    width: 66px;
-}
-.item17 #text42 {
-    width: 66px;
-}
-
-.item17 #text43 {
-    width: 66px;
-    margin-left: 8px;
-}
-.item19 #text44 {
-    width: 150px;
-}
-
-
-.item20 #text45 {
-    width: 170px;
-}
-
-
-
-
-
-
-
-
-
-
-
+/*--出品対象ショップ--*/

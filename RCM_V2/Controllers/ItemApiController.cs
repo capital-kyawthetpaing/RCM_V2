@@ -65,5 +65,14 @@ namespace RCM_V2.Controllers
             ItemBL itemBL = new ItemBL();
             return Ok(itemBL.ItemPageCreate_List(itemModel));
         }
+
+        [UserAuthentication]
+        [HttpPost]
+        [ActionName("ItemEntry_Detail")]
+        public IHttpActionResult ItemEntry_Detail(ItemModel itemModel)
+        {
+            ItemBL itemBL = new ItemBL();
+            return Ok(itemBL.ItemEntry_Detail(itemModel));
+        }
     }
 }

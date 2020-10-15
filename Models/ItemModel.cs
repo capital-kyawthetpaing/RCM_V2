@@ -43,6 +43,22 @@
         public string RelatedComment { get; set; }
         public string ProductName { get; set; }
         public string RelatedProduct { get; set; }
+        public string TagSize { get; set; }
+        public string TagID { get; set; }
+        public string ProductCode { get; set; }
+        public string ShippingFlag { get; set; }
+        public string TaxRate { get; set; }
+        public string Delivery_Charges { get; set; }
+        public string Warehouse_Specified { get; set; }
+        public string Extra_Shipping { get; set; }
+        public string ShippingNumber { get; set; }
+        public string SingleItemShipping { get; set; }
+        public string BlackMarket_Password { get; set; }
+        public string DoublePrice_Ctrl_No { get; set; }
+        public string YahooUrl { get; set; }
+        public string Weight { get; set; }
+        public string DeliverySetname { get; set; }
+
 
         #endregion
 

@@ -51,5 +51,13 @@ namespace Item_BL
             itemModel.Sqlprms[17] = new SqlParameter("@Type", SqlDbType.VarChar) { Value = itemModel.Type };
             return bdl.SelectJson("ItemPageCreateList_Select", itemModel.Sqlprms);
         }
+
+        public string ItemEntry_Detail(ItemModel itemModel)
+        {
+            BaseDL bdl = new BaseDL();
+            itemModel.Sqlprms = new SqlParameter[1];
+            itemModel.Sqlprms[0] = new SqlParameter("@ItemCD", SqlDbType.VarChar) { Value = itemModel.ItemCD };
+            return bdl.SelectJson("Select_ItemEntry_Detail", itemModel.Sqlprms);
+        }
     }
 }
