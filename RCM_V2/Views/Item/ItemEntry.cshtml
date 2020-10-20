@@ -924,48 +924,44 @@
                         </div>
                     </div>
                     <br />
-                    <div class="col-md-12" style="padding-left:0px;padding-right:0px;">
+                    <div class="col-md-12" style="padding-left:0px;padding-right:0px;">                       
                         <table>
                             <tr>
                                 <th class="lblShop">出品対象ショップ</th>
-                                <td class="col-md-10">
-                                    <table class="tblShop">
-                                        <tr>
-                                            <td class="col-md-2">
-                                                ラケットプラザ
-                                            </td>
-                                            <td id="tdRacket">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">
-                                                ラックピース
-                                            </td>
-                                            <td id="tdRackPiece">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">
-                                                スポーツプラザ
-                                            </td>
-                                            <td id="tdSportsPlaza">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">
-                                                ベースボールプラザ
-                                            </td>
-                                            <td id="tdBaseballPlaza">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-2">
-                                                卓球本舗
-                                            </td>
-                                            <td id="tdOwnShop">
-                                            </td>
-                                        </tr>
-                                    </table>
+                                <td class="col-md-10 dynamicAtt">
+                                            @*<table class="tblShop">
+                                                <tr>
+                                                    <td class="col-md-2">
+                                                        ラケットプラザ
+                                                    </td>
+                                                    <td id="tdRacket">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">
+                                                        ラックピース
+                                                    </td>
+                                                    <td id="tdRackPiece"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">
+                                                        スポーツプラザ
+                                                    </td>
+                                                    <td id="tdSportsPlaza"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">
+                                                        ベースボールプラザ
+                                                    </td>
+                                                    <td id="tdBaseballPlaza"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="col-md-2">
+                                                        卓球本舗
+                                                    </td>
+                                                    <td id="tdOwnShop"></td>
+                                                </tr>
+                                            </table>*@                            
                                 </td>
                             </tr>
                         </table>
@@ -1181,6 +1177,7 @@
     <script type="text/javascript">
         $(document).ready(function (){
             var ItemCD = getUrlParameter('ItemCD');
+            BindChk();
 
             $("#hbProductDetail p").on("click", function () {
                 $("tr.hideProductDetail").slideToggle();
@@ -1228,6 +1225,125 @@
                 chkActive_CheckedChange();
             });
         });
+
+
+        function BindChk() {
+            var obj = {
+                itemCD: null
+                };
+        var response = CalltoApiController('@Url.Action("ShopList_Select", "api/ItemApi")', obj);
+            var json = JSON.parse(response);
+
+            var wrapper = $(".dynamicAtt");
+            $(wrapper).append('<table id="tblShop" class="tblShop">' +            
+                '<tbody>' +
+                '</tbody>' +
+            '</table>');
+            for (var x = 1; x <= Object.keys(json).length; x++) {
+                var countRow = $('#tblShop > tbody > tr').length;
+                var ShowView = '<input type="checkbox">';
+                if (countRow == 0) {
+                    $("#tblShop > tbody").append(
+                        '<tr>' +
+                        ' <td> <b>ラケットプラザ</b></td>' +
+                        '</tr>' +
+                        '<tr>' +
+                        ' <td> <b>ラックピース</b></td>' +
+                        '</tr>' +
+                        '<tr>' +
+                        ' <td> <b>スポーツプラザ</b></td>' +
+                        '</tr>' +
+                        '<tr>' +
+                        ' <td> <b>ベースボールプラザ</b></td>' +
+                        '</tr>' +
+                        '<tr>' +
+                        ' <td> <b>卓球本舗</b></td>' +
+                        '</tr>'
+                    );
+                }
+                else if (countRow >= 1) {
+                    if (json[x - 1].MallID == '01') {
+                         if (json[x - 1].ShopID == 'R_racket') {
+                            $("#tblShop > tbody > tr:eq(0)").append(
+                                '<td>' + ShowView + '楽天</td>'
+                            );
+                        }
+                         else if (json[x - 1].ShopID == 'R_luckpiece') {
+                             $("#tblShop > tbody > tr:eq(1)").append(
+                                 '<td>' + ShowView + '楽天</td>'
+                             );
+                         }
+
+                         else if (json[x - 1].ShopID == 'R_sportsplaza') {
+                             $("#tblShop > tbody > tr:eq(2)").append(
+                                 '<td>' + ShowView + '楽天</td>'
+                             );
+                         }
+                         else if (json[x - 1].ShopID == 'R_honpo') {
+                            $("#tblShop > tbody > tr:eq(3)").append(
+                                '<td>' + ShowView + '楽天</td>'
+                            );
+                        }                        
+                    }
+                    if (json[x - 1].MallID == '02') {                        
+                        if (json[x - 1].ShopID == 'Y_racket') {
+                            $("#tblShop > tbody > tr:eq(0)").append(
+                                '<td>' + ShowView + 'Yahoo</td>'
+                            );
+                        }
+                        else if (json[x - 1].ShopID == 'Y_luckpiece') {
+                            $("#tblShop > tbody > tr:eq(1)").append(
+                                '<td>' + ShowView + 'Yahoo</td>'
+                            );
+                        }
+                        else if (json[x - 1].ShopID == 'Y_sportsplaza') {
+                            $("#tblShop > tbody > tr:eq(2)").append(
+                                '<td>' + ShowView + 'Yahoo</td>'
+                            );
+                        }
+                        else if (json[x - 1].ShopID == 'Y_bb-plaza') {
+                            $("#tblShop > tbody > tr:eq(3)").append(
+                                '<td>' + ShowView + 'Yahoo</td>'
+                            );
+                        }
+                        else if (json[x - 1].ShopID == 'Y_honpo') {
+                            $("#tblShop > tbody > tr:eq(4)").append(
+                                '<td>' + ShowView + 'Yahoo</td>'
+                            );
+                        }
+                    }
+                    if (json[x - 1].MallID == '03') {
+                        if (json[x - 1].ShopID == 'P_racket') {
+                            $("#tblShop > tbody > tr:eq(0)").append(
+                                '<td>' + ShowView + 'ポンパレ</td>'
+                            );
+                        }
+                    }
+                    if (json[x - 1].MallID == '04') {
+                        if (json[x - 1].ShopID == 'A_rastasports') {
+                            $("#tblShop > tbody > tr:eq(0)").append(
+                                '<td>' + ShowView + 'Amazon</td>'
+                            );
+                        }
+                    }
+                    if (json[x - 1].MallID == '05') {
+                        if (json[x - 1].ShopID == 'W_wowma') {
+                            $("#tblShop > tbody > tr:eq(0)").append(
+                                '<td>' + ShowView + 'Wowma</td>'
+                            );
+                        }
+                    }
+                    if (json[x - 1].MallID == '06') {
+                        if (json[x - 1].ShopID == 'J_racket') {
+                            $("#tblShop > tbody > tr:eq(0)").append(
+                                '<td>' + ShowView + '新自社</td>'
+                            );
+                        }
+                    }
+                    
+                }
+            }
+        }
 
         function getUrlParameter(sParam) {
             var sPageURL = window.location.search.substring(1),

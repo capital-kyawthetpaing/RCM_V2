@@ -72,5 +72,10 @@ namespace Shop_BL
             shopModel.Sqlprms[0] = new SqlParameter("@ShopID", SqlDbType.VarChar) {Value=shopModel.ShopID };
             return bdl.SelectJson("Shop_ExistsCheck", shopModel.Sqlprms);
         }
+        public string ShopList_Select()
+        {
+            BaseDL bdl = new BaseDL();
+            return bdl.SelectJson("Shop_SelectMallListByShop", null);
+        }
     }
 }

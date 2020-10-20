@@ -312,7 +312,7 @@ div.setDetailBox input[type="text"].txtTagID, .tblTagID {
     }
 /*--タグID--*/
 /*--出品対象ショップ--*/
-.tblShop tr{
+.tblShop tr {
     border-bottom: 1px solid;
     border-color: inherit;
 }
