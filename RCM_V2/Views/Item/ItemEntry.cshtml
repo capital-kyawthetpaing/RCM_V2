@@ -1177,7 +1177,7 @@
     <script type="text/javascript">
         $(document).ready(function (){
             var ItemCD = getUrlParameter('ItemCD');
-            BindChk();
+            BindShopList();
 
             $("#hbProductDetail p").on("click", function () {
                 $("tr.hideProductDetail").slideToggle();
@@ -1227,7 +1227,7 @@
         });
 
 
-        function BindChk() {
+        function BindShopList() {
             var obj = {
                 itemCD: null
                 };
@@ -1241,7 +1241,7 @@
             '</table>');
             for (var x = 1; x <= Object.keys(json).length; x++) {
                 var countRow = $('#tblShop > tbody > tr').length;
-                var ShowView = '<input type="checkbox">';
+                var shopChk = '<input type="checkbox" >';
                 if (countRow == 0) {
                     $("#tblShop > tbody").append(
                         '<tr>' +
@@ -1265,78 +1265,78 @@
                     if (json[x - 1].MallID == '01') {
                          if (json[x - 1].ShopID == 'R_racket') {
                             $("#tblShop > tbody > tr:eq(0)").append(
-                                '<td>' + ShowView + '楽天</td>'
+                                '<td>' + shopChk + '楽天</td>'
                             );
                         }
                          else if (json[x - 1].ShopID == 'R_luckpiece') {
                              $("#tblShop > tbody > tr:eq(1)").append(
-                                 '<td>' + ShowView + '楽天</td>'
+                                 '<td>' + shopChk + '楽天</td>'
                              );
                          }
 
                          else if (json[x - 1].ShopID == 'R_sportsplaza') {
                              $("#tblShop > tbody > tr:eq(2)").append(
-                                 '<td>' + ShowView + '楽天</td>'
+                                 '<td>' + shopChk + '楽天</td>'
                              );
                          }
                          else if (json[x - 1].ShopID == 'R_honpo') {
                             $("#tblShop > tbody > tr:eq(3)").append(
-                                '<td>' + ShowView + '楽天</td>'
+                                '<td>' + shopChk + '楽天</td>'
                             );
                         }                        
                     }
                     if (json[x - 1].MallID == '02') {                        
                         if (json[x - 1].ShopID == 'Y_racket') {
                             $("#tblShop > tbody > tr:eq(0)").append(
-                                '<td>' + ShowView + 'Yahoo</td>'
+                                '<td>' + shopChk + 'Yahoo</td>'
                             );
                         }
                         else if (json[x - 1].ShopID == 'Y_luckpiece') {
                             $("#tblShop > tbody > tr:eq(1)").append(
-                                '<td>' + ShowView + 'Yahoo</td>'
+                                '<td>' + shopChk + 'Yahoo</td>'
                             );
                         }
                         else if (json[x - 1].ShopID == 'Y_sportsplaza') {
                             $("#tblShop > tbody > tr:eq(2)").append(
-                                '<td>' + ShowView + 'Yahoo</td>'
+                                '<td>' + shopChk + 'Yahoo</td>'
                             );
                         }
                         else if (json[x - 1].ShopID == 'Y_bb-plaza') {
                             $("#tblShop > tbody > tr:eq(3)").append(
-                                '<td>' + ShowView + 'Yahoo</td>'
+                                '<td>' + shopChk + 'Yahoo</td>'
                             );
                         }
                         else if (json[x - 1].ShopID == 'Y_honpo') {
                             $("#tblShop > tbody > tr:eq(4)").append(
-                                '<td>' + ShowView + 'Yahoo</td>'
+                                '<td>' + shopChk + 'Yahoo</td>'
                             );
                         }
                     }
                     if (json[x - 1].MallID == '03') {
                         if (json[x - 1].ShopID == 'P_racket') {
                             $("#tblShop > tbody > tr:eq(0)").append(
-                                '<td>' + ShowView + 'ポンパレ</td>'
+                                '<td>' + shopChk + 'ポンパレ</td>'
                             );
                         }
                     }
                     if (json[x - 1].MallID == '04') {
                         if (json[x - 1].ShopID == 'A_rastasports') {
                             $("#tblShop > tbody > tr:eq(0)").append(
-                                '<td>' + ShowView + 'Amazon</td>'
+                                '<td>' + shopChk + 'Amazon</td>'
                             );
                         }
                     }
                     if (json[x - 1].MallID == '05') {
                         if (json[x - 1].ShopID == 'W_wowma') {
                             $("#tblShop > tbody > tr:eq(0)").append(
-                                '<td>' + ShowView + 'Wowma</td>'
+                                '<td>' + shopChk + 'Wowma</td>'
                             );
                         }
                     }
                     if (json[x - 1].MallID == '06') {
                         if (json[x - 1].ShopID == 'J_racket') {
                             $("#tblShop > tbody > tr:eq(0)").append(
-                                '<td>' + ShowView + '新自社</td>'
+                                '<td>' + shopChk + '新自社</td>'
                             );
                         }
                     }
